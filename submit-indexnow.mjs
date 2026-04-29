@@ -1,4 +1,5 @@
 import { existsSync, readFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -40,19 +41,13 @@ if (dryRun) {
   process.exit(0);
 }
 
-const response = await fetch(endpoint, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json; charset=utf-8"
-  },
-  body: JSON.stringify(body)
-});
+const payload = JSON.stringify(body);
+const result = await submitIndexNow(endpoint, payload);
 
-const text = await response.text();
-console.log(`IndexNow status: ${response.status}`);
-if (text.trim()) console.log(text.trim());
-if (![200, 202].includes(response.status)) {
-  fail(`IndexNow submission failed with status ${response.status}.`);
+console.log(`IndexNow status: ${result.status}`);
+if (result.text.trim()) console.log(result.text.trim());
+if (![200, 202].includes(result.status)) {
+  fail(`IndexNow submission failed with status ${result.status}.`);
 }
 
 function readOption(name) {
@@ -72,4 +67,57 @@ function normalizeSiteUrl(value) {
 function fail(message) {
   console.error(message);
   process.exit(1);
+}
+
+async function submitIndexNow(url, payload) {
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8"
+      },
+      body: payload
+    });
+    return {
+      status: response.status,
+      text: await response.text()
+    };
+  } catch (error) {
+    const code = error?.cause?.code || error?.code || error?.message || "unknown";
+    console.error(`Fetch submission failed (${code}); retrying with curl.`);
+    return submitWithCurl(url, payload);
+  }
+}
+
+function submitWithCurl(url, payload) {
+  const response = spawnSync("curl", [
+    "--silent",
+    "--show-error",
+    "--max-time",
+    "30",
+    "--write-out",
+    "\n%{http_code}",
+    "--header",
+    "Content-Type: application/json; charset=utf-8",
+    "--data-binary",
+    payload,
+    url
+  ], {
+    encoding: "utf8",
+    maxBuffer: 1024 * 1024
+  });
+
+  if (response.status !== 0) {
+    const detail = response.stderr.trim() || response.stdout.trim() || `exit ${response.status}`;
+    fail(`curl IndexNow submission failed: ${detail}`);
+  }
+
+  const output = response.stdout;
+  const separator = output.lastIndexOf("\n");
+  if (separator === -1) fail("curl IndexNow submission did not return an HTTP status.");
+
+  return {
+    text: output.slice(0, separator),
+    status: Number(output.slice(separator + 1).trim())
+  };
 }
