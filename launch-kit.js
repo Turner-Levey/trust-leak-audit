@@ -1,4 +1,6 @@
 const launchStorageKey = "trustLeakLaunchSiteUrl";
+const launchProgressStorageKey = "trustLeakLaunchProgressV1";
+const launchProgressOptions = ["Waiting", "Ready", "Submitted", "Accepted", "Rejected", "Blocked", "Skipped"];
 
 const priorityLinks = [
   {
@@ -331,6 +333,9 @@ const copyAllLinks = document.querySelector("#copyAllLinks");
 const downloadLaunchPacket = document.querySelector("#downloadLaunchPacket");
 const copyLaunchTracker = document.querySelector("#copyLaunchTracker");
 const downloadLaunchTracker = document.querySelector("#downloadLaunchTracker");
+const resetLaunchProgress = document.querySelector("#resetLaunchProgress");
+const launchProgressSummary = document.querySelector("#launchProgressSummary");
+let launchProgress = readLaunchProgress();
 
 siteUrlInput.value = readStoredBaseUrl();
 siteUrlInput.addEventListener("input", () => {
@@ -361,6 +366,14 @@ downloadLaunchTracker.addEventListener("click", () => {
   track("launch_kit_tracker_downloaded", { rows: submissionTracker.length });
 });
 
+resetLaunchProgress.addEventListener("click", () => {
+  launchProgress = {};
+  writeLaunchProgress();
+  render();
+  setButtonFeedback(resetLaunchProgress, "Reset");
+  track("launch_kit_tracker_progress_reset", { rows: submissionTracker.length });
+});
+
 launchLinkRows.addEventListener("click", async event => {
   const button = event.target.closest("button[data-copy-link]");
   if (!button) return;
@@ -375,6 +388,31 @@ launchCopyGrid.addEventListener("click", async event => {
   const draft = launchDrafts()[Number(button.dataset.copyDraft)];
   await copyText(draft.body, button, "Copied");
   track("launch_kit_copy_copied", { draft: draft.title });
+});
+
+launchTrackerRows.addEventListener("change", event => {
+  const statusSelect = event.target.closest("select[data-tracker-status]");
+  const noteInput = event.target.closest("input[data-tracker-note]");
+  if (!statusSelect && !noteInput) return;
+
+  const key = statusSelect?.dataset.trackerStatus || noteInput?.dataset.trackerNote;
+  const row = submissionTracker.find((item, index) => trackerId(item, index) === key);
+  if (!row) return;
+
+  const current = launchProgress[key] || {};
+  launchProgress[key] = {
+    ...current,
+    status: statusSelect ? statusSelect.value : current.status || defaultProgressStatus(row),
+    note: noteInput ? noteInput.value.trim() : current.note || "",
+    updatedAt: new Date().toISOString()
+  };
+  writeLaunchProgress();
+  renderProgressSummary();
+  track(statusSelect ? "launch_kit_tracker_status_changed" : "launch_kit_tracker_note_changed", {
+    surface: row.surface,
+    status: launchProgress[key].status,
+    hasNote: Boolean(launchProgress[key].note)
+  });
 });
 
 render();
@@ -411,7 +449,10 @@ function render() {
     </article>
   `).join("");
 
-  launchTrackerRows.innerHTML = submissionTracker.map(item => `
+  launchTrackerRows.innerHTML = submissionTracker.map((item, index) => {
+    const key = trackerId(item, index);
+    const progress = trackerProgress(item, index);
+    return `
     <tr>
       <td>${escapeHtml(item.day)}</td>
       <td>${escapeHtml(item.surface)}</td>
@@ -420,8 +461,18 @@ function render() {
       <td><code>${escapeHtml(buildLink(item))}</code></td>
       <td>${escapeHtml(item.firstMetric)}</td>
       <td>${escapeHtml(item.status)}</td>
+      <td>
+        <select class="tracker-status-select" data-tracker-status="${escapeHtml(key)}" aria-label="${escapeHtml(`${item.surface} progress`)}">
+          ${launchProgressOptions.map(option => `<option value="${escapeHtml(option)}"${option === progress.status ? " selected" : ""}>${escapeHtml(option)}</option>`).join("")}
+        </select>
+      </td>
+      <td>
+        <input class="tracker-note-input" type="text" value="${escapeHtml(progress.note)}" data-tracker-note="${escapeHtml(key)}" aria-label="${escapeHtml(`${item.surface} evidence note`)}" placeholder="Listing URL, result, or blocker">
+      </td>
     </tr>
-  `).join("");
+  `;
+  }).join("");
+  renderProgressSummary();
 }
 
 function launchDrafts() {
@@ -536,16 +587,21 @@ function renderPacket() {
 }
 
 function renderTrackerMarkdown() {
-  const header = "| Day | Surface | Page | Requirement | First metric | Status |";
-  const separator = "| --- | --- | --- | --- | --- | --- |";
-  const rows = submissionTracker.map(item => [
+  const header = "| Day | Surface | Page | Requirement | First metric | Plan status | Progress | Evidence note |";
+  const separator = "| --- | --- | --- | --- | --- | --- | --- | --- |";
+  const rows = submissionTracker.map((item, index) => {
+    const progress = trackerProgress(item, index);
+    return [
     item.day,
     item.surface,
     item.page,
     item.requirement,
     item.firstMetric,
-    item.status
-  ].map(escapeMarkdownTable).join(" | "));
+      item.status,
+      progress.status,
+      progress.note
+    ].map(escapeMarkdownTable).join(" | ");
+  });
   return [header, separator, ...rows.map(row => `| ${row} |`)].join("\n");
 }
 
@@ -558,10 +614,15 @@ function renderTrackerCsv() {
     "requirement",
     "first_metric",
     "copy_asset",
-    "status",
+    "plan_status",
+    "progress_status",
+    "evidence_note",
+    "progress_updated_at",
     "notes"
   ];
-  const rows = submissionTracker.map(item => [
+  const rows = submissionTracker.map((item, index) => {
+    const progress = trackerProgress(item, index);
+    return [
     item.day,
     item.surface,
     item.page,
@@ -570,10 +631,46 @@ function renderTrackerCsv() {
     item.firstMetric,
     item.copyAsset,
     item.status,
+      progress.status,
+      progress.note,
+      progress.updatedAt || "",
     item.notes
-  ]);
+    ];
+  });
 
   return [headers, ...rows].map(row => row.map(escapeCsv).join(",")).join("\n");
+}
+
+function trackerId(item, index) {
+  return `${index}-${item.surface}-${item.path}-${item.source}-${item.campaign}`
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function trackerProgress(item, index) {
+  const saved = launchProgress[trackerId(item, index)] || {};
+  return {
+    status: launchProgressOptions.includes(saved.status) ? saved.status : defaultProgressStatus(item),
+    note: saved.note || "",
+    updatedAt: saved.updatedAt || ""
+  };
+}
+
+function defaultProgressStatus(item) {
+  if (/blocked/i.test(item.status)) return "Blocked";
+  if (/ready|manual after deploy/i.test(item.status)) return "Ready";
+  if (/low priority/i.test(item.status)) return "Skipped";
+  return "Waiting";
+}
+
+function renderProgressSummary() {
+  const counts = Object.fromEntries(launchProgressOptions.map(option => [option, 0]));
+  submissionTracker.forEach((item, index) => {
+    const progress = trackerProgress(item, index);
+    counts[progress.status] += 1;
+  });
+  launchProgressSummary.textContent = `Progress: ${counts.Submitted + counts.Accepted} submitted or accepted, ${counts.Ready} ready, ${counts.Blocked} blocked, ${counts.Skipped} skipped, ${counts.Waiting} waiting. Saved only in this browser.`;
 }
 
 function buildLink(item) {
@@ -606,6 +703,23 @@ function readStoredBaseUrl() {
 function storeBaseUrl(value) {
   try {
     localStorage.setItem(launchStorageKey, value.trim());
+  } catch {
+    // Ignore storage failures.
+  }
+}
+
+function readLaunchProgress() {
+  try {
+    const raw = localStorage.getItem(launchProgressStorageKey);
+    return raw ? JSON.parse(raw) : {};
+  } catch {
+    return {};
+  }
+}
+
+function writeLaunchProgress() {
+  try {
+    localStorage.setItem(launchProgressStorageKey, JSON.stringify(launchProgress));
   } catch {
     // Ignore storage failures.
   }

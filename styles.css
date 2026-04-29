@@ -505,7 +505,22 @@ textarea {
 }
 
 .launch-tracker-table {
-  min-width: 1180px;
+  min-width: 1480px;
+}
+
+.launch-tracker-table select,
+.launch-tracker-table input {
+  width: 100%;
+  min-width: 150px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfdfb;
+  color: var(--ink);
+}
+
+.launch-tracker-table .tracker-note-input {
+  min-width: 260px;
 }
 
 .qa-table {

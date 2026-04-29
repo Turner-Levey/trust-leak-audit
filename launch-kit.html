@@ -87,9 +87,10 @@
           <div class="button-row">
             <button class="secondary compact-button" id="copyLaunchTracker" type="button">Copy CSV</button>
             <button class="secondary compact-button" id="downloadLaunchTracker" type="button">Download CSV</button>
+            <button class="secondary compact-button" id="resetLaunchProgress" type="button">Reset Progress</button>
           </div>
         </div>
-        <p class="event-source-line">Use this tracker after deployment to stagger submissions, preserve rule checks, and separate traffic evidence by UTM source where the surface allows tracked links.</p>
+        <p class="event-source-line" id="launchProgressSummary">Progress is saved only in this browser.</p>
         <div class="table-scroll">
           <table class="benchmark-table launch-tracker-table">
             <thead>
@@ -100,7 +101,9 @@
                 <th>Requirement</th>
                 <th>Submission URL</th>
                 <th>First metric</th>
-                <th>Status</th>
+                <th>Plan status</th>
+                <th>Progress</th>
+                <th>Evidence note</th>
               </tr>
             </thead>
             <tbody id="launchTrackerRows"></tbody>
