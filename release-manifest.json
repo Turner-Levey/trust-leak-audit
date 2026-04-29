@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-29T09:54:12.356Z",
+  "generatedAt": "2026-04-29T11:59:35.556Z",
   "sourceDir": "/Users/turnerlevey/untitled folder/venture-lab/site",
   "releaseDir": "/Users/turnerlevey/untitled folder/venture-lab/releases/trust-leak-audit-static",
   "siteUrl": "https://trust-leak-audit-static.vercel.app",
@@ -72,6 +72,9 @@
     "_headers",
     "netlify.toml",
     "vercel.json"
+  ],
+  "discoveryFiles": [
+    "llms.txt"
   ],
   "indexNow": {
     "keyFile": "4f2e8d9c6b7a4f3a9e1c0d8b6a2f4c1e.txt",

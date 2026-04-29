@@ -1,0 +1,33 @@
+# Trust Leak Audit + Marketing Math
+
+> Free browser-only trust scoring, marketing calculators, sample reports, and public filing trigger brief examples for founders, agencies, ecommerce teams, local services, and public-company advisors.
+
+Site: https://trust-leak-audit-static.vercel.app/
+Sitemap: https://trust-leak-audit-static.vercel.app/sitemap.xml
+IndexNow key file: https://trust-leak-audit-static.vercel.app/4f2e8d9c6b7a4f3a9e1c0d8b6a2f4c1e.txt
+
+## Priority Free Tools And Pages
+
+- [Free Trust Leak Audit + Marketing Math Toolkit](https://trust-leak-audit-static.vercel.app/): A free browser-only landing page trust score and marketing math toolkit for founders, agencies, and growth teams.
+- [Free Agency Margin Calculator - Retainer Profit And Hours](https://trust-leak-audit-static.vercel.app/agency-margin-calculator.html): Free agency margin calculator. Estimate monthly profit, client margin, and max delivery hours for a target margin before quoting retainers.
+- [Free Ecommerce Conversion Trust Checklist](https://trust-leak-audit-static.vercel.app/ecommerce-conversion-trust-checklist.html): Free ecommerce conversion trust checklist. Score shipping, returns, reviews, product proof, payment cues, size confidence, and checkout friction before scaling ads.
+- [Trust Leak Audit Launch Notes](https://trust-leak-audit-static.vercel.app/launch-notes.html): Launch notes for the free Trust Leak Audit toolkit, including new browser-only calculators, share actions, sample reports, and SEC filing trigger brief pages.
+- [Free Lead Funnel Calculator - Visits To Revenue](https://trust-leak-audit-static.vercel.app/lead-funnel-calculator.html): Free lead funnel calculator for landing pages. Estimate leads, customers, and revenue from visits, lead rate, close rate, and deal value.
+- [Free Local Service Lead Value Calculator - CPL And CPC](https://trust-leak-audit-static.vercel.app/local-service-lead-value-calculator.html): Free local service lead value calculator. Estimate lead value, max CPL, max CPC, customer gross profit, and revenue from close rate and conversion rate.
+- [Free LTV:CAC Calculator - CAC Payback And Gross LTV](https://trust-leak-audit-static.vercel.app/ltv-cac-calculator.html): Free LTV:CAC calculator for SaaS and recurring revenue. Estimate customer acquisition cost, gross LTV, payback period, and LTV to CAC ratio.
+- [Free Paid Traffic Break-Even Calculator - ROAS, CPA, And CPL](https://trust-leak-audit-static.vercel.app/paid-traffic-break-even-calculator.html): Free paid traffic break-even calculator. Estimate break-even ROAS, revenue, CPA, CPL, and conversion thresholds before scaling ads.
+- [Free ROAS Calculator - Return On Ad Spend](https://trust-leak-audit-static.vercel.app/roas-calculator.html): Free ROAS calculator for paid traffic. Calculate return on ad spend, gross profit after ad spend, and the trust fixes needed before scaling campaigns.
+- [Free SaaS CAC Payback Calculator - Recovery Months](https://trust-leak-audit-static.vercel.app/saas-payback-calculator.html): Free SaaS CAC payback calculator. Estimate how many months it takes to recover acquisition cost from ARPA, gross margin, spend, and new customers.
+- [Trust Leak Audit Sample Reports](https://trust-leak-audit-static.vercel.app/sample-reports.html): Anonymized Trust Leak Audit sample reports for SaaS, ecommerce, agency, and local service landing pages, with copyable share snippets.
+- [SEC Auditor Change Trigger Briefs](https://trust-leak-audit-static.vercel.app/sec-auditor-change-briefs.html): Five public SEC Form 8-K Item 4.01 auditor-change briefs for accounting, SOX-readiness, audit-transition, and public-company advisory teams.
+- [SEC Filing Trigger Briefs Pilot](https://trust-leak-audit-static.vercel.app/sec-filing-trigger-briefs.html): Sample SEC Filing Trigger Briefs that turn public EDGAR Form 8-K transaction events into non-investment business-development signals for vendors, recruiters, and advisors.
+- [SEC Leadership Change Briefs](https://trust-leak-audit-static.vercel.app/sec-leadership-change-briefs.html): Five public SEC Form 8-K Item 5.02 leadership-change briefs for executive search, interim finance, governance, IR, and public-company advisory teams.
+- [SEC Filing Trigger Briefs Hub](https://trust-leak-audit-static.vercel.app/sec-trigger-briefs-hub.html): A deployable hub for SEC Filing Trigger Briefs: public Form 8-K business-development signals for recruiters, accounting teams, governance advisors, IR teams, and public-company vendors.
+- [Free Landing Page Trust Score Checklist](https://trust-leak-audit-static.vercel.app/trust-score.html): Free landing page trust score checklist for founders and agencies. Find clarity, proof, risk reversal, pricing, and CTA gaps before spending more on traffic.
+
+## Notes For Crawlers And Launch Reviewers
+
+- No account is required to use the public tools.
+- Calculations run in the browser; no form submission is required.
+- Operator-only pages such as analytics, launch kit, deployment QA, and 404 are intentionally excluded from the sitemap.
+- SEC filing trigger brief examples are informational operations briefs, not investment advice.
