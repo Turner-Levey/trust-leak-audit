@@ -211,6 +211,51 @@ const submissionTracker = [
     notes: "Launching Next currently has a free submission queue plus paid faster review. Use the canonical hub URL, select $0 planned marketing spend if asked, and do not pay to skip the queue."
   },
   {
+    day: "3",
+    surface: "BetterLaunch",
+    page: "Toolkit hub",
+    path: "/",
+    source: "betterlaunch",
+    medium: "directory",
+    campaign: "free_tool_launch",
+    disableUtm: true,
+    requirement: "Public URL; 2+ screenshots or demo GIF; free editorial review; no paid upgrades",
+    firstMetric: "Accepted listing, editorial page, or referral visits",
+    copyAsset: "Long directory listing",
+    status: "Manual after deploy; screenshots required",
+    notes: "BetterLaunch currently offers free editorial listings and optional paid upgrades. Use the canonical hub URL, the long listing description, and existing screenshots only; do not add badges or buy placement without a later explicit decision."
+  },
+  {
+    day: "3",
+    surface: "TinyLaunch",
+    page: "Toolkit hub",
+    path: "/",
+    source: "tinylaunch",
+    medium: "directory",
+    campaign: "free_tool_launch",
+    disableUtm: true,
+    requirement: "Public URL; user-owned sign-in; Standard Launch only",
+    firstMetric: "Homepage listing, referral visits, or product feedback",
+    copyAsset: "Long directory listing",
+    status: "Account required; free queue only",
+    notes: "TinyLaunch currently lists a free Standard Launch and paid upgrades/submission services. Use only the free queue and do not buy submission, review, sponsor, or featured placement services."
+  },
+  {
+    day: "3",
+    surface: "MicroLaunch",
+    page: "Toolkit hub",
+    path: "/",
+    source: "microlaunch",
+    medium: "launch_platform",
+    campaign: "free_tool_launch",
+    disableUtm: true,
+    requirement: "Public URL; user-owned signup; Basic Launch queue only",
+    firstMetric: "Launch page, support votes, referral visits, or comments",
+    copyAsset: "Long directory listing",
+    status: "Account required; free queue only",
+    notes: "MicroLaunch currently supports product pages and a Basic Launch queue, with paid pro credits available. Use only the free/basic path and avoid deal or paid-credit flows."
+  },
+  {
     day: "2",
     surface: "FreeStuff.dev",
     page: "Paid traffic break-even calculator",
@@ -538,6 +583,22 @@ function launchDrafts() {
         `Ecommerce checklist: ${ecommerce}`,
         "",
         "It helps founders, ecommerce operators, agencies, and growth teams identify trust gaps, estimate break-even ad economics, and export Markdown audit drafts without signup."
+      ].join("\n")
+    },
+    {
+      channel: "Directory",
+      title: "Long editorial listing",
+      body: [
+        "Name: Trust Leak Audit",
+        "Tagline: Free browser-only landing page trust score and marketing math toolkit.",
+        "",
+        `URL: ${hub}`,
+        "",
+        "Description:",
+        "Trust Leak Audit helps founders, ecommerce operators, agencies, and growth teams find the trust gaps that make useful pages feel risky or unclear. The free toolkit combines a landing-page trust score, paid traffic break-even math, ROAS checks, SaaS CAC payback, LTV:CAC, lead-funnel revenue, local-service lead value, agency margin math, ecommerce trust criteria, sample reports, and public SEC trigger brief examples. It runs in the browser without signup, uploads, or payment. Visitors can copy share links, export Markdown audit drafts, and use the calculators as a lightweight preflight before changing copy, launching ads, or asking for feedback.",
+        "",
+        "Categories: Marketing, growth, CRO, SaaS, ecommerce, analytics, startup tools, calculators.",
+        "Privacy note: Browser-only; page data is not uploaded."
       ].join("\n")
     },
     {
