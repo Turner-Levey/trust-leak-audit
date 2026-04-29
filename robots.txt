@@ -4,3 +4,4 @@ Disallow: /analytics.html
 Disallow: /launch-kit.html
 Disallow: /deployment-qa.html
 Disallow: /404.html
+Sitemap: https://trust-leak-audit-static-4p4sx07dm-turnerlevey-projects.vercel.app/sitemap.xml
