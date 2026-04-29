@@ -374,6 +374,37 @@ input[type="url"] {
   text-decoration: none;
 }
 
+.share-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0 0 18px;
+  padding: 12px 0 14px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.share-strip h2 {
+  font-size: 1rem;
+}
+
+.share-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.share-status {
+  min-width: 120px;
+  margin: 0;
+  color: var(--green-dark);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-align: right;
+}
+
 textarea {
   width: 100%;
   min-height: 320px;
@@ -774,7 +805,8 @@ textarea {
 @media (max-width: 900px) {
   .topbar,
   .panel-head,
-  .sample-teaser {
+  .sample-teaser,
+  .share-strip {
     align-items: stretch;
     flex-direction: column;
   }
@@ -801,6 +833,15 @@ textarea {
 
   .button-row {
     justify-content: flex-start;
+  }
+
+  .share-actions {
+    justify-content: flex-start;
+  }
+
+  .share-status {
+    min-width: 0;
+    text-align: left;
   }
 
   .tabs {

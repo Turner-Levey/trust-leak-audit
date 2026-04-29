@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-29T04:24:07.182Z",
+  "generatedAt": "2026-04-29T04:51:59.290Z",
   "sourceDir": "/Users/turnerlevey/untitled folder/venture-lab/site",
   "releaseDir": "/Users/turnerlevey/untitled folder/venture-lab/releases/trust-leak-audit-static",
   "siteUrl": "https://trust-leak-audit-static.vercel.app",
@@ -79,5 +79,9 @@
     "indexable": 15
   },
   "localLinkIssues": [],
+  "shareToolCoverage": {
+    "covered": 15,
+    "indexable": 15
+  },
   "nextCommand": "SITE_URL=https://your-domain.example node venture-lab/site/build-static-release.mjs"
 }

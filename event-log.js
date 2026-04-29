@@ -65,4 +65,11 @@
   };
 
   track("page_view", {}, { oncePerSession: true });
+
+  if (!document.querySelector('script[src$="share-tools.js"]')) {
+    const shareScript = document.createElement("script");
+    shareScript.src = "share-tools.js";
+    shareScript.defer = true;
+    document.body.appendChild(shareScript);
+  }
 })();
