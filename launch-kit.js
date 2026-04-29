@@ -194,6 +194,21 @@ const submissionTracker = [
     notes: "ToolDirs has a tool submission form with screenshots, logo, categories, and pricing model fields. Use only a free/manual option if available after sign-in; do not pay or fabricate screenshots."
   },
   {
+    day: "3",
+    surface: "Launching Next",
+    page: "Toolkit hub",
+    path: "/",
+    source: "launchingnext",
+    medium: "directory",
+    campaign: "free_tool_launch",
+    disableUtm: true,
+    requirement: "Public URL; submitter name/email; captcha; no paid fast-track",
+    firstMetric: "Accepted listing, newsletter mention, or referral visits",
+    copyAsset: "Startup directory listing",
+    status: "Manual after deploy; clean URL only",
+    notes: "Launching Next currently has a free submission queue plus paid faster review. Use the canonical hub URL, select $0 planned marketing spend if asked, and do not pay to skip the queue."
+  },
+  {
     day: "2",
     surface: "FreeStuff.dev",
     page: "Paid traffic break-even calculator",
