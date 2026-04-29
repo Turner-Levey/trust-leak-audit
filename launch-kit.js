@@ -271,6 +271,36 @@ const submissionTracker = [
     notes: "StartupInspire currently lists a 14-day free starter path and says free and paid submission options exist. Use the canonical hub URL, software/marketing categories, and no paid annual upgrades."
   },
   {
+    day: "3",
+    surface: "PitchWall",
+    page: "Toolkit hub",
+    path: "/",
+    source: "pitchwall",
+    medium: "startup_directory",
+    campaign: "free_tool_launch",
+    disableUtm: true,
+    requirement: "Public URL; user-owned submit flow; free queue only",
+    firstMetric: "Accepted listing, referral visits, or indexed product page",
+    copyAsset: "Long directory listing",
+    status: "Manual after deploy; free queue only",
+    notes: "PitchWall currently offers a $0 free plan for indie hackers with a 30-day waiting period and manual review. Submit Trust Leak only as a working tech/product tool; do not buy premium placement or claim AI-specific functionality."
+  },
+  {
+    day: "3",
+    surface: "OpenHunts",
+    page: "Toolkit hub",
+    path: "/",
+    source: "openhunts",
+    medium: "launch_platform",
+    campaign: "free_tool_launch",
+    disableUtm: true,
+    requirement: "Public URL; user-owned account; product-category fit",
+    firstMetric: "Launch page, votes/comments, or referral visits",
+    copyAsset: "Long directory listing",
+    status: "Account required; manual after deploy",
+    notes: "OpenHunts is actively listing weekly maker/product launches and has a submit path. Use the clean canonical hub URL and existing long listing copy; do not buy sponsorship or fabricate engagement."
+  },
+  {
     day: "2",
     surface: "FreeStuff.dev",
     page: "Paid traffic break-even calculator",
