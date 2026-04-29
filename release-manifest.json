@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-04-29T03:51:46.149Z",
+  "generatedAt": "2026-04-29T04:24:07.182Z",
   "sourceDir": "/Users/turnerlevey/untitled folder/venture-lab/site",
   "releaseDir": "/Users/turnerlevey/untitled folder/venture-lab/releases/trust-leak-audit-static",
-  "siteUrl": null,
-  "metadataMode": "placeholder dry-run only; rerun with SITE_URL before public launch",
+  "siteUrl": "https://trust-leak-audit-static.vercel.app",
+  "metadataMode": "absolute public metadata written to release copy",
   "indexablePages": [
     "agency-margin-calculator.html",
     "ecommerce-conversion-trust-checklist.html",
@@ -70,6 +70,10 @@
     "netlify.toml",
     "vercel.json"
   ],
+  "indexNow": {
+    "keyFile": "4f2e8d9c6b7a4f3a9e1c0d8b6a2f4c1e.txt",
+    "indexableUrls": 15
+  },
   "eventLogCoverage": {
     "covered": 15,
     "indexable": 15
