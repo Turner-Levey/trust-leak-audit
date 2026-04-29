@@ -256,6 +256,21 @@ const submissionTracker = [
     notes: "MicroLaunch currently supports product pages and a Basic Launch queue, with paid pro credits available. Use only the free/basic path and avoid deal or paid-credit flows."
   },
   {
+    day: "3",
+    surface: "StartupInspire",
+    page: "Toolkit hub",
+    path: "/",
+    source: "startupinspire",
+    medium: "startup_directory",
+    campaign: "free_tool_launch",
+    disableUtm: true,
+    requirement: "Public URL; user-owned account; free tier/trial only",
+    firstMetric: "Accepted listing, referral visits, or profile page indexed",
+    copyAsset: "Long directory listing",
+    status: "Account required; free tier only",
+    notes: "StartupInspire currently lists a 14-day free starter path and says free and paid submission options exist. Use the canonical hub URL, software/marketing categories, and no paid annual upgrades."
+  },
+  {
     day: "2",
     surface: "FreeStuff.dev",
     page: "Paid traffic break-even calculator",
