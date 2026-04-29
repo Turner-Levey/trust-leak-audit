@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free agency margin calculator. Estimate monthly profit, client margin, and max delivery hours for a target margin before quoting retainers.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="Free Agency Margin Calculator">
+    <meta property="og:description" content="Estimate profit, margin, and max delivery hours for agency retainers.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Trust Leak Audit">
+    <meta property="og:image" content="./og/agency-margin-calculator.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Agency Margin Calculator social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="./og/agency-margin-calculator.svg">
+    <meta name="twitter:image:alt" content="Agency Margin Calculator social preview.">
+    <title>Free Agency Margin Calculator - Retainer Profit And Hours</title>
+    <link rel="canonical" href="./agency-margin-calculator.html">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What margin should an agency retainer target?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Targets vary by model, but many small agencies need at least 40% to 50% gross margin on retainers to leave room for admin, sales, management, and profit."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I calculate max delivery hours?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Subtract overhead and target profit from the retainer, then divide the remaining delivery budget by blended hourly cost."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What causes agency margins to disappear?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Margins usually disappear through vague scope, unpriced revisions, senior labor on low-value work, undercounted project management, and weak client qualification."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="index.html">Trust Leak Toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Free calculator</p>
+        <h1>Agency Margin Calculator</h1>
+        <p class="lede">Estimate client profit, margin, and maximum delivery hours before quoting a retainer or packaging a landing-page audit service.</p>
+        <div class="page-actions">
+          <a class="primary-link" href="index.html?tool=agency#math-heading">Run agency calculator</a>
+          <a class="secondary-link" href="trust-score.html">Check trust score</a>
+        </div>
+      </header>
+
+      <section class="seo-grid" aria-label="Agency margin calculator details">
+        <article class="panel">
+          <h2>Formula</h2>
+          <p>Monthly profit = retainer minus delivery labor and overhead. Margin = profit divided by retainer. Max hours uses the target margin after overhead.</p>
+        </article>
+        <article class="panel">
+          <h2>Inputs</h2>
+          <p>Use the client retainer, expected delivery hours, blended labor cost per hour, and tool/admin overhead assigned to the account.</p>
+        </article>
+        <article class="panel">
+          <h2>Interpretation</h2>
+          <p>Thin margin usually means the offer needs tighter scope, stronger proof, clearer pricing, or a higher-value audit deliverable before fulfillment starts.</p>
+        </article>
+      </section>
+
+      <section class="detail-section" aria-labelledby="agency-example-heading">
+        <h2 id="agency-example-heading">Worked Examples</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>Landing Page Audit Retainer</h3>
+            <p>An agency charges $2,500/month, expects 18 delivery hours at $65/hour, and assigns $250 in overhead. Cost is $1,420, profit is $1,080, and margin is 43.2%.</p>
+            <p class="example-result">Decision: keep scope tight or raise price before adding recurring calls and revisions.</p>
+          </article>
+          <article class="panel">
+            <h3>White-Label CRO Package</h3>
+            <p>A white-label audit package sells for $1,500, uses 10 hours at $70/hour, and carries $150 in overhead. Profit is $650 and margin is 43.3% before client management time.</p>
+            <p class="example-result">Decision: define revision limits and report format before accepting volume.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="agency-benchmark-heading">
+        <h2 id="agency-benchmark-heading">Margin And Scope Guide</h2>
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>Margin Signal</th>
+              <th>Risk</th>
+              <th>Practical Fix</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Below 30%</td>
+              <td>Small overruns can erase profit.</td>
+              <td>Reduce scope, increase price, or turn the work into a fixed deliverable.</td>
+            </tr>
+            <tr>
+              <td>40% to 50%</td>
+              <td>Workable if delivery time and revisions are controlled.</td>
+              <td>Track actual hours and protect senior time.</td>
+            </tr>
+            <tr>
+              <td>Above 60%</td>
+              <td>Strong on paper, but only if quality and client outcomes stay high.</td>
+              <td>Invest in proof, templates, and repeatable fulfillment.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="detail-section" aria-labelledby="agency-mistakes-heading">
+        <h2 id="agency-mistakes-heading">Common Agency Margin Mistakes</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>Undercounting Delivery Cost</h3>
+            <ul>
+              <li>Leaving project management, QA, client calls, and revisions outside the estimate.</li>
+              <li>Using freelancer rates without accounting for internal review time.</li>
+              <li>Forgetting tools, admin, and unpaid sales time when pricing retainers.</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Letting Scope Drift</h3>
+            <ul>
+              <li>Offering strategy, copy, design, implementation, and reporting for one fixed fee.</li>
+              <li>Accepting low-trust clients without clear success criteria.</li>
+              <li>Missing upgrade paths when the audit uncovers larger implementation work.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="agency-faq-heading">
+        <h2 id="agency-faq-heading">FAQ</h2>
+        <div class="faq-list">
+          <details>
+            <summary>What margin should an agency retainer target?</summary>
+            <p>Targets vary by model, but many small agencies need at least 40% to 50% gross margin on retainers to leave room for admin, sales, management, and profit.</p>
+          </details>
+          <details>
+            <summary>How do I calculate max delivery hours?</summary>
+            <p>Subtract overhead and target profit from the retainer, then divide the remaining delivery budget by blended hourly cost.</p>
+          </details>
+          <details>
+            <summary>What causes agency margins to disappear?</summary>
+            <p>Margins usually disappear through vague scope, unpriced revisions, senior labor on low-value work, undercounted project management, and weak client qualification.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="tool-links" aria-label="Related calculators">
+        <a href="sample-reports.html">Sample Reports</a>
+        <a href="trust-score.html">Landing Page Trust Score</a>
+        <a href="roas-calculator.html">ROAS Calculator</a>
+        <a href="paid-traffic-break-even-calculator.html">Paid Traffic Break-Even</a>
+        <a href="local-service-lead-value-calculator.html">Local Service Lead Value</a>
+        <a href="ecommerce-conversion-trust-checklist.html">Ecommerce Trust Checklist</a>
+        <a href="ltv-cac-calculator.html">LTV:CAC Calculator</a>
+        <a href="saas-payback-calculator.html">SaaS Payback Calculator</a>
+        <a href="lead-funnel-calculator.html">Lead Funnel Calculator</a>
+      </section>
+    </main>
+    <script src="event-log.js"></script>
+  </body>
+</html>

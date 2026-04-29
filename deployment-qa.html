@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="No-key deployment QA console for Trust Leak Audit static release checks.">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="Trust Leak Audit Deployment QA">
+    <meta property="og:description" content="Verify public URL metadata, sitemap, robots, priority pages, and social assets before launch.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Trust Leak Audit">
+    <meta property="og:image" content="./og/trust-leak-toolkit.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Trust Leak Audit and Marketing Math social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="./og/trust-leak-toolkit.svg">
+    <meta name="twitter:image:alt" content="Trust Leak Audit and Marketing Math social preview.">
+    <title>Deployment QA | Trust Leak Audit</title>
+    <link rel="canonical" href="./deployment-qa.html">
+    <link rel="manifest" href="site-manifest.json">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="./">Back to toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Operator page</p>
+        <h1>Deployment QA</h1>
+        <p class="lede">Run same-origin checks after upload to confirm priority pages, canonical metadata, social images, sitemap, robots, and local event logging are launch-ready.</p>
+        <div class="launch-url-row">
+          <label for="qaBaseUrl">Public site URL</label>
+          <input id="qaBaseUrl" type="url" inputmode="url" spellcheck="false" placeholder="https://example.com">
+          <button class="primary" id="runDeploymentQa" type="button">Run QA</button>
+          <button class="secondary" id="copyQaSummary" type="button">Copy Summary</button>
+          <button class="secondary" id="downloadQaReport" type="button">Download Report</button>
+        </div>
+        <p class="event-source-line" id="qaStatus">Enter the deployed URL or run from the deployed host. This page does not submit, crawl third-party sites, or send analytics.</p>
+        <div class="page-actions">
+          <a class="secondary-link" href="launch-kit.html">Launch Kit</a>
+          <a class="secondary-link" href="analytics.html">Local Evidence Log</a>
+        </div>
+      </header>
+
+      <section class="panel evidence-panel" aria-labelledby="qa-summary-heading">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Readiness</p>
+            <h2 id="qa-summary-heading">Deployment QA Summary</h2>
+          </div>
+        </div>
+        <div class="event-summary" id="qaSummary"></div>
+      </section>
+
+      <section class="panel detail-section" aria-labelledby="qa-table-heading">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Checks</p>
+            <h2 id="qa-table-heading">Page And Metadata Results</h2>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="benchmark-table qa-table">
+            <thead>
+              <tr>
+                <th>Area</th>
+                <th>Check</th>
+                <th>Status</th>
+                <th>Evidence</th>
+              </tr>
+            </thead>
+            <tbody id="qaRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel detail-section" aria-labelledby="manual-heading">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Manual</p>
+            <h2 id="manual-heading">Launch Checks Still Required</h2>
+          </div>
+        </div>
+        <ul>
+          <li>Open the site in a private browser session and complete one trust-score export path.</li>
+          <li>Open the generated social image URLs in a browser preview if the launch surface does not render SVG cards.</li>
+          <li>Confirm host logs or a privacy-friendly analytics option before counting visitor data.</li>
+          <li>Use only user-owned accounts for directory or community posts.</li>
+          <li>Do not count this QA page as traffic, search indexing, buyer feedback, or revenue traction.</li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="event-log.js"></script>
+    <script src="deployment-qa.js"></script>
+  </body>
+</html>

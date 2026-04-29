@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free LTV:CAC calculator for SaaS and recurring revenue. Estimate customer acquisition cost, gross LTV, payback period, and LTV to CAC ratio.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="Free LTV:CAC Calculator">
+    <meta property="og:description" content="Estimate CAC, gross LTV, payback period, and LTV:CAC ratio without signup.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Trust Leak Audit">
+    <meta property="og:image" content="./og/ltv-cac-calculator.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="LTV:CAC Calculator social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="./og/ltv-cac-calculator.svg">
+    <meta name="twitter:image:alt" content="LTV:CAC Calculator social preview.">
+    <title>Free LTV:CAC Calculator - CAC Payback And Gross LTV</title>
+    <link rel="canonical" href="./ltv-cac-calculator.html">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a good LTV:CAC ratio?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Many teams use 3:1 as a rough healthy target, but the right ratio depends on payback speed, margin, cash position, retention, and growth stage."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I calculate CAC payback?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CAC payback is customer acquisition cost divided by gross monthly revenue per customer. It estimates how many months are needed to recover acquisition spend."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should founder time be included in CAC?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For operating decisions, track founder-led, sales-led, and paid acquisition separately. Blending them can hide which channel is actually scalable."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="index.html">Trust Leak Toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Free calculator</p>
+        <h1>LTV:CAC Calculator</h1>
+        <p class="lede">Estimate CAC, gross customer lifetime value, payback period, and LTV:CAC ratio for SaaS or recurring-revenue offers.</p>
+        <div class="page-actions">
+          <a class="primary-link" href="index.html?tool=ltv#math-heading">Run LTV:CAC calculator</a>
+          <a class="secondary-link" href="trust-score.html">Check trust score</a>
+        </div>
+      </header>
+
+      <section class="seo-grid" aria-label="LTV CAC calculator details">
+        <article class="panel">
+          <h2>Formula</h2>
+          <p>CAC = acquisition spend divided by new customers. Gross LTV = monthly revenue per customer times gross margin, divided by monthly churn rate.</p>
+        </article>
+        <article class="panel">
+          <h2>Inputs</h2>
+          <p>Use acquisition spend, new customers, average monthly revenue per customer, gross margin, and monthly churn. Keep paid, sales, and founder-led acquisition separate when possible.</p>
+        </article>
+        <article class="panel">
+          <h2>Interpretation</h2>
+          <p>A strong ratio with slow payback can still strain cash. Trust leaks in pricing, proof, onboarding, and risk reversal often show up as weak conversion or churn.</p>
+        </article>
+      </section>
+
+      <section class="detail-section" aria-labelledby="ltv-example-heading">
+        <h2 id="ltv-example-heading">Worked Examples</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>Self-Serve SaaS</h3>
+            <p>A product spends $7,500 to acquire 50 customers. Each pays $99/month at 80% gross margin with 5% monthly churn. CAC is $150, gross LTV is $1,584, and LTV:CAC is 10.6x.</p>
+            <p class="example-result">Decision: the ratio is strong, but check whether churn is measured on mature cohorts before scaling.</p>
+          </article>
+          <article class="panel">
+            <h3>Sales-Led Offer</h3>
+            <p>A team spends $12,000 to win 12 accounts. Each pays $300/month at 70% margin with 8% churn. CAC is $1,000, gross LTV is $2,625, and payback is 4.8 months.</p>
+            <p class="example-result">Decision: improve demo-page proof and pricing confidence if CAC rises.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="ltv-benchmark-heading">
+        <h2 id="ltv-benchmark-heading">Ratio And Payback Interpretation</h2>
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>Signal</th>
+              <th>Watch For</th>
+              <th>Next Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>LTV:CAC below 1x</td>
+              <td>Acquisition cost is higher than gross lifetime value.</td>
+              <td>Stop scaling and diagnose offer, targeting, pricing, churn, or conversion trust.</td>
+            </tr>
+            <tr>
+              <td>LTV:CAC near 3x</td>
+              <td>Often a workable target if payback and retention are stable.</td>
+              <td>Improve page proof and onboarding before adding more channels.</td>
+            </tr>
+            <tr>
+              <td>Long payback</td>
+              <td>Cash can tighten even with a healthy ratio.</td>
+              <td>Raise activation, annual prepay, close rate, or pricing confidence.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="detail-section" aria-labelledby="ltv-mistakes-heading">
+        <h2 id="ltv-mistakes-heading">Common LTV:CAC Mistakes</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>Using Inflated Lifetime Value</h3>
+            <ul>
+              <li>Calculating LTV from early customers before churn stabilizes.</li>
+              <li>Ignoring gross margin and support or delivery cost.</li>
+              <li>Using annual contract value when expansion and retention are unproven.</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Blending Acquisition Channels</h3>
+            <ul>
+              <li>Mixing paid ads, founder referrals, partners, and outbound into one CAC.</li>
+              <li>Hiding sales labor or onboarding cost outside the model.</li>
+              <li>Comparing channels without matching buyer intent and time horizon.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="ltv-faq-heading">
+        <h2 id="ltv-faq-heading">FAQ</h2>
+        <div class="faq-list">
+          <details>
+            <summary>What is a good LTV:CAC ratio?</summary>
+            <p>Many teams use 3:1 as a rough healthy target, but the right ratio depends on payback speed, margin, cash position, retention, and growth stage.</p>
+          </details>
+          <details>
+            <summary>How do I calculate CAC payback?</summary>
+            <p>CAC payback is customer acquisition cost divided by gross monthly revenue per customer. It estimates how many months are needed to recover acquisition spend.</p>
+          </details>
+          <details>
+            <summary>Should founder time be included in CAC?</summary>
+            <p>For operating decisions, track founder-led, sales-led, and paid acquisition separately. Blending them can hide which channel is actually scalable.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="tool-links" aria-label="Related calculators">
+        <a href="sample-reports.html">Sample Reports</a>
+        <a href="trust-score.html">Landing Page Trust Score</a>
+        <a href="roas-calculator.html">ROAS Calculator</a>
+        <a href="paid-traffic-break-even-calculator.html">Paid Traffic Break-Even</a>
+        <a href="local-service-lead-value-calculator.html">Local Service Lead Value</a>
+        <a href="ecommerce-conversion-trust-checklist.html">Ecommerce Trust Checklist</a>
+        <a href="saas-payback-calculator.html">SaaS Payback Calculator</a>
+        <a href="lead-funnel-calculator.html">Lead Funnel Calculator</a>
+        <a href="agency-margin-calculator.html">Agency Margin Calculator</a>
+      </section>
+    </main>
+    <script src="event-log.js"></script>
+  </body>
+</html>

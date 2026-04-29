@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Trust Leak Audit + Marketing Math">
+  <defs>
+    <linearGradient id="bgA" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#dcefe5"/>
+      <stop offset="0.46" stop-color="#f3f7f4"/>
+      <stop offset="1" stop-color="#dbe7f2"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="28" stdDeviation="24" flood-color="#162c23" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bgA)"/>
+  <path d="M0 0H470C362 98 269 205 190 322C120 426 62 525 0 630V0Z" fill="#1c7c54" opacity="0.08"/>
+  <path d="M1200 0V630H819C902 546 980 444 1051 324C1117 211 1162 104 1200 0Z" fill="#285c8f" opacity="0.12"/>
+  <g transform="translate(64 58)">
+    <circle cx="9" cy="18" r="9" fill="#1c7c54"/>
+    <text x="30" y="27" fill="#1c7c54" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="900" letter-spacing="0">FREE BROWSER TOOL</text>
+  </g>
+  <text x="64" y="164" fill="#16211d" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="900" letter-spacing="0"><tspan x="64" dy="0">Trust Leak Audit</tspan><tspan x="64" dy="72.96">+ Marketing Math</tspan></text>
+  <text x="64" y="352" fill="#5b6e67" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="500" letter-spacing="0"><tspan x="64" dy="0">Score landing-page trust gaps, export reports,</tspan><tspan x="64" dy="37.5">and calculate ROAS, CAC, funnels, and margins.</tspan></text>
+  <g><rect x="64" y="482" width="177" height="48" rx="24" fill="#ffffff" stroke="#d8e3dc"/><text x="81" y="513" fill="#16211d" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">Trust score</text></g><g><rect x="253" y="482" width="118" height="48" rx="24" fill="#ffffff" stroke="#d8e3dc"/><text x="270" y="513" fill="#16211d" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">ROAS</text></g><g><rect x="383" y="482" width="125" height="48" rx="24" fill="#ffffff" stroke="#d8e3dc"/><text x="400" y="513" fill="#16211d" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">LTV:CAC</text></g><g><rect x="520" y="482" width="177" height="48" rx="24" fill="#ffffff" stroke="#d8e3dc"/><text x="537" y="513" fill="#16211d" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">Lead funnel</text></g>
+  <g filter="url(#shadow)">
+    <rect x="790" y="58" width="346" height="514" rx="8" fill="#ffffff" stroke="#d8e3dc"/>
+  </g>
+  <text x="820" y="113" fill="#285c8f" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="900" letter-spacing="0">TOOLKIT</text>
+  <text x="820" y="156" fill="#16211d" font-family="Inter, Arial, sans-serif" font-size="31" font-weight="850" letter-spacing="0"><tspan x="820" dy="0">Prioritized fixes</tspan><tspan x="820" dy="33.48">for pages that need</tspan><tspan x="820" dy="33.48">buyer confidence.</tspan></text>
+  <rect x="820" y="260" width="286" height="112" rx="8" fill="#16211d"/>
+  <text x="842" y="300" fill="#d7e7dd" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800">Assets included</text>
+  <text x="842" y="352" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="900">15 pages</text>
+  <g><circle cx="842" cy="411" r="11" fill="#a96712"/><text x="864" y="418" fill="#5b6e67" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700">Browser-only scoring</text></g><g><circle cx="842" cy="463" r="11" fill="#a96712"/><text x="864" y="470" fill="#5b6e67" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700">Markdown report export</text></g><g><circle cx="842" cy="515" r="11" fill="#a96712"/><text x="864" y="522" fill="#5b6e67" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700">Sample audit gallery</text></g>
+  <text x="64" y="594" fill="#6d7b76" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">Trust Leak Audit - browser-only tools, no signup</text>
+</svg>

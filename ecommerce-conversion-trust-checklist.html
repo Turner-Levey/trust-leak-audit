@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free ecommerce conversion trust checklist. Score shipping, returns, reviews, product proof, payment cues, size confidence, and checkout friction before scaling ads.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="Free Ecommerce Conversion Trust Checklist">
+    <meta property="og:description" content="Score product-page trust leaks around shipping, returns, reviews, product proof, payment security, and checkout friction.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Trust Leak Audit">
+    <meta property="og:image" content="./og/ecommerce-conversion-trust-checklist.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Ecommerce Conversion Trust Checklist social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="./og/ecommerce-conversion-trust-checklist.svg">
+    <meta name="twitter:image:alt" content="Ecommerce Conversion Trust Checklist social preview.">
+    <title>Free Ecommerce Conversion Trust Checklist</title>
+    <link rel="canonical" href="./ecommerce-conversion-trust-checklist.html">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is an ecommerce trust checklist?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "An ecommerce trust checklist is a diagnostic scorecard for buyer confidence gaps on product, collection, landing, cart, or checkout pages. It looks at proof, reviews, shipping, returns, payment cues, and purchase friction."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which ecommerce trust issue should I fix first?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Fix the lowest-scoring issue closest to the purchase decision first. For most product pages, that is often shipping timing, return clarity, review specificity, fit uncertainty, or checkout friction near the add-to-cart button."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I scale ecommerce ads before fixing trust leaks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Do not rely on paid traffic alone to solve weak trust signals. Pair ROAS and break-even math with trust fixes so more visitors see clear proof, delivery expectations, return terms, and checkout confidence."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this checklist a conversion rate guarantee?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It is a browser-only diagnostic for trust gaps. Conversion rate still depends on traffic quality, offer fit, price, merchandising, inventory, seasonality, and checkout performance."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="index.html">Trust Leak Toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Free ecommerce checklist</p>
+        <h1>Ecommerce Conversion Trust Checklist</h1>
+        <p class="lede">Score the product-page trust leaks that suppress add-to-cart and checkout confidence: shipping, returns, reviews, product proof, payment cues, sizing/spec certainty, and CTA friction.</p>
+        <div class="page-actions">
+          <a class="primary-link" href="#ecommerce-checklist">Run ecommerce checklist</a>
+          <a class="secondary-link" href="roas-calculator.html">Check ROAS</a>
+          <a class="secondary-link" href="paid-traffic-break-even-calculator.html">Compare break-even traffic</a>
+        </div>
+      </header>
+
+      <section class="seo-grid" aria-label="Ecommerce trust checklist details">
+        <article class="panel">
+          <h2>What It Scores</h2>
+          <p>Use the checklist to score the confidence cues around a purchase decision: product proof, review specificity, delivery expectations, return terms, payment security, sizing clarity, and checkout path friction.</p>
+        </article>
+        <article class="panel">
+          <h2>When To Use It</h2>
+          <p>Run it before scaling paid social, search, shopping campaigns, influencer traffic, or seasonal promotion traffic into a product page that has uneven conversion or high cart abandonment.</p>
+        </article>
+        <article class="panel">
+          <h2>Best Output</h2>
+          <p>The score is only the triage layer. The useful output is the three weakest trust leaks and the copy, proof, or layout fixes that should sit near the add-to-cart or checkout decision.</p>
+        </article>
+      </section>
+
+      <section class="panel detail-section" id="ecommerce-checklist" aria-labelledby="ecommerce-checklist-heading">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Browser-only tool</p>
+            <h2 id="ecommerce-checklist-heading">Score Ecommerce Trust Leaks</h2>
+          </div>
+          <p class="event-status" id="ecommerceEventStatus">Local checklist events: 0</p>
+        </div>
+        <div class="control-row">
+          <label for="ecommercePageType">Page type</label>
+          <select id="ecommercePageType">
+            <option value="product page">Product page</option>
+            <option value="collection page">Collection page</option>
+            <option value="offer landing page">Offer landing page</option>
+            <option value="cart or checkout">Cart or checkout</option>
+          </select>
+        </div>
+        <div id="ecommerceInputs" class="slider-list"></div>
+        <div class="result-strip" id="ecommerceResults" aria-live="polite"></div>
+        <div class="panel-head detail-section">
+          <div>
+            <p class="eyebrow">Output</p>
+            <h2>Ecommerce Trust Report Draft</h2>
+          </div>
+          <div class="button-row">
+            <button class="primary" id="copyEcommerceReport" type="button">Copy Report</button>
+            <button class="secondary" id="downloadEcommerceReport" type="button">Download Markdown</button>
+            <button class="secondary" id="copyEcommerceShare" type="button">Copy Share Summary</button>
+          </div>
+        </div>
+        <textarea id="ecommerceReport" spellcheck="false"></textarea>
+      </section>
+
+      <section class="detail-section" aria-labelledby="ecommerce-example-heading">
+        <h2 id="ecommerce-example-heading">Worked Examples</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>Paid Social Product Page</h3>
+            <p>A product page has polished photos and a strong discount, but delivery timing and return clarity sit below reviews. Visitors see urgency before risk reversal, so the discount can feel like pressure instead of confidence.</p>
+            <p class="example-result">Priority fix: place shipping window, return window, payment options, and one review highlight beside the add-to-cart decision.</p>
+          </article>
+          <article class="panel">
+            <h3>Shopping Campaign Landing Page</h3>
+            <p>A page ranks well on price but hides product specs, dimensions, and compatibility notes. High-intent shoppers arrive ready to compare, then hesitate because fit and use-case proof are too thin.</p>
+            <p class="example-result">Priority fix: add a short comparison/spec table and review filters that answer fit, durability, and use-case questions.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="ecommerce-table-heading">
+        <h2 id="ecommerce-table-heading">Trust Leak Signals</h2>
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>Signal</th>
+              <th>What It Means</th>
+              <th>Fix To Test</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Strong ROAS, high return rate</td>
+              <td>Traffic is buying, but expectations may be unclear or product fit proof is weak.</td>
+              <td>Add size/spec clarity, real-use photos, comparison guidance, and return-condition detail before checkout.</td>
+            </tr>
+            <tr>
+              <td>High product views, weak add-to-cart</td>
+              <td>The purchase block may not answer risk, value, delivery, or proof questions fast enough.</td>
+              <td>Move delivery timing, returns, review highlights, and guarantee language next to the CTA.</td>
+            </tr>
+            <tr>
+              <td>Good add-to-cart, weak checkout</td>
+              <td>Payment confidence, shipping cost surprise, account friction, or discount-code leakage may be suppressing orders.</td>
+              <td>Clarify total cost earlier, reduce required fields, show secure payment cues, and make guest checkout obvious.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="detail-section" aria-labelledby="ecommerce-mistakes-heading">
+        <h2 id="ecommerce-mistakes-heading">Common Ecommerce Trust Mistakes</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>Making Proof Too Generic</h3>
+            <ul>
+              <li>Showing review volume without reviews that answer buyer doubts.</li>
+              <li>Using polished product media without real scale, fit, texture, use, or durability proof.</li>
+              <li>Hiding comparison details that explain why the product is worth the price.</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Separating Risk Reversal From The CTA</h3>
+            <ul>
+              <li>Putting shipping windows, return terms, warranties, or exchange rules far below the add-to-cart button.</li>
+              <li>Letting surprise shipping cost or account creation appear only after cart intent.</li>
+              <li>Making payment security and checkout options vague on mobile.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="ecommerce-faq-heading">
+        <h2 id="ecommerce-faq-heading">FAQ</h2>
+        <div class="faq-list">
+          <details>
+            <summary>What is an ecommerce trust checklist?</summary>
+            <p>An ecommerce trust checklist is a diagnostic scorecard for buyer confidence gaps on product, collection, landing, cart, or checkout pages. It looks at proof, reviews, shipping, returns, payment cues, and purchase friction.</p>
+          </details>
+          <details>
+            <summary>Which ecommerce trust issue should I fix first?</summary>
+            <p>Fix the lowest-scoring issue closest to the purchase decision first. For most product pages, that is often shipping timing, return clarity, review specificity, fit uncertainty, or checkout friction near the add-to-cart button.</p>
+          </details>
+          <details>
+            <summary>Should I scale ecommerce ads before fixing trust leaks?</summary>
+            <p>Do not rely on paid traffic alone to solve weak trust signals. Pair ROAS and break-even math with trust fixes so more visitors see clear proof, delivery expectations, return terms, and checkout confidence.</p>
+          </details>
+          <details>
+            <summary>Is this checklist a conversion rate guarantee?</summary>
+            <p>No. It is a browser-only diagnostic for trust gaps. Conversion rate still depends on traffic quality, offer fit, price, merchandising, inventory, seasonality, and checkout performance.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="tool-links" aria-label="Related calculators">
+        <a href="sample-reports.html" data-track-link="ecommerce_sample_reports_clicked">Sample Reports</a>
+        <a href="trust-score.html">Landing Page Trust Score</a>
+        <a href="roas-calculator.html">ROAS Calculator</a>
+        <a href="paid-traffic-break-even-calculator.html">Paid Traffic Break-Even</a>
+        <a href="local-service-lead-value-calculator.html">Local Service Lead Value</a>
+        <a href="ecommerce-conversion-trust-checklist.html">Ecommerce Trust Checklist</a>
+        <a href="ltv-cac-calculator.html">LTV:CAC Calculator</a>
+        <a href="saas-payback-calculator.html">SaaS Payback Calculator</a>
+        <a href="lead-funnel-calculator.html">Lead Funnel Calculator</a>
+        <a href="agency-margin-calculator.html">Agency Margin Calculator</a>
+      </section>
+    </main>
+
+    <script>
+      const eventStorageKey = "trustLeakToolEvents";
+      const criteria = [
+        {
+          id: "promise",
+          label: "Product promise clarity",
+          help: "The visitor can quickly tell what the product is, who it is for, and why it is different.",
+          fix: "Rewrite the first purchase block so product type, use case, best-fit buyer, and differentiator are visible before the CTA."
+        },
+        {
+          id: "media",
+          label: "Product proof and media",
+          help: "Photos, video, comparisons, or usage proof answer scale, texture, fit, durability, or outcome questions.",
+          fix: "Add proof media that shows the product in use, at scale, and in the real context where buyers judge quality."
+        },
+        {
+          id: "reviews",
+          label: "Review specificity",
+          help: "Reviews answer buyer objections instead of only showing star counts or generic praise.",
+          fix: "Feature reviews that mention use case, fit, quality, delivery, support, and repeat purchase reasons near the CTA."
+        },
+        {
+          id: "shipping",
+          label: "Shipping and delivery clarity",
+          help: "Delivery timing, cost, tracking, and location limits are clear before cart or checkout.",
+          fix: "Place delivery range, shipping threshold, tracking promise, and location limits next to the add-to-cart button."
+        },
+        {
+          id: "returns",
+          label: "Returns and exchange confidence",
+          help: "Return window, exchange path, condition rules, warranty, or guarantee are easy to evaluate.",
+          fix: "Summarize return window, exchange steps, condition rules, and warranty language in one low-friction risk-reversal block."
+        },
+        {
+          id: "value",
+          label: "Price and value justification",
+          help: "The page explains value through bundles, comparisons, materials, savings, longevity, or outcomes.",
+          fix: "Add a compact comparison or value block that explains why the product earns its price before the visitor compares away."
+        },
+        {
+          id: "fit",
+          label: "Size, spec, and fit certainty",
+          help: "Specs, sizing, compatibility, ingredients, dimensions, or usage limits are easy to verify.",
+          fix: "Move size charts, specs, compatibility notes, ingredient facts, or fit guidance closer to the purchase decision."
+        },
+        {
+          id: "security",
+          label: "Payment and security cues",
+          help: "Accepted payment methods, secure checkout, installment options, and support access are visible and credible.",
+          fix: "Show trusted payment options, secure checkout cues, support access, and financing terms without cluttering the CTA."
+        },
+        {
+          id: "cta",
+          label: "Cart and CTA clarity",
+          help: "The primary button, quantity, variants, stock status, and next step are obvious on desktop and mobile.",
+          fix: "Make variant selection, quantity, stock status, add-to-cart text, and next-step expectation impossible to miss."
+        },
+        {
+          id: "friction",
+          label: "Mobile checkout friction",
+          help: "Checkout avoids surprise costs, unnecessary account creation, confusing discount fields, and slow mobile steps.",
+          fix: "Audit mobile checkout for guest checkout, total-cost clarity, field count, discount-code leakage, and payment wallet visibility."
+        }
+      ];
+
+      const pageType = document.querySelector("#ecommercePageType");
+      const inputsMount = document.querySelector("#ecommerceInputs");
+      const results = document.querySelector("#ecommerceResults");
+      const report = document.querySelector("#ecommerceReport");
+      const eventStatus = document.querySelector("#ecommerceEventStatus");
+      const copyReport = document.querySelector("#copyEcommerceReport");
+      const downloadReport = document.querySelector("#downloadEcommerceReport");
+      const copyShare = document.querySelector("#copyEcommerceShare");
+      let checklistStarted = false;
+
+      const readEvents = () => {
+        if (window.TrustLeakEvents?.read) return window.TrustLeakEvents.read();
+
+        try {
+          return JSON.parse(localStorage.getItem(eventStorageKey)) || [];
+        } catch {
+          return [];
+        }
+      };
+
+      const updateEventStatus = () => {
+        eventStatus.textContent = `Local checklist events: ${readEvents().length}`;
+      };
+
+      const trackEvent = (name, detail = {}) => {
+        if (window.TrustLeakEvents?.track) {
+          window.TrustLeakEvents.track(name, detail);
+          updateEventStatus();
+          return;
+        }
+
+        const events = readEvents();
+        events.push({
+          name,
+          detail,
+          at: new Date().toISOString()
+        });
+        try {
+          localStorage.setItem(eventStorageKey, JSON.stringify(events.slice(-200)));
+        } catch {
+          return;
+        }
+        updateEventStatus();
+      };
+
+      const metric = (label, value) => `
+        <div class="metric">
+          <span>${label}</span>
+          <strong>${value}</strong>
+        </div>
+      `;
+
+      const scoreBand = (score) => {
+        if (score < 5) return "Fix before scaling traffic";
+        if (score < 7.5) return "Improve weakest trust leaks";
+        return "Ready for focused tests";
+      };
+
+      const currentValues = () =>
+        criteria.map((item) => ({
+          ...item,
+          value: Number(document.querySelector(`#${item.id}`).value) || 0
+        }));
+
+      const reportText = (values, score, weakest) => {
+        const fixes = weakest.map((item, index) => `${index + 1}. ${item.label}: ${item.fix}`).join("\n");
+        return `# Ecommerce Conversion Trust Checklist
+
+Page type: ${pageType.value}
+Trust score: ${score.toFixed(1)}/10
+Decision band: ${scoreBand(score)}
+
+## Top Trust Leaks
+${fixes}
+
+## Purchase Decision Notes
+- Put shipping, return, payment, and guarantee clarity near the add-to-cart or checkout decision.
+- Use reviews and product media that answer buyer doubts, not only generic praise.
+- Pair this trust score with ROAS and break-even math before raising paid traffic budget.
+
+## Criteria Scores
+${values.map((item) => `- ${item.label}: ${item.value}/10`).join("\n")}
+
+Generated locally in the browser by Trust Leak Audit. This is a diagnostic checklist, not a conversion-rate guarantee.`;
+      };
+
+      const shareText = () => {
+        const values = currentValues();
+        const score = values.reduce((sum, item) => sum + item.value, 0) / values.length;
+        const weakest = [...values].sort((a, b) => a.value - b.value).slice(0, 3);
+        return `Ecommerce trust checklist score: ${score.toFixed(1)}/10. Weakest purchase-confidence leaks: ${weakest.map(item => item.label.toLowerCase()).join(", ")}. Fix those before scaling paid traffic.`;
+      };
+
+      const calculate = () => {
+        const values = currentValues();
+        const score = values.reduce((sum, item) => sum + item.value, 0) / values.length;
+        const weakest = [...values].sort((a, b) => a.value - b.value).slice(0, 3);
+        const strongest = [...values].sort((a, b) => b.value - a.value)[0];
+
+        results.innerHTML = [
+          metric("Trust score", `${score.toFixed(1)}/10`),
+          metric("Decision band", scoreBand(score)),
+          metric("Weakest leak", weakest[0].label),
+          metric("Strongest cue", strongest.label)
+        ].join("");
+
+        report.value = reportText(values, score, weakest);
+      };
+
+      const renderInputs = () => {
+        inputsMount.innerHTML = criteria.map((item) => `
+          <div class="slider-row">
+            <label for="${item.id}">${item.label}<small>${item.help}</small></label>
+            <input id="${item.id}" type="range" min="0" max="10" step="1" value="5">
+            <span class="value-pill" data-value-for="${item.id}">5</span>
+          </div>
+        `).join("");
+      };
+
+      const download = (filename, body) => {
+        const blob = new Blob([body], { type: "text/markdown" });
+        const url = URL.createObjectURL(blob);
+        const anchor = document.createElement("a");
+        anchor.href = url;
+        anchor.download = filename;
+        anchor.click();
+        URL.revokeObjectURL(url);
+      };
+
+      renderInputs();
+      document.querySelectorAll("#ecommerceInputs input").forEach((input) => {
+        input.addEventListener("input", () => {
+          document.querySelector(`[data-value-for="${input.id}"]`).textContent = input.value;
+          if (!checklistStarted) {
+            checklistStarted = true;
+            trackEvent("ecommerce_trust_checklist_started", { pageType: pageType.value });
+          }
+          calculate();
+        });
+      });
+
+      pageType.addEventListener("change", () => {
+        trackEvent("ecommerce_segment_selected", { pageType: pageType.value });
+        calculate();
+      });
+
+      copyReport.addEventListener("click", async () => {
+        await navigator.clipboard.writeText(report.value);
+        trackEvent("ecommerce_checklist_report_copied", { pageType: pageType.value });
+      });
+
+      downloadReport.addEventListener("click", () => {
+        download("ecommerce-conversion-trust-checklist-report.md", report.value);
+        trackEvent("ecommerce_checklist_report_downloaded", { pageType: pageType.value });
+      });
+
+      copyShare.addEventListener("click", async () => {
+        await navigator.clipboard.writeText(shareText());
+        trackEvent("ecommerce_checklist_share_copied", { pageType: pageType.value });
+      });
+
+      document.querySelectorAll("[data-track-link]").forEach((link) => {
+        link.addEventListener("click", () => trackEvent(link.dataset.trackLink, { pageType: pageType.value }));
+      });
+
+      updateEventStatus();
+      window.addEventListener("trustLeakEventsUpdated", updateEventStatus);
+      calculate();
+    </script>
+    <script src="event-log.js"></script>
+  </body>
+</html>

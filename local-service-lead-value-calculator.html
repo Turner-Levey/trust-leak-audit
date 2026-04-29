@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free local service lead value calculator. Estimate lead value, max CPL, max CPC, customer gross profit, and revenue from close rate and conversion rate.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="Free Local Service Lead Value Calculator">
+    <meta property="og:description" content="Estimate lead value, max CPL, max CPC, and customer gross profit for local service paid traffic.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Trust Leak Audit">
+    <meta property="og:image" content="./og/local-service-lead-value-calculator.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Local Service Lead Value Calculator social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="./og/local-service-lead-value-calculator.svg">
+    <meta name="twitter:image:alt" content="Local Service Lead Value Calculator social preview.">
+    <title>Free Local Service Lead Value Calculator - CPL And CPC</title>
+    <link rel="canonical" href="./local-service-lead-value-calculator.html">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do you calculate local service lead value?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Lead value is customer gross profit multiplied by the lead-to-customer close rate. Customer gross profit is average job revenue multiplied by gross margin."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you calculate maximum CPL for a service business?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Maximum break-even CPL equals average job revenue multiplied by gross margin and then by close rate. Subtract a profit target or sales labor cost if you need a safer bidding limit."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you calculate maximum CPC from lead value?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Maximum CPC equals maximum CPL multiplied by the visitor-to-lead conversion rate. Use the rate for qualified leads from the same channel, not total forms from all sources."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What trust leaks lower local service lead value?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Common trust leaks include weak review proof, unclear service area, vague response time, no license or insurance signal, hidden pricing anxiety, and too much friction around calls or booking forms."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="index.html">Trust Leak Toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Free calculator</p>
+        <h1>Local Service Lead Value Calculator</h1>
+        <p class="lede">Estimate what a qualified lead is worth, the maximum CPL and CPC you can afford, and whether the landing page needs trust fixes before buying more calls or form fills.</p>
+        <div class="page-actions">
+          <a class="primary-link" href="#lead-value-calculator">Calculate lead value</a>
+          <a class="secondary-link" href="paid-traffic-break-even-calculator.html">Compare break-even traffic</a>
+          <a class="secondary-link" href="trust-score.html">Check trust score</a>
+        </div>
+      </header>
+
+      <section class="seo-grid" aria-label="Local service lead value details">
+        <article class="panel">
+          <h2>Formula</h2>
+          <p>Customer gross profit = average job revenue times gross margin. Lead value = customer gross profit times close rate. Max CPC = lead value times visitor-to-lead rate.</p>
+        </article>
+        <article class="panel">
+          <h2>Best Inputs</h2>
+          <p>Use qualified leads from one channel, booked-job revenue, true gross margin after delivery costs, and a conservative close rate from recent appointments or estimates.</p>
+        </article>
+        <article class="panel">
+          <h2>Trust Link</h2>
+          <p>If lead value looks high but booked jobs stay low, check whether reviews, service-area proof, response-time expectations, photos, and forms are convincing enough for high-intent visitors.</p>
+        </article>
+      </section>
+
+      <section class="panel detail-section" id="lead-value-calculator" aria-labelledby="lead-value-calculator-heading">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Browser-only tool</p>
+            <h2 id="lead-value-calculator-heading">Calculate Lead Value And Max Bid</h2>
+          </div>
+          <p class="event-status" id="leadValueEventStatus">Local calculator events: 0</p>
+        </div>
+        <form class="calc-form" id="leadValueForm">
+          <div class="field-row">
+            <label for="averageJob">Average booked job revenue<small>Use revenue from a closed job, not the estimate request amount.</small></label>
+            <input id="averageJob" name="averageJob" type="number" min="0" step="100" value="3000">
+            <span class="value-pill">$</span>
+          </div>
+          <div class="field-row">
+            <label for="grossMargin">Gross margin<small>Revenue left after labor, materials, subcontractors, and job delivery cost.</small></label>
+            <input id="grossMargin" name="grossMargin" type="number" min="0" max="100" step="1" value="50">
+            <span class="value-pill">%</span>
+          </div>
+          <div class="field-row">
+            <label for="closeRate">Qualified lead close rate<small>Booked customers divided by qualified calls, forms, or quote requests.</small></label>
+            <input id="closeRate" name="closeRate" type="number" min="0" max="100" step="1" value="20">
+            <span class="value-pill">%</span>
+          </div>
+          <div class="field-row">
+            <label for="leadRate">Visitor-to-lead rate<small>Qualified leads divided by landing page visits from the same traffic source.</small></label>
+            <input id="leadRate" name="leadRate" type="number" min="0" max="100" step="0.1" value="4">
+            <span class="value-pill">%</span>
+          </div>
+          <div class="field-row">
+            <label for="monthlyVisits">Monthly landing page visits<small>Optional scenario input for projected lead and gross profit volume.</small></label>
+            <input id="monthlyVisits" name="monthlyVisits" type="number" min="0" step="100" value="1200">
+            <span class="value-pill">visits</span>
+          </div>
+        </form>
+        <div class="result-strip" id="leadValueResults" aria-live="polite"></div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="local-lead-example-heading">
+        <h2 id="local-lead-example-heading">Worked Examples</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>Home Remodeler</h3>
+            <p>A remodeler averages $8,000 per booked project at 45% gross margin. Customer gross profit is $3,600. If 12% of qualified quote requests close, the break-even lead value is $432.</p>
+            <p class="example-result">If the page converts 3% of visitors into qualified leads, break-even CPC is $12.96 before overhead and profit target.</p>
+          </article>
+          <article class="panel">
+            <h3>Emergency Repair Service</h3>
+            <p>A repair service averages $900 per job at 60% gross margin. Customer gross profit is $540. If 35% of qualified calls close, break-even lead value is $189.</p>
+            <p class="example-result">If mobile visitors convert to qualified calls at 8%, break-even CPC is $15.12, but speed, reviews, and phone visibility decide whether that rate is realistic.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="local-lead-table-heading">
+        <h2 id="local-lead-table-heading">Lead Value Signals</h2>
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>Signal</th>
+              <th>What It Means</th>
+              <th>Trust Fix To Check</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>High lead value, low lead rate</td>
+              <td>The economics can work, but the page is not turning enough visitors into qualified conversations.</td>
+              <td>Move reviews, service area, before/after proof, and call CTA above the first decision point.</td>
+            </tr>
+            <tr>
+              <td>High lead rate, low close rate</td>
+              <td>The page may be attracting weak-fit or price-shopping leads.</td>
+              <td>Clarify job fit, minimum project size, response time, estimate process, and proof by service type.</td>
+            </tr>
+            <tr>
+              <td>Max CPC below market CPC</td>
+              <td>Paid search may need higher conversion, better close rate, larger jobs, or a narrower campaign.</td>
+              <td>Audit pricing confidence, risk reversal, form friction, and trust proof before raising bids.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="detail-section" aria-labelledby="local-lead-mistakes-heading">
+        <h2 id="local-lead-mistakes-heading">Common Local Lead Value Mistakes</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>Counting The Wrong Lead</h3>
+            <ul>
+              <li>Using every form fill instead of qualified calls or estimate requests.</li>
+              <li>Blending emergency, maintenance, and large-project close rates into one number.</li>
+              <li>Ignoring missed calls, slow follow-up, unserved zip codes, or after-hours leakage.</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Ignoring Buyer Anxiety</h3>
+            <ul>
+              <li>Hiding license, insurance, review, or workmanship proof below the first CTA.</li>
+              <li>Showing generic stock-style visuals instead of real service outcomes.</li>
+              <li>Making visitors guess service areas, response time, pricing range, or next steps.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="local-lead-faq-heading">
+        <h2 id="local-lead-faq-heading">FAQ</h2>
+        <div class="faq-list">
+          <details>
+            <summary>How do you calculate local service lead value?</summary>
+            <p>Lead value is customer gross profit multiplied by the lead-to-customer close rate. Customer gross profit is average job revenue multiplied by gross margin.</p>
+          </details>
+          <details>
+            <summary>How do you calculate maximum CPL for a service business?</summary>
+            <p>Maximum break-even CPL equals average job revenue multiplied by gross margin and then by close rate. Subtract a profit target or sales labor cost if you need a safer bidding limit.</p>
+          </details>
+          <details>
+            <summary>How do you calculate maximum CPC from lead value?</summary>
+            <p>Maximum CPC equals maximum CPL multiplied by the visitor-to-lead conversion rate. Use the rate for qualified leads from the same channel, not total forms from all sources.</p>
+          </details>
+          <details>
+            <summary>What trust leaks lower local service lead value?</summary>
+            <p>Common trust leaks include weak review proof, unclear service area, vague response time, no license or insurance signal, hidden pricing anxiety, and too much friction around calls or booking forms.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="tool-links" aria-label="Related calculators">
+        <a href="sample-reports.html">Sample Reports</a>
+        <a href="trust-score.html">Landing Page Trust Score</a>
+        <a href="roas-calculator.html">ROAS Calculator</a>
+        <a href="paid-traffic-break-even-calculator.html">Paid Traffic Break-Even</a>
+        <a href="local-service-lead-value-calculator.html">Local Service Lead Value</a>
+        <a href="ecommerce-conversion-trust-checklist.html">Ecommerce Trust Checklist</a>
+        <a href="ltv-cac-calculator.html">LTV:CAC Calculator</a>
+        <a href="saas-payback-calculator.html">SaaS Payback Calculator</a>
+        <a href="lead-funnel-calculator.html">Lead Funnel Calculator</a>
+        <a href="agency-margin-calculator.html">Agency Margin Calculator</a>
+      </section>
+    </main>
+
+    <script>
+      const eventStorageKey = "trustLeakToolEvents";
+      const inputs = [...document.querySelectorAll("#leadValueForm input")];
+      const results = document.querySelector("#leadValueResults");
+      const eventStatus = document.querySelector("#leadValueEventStatus");
+
+      const money = (value) =>
+        new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+          maximumFractionDigits: value >= 100 ? 0 : 2
+        }).format(Number.isFinite(value) ? value : 0);
+
+      const number = (value) =>
+        new Intl.NumberFormat("en-US", {
+          maximumFractionDigits: 1
+        }).format(Number.isFinite(value) ? value : 0);
+
+      const readEvents = () => {
+        if (window.TrustLeakEvents?.read) return window.TrustLeakEvents.read();
+
+        try {
+          return JSON.parse(localStorage.getItem(eventStorageKey)) || [];
+        } catch {
+          return [];
+        }
+      };
+
+      const updateEventStatus = () => {
+        eventStatus.textContent = `Local calculator events: ${readEvents().length}`;
+      };
+
+      const trackEvent = (name, detail = {}) => {
+        if (window.TrustLeakEvents?.track) {
+          window.TrustLeakEvents.track(name, detail);
+          updateEventStatus();
+          return;
+        }
+
+        const events = readEvents();
+        events.push({
+          name,
+          detail,
+          at: new Date().toISOString()
+        });
+        try {
+          localStorage.setItem(eventStorageKey, JSON.stringify(events.slice(-200)));
+        } catch {
+          return;
+        }
+        updateEventStatus();
+      };
+
+      const metric = (label, value) => `
+        <div class="metric">
+          <span>${label}</span>
+          <strong>${value}</strong>
+        </div>
+      `;
+
+      const calculate = (shouldTrack = false) => {
+        const values = Object.fromEntries(inputs.map(input => [input.name, Number(input.value) || 0]));
+        const customerGrossProfit = values.averageJob * (values.grossMargin / 100);
+        const maxCpl = customerGrossProfit * (values.closeRate / 100);
+        const maxCpc = maxCpl * (values.leadRate / 100);
+        const monthlyLeads = values.monthlyVisits * (values.leadRate / 100);
+        const monthlyCustomers = monthlyLeads * (values.closeRate / 100);
+        const projectedGrossProfit = monthlyCustomers * customerGrossProfit;
+
+        results.innerHTML = [
+          metric("Customer gross profit", money(customerGrossProfit)),
+          metric("Break-even lead value", money(maxCpl)),
+          metric("Break-even CPC", money(maxCpc)),
+          metric("Projected qualified leads", number(monthlyLeads)),
+          metric("Projected customers", number(monthlyCustomers)),
+          metric("Projected gross profit", money(projectedGrossProfit))
+        ].join("");
+
+        if (shouldTrack) {
+          trackEvent("local_service_lead_value_calculated", {
+            customerGrossProfit: Math.round(customerGrossProfit),
+            maxCpl: Math.round(maxCpl),
+            maxCpc: Math.round(maxCpc * 100) / 100
+          });
+        }
+      };
+
+      inputs.forEach(input => input.addEventListener("input", () => calculate(true)));
+      window.addEventListener("trustLeakEventsUpdated", updateEventStatus);
+      calculate();
+    </script>
+    <script src="event-log.js"></script>
+  </body>
+</html>

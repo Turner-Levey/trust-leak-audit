@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free ROAS calculator for paid traffic. Calculate return on ad spend, gross profit after ad spend, and the trust fixes needed before scaling campaigns.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="Free ROAS Calculator">
+    <meta property="og:description" content="Calculate ROAS and gross profit after ad spend in a browser-only marketing math tool.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Trust Leak Audit">
+    <meta property="og:image" content="./og/roas-calculator.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="ROAS Calculator social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="./og/roas-calculator.svg">
+    <meta name="twitter:image:alt" content="ROAS Calculator social preview.">
+    <title>Free ROAS Calculator - Return On Ad Spend</title>
+    <link rel="canonical" href="./roas-calculator.html">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is break-even ROAS?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Break-even ROAS is the return on ad spend needed to cover ad cost after gross margin. It is 1 divided by gross margin as a decimal."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why can ROAS look good while profit is bad?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ROAS can ignore fulfillment cost, refunds, discounts, delayed sales, weak attribution, and repeat purchase behavior. Always pair ROAS with gross margin and profit after ad spend."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I scale ads when ROAS is above break-even?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not automatically. Check whether the landing page has enough proof, CTA clarity, risk reversal, and conversion path quality before increasing spend."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="index.html">Trust Leak Toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Free calculator</p>
+        <h1>ROAS Calculator</h1>
+        <p class="lede">Calculate return on ad spend and gross profit after ad spend, then connect the math to landing-page trust fixes before increasing paid media budget.</p>
+        <div class="page-actions">
+          <a class="primary-link" href="index.html?tool=roas#math-heading">Run ROAS calculator</a>
+          <a class="secondary-link" href="trust-score.html">Check trust score</a>
+        </div>
+      </header>
+
+      <section class="seo-grid" aria-label="ROAS calculator details">
+        <article class="panel">
+          <h2>Formula</h2>
+          <p>ROAS = revenue attributed to ads divided by ad spend. Gross profit after ad spend = attributed revenue times gross margin, minus ad spend.</p>
+        </article>
+        <article class="panel">
+          <h2>Inputs</h2>
+          <p>Use monthly ad spend, attributed revenue, and gross margin. For lead-gen funnels, use qualified pipeline only if the value is consistently tracked.</p>
+        </article>
+        <article class="panel">
+          <h2>Interpretation</h2>
+          <p>A campaign can show positive ROAS and still lose money after fulfillment cost. Pair the calculator with proof, offer, and CTA fixes before scaling spend.</p>
+        </article>
+      </section>
+
+      <section class="detail-section" aria-labelledby="roas-example-heading">
+        <h2 id="roas-example-heading">Worked Examples</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>Ecommerce Campaign</h3>
+            <p>A store spends $8,000 and attributes $24,000 in sales at 55% gross margin. ROAS is 3.0x, gross profit is $13,200, and profit after ad spend is $5,200 before overhead.</p>
+            <p class="example-result">Decision: scale carefully, but check reviews, shipping clarity, return policy, and checkout friction first.</p>
+          </article>
+          <article class="panel">
+            <h3>SaaS Trial Campaign</h3>
+            <p>A SaaS team spends $5,000 and attributes $11,000 in first-year revenue at 80% gross margin. ROAS is 2.2x, but the result depends on retention and whether trial users become paying customers.</p>
+            <p class="example-result">Decision: pair ROAS with LTV:CAC and trust score before raising budget.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="roas-benchmark-heading">
+        <h2 id="roas-benchmark-heading">Break-Even ROAS By Gross Margin</h2>
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>Gross Margin</th>
+              <th>Approx. Break-Even ROAS</th>
+              <th>What It Means</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>80%</td>
+              <td>1.25x</td>
+              <td>Every ad dollar needs about $1.25 in revenue before overhead and refunds.</td>
+            </tr>
+            <tr>
+              <td>60%</td>
+              <td>1.67x</td>
+              <td>Lower margin means a campaign can look healthy but leave little profit.</td>
+            </tr>
+            <tr>
+              <td>40%</td>
+              <td>2.50x</td>
+              <td>Paid traffic needs stronger conversion, higher order value, or repeat purchases.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="detail-section" aria-labelledby="roas-mistakes-heading">
+        <h2 id="roas-mistakes-heading">Common ROAS Mistakes</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>Counting Revenue Too Generously</h3>
+            <ul>
+              <li>Using top-line revenue without discounts, refunds, or payment failures.</li>
+              <li>Counting all pipeline as revenue before it closes.</li>
+              <li>Mixing first-purchase revenue with lifetime revenue.</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Scaling Before Trust Is Fixed</h3>
+            <ul>
+              <li>Increasing budget while proof, risk reversal, or pricing clarity is weak.</li>
+              <li>Assuming more traffic will fix a low-confidence landing page.</li>
+              <li>Ignoring mobile friction or checkout issues that suppress profit.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="roas-faq-heading">
+        <h2 id="roas-faq-heading">FAQ</h2>
+        <div class="faq-list">
+          <details>
+            <summary>What is break-even ROAS?</summary>
+            <p>Break-even ROAS is the return on ad spend needed to cover ad cost after gross margin. It is 1 divided by gross margin as a decimal.</p>
+          </details>
+          <details>
+            <summary>Why can ROAS look good while profit is bad?</summary>
+            <p>ROAS can ignore fulfillment cost, refunds, discounts, delayed sales, weak attribution, and repeat purchase behavior. Always pair ROAS with gross margin and profit after ad spend.</p>
+          </details>
+          <details>
+            <summary>Should I scale ads when ROAS is above break-even?</summary>
+            <p>Not automatically. Check whether the landing page has enough proof, CTA clarity, risk reversal, and conversion path quality before increasing spend.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="tool-links" aria-label="Related calculators">
+        <a href="sample-reports.html">Sample Reports</a>
+        <a href="trust-score.html">Landing Page Trust Score</a>
+        <a href="paid-traffic-break-even-calculator.html">Paid Traffic Break-Even</a>
+        <a href="local-service-lead-value-calculator.html">Local Service Lead Value</a>
+        <a href="ecommerce-conversion-trust-checklist.html">Ecommerce Trust Checklist</a>
+        <a href="ltv-cac-calculator.html">LTV:CAC Calculator</a>
+        <a href="saas-payback-calculator.html">SaaS Payback Calculator</a>
+        <a href="lead-funnel-calculator.html">Lead Funnel Calculator</a>
+        <a href="agency-margin-calculator.html">Agency Margin Calculator</a>
+      </section>
+    </main>
+    <script src="event-log.js"></script>
+  </body>
+</html>

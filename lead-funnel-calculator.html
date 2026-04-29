@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free lead funnel calculator for landing pages. Estimate leads, customers, and revenue from visits, lead rate, close rate, and deal value.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="Free Lead Funnel Calculator">
+    <meta property="og:description" content="Estimate leads, customers, and revenue from landing-page traffic and conversion rates.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Trust Leak Audit">
+    <meta property="og:image" content="./og/lead-funnel-calculator.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Lead Funnel Calculator social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="./og/lead-funnel-calculator.svg">
+    <meta name="twitter:image:alt" content="Lead Funnel Calculator social preview.">
+    <title>Free Lead Funnel Calculator - Visits To Revenue</title>
+    <link rel="canonical" href="./lead-funnel-calculator.html">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What lead conversion rate should I model?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use a conservative rate from the same channel and landing page type. If you do not have data, model several scenarios instead of relying on one optimistic number."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I use qualified leads or all form fills?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use qualified leads for revenue planning. Counting every form fill can overstate the funnel when spam, bad-fit prospects, or low-intent downloads are included."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do trust leaks affect a lead funnel?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Trust leaks reduce the visitor-to-lead rate and can lower lead quality. Weak proof, unclear offer value, and high-friction forms are common causes."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="index.html">Trust Leak Toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Free calculator</p>
+        <h1>Lead Funnel Calculator</h1>
+        <p class="lede">Estimate monthly leads, new customers, and revenue from visits, lead conversion rate, close rate, and average deal value.</p>
+        <div class="page-actions">
+          <a class="primary-link" href="index.html?tool=funnel#math-heading">Run funnel calculator</a>
+          <a class="secondary-link" href="trust-score.html">Check trust score</a>
+        </div>
+      </header>
+
+      <section class="seo-grid" aria-label="Lead funnel calculator details">
+        <article class="panel">
+          <h2>Formula</h2>
+          <p>Monthly leads = visits times visitor-to-lead rate. Customers = leads times close rate. Revenue = customers times average deal value.</p>
+        </article>
+        <article class="panel">
+          <h2>Inputs</h2>
+          <p>Use traffic from one landing page or channel, a realistic lead rate, a sales close rate, and average first-purchase or contract value.</p>
+        </article>
+        <article class="panel">
+          <h2>Interpretation</h2>
+          <p>If the model depends on an unrealistic lead rate, audit buyer clarity, proof, offer risk, and form friction before buying more traffic.</p>
+        </article>
+      </section>
+
+      <section class="detail-section" aria-labelledby="funnel-example-heading">
+        <h2 id="funnel-example-heading">Worked Examples</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>High-Ticket Local Service</h3>
+            <p>A landing page gets 1,200 monthly visits, converts 5% into qualified leads, closes 18%, and has a $900 average job value. That produces 60 leads, 10.8 customers, and $9,720 in projected monthly revenue.</p>
+            <p class="example-result">Decision: if calls are low, move phone, service area, reviews, and response-time proof higher.</p>
+          </article>
+          <article class="panel">
+            <h3>B2B Demo Page</h3>
+            <p>A demo page gets 3,000 monthly visits, converts 2.2% into leads, closes 10%, and has a $1,200 average first-month value. That produces 66 leads, 6.6 customers, and $7,920 in projected monthly revenue.</p>
+            <p class="example-result">Decision: improve buyer specificity and proof if sales says leads are not qualified.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="funnel-benchmark-heading">
+        <h2 id="funnel-benchmark-heading">Scenario Table</h2>
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>Monthly Visits</th>
+              <th>Lead Rate</th>
+              <th>Lead Volume</th>
+              <th>Use This Scenario For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1,000</td>
+              <td>2%</td>
+              <td>20 leads</td>
+              <td>Cold paid traffic or a page with weak proof.</td>
+            </tr>
+            <tr>
+              <td>2,500</td>
+              <td>4%</td>
+              <td>100 leads</td>
+              <td>Warm search traffic with a clear offer and CTA.</td>
+            </tr>
+            <tr>
+              <td>5,000</td>
+              <td>7%</td>
+              <td>350 leads</td>
+              <td>High-intent traffic with strong risk reversal and simple forms.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="detail-section" aria-labelledby="funnel-mistakes-heading">
+        <h2 id="funnel-mistakes-heading">Common Funnel Mistakes</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>Modeling Too Much Intent</h3>
+            <ul>
+              <li>Using branded-search conversion rates for cold paid traffic.</li>
+              <li>Counting unqualified downloads as sales-ready leads.</li>
+              <li>Ignoring seasonality, service area limits, or sales capacity.</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Blaming Traffic Too Early</h3>
+            <ul>
+              <li>Buying more clicks before fixing unclear buyer fit.</li>
+              <li>Leaving the form long, vague, or visually buried.</li>
+              <li>Failing to show proof near the first conversion point.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="funnel-faq-heading">
+        <h2 id="funnel-faq-heading">FAQ</h2>
+        <div class="faq-list">
+          <details>
+            <summary>What lead conversion rate should I model?</summary>
+            <p>Use a conservative rate from the same channel and landing page type. If you do not have data, model several scenarios instead of relying on one optimistic number.</p>
+          </details>
+          <details>
+            <summary>Should I use qualified leads or all form fills?</summary>
+            <p>Use qualified leads for revenue planning. Counting every form fill can overstate the funnel when spam, bad-fit prospects, or low-intent downloads are included.</p>
+          </details>
+          <details>
+            <summary>How do trust leaks affect a lead funnel?</summary>
+            <p>Trust leaks reduce the visitor-to-lead rate and can lower lead quality. Weak proof, unclear offer value, and high-friction forms are common causes.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="tool-links" aria-label="Related calculators">
+        <a href="sample-reports.html">Sample Reports</a>
+        <a href="trust-score.html">Landing Page Trust Score</a>
+        <a href="roas-calculator.html">ROAS Calculator</a>
+        <a href="paid-traffic-break-even-calculator.html">Paid Traffic Break-Even</a>
+        <a href="local-service-lead-value-calculator.html">Local Service Lead Value</a>
+        <a href="ecommerce-conversion-trust-checklist.html">Ecommerce Trust Checklist</a>
+        <a href="ltv-cac-calculator.html">LTV:CAC Calculator</a>
+        <a href="saas-payback-calculator.html">SaaS Payback Calculator</a>
+        <a href="agency-margin-calculator.html">Agency Margin Calculator</a>
+      </section>
+    </main>
+    <script src="event-log.js"></script>
+  </body>
+</html>

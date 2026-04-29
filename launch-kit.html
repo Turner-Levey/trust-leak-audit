@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="No-key launch kit for Trust Leak Audit deployment links, UTM URLs, and platform-safe listing copy.">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="Trust Leak Audit Launch Kit">
+    <meta property="og:description" content="Generate launch links, UTM URLs, and platform copy for Trust Leak Audit after a public URL exists.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Trust Leak Audit">
+    <meta property="og:image" content="./og/trust-leak-toolkit.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Trust Leak Audit and Marketing Math social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="./og/trust-leak-toolkit.svg">
+    <meta name="twitter:image:alt" content="Trust Leak Audit and Marketing Math social preview.">
+    <title>Launch Kit | Trust Leak Audit</title>
+    <link rel="canonical" href="./launch-kit.html">
+    <link rel="manifest" href="site-manifest.json">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="./">Back to toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Operator page</p>
+        <h1>Launch Kit</h1>
+        <p class="lede">Paste the deployed site URL to generate tracked deep links, listing copy, and a downloadable launch packet without accounts, keys, or third-party scripts.</p>
+        <div class="launch-url-row">
+          <label for="siteUrlInput">Public site URL</label>
+          <input id="siteUrlInput" type="url" inputmode="url" spellcheck="false" placeholder="https://example.com">
+          <button class="primary" id="copyAllLinks" type="button">Copy Links</button>
+          <button class="secondary" id="downloadLaunchPacket" type="button">Download Packet</button>
+        </div>
+        <p class="event-source-line" id="launchStatus">No public URL is stored. Generated links will use the URL above only in this browser.</p>
+        <div class="page-actions">
+          <a class="secondary-link" href="deployment-qa.html">Deployment QA</a>
+          <a class="secondary-link" href="analytics.html">Local Evidence Log</a>
+        </div>
+      </header>
+
+      <section class="panel detail-section" aria-labelledby="links-heading">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">UTM map</p>
+            <h2 id="links-heading">Priority Launch Links</h2>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="benchmark-table launch-link-table">
+            <thead>
+              <tr>
+                <th>Surface</th>
+                <th>Page</th>
+                <th>Goal</th>
+                <th>Tracked URL</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="launchLinkRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel detail-section" aria-labelledby="copy-heading">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Launch copy</p>
+            <h2 id="copy-heading">Compliant Listing Drafts</h2>
+          </div>
+        </div>
+        <div class="launch-copy-grid" id="launchCopyGrid"></div>
+      </section>
+
+      <section class="panel detail-section" aria-labelledby="tracker-heading">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Submission queue</p>
+            <h2 id="tracker-heading">Launch Tracker Export</h2>
+          </div>
+          <div class="button-row">
+            <button class="secondary compact-button" id="copyLaunchTracker" type="button">Copy CSV</button>
+            <button class="secondary compact-button" id="downloadLaunchTracker" type="button">Download CSV</button>
+          </div>
+        </div>
+        <p class="event-source-line">Use this tracker after deployment to stagger submissions, preserve rule checks, and separate traffic evidence by UTM source.</p>
+        <div class="table-scroll">
+          <table class="benchmark-table launch-tracker-table">
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Surface</th>
+                <th>Page</th>
+                <th>Requirement</th>
+                <th>Tracked URL</th>
+                <th>First metric</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="launchTrackerRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel detail-section" aria-labelledby="checklist-heading">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Guardrails</p>
+            <h2 id="checklist-heading">Before Posting</h2>
+          </div>
+        </div>
+        <ul>
+          <li>Use only a real public URL and user-owned accounts.</li>
+          <li>Check each community or directory rule immediately before posting.</li>
+          <li>Ask for product feedback where promotion is restricted.</li>
+          <li>Do not imply revenue, customers, testimonials, or live usage that does not exist.</li>
+          <li>Use host logs or privacy-friendly analytics for aggregate evidence; local exports are per-browser only.</li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="event-log.js"></script>
+    <script src="launch-kit.js"></script>
+  </body>
+</html>

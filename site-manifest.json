@@ -1,0 +1,66 @@
+{
+  "name": "Trust Leak Audit + Marketing Math",
+  "short_name": "Trust Math",
+  "description": "Free browser-only landing page trust score and marketing calculators.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3f7f4",
+  "theme_color": "#f3f7f4",
+  "shortcuts": [
+    {
+      "name": "Trust Score",
+      "url": "/trust-score.html",
+      "description": "Score landing-page trust leaks."
+    },
+    {
+      "name": "ROAS Calculator",
+      "url": "/roas-calculator.html",
+      "description": "Calculate return on ad spend."
+    },
+    {
+      "name": "Paid Traffic Break-Even",
+      "url": "/paid-traffic-break-even-calculator.html",
+      "description": "Estimate break-even ROAS, CPA, CPL, and conversion thresholds."
+    },
+    {
+      "name": "Local Lead Value",
+      "url": "/local-service-lead-value-calculator.html",
+      "description": "Estimate local service lead value, max CPL, and max CPC."
+    },
+    {
+      "name": "Ecommerce Trust Checklist",
+      "url": "/ecommerce-conversion-trust-checklist.html",
+      "description": "Score ecommerce shipping, returns, proof, and checkout trust leaks."
+    },
+    {
+      "name": "LTV:CAC Calculator",
+      "url": "/ltv-cac-calculator.html",
+      "description": "Estimate CAC, LTV, and payback."
+    },
+    {
+      "name": "SaaS Payback Calculator",
+      "url": "/saas-payback-calculator.html",
+      "description": "Estimate CAC recovery months for SaaS."
+    },
+    {
+      "name": "Lead Funnel Calculator",
+      "url": "/lead-funnel-calculator.html",
+      "description": "Estimate visits, leads, customers, and revenue."
+    },
+    {
+      "name": "Agency Margin Calculator",
+      "url": "/agency-margin-calculator.html",
+      "description": "Estimate retainer profit, margin, and delivery hours."
+    },
+    {
+      "name": "Sample Reports",
+      "url": "/sample-reports.html",
+      "description": "Review anonymized trust leak audit examples."
+    },
+    {
+      "name": "SEC Briefs Hub",
+      "url": "/sec-trigger-briefs-hub.html",
+      "description": "Review public Form 8-K trigger brief sample routes."
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "generatedAt": "2026-04-29T03:51:46.149Z",
+  "sourceDir": "/Users/turnerlevey/untitled folder/venture-lab/site",
+  "releaseDir": "/Users/turnerlevey/untitled folder/venture-lab/releases/trust-leak-audit-static",
+  "siteUrl": null,
+  "metadataMode": "placeholder dry-run only; rerun with SITE_URL before public launch",
+  "indexablePages": [
+    "agency-margin-calculator.html",
+    "ecommerce-conversion-trust-checklist.html",
+    "index.html",
+    "lead-funnel-calculator.html",
+    "local-service-lead-value-calculator.html",
+    "ltv-cac-calculator.html",
+    "paid-traffic-break-even-calculator.html",
+    "roas-calculator.html",
+    "saas-payback-calculator.html",
+    "sample-reports.html",
+    "sec-auditor-change-briefs.html",
+    "sec-filing-trigger-briefs.html",
+    "sec-leadership-change-briefs.html",
+    "sec-trigger-briefs-hub.html",
+    "trust-score.html"
+  ],
+  "noindexPages": [
+    "404.html",
+    "analytics.html",
+    "deployment-qa.html",
+    "launch-kit.html"
+  ],
+  "htmlPages": [
+    "404.html",
+    "agency-margin-calculator.html",
+    "analytics.html",
+    "deployment-qa.html",
+    "ecommerce-conversion-trust-checklist.html",
+    "index.html",
+    "launch-kit.html",
+    "lead-funnel-calculator.html",
+    "local-service-lead-value-calculator.html",
+    "ltv-cac-calculator.html",
+    "paid-traffic-break-even-calculator.html",
+    "roas-calculator.html",
+    "saas-payback-calculator.html",
+    "sample-reports.html",
+    "sec-auditor-change-briefs.html",
+    "sec-filing-trigger-briefs.html",
+    "sec-leadership-change-briefs.html",
+    "sec-trigger-briefs-hub.html",
+    "trust-score.html"
+  ],
+  "ogAssets": [
+    "og/agency-margin-calculator.svg",
+    "og/ecommerce-conversion-trust-checklist.svg",
+    "og/lead-funnel-calculator.svg",
+    "og/local-service-lead-value-calculator.svg",
+    "og/ltv-cac-calculator.svg",
+    "og/paid-traffic-break-even-calculator.svg",
+    "og/roas-calculator.svg",
+    "og/saas-payback-calculator.svg",
+    "og/sample-reports.svg",
+    "og/sec-auditor-change-briefs.svg",
+    "og/sec-filing-trigger-briefs.svg",
+    "og/sec-leadership-change-briefs.svg",
+    "og/sec-trigger-briefs-hub.svg",
+    "og/trust-leak-toolkit.svg",
+    "og/trust-score.svg"
+  ],
+  "hostConfigFiles": [
+    "_headers",
+    "netlify.toml",
+    "vercel.json"
+  ],
+  "eventLogCoverage": {
+    "covered": 15,
+    "indexable": 15
+  },
+  "localLinkIssues": [],
+  "nextCommand": "SITE_URL=https://your-domain.example node venture-lab/site/build-static-release.mjs"
+}

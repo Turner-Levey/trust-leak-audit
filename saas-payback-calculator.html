@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free SaaS CAC payback calculator. Estimate how many months it takes to recover acquisition cost from ARPA, gross margin, spend, and new customers.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="Free SaaS CAC Payback Calculator">
+    <meta property="og:description" content="Estimate CAC payback in months from acquisition spend, new customers, ARPA, and gross margin.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Trust Leak Audit">
+    <meta property="og:image" content="./og/saas-payback-calculator.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="SaaS CAC Payback Calculator social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="./og/saas-payback-calculator.svg">
+    <meta name="twitter:image:alt" content="SaaS CAC Payback Calculator social preview.">
+    <title>Free SaaS CAC Payback Calculator - Recovery Months</title>
+    <link rel="canonical" href="./saas-payback-calculator.html">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do you calculate SaaS CAC payback?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CAC payback is acquisition cost per customer divided by gross monthly profit per customer. Gross monthly profit is ARPA multiplied by gross margin."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a healthy CAC payback period for SaaS?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A shorter payback period is generally easier to fund. Many early SaaS teams watch whether payback is under 12 months, but the right target depends on cash, retention, pricing, sales cycle, and growth model."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why does CAC payback change when conversion trust improves?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Improving proof, pricing confidence, activation clarity, and risk reversal can raise visitor-to-trial and trial-to-paid conversion, which lowers CAC when acquisition spend stays similar."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="index.html">Trust Leak Toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Free SaaS calculator</p>
+        <h1>SaaS CAC Payback Calculator</h1>
+        <p class="lede">Estimate how many months it takes to recover customer acquisition cost from monthly revenue, gross margin, acquisition spend, and new customers.</p>
+        <div class="page-actions">
+          <a class="primary-link" href="index.html?tool=ltv#math-heading">Run payback calculator</a>
+          <a class="secondary-link" href="ltv-cac-calculator.html">Compare LTV:CAC</a>
+        </div>
+      </header>
+
+      <section class="seo-grid" aria-label="SaaS payback calculator details">
+        <article class="panel">
+          <h2>Formula</h2>
+          <p>CAC = acquisition spend divided by new customers. Gross monthly profit per customer = ARPA times gross margin. CAC payback = CAC divided by gross monthly profit per customer.</p>
+        </article>
+        <article class="panel">
+          <h2>Best Inputs</h2>
+          <p>Use one acquisition channel at a time. Keep paid ads, sales-led outbound, partnerships, and founder referrals separate so a strong blended number does not hide a weak channel.</p>
+        </article>
+        <article class="panel">
+          <h2>Trust Link</h2>
+          <p>If payback is too slow, the fix is not always cheaper traffic. Weak proof, vague pricing, unclear onboarding, and high-friction trials can all raise CAC.</p>
+        </article>
+      </section>
+
+      <section class="detail-section" aria-labelledby="payback-example-heading">
+        <h2 id="payback-example-heading">Worked Examples</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>Self-Serve SaaS</h3>
+            <p>A self-serve product spends $8,000 and acquires 80 customers. CAC is $100. At $49 ARPA and 85% gross margin, gross monthly profit per customer is $41.65.</p>
+            <p class="example-result">Payback: 2.4 months. Next check: whether early churn is low enough to support more traffic.</p>
+          </article>
+          <article class="panel">
+            <h3>Sales-Assisted SaaS</h3>
+            <p>A team spends $18,000 on ads and sales support to acquire 15 customers. CAC is $1,200. At $249 ARPA and 75% margin, gross monthly profit per customer is $186.75.</p>
+            <p class="example-result">Payback: 6.4 months. Next check: improve demo-page proof if conversion rate is the bottleneck.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="payback-benchmark-heading">
+        <h2 id="payback-benchmark-heading">Payback Benchmarks</h2>
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>Payback Period</th>
+              <th>Likely Signal</th>
+              <th>Next Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Under 6 months</td>
+              <td>Often easier to fund if churn and support cost are stable.</td>
+              <td>Check activation, retention, and whether the channel can scale.</td>
+            </tr>
+            <tr>
+              <td>6 to 12 months</td>
+              <td>Potentially workable, but cash and sales cycle matter.</td>
+              <td>Improve pricing confidence, proof, and onboarding clarity before increasing spend.</td>
+            </tr>
+            <tr>
+              <td>12 to 18 months</td>
+              <td>Risky for many small teams unless retention and contract value are strong.</td>
+              <td>Raise close rate, ARPA, annual prepay, or trial-to-paid conversion.</td>
+            </tr>
+            <tr>
+              <td>Over 18 months</td>
+              <td>Acquisition may be too expensive for the current price or conversion path.</td>
+              <td>Pause scale and audit the offer, landing page, channel fit, and retention.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="detail-section" aria-labelledby="payback-mistakes-heading">
+        <h2 id="payback-mistakes-heading">Common Payback Mistakes</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>Understating Acquisition Cost</h3>
+            <ul>
+              <li>Leaving sales labor, creative production, discounts, or onboarding help outside CAC.</li>
+              <li>Counting free trials as customers before payment starts.</li>
+              <li>Mixing channels with different intent and sales cycles.</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Overstating Monthly Profit</h3>
+            <ul>
+              <li>Using revenue instead of gross profit after hosting, support, payments, and delivery cost.</li>
+              <li>Ignoring refunds, failed payments, and early cancellations.</li>
+              <li>Assuming upgrade revenue before the expansion path is proven.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="payback-faq-heading">
+        <h2 id="payback-faq-heading">FAQ</h2>
+        <div class="faq-list">
+          <details>
+            <summary>How do you calculate SaaS CAC payback?</summary>
+            <p>CAC payback is acquisition cost per customer divided by gross monthly profit per customer. Gross monthly profit is ARPA multiplied by gross margin.</p>
+          </details>
+          <details>
+            <summary>What is a healthy CAC payback period for SaaS?</summary>
+            <p>A shorter payback period is generally easier to fund. Many early SaaS teams watch whether payback is under 12 months, but the right target depends on cash, retention, pricing, sales cycle, and growth model.</p>
+          </details>
+          <details>
+            <summary>Why does CAC payback change when conversion trust improves?</summary>
+            <p>Improving proof, pricing confidence, activation clarity, and risk reversal can raise visitor-to-trial and trial-to-paid conversion, which lowers CAC when acquisition spend stays similar.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="tool-links" aria-label="Related calculators">
+        <a href="sample-reports.html">Sample Reports</a>
+        <a href="trust-score.html">Landing Page Trust Score</a>
+        <a href="roas-calculator.html">ROAS Calculator</a>
+        <a href="paid-traffic-break-even-calculator.html">Paid Traffic Break-Even</a>
+        <a href="local-service-lead-value-calculator.html">Local Service Lead Value</a>
+        <a href="ecommerce-conversion-trust-checklist.html">Ecommerce Trust Checklist</a>
+        <a href="ltv-cac-calculator.html">LTV:CAC Calculator</a>
+        <a href="lead-funnel-calculator.html">Lead Funnel Calculator</a>
+        <a href="agency-margin-calculator.html">Agency Margin Calculator</a>
+      </section>
+    </main>
+    <script src="event-log.js"></script>
+  </body>
+</html>

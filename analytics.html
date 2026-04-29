@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="No-key local evidence log export for Trust Leak Audit browser events.">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="Trust Leak Audit Local Evidence Log">
+    <meta property="og:description" content="Export browser-only Trust Leak Audit events as JSON or CSV for launch review.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Trust Leak Audit">
+    <meta property="og:image" content="./og/trust-leak-toolkit.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Trust Leak Audit and Marketing Math social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="./og/trust-leak-toolkit.svg">
+    <meta name="twitter:image:alt" content="Trust Leak Audit and Marketing Math social preview.">
+    <title>Local Evidence Log | Trust Leak Audit</title>
+    <link rel="canonical" href="./analytics.html">
+    <link rel="manifest" href="site-manifest.json">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="./">Back to toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Operator page</p>
+        <h1>Local Evidence Log</h1>
+        <p class="lede">Export browser-only page-view, source, UTM, and report-action events before a third-party analytics account exists.</p>
+        <div class="page-actions">
+          <button class="primary" id="copyEventJson" type="button">Copy JSON</button>
+          <button class="secondary" id="downloadEventCsv" type="button">Download CSV</button>
+          <button class="secondary" id="clearEventLog" type="button">Clear Log</button>
+          <a class="secondary-link" href="deployment-qa.html">Deployment QA</a>
+          <a class="secondary-link" href="launch-kit.html">Launch Kit</a>
+        </div>
+      </header>
+
+      <section class="panel evidence-panel" aria-labelledby="evidence-heading">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Evidence</p>
+            <h2 id="evidence-heading">Local Event Summary</h2>
+          </div>
+        </div>
+        <div class="event-summary" id="eventSummary"></div>
+        <p class="event-source-line" id="eventSourceLine">No local events stored yet.</p>
+      </section>
+
+      <section class="panel detail-section" aria-labelledby="events-heading">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Recent</p>
+            <h2 id="events-heading">Event Log</h2>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="benchmark-table event-table">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Event</th>
+                <th>Page</th>
+                <th>Source</th>
+                <th>Detail</th>
+              </tr>
+            </thead>
+            <tbody id="eventTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="analytics.js"></script>
+  </body>
+</html>

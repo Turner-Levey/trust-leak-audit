@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A free browser-only landing page trust score and marketing math toolkit for founders, agencies, and growth teams.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="Trust Leak Audit + Marketing Math">
+    <meta property="og:description" content="Score landing-page trust leaks and calculate ROAS, CAC, LTV, funnel revenue, and agency margins without signup.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Trust Leak Audit">
+    <meta property="og:image" content="./og/trust-leak-toolkit.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Trust Leak Audit and Marketing Math social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="./og/trust-leak-toolkit.svg">
+    <meta name="twitter:image:alt" content="Trust Leak Audit and Marketing Math social preview.">
+    <title>Free Trust Leak Audit + Marketing Math Toolkit</title>
+    <link rel="canonical" href="./">
+    <link rel="manifest" href="site-manifest.json">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Experiment 001</p>
+          <h1>Trust Leak Audit + Marketing Math</h1>
+          <p class="lede">Free browser-only scoring for landing-page trust, paid traffic math, funnel revenue, and agency margins.</p>
+        </div>
+        <div class="score-card">
+          <span>Trust Score</span>
+          <strong id="trustScore">0.0</strong>
+        </div>
+      </header>
+
+      <section class="tool-grid">
+        <section class="panel trust-panel" aria-labelledby="trust-heading">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Audit</p>
+              <h2 id="trust-heading">Landing Page Trust Score</h2>
+            </div>
+            <button class="secondary" id="resetTrust" type="button">Reset</button>
+          </div>
+          <div class="control-row">
+            <label for="buyerType">Buyer type</label>
+            <select id="buyerType">
+              <option value="general">General landing page</option>
+              <option value="saas">SaaS founder</option>
+              <option value="ecommerce">Ecommerce brand</option>
+              <option value="agency">Agency or consultant</option>
+              <option value="local">Local service business</option>
+            </select>
+          </div>
+          <div id="trustInputs" class="slider-list"></div>
+          <div class="diagnosis">
+            <h3>Priority Fixes</h3>
+            <ol id="fixList"></ol>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="math-heading">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Calculator</p>
+              <h2 id="math-heading">Revenue Math</h2>
+            </div>
+            <div class="tabs" role="tablist" aria-label="Calculator type">
+              <button class="tab active" type="button" data-tab="roas">ROAS</button>
+              <button class="tab" type="button" data-tab="ltv">LTV</button>
+              <button class="tab" type="button" data-tab="funnel">Funnel</button>
+              <button class="tab" type="button" data-tab="agency">Agency</button>
+            </div>
+          </div>
+
+          <form id="calculatorForm" class="calc-form"></form>
+          <div class="result-strip" id="resultStrip"></div>
+        </section>
+      </section>
+
+      <section class="panel report-panel" aria-labelledby="report-heading">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Output</p>
+            <h2 id="report-heading">Audit Report Draft</h2>
+          </div>
+          <div class="button-row">
+            <button class="primary" id="copyReport" type="button">Copy Report</button>
+            <button class="secondary" id="downloadReport" type="button">Download Markdown</button>
+            <button class="secondary" id="copyShare" type="button">Copy Share Summary</button>
+          </div>
+        </div>
+        <textarea id="reportOutput" spellcheck="false"></textarea>
+        <p class="event-status" id="eventStatus">Local report events: 0</p>
+      </section>
+
+      <section class="panel sample-teaser" aria-labelledby="sample-heading">
+        <div>
+          <p class="eyebrow">Proof asset</p>
+          <h2 id="sample-heading">Sample Report Gallery</h2>
+          <p>Review anonymized SaaS, ecommerce, agency, and local-service examples with scores, evidence, fix priorities, and copyable launch snippets.</p>
+        </div>
+        <a class="primary-link" href="sample-reports.html">View samples</a>
+      </section>
+
+      <section class="tool-links" aria-label="Tool pages">
+        <a href="sample-reports.html">Sample Reports</a>
+        <a href="sec-trigger-briefs-hub.html">SEC Briefs Hub</a>
+        <a href="sec-filing-trigger-briefs.html">SEC Trigger Briefs</a>
+        <a href="sec-auditor-change-briefs.html">SEC Auditor Change Briefs</a>
+        <a href="sec-leadership-change-briefs.html">SEC Leadership Change Briefs</a>
+        <a href="trust-score.html">Landing Page Trust Score</a>
+        <a href="roas-calculator.html">ROAS Calculator</a>
+        <a href="paid-traffic-break-even-calculator.html">Paid Traffic Break-Even</a>
+        <a href="local-service-lead-value-calculator.html">Local Service Lead Value</a>
+        <a href="ecommerce-conversion-trust-checklist.html">Ecommerce Trust Checklist</a>
+        <a href="ltv-cac-calculator.html">LTV:CAC Calculator</a>
+        <a href="saas-payback-calculator.html">SaaS Payback Calculator</a>
+        <a href="lead-funnel-calculator.html">Lead Funnel Calculator</a>
+        <a href="agency-margin-calculator.html">Agency Margin Calculator</a>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="event-log.js"></script>
+  </body>
+</html>
