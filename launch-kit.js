@@ -414,11 +414,123 @@ const submissionTracker = [
   }
 ];
 
+const submissionFieldPacks = [
+  {
+    surface: "Product Hunt",
+    trackerSurface: "Product Hunt",
+    title: "Trust Leak Audit",
+    tagline: "Free browser-only landing page trust score and marketing math toolkit.",
+    categories: "Marketing, SEO, CRO, Analytics, Startup tools, Calculators, Ecommerce, SaaS",
+    assetNotes: "Use the hub SVG preview if SVG is accepted; otherwise capture homepage plus trust-score output after deploy.",
+    fieldNotes: "Clean canonical hub URL only. Product Hunt does not accept UTM, shortened, or tracked links."
+  },
+  {
+    surface: "Zearches",
+    trackerSurface: "Zearches",
+    title: "Trust Leak Audit",
+    tagline: "Free landing-page trust score and marketing calculators that run in the browser.",
+    categories: "Software & SaaS Tools, SEO/Marketing/Growth, Resources/Tools",
+    assetNotes: "Logo/screenshot usually not required; use a clean homepage URL.",
+    fieldNotes: "No account path. Submit the canonical hub URL without UTM, redirects, referral links, or affiliate parameters."
+  },
+  {
+    surface: "Tools Directory Online",
+    trackerSurface: "Tools Directory Online",
+    title: "Paid Traffic Break-Even Calculator by Trust Leak Audit",
+    tagline: "Free calculator for break-even ROAS, CPA, CPL, and conversion thresholds before scaling ads.",
+    categories: "Marketing, Ecommerce, Analytics, SaaS, Productivity",
+    assetNotes: "Lead with the paid-traffic calculator page and screenshot the calculator plus benchmark table.",
+    fieldNotes: "Clean URL preferred. Use the individual calculator page because it matches commercial-intent directory traffic."
+  },
+  {
+    surface: "Launching Next",
+    trackerSurface: "Launching Next",
+    title: "Trust Leak Audit",
+    tagline: "Browser-only trust scoring and marketing math for founders, ecommerce teams, and agencies.",
+    categories: "Marketing, Growth, Analytics, Ecommerce, Startup tools",
+    assetNotes: "Use the long editorial listing draft. If asked for planned marketing spend, use the no-spend answer.",
+    fieldNotes: "Free queue only. Do not pay for faster review."
+  },
+  {
+    surface: "BetterLaunch",
+    trackerSurface: "BetterLaunch",
+    title: "Trust Leak Audit",
+    tagline: "Find conversion trust gaps and calculate paid-traffic risk without signup.",
+    categories: "Marketing, Startup tools, SaaS, Ecommerce, Analytics",
+    assetNotes: "Needs 2+ screenshots or a demo GIF; use homepage, trust-score report output, and paid-traffic calculator.",
+    fieldNotes: "Free editorial listing only. Do not add badges or buy paid upgrades without a separate decision."
+  },
+  {
+    surface: "TinyLaunch",
+    trackerSurface: "TinyLaunch",
+    title: "Trust Leak Audit",
+    tagline: "A free CRO and marketing math toolkit for landing-page trust checks.",
+    categories: "Marketing, SaaS, Ecommerce, Founder tools",
+    assetNotes: "Use the long listing plus homepage screenshot. Avoid review, sponsor, or featured-placement offers.",
+    fieldNotes: "Use only the free Standard Launch queue from a user-owned account."
+  },
+  {
+    surface: "MicroLaunch",
+    trackerSurface: "MicroLaunch",
+    title: "Trust Leak Audit",
+    tagline: "Free browser-only toolkit for trust scoring, ad break-even math, and audit exports.",
+    categories: "Marketing, Productivity, SaaS, Ecommerce, Analytics",
+    assetNotes: "Use homepage and report export screenshots if required.",
+    fieldNotes: "Basic Launch queue only. Avoid paid credits, pro launch, and deal submission flows."
+  },
+  {
+    surface: "StartupInspire",
+    trackerSurface: "StartupInspire",
+    title: "Trust Leak Audit",
+    tagline: "Free browser-only landing-page trust score and marketing math toolkit.",
+    categories: "Software, Marketing, Analytics, Ecommerce, SaaS",
+    assetNotes: "Use canonical hub URL and a plain product screenshot. Do not claim customers, traction, or revenue.",
+    fieldNotes: "Use free-tier/trial-only path from a user-owned account. Do not buy annual upgrades."
+  },
+  {
+    surface: "PitchWall",
+    trackerSurface: "PitchWall",
+    title: "Trust Leak Audit",
+    tagline: "A working free tool for auditing landing-page trust and paid-traffic readiness.",
+    categories: "SaaS, Startup, Marketing, Productivity, AI/Tech only if category requires a broad tech bucket",
+    assetNotes: "Use the long editorial listing and a clean hub screenshot.",
+    fieldNotes: "Free plan/manual review only. Do not buy priority placement or imply AI features beyond the actual toolkit."
+  },
+  {
+    surface: "OpenHunts",
+    trackerSurface: "OpenHunts",
+    title: "Trust Leak Audit",
+    tagline: "Free trust scoring and marketing calculators for founders and operators.",
+    categories: "Marketing, SaaS, Ecommerce, Productivity, Analytics",
+    assetNotes: "Use existing launch copy and clean canonical hub URL. Add screenshots only from the live tool.",
+    fieldNotes: "User-owned account required. Do not buy sponsorship or fabricate votes/comments."
+  },
+  {
+    surface: "Hacker News",
+    trackerSurface: "Hacker News Show HN",
+    title: "Show HN: Trust Leak Audit - browser-only landing page trust score",
+    tagline: "I built a free browser-only toolkit for scoring trust gaps and checking marketing math.",
+    categories: "Show HN, feedback",
+    assetNotes: "No images needed. Be available to discuss implementation and rubric tradeoffs.",
+    fieldNotes: "Use Show HN only from a user-owned account and do not ask for votes."
+  },
+  {
+    surface: "Reddit",
+    trackerSurface: "Reddit Feedback Friday",
+    title: "Feedback request: browser-only landing page trust score",
+    tagline: "Looking for critique on whether the trust-score output is useful and specific enough.",
+    categories: "Feedback Friday, startups, landing pages, CRO",
+    assetNotes: "No screenshots unless the active thread asks for them.",
+    fieldNotes: "Post only in an active feedback-permitted thread and follow its template."
+  }
+];
+
 const siteUrlInput = document.querySelector("#siteUrlInput");
 const launchStatus = document.querySelector("#launchStatus");
 const launchLinkRows = document.querySelector("#launchLinkRows");
 const launchCopyGrid = document.querySelector("#launchCopyGrid");
 const launchTrackerRows = document.querySelector("#launchTrackerRows");
+const fieldPackRows = document.querySelector("#fieldPackRows");
 const copyAllLinks = document.querySelector("#copyAllLinks");
 const downloadLaunchPacket = document.querySelector("#downloadLaunchPacket");
 const copyLaunchTracker = document.querySelector("#copyLaunchTracker");
@@ -478,6 +590,14 @@ launchCopyGrid.addEventListener("click", async event => {
   const draft = launchDrafts()[Number(button.dataset.copyDraft)];
   await copyText(draft.body, button, "Copied");
   track("launch_kit_copy_copied", { draft: draft.title });
+});
+
+fieldPackRows.addEventListener("click", async event => {
+  const button = event.target.closest("button[data-copy-field-pack]");
+  if (!button) return;
+  const pack = submissionFieldPacks[Number(button.dataset.copyFieldPack)];
+  await copyText(renderFieldPack(pack), button, "Copied");
+  track("launch_kit_field_pack_copied", { surface: pack.surface });
 });
 
 launchTrackerRows.addEventListener("change", event => {
@@ -561,6 +681,21 @@ function render() {
       </td>
     </tr>
   `;
+  }).join("");
+  fieldPackRows.innerHTML = submissionFieldPacks.map((pack, index) => {
+    const row = findSubmissionRow(pack.trackerSurface);
+    const submissionUrl = row ? buildLink(row) : normalizeBaseUrl(siteUrlInput.value) || "https://example.com";
+    return `
+      <tr>
+        <td>${escapeHtml(pack.surface)}</td>
+        <td><code>${escapeHtml(submissionUrl)}</code><small>${escapeHtml(pack.fieldNotes)}</small></td>
+        <td>${escapeHtml(pack.title)}</td>
+        <td>${escapeHtml(pack.tagline)}</td>
+        <td>${escapeHtml(pack.categories)}</td>
+        <td>${escapeHtml(pack.assetNotes)}</td>
+        <td><button class="secondary compact-button" type="button" data-copy-field-pack="${index}">Copy</button></td>
+      </tr>
+    `;
   }).join("");
   renderProgressSummary();
 }
@@ -682,6 +817,10 @@ function renderPacket() {
     "",
     renderTrackerMarkdown(),
     "",
+    "## Directory Submission Pack",
+    "",
+    renderFieldPackMarkdown(),
+    "",
     "## Guardrails",
     "",
     "- Use only a real public URL and user-owned accounts.",
@@ -745,6 +884,27 @@ function renderTrackerCsv() {
   });
 
   return [headers, ...rows].map(row => row.map(escapeCsv).join(",")).join("\n");
+}
+
+function renderFieldPackMarkdown() {
+  return submissionFieldPacks.map(pack => renderFieldPack(pack)).join("\n\n---\n\n");
+}
+
+function renderFieldPack(pack) {
+  const row = findSubmissionRow(pack.trackerSurface);
+  return [
+    `Surface: ${pack.surface}`,
+    `Submission URL: ${row ? buildLink(row) : normalizeBaseUrl(siteUrlInput.value) || "https://example.com"}`,
+    `Title: ${pack.title}`,
+    `Tagline: ${pack.tagline}`,
+    `Category hints: ${pack.categories}`,
+    `Asset notes: ${pack.assetNotes}`,
+    `Guardrail: ${pack.fieldNotes}`
+  ].join("\n");
+}
+
+function findSubmissionRow(surface) {
+  return submissionTracker.find(item => item.surface === surface);
 }
 
 function trackerId(item, index) {
