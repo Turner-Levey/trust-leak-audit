@@ -27,7 +27,7 @@
   <text x="820" y="156" fill="#16211d" font-family="Inter, Arial, sans-serif" font-size="31" font-weight="850" letter-spacing="0"><tspan x="820" dy="0">Prioritized fixes</tspan><tspan x="820" dy="33.48">for pages that need</tspan><tspan x="820" dy="33.48">buyer confidence.</tspan></text>
   <rect x="820" y="260" width="286" height="112" rx="8" fill="#16211d"/>
   <text x="842" y="300" fill="#d7e7dd" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="800">Assets included</text>
-  <text x="842" y="352" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="900">15 pages</text>
+  <text x="842" y="352" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="52" font-weight="900">16 pages</text>
   <g><circle cx="842" cy="411" r="11" fill="#a96712"/><text x="864" y="418" fill="#5b6e67" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700">Browser-only scoring</text></g><g><circle cx="842" cy="463" r="11" fill="#a96712"/><text x="864" y="470" fill="#5b6e67" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700">Markdown report export</text></g><g><circle cx="842" cy="515" r="11" fill="#a96712"/><text x="864" y="522" fill="#5b6e67" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700">Sample audit gallery</text></g>
   <text x="64" y="594" fill="#6d7b76" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">Trust Leak Audit - browser-only tools, no signup</text>
 </svg>

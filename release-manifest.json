@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-29T06:56:48.278Z",
+  "generatedAt": "2026-04-29T07:56:59.022Z",
   "sourceDir": "/Users/turnerlevey/untitled folder/venture-lab/site",
   "releaseDir": "/Users/turnerlevey/untitled folder/venture-lab/releases/trust-leak-audit-static",
   "siteUrl": "https://trust-leak-audit-static.vercel.app",
@@ -8,6 +8,7 @@
     "agency-margin-calculator.html",
     "ecommerce-conversion-trust-checklist.html",
     "index.html",
+    "launch-notes.html",
     "lead-funnel-calculator.html",
     "local-service-lead-value-calculator.html",
     "ltv-cac-calculator.html",
@@ -35,6 +36,7 @@
     "ecommerce-conversion-trust-checklist.html",
     "index.html",
     "launch-kit.html",
+    "launch-notes.html",
     "lead-funnel-calculator.html",
     "local-service-lead-value-calculator.html",
     "ltv-cac-calculator.html",
@@ -51,6 +53,7 @@
   "ogAssets": [
     "og/agency-margin-calculator.svg",
     "og/ecommerce-conversion-trust-checklist.svg",
+    "og/launch-notes.svg",
     "og/lead-funnel-calculator.svg",
     "og/local-service-lead-value-calculator.svg",
     "og/ltv-cac-calculator.svg",
@@ -72,16 +75,16 @@
   ],
   "indexNow": {
     "keyFile": "4f2e8d9c6b7a4f3a9e1c0d8b6a2f4c1e.txt",
-    "indexableUrls": 15
+    "indexableUrls": 16
   },
   "eventLogCoverage": {
-    "covered": 15,
-    "indexable": 15
+    "covered": 16,
+    "indexable": 16
   },
   "localLinkIssues": [],
   "shareToolCoverage": {
-    "covered": 15,
-    "indexable": 15
+    "covered": 16,
+    "indexable": 16
   },
   "nextCommand": "SITE_URL=https://your-domain.example node venture-lab/site/build-static-release.mjs"
 }
