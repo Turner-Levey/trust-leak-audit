@@ -12,6 +12,7 @@ const indexablePages = [
   { label: "Local service lead value calculator", path: "/local-service-lead-value-calculator.html" },
   { label: "Ecommerce conversion trust checklist", path: "/ecommerce-conversion-trust-checklist.html" },
   { label: "Sample reports", path: "/sample-reports.html" },
+  { label: "Launch notes", path: "/launch-notes.html" },
   { label: "SEC trigger briefs hub", path: "/sec-trigger-briefs-hub.html" },
   { label: "SEC filing trigger briefs", path: "/sec-filing-trigger-briefs.html" },
   { label: "SEC auditor-change briefs", path: "/sec-auditor-change-briefs.html" },
@@ -85,6 +86,7 @@ async function runQa() {
     sitemapUrls = await checkSitemap(baseUrl);
     await checkRobots(baseUrl);
     await checkManifest(baseUrl);
+    await checkLlms(baseUrl);
 
     for (const page of indexablePages) {
       await checkHtmlPage(baseUrl, page, { shouldIndex: true, sitemapUrls });
@@ -112,9 +114,12 @@ async function checkSitemap(baseUrl) {
   const expectedUrls = indexablePages.map(page => buildPageUrl(baseUrl, page.path));
   const missing = expectedUrls.filter(url => !locs.includes(url));
   const blocked = operatorPages.map(page => buildPageUrl(baseUrl, page.path)).filter(url => locs.includes(url));
+  const unexpected = locs.filter(url => !expectedUrls.includes(url));
 
+  addResult("Sitemap", "URL count", locs.length === expectedUrls.length ? "pass" : "warn", `Found ${locs.length}; expected ${expectedUrls.length} indexable URLs.`);
   addResult("Sitemap", "Indexable URL coverage", missing.length ? "fail" : "pass", missing.length ? `Missing ${missing.length}: ${missing.join(", ")}` : `${locs.length} sitemap URLs include every indexable page.`);
   addResult("Sitemap", "Operator page exclusion", blocked.length ? "fail" : "pass", blocked.length ? `Operator URLs in sitemap: ${blocked.join(", ")}` : "No operator/noindex pages are listed.");
+  addResult("Sitemap", "Unexpected URLs", unexpected.length ? "warn" : "pass", unexpected.length ? unexpected.join(", ") : "No untracked URLs are listed.");
   return locs;
 }
 
@@ -153,6 +158,26 @@ async function checkManifest(baseUrl) {
   } catch (error) {
     addResult("Manifest", "JSON parse", "fail", error.message);
   }
+}
+
+async function checkLlms(baseUrl) {
+  const llmsUrl = buildPageUrl(baseUrl, "/llms.txt");
+  const response = await fetchText(llmsUrl);
+  if (!response.ok) {
+    addResult("Discovery", "llms.txt fetch", "fail", `${response.status} ${response.statusText}`);
+    return;
+  }
+
+  addResult("Discovery", "llms.txt fetch", "pass", llmsUrl);
+
+  const expectedUrls = indexablePages.map(page => buildPageUrl(baseUrl, page.path));
+  const missing = expectedUrls.filter(url => !response.text.includes(url));
+  const blocked = operatorPages.map(page => buildPageUrl(baseUrl, page.path)).filter(url => response.text.includes(url));
+  const expectedSitemap = buildPageUrl(baseUrl, "/sitemap.xml");
+
+  addResult("Discovery", "llms.txt indexable URL coverage", missing.length ? "fail" : "pass", missing.length ? `Missing ${missing.length}: ${missing.join(", ")}` : `${expectedUrls.length} indexable URLs listed.`);
+  addResult("Discovery", "llms.txt operator exclusion", blocked.length ? "fail" : "pass", blocked.length ? `Operator URLs in llms.txt: ${blocked.join(", ")}` : "No operator/noindex pages are listed.");
+  addResult("Discovery", "llms.txt sitemap reference", response.text.includes(expectedSitemap) ? "pass" : "fail", response.text.includes(expectedSitemap) ? expectedSitemap : "Missing absolute sitemap URL.");
 }
 
 async function checkHtmlPage(baseUrl, page, options) {
@@ -200,8 +225,11 @@ async function checkHtmlPage(baseUrl, page, options) {
     const inSitemap = options.sitemapUrls.includes(expectedUrl);
     addResult("Sitemap", `${page.label} listed`, inSitemap ? "pass" : "fail", inSitemap ? "Listed in sitemap." : `${expectedUrl} not found in sitemap.`);
 
-    const hasEventLog = [...doc.querySelectorAll("script[src]")].some(script => script.getAttribute("src") === "event-log.js");
+    const scriptSources = [...doc.querySelectorAll("script[src]")].map(script => script.getAttribute("src"));
+    const hasEventLog = scriptSources.includes("event-log.js");
+    const hasShareTools = scriptSources.includes("share-tools.js");
     addResult("Events", `${page.label} event logger`, hasEventLog ? "pass" : "fail", hasEventLog ? "event-log.js is present." : "Missing event-log.js.");
+    addResult("Sharing", `${page.label} share hooks`, hasShareTools ? "pass" : "fail", hasShareTools ? "share-tools.js is present." : "Missing share-tools.js.");
   } else {
     const excluded = !options.sitemapUrls.includes(expectedUrl);
     addResult("Sitemap", `${page.label} excluded`, excluded ? "pass" : "fail", excluded ? "Not listed in sitemap." : `${expectedUrl} should not be in sitemap.`);
