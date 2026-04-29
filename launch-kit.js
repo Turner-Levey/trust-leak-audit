@@ -35,6 +35,7 @@ const priorityLinks = [
     source: "producthunt",
     medium: "launch",
     campaign: "free_tool_launch",
+    disableUtm: true,
     goal: "Test maker discovery if a user-owned maker account exists."
   },
   {
@@ -140,11 +141,12 @@ const submissionTracker = [
     source: "producthunt",
     medium: "launch",
     campaign: "free_tool_launch",
-    requirement: "User-owned maker account; launch assets accepted",
+    disableUtm: true,
+    requirement: "User-owned maker account; clean product URL; launch assets accepted",
     firstMetric: "Launch visits, comments, saves",
     copyAsset: "Product listing draft",
-    status: "Waiting for account and URL",
-    notes: "Use truthful no-signup, browser-only positioning; no fabricated social proof."
+    status: "Account required; clean URL only",
+    notes: "Product Hunt says shortened links and UTM/tracked links are not accepted. Use the canonical hub URL and rely on referrer evidence."
   },
   {
     day: "2",
@@ -171,8 +173,8 @@ const submissionTracker = [
     requirement: "Public URL; listing rules checked",
     firstMetric: "Directory referral visits and saves",
     copyAsset: "Free tool listing",
-    status: "Waiting for URL",
-    notes: "Position as a builder/CRO utility rather than a paid audit offer."
+    status: "Low priority unless dev-tool fit is clear",
+    notes: "DevHunt is strongest for developer tools/open-source projects and publishes a long free-launch wait; do not pay to skip the queue."
   },
   {
     day: "2",
@@ -185,8 +187,8 @@ const submissionTracker = [
     requirement: "Public URL; listing rules checked",
     firstMetric: "Checklist starts and exports",
     copyAsset: "Directory listing",
-    status: "Waiting for URL",
-    notes: "Use ecommerce-specific copy if category fit is available."
+    status: "Account required",
+    notes: "Uneed requires an account to submit. Use ecommerce-specific copy if category fit is available."
   },
   {
     day: "3",
@@ -210,11 +212,11 @@ const submissionTracker = [
     source: "saashub",
     medium: "directory",
     campaign: "saas_payback_listing",
-    requirement: "Public URL; category and listing rules checked",
+    requirement: "Custom/public domain; category and listing rules checked",
     firstMetric: "SaaS calculator page views",
     copyAsset: "Directory listing",
-    status: "Waiting for URL",
-    notes: "Use SaaS-specific CAC payback positioning."
+    status: "Blocked until custom domain",
+    notes: "SaaSHub's current submit page rejects products using free subdomains such as vercel.app. Revisit after a custom domain exists."
   },
   {
     day: "3",
@@ -241,8 +243,8 @@ const submissionTracker = [
     requirement: "Public URL; listing rules checked",
     firstMetric: "Sample snippet copies/downloads",
     copyAsset: "Directory listing",
-    status: "Waiting for URL",
-    notes: "Use proof-of-output framing if directory accepts resource pages."
+    status: "Blocked by paid listing",
+    notes: "500.tools currently requires a paid subscription. No spend under current operating policy."
   },
   {
     day: "4",
@@ -363,8 +365,10 @@ function render() {
 }
 
 function launchDrafts() {
-  const hub = buildLink(priorityLinks[1]);
+  const hub = buildLink(priorityLinks[0]);
+  const showHn = buildLink(priorityLinks[1]);
   const trust = buildLink(priorityLinks[2]);
+  const productHunt = buildLink(priorityLinks[3]);
   const paidTraffic = buildLink(priorityLinks[4]);
   const ecommerce = buildLink(priorityLinks[5]);
   const sec = buildLink(priorityLinks[7]);
@@ -380,7 +384,7 @@ function launchDrafts() {
         "Description:",
         "Trust Leak Audit helps founders, ecommerce operators, agencies, and growth teams score trust gaps, calculate marketing economics, and export Markdown audit drafts without signup.",
         "",
-        `Launch URL: ${hub}`,
+        `Launch URL: ${productHunt}`,
         "Category candidates: Marketing, SEO, CRO, Analytics, Startup tools, Calculators, Ecommerce, SaaS.",
         "Privacy note: Runs in the browser and does not upload page data."
       ].join("\n")
@@ -393,7 +397,7 @@ function launchDrafts() {
         "",
         "I built a free browser-only toolkit for scoring landing-page trust leaks and checking the marketing math behind paid traffic, CAC/LTV, funnels, and agency margins.",
         "",
-        `URL: ${hub}`,
+        `URL: ${showHn}`,
         "",
         "It runs without signup and can export a Markdown audit draft. I would value feedback on whether the scoring rubric is useful or too subjective."
       ].join("\n")
@@ -515,9 +519,11 @@ function renderTrackerCsv() {
 function buildLink(item) {
   const baseUrl = normalizeBaseUrl(siteUrlInput.value) || "https://example.com";
   const url = new URL(item.path === "/" ? "./" : item.path.replace(/^\//, ""), `${baseUrl}/`);
-  url.searchParams.set("utm_source", item.source);
-  url.searchParams.set("utm_medium", item.medium);
-  url.searchParams.set("utm_campaign", item.campaign);
+  if (!item.disableUtm) {
+    url.searchParams.set("utm_source", item.source);
+    url.searchParams.set("utm_medium", item.medium);
+    url.searchParams.set("utm_campaign", item.campaign);
+  }
   return url.toString();
 }
 
