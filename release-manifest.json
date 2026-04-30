@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-30T04:13:38.103Z",
+  "generatedAt": "2026-04-30T04:22:00.653Z",
   "sourceDir": "/Users/turnerlevey/untitled folder/venture-lab/site",
   "releaseDir": "/Users/turnerlevey/untitled folder/venture-lab/releases/trust-leak-audit-static",
   "siteUrl": "https://trust-leak-audit-static.vercel.app",
@@ -79,6 +79,10 @@
   "indexNow": {
     "keyFile": "4f2e8d9c6b7a4f3a9e1c0d8b6a2f4c1e.txt",
     "indexableUrls": 16
+  },
+  "trafficBeacon": {
+    "endpoint": "/api/track",
+    "handler": "api/track.js"
   },
   "eventLogCoverage": {
     "covered": 16,

@@ -2,6 +2,7 @@
   const storageKey = "trustLeakToolEvents";
   const maxEvents = 500;
   const pageViewSessionPrefix = "trustLeakPageView:";
+  const remoteEndpoint = "/api/track";
   const utmKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
 
   const read = () => {
@@ -46,12 +47,14 @@
     }
 
     const events = read();
-    events.push({
+    const event = {
       name,
       detail,
       source: source(),
       at: new Date().toISOString()
-    });
+    };
+    events.push(event);
+    sendRemote(event);
     return write(events);
   };
 
@@ -71,5 +74,37 @@
     shareScript.src = "share-tools.js";
     shareScript.defer = true;
     document.body.appendChild(shareScript);
+  }
+
+  function sendRemote(event) {
+    if (!shouldSendRemote()) return;
+
+    const payload = JSON.stringify(event);
+    try {
+      if (navigator.sendBeacon) {
+        const blob = new Blob([payload], { type: "application/json" });
+        navigator.sendBeacon(remoteEndpoint, blob);
+        return;
+      }
+    } catch {
+      return;
+    }
+
+    try {
+      fetch(remoteEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: payload,
+        keepalive: true
+      }).catch(() => {});
+    } catch {
+      // Network telemetry is best-effort; local logging remains the fallback.
+    }
+  }
+
+  function shouldSendRemote() {
+    if (!/^https?:$/.test(window.location.protocol)) return false;
+    const robots = document.querySelector('meta[name="robots"]')?.content?.toLowerCase() || "";
+    return !robots.includes("noindex");
   }
 })();

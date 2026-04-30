@@ -87,6 +87,7 @@ async function runQa() {
     await checkRobots(baseUrl);
     await checkManifest(baseUrl);
     await checkLlms(baseUrl);
+    await checkTrafficBeacon(baseUrl);
 
     for (const page of indexablePages) {
       await checkHtmlPage(baseUrl, page, { shouldIndex: true, sitemapUrls });
@@ -178,6 +179,16 @@ async function checkLlms(baseUrl) {
   addResult("Discovery", "llms.txt indexable URL coverage", missing.length ? "fail" : "pass", missing.length ? `Missing ${missing.length}: ${missing.join(", ")}` : `${expectedUrls.length} indexable URLs listed.`);
   addResult("Discovery", "llms.txt operator exclusion", blocked.length ? "fail" : "pass", blocked.length ? `Operator URLs in llms.txt: ${blocked.join(", ")}` : "No operator/noindex pages are listed.");
   addResult("Discovery", "llms.txt sitemap reference", response.text.includes(expectedSitemap) ? "pass" : "fail", response.text.includes(expectedSitemap) ? expectedSitemap : "Missing absolute sitemap URL.");
+}
+
+async function checkTrafficBeacon(baseUrl) {
+  const endpoint = buildPageUrl(baseUrl, "/api/track");
+  try {
+    const response = await fetch(endpoint, { method: "OPTIONS", cache: "no-store" });
+    addResult("Analytics", "No-key traffic beacon endpoint", response.ok ? "pass" : "fail", `${endpoint} returned ${response.status} ${response.statusText}.`);
+  } catch (error) {
+    addResult("Analytics", "No-key traffic beacon endpoint", "fail", error.message || "Fetch failed.");
+  }
 }
 
 async function checkHtmlPage(baseUrl, page, options) {
