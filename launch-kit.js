@@ -75,6 +75,15 @@ const priorityLinks = [
     medium: "buyer_route",
     campaign: "sec_trigger_pilot",
     goal: "Compare SEC trigger routes if the sprint pivots or hybridizes."
+  },
+  {
+    surface: "Security/dev communities",
+    label: "Vercel incident checklist",
+    path: "/vercel-incident-response-checklist.html",
+    source: "community",
+    medium: "incident_resource",
+    campaign: "vercel_incident_checklist",
+    goal: "Share the time-sensitive checklist only where incident-response resources are welcome."
   }
 ];
 
@@ -301,6 +310,20 @@ const submissionTracker = [
     notes: "OpenHunts is actively listing weekly maker/product launches and has a submit path. Use the clean canonical hub URL and existing long listing copy; do not buy sponsorship or fabricate engagement."
   },
   {
+    day: "1",
+    surface: "Security/dev communities",
+    page: "Vercel incident response checklist",
+    path: "/vercel-incident-response-checklist.html",
+    source: "community",
+    medium: "incident_resource",
+    campaign: "vercel_incident_checklist",
+    requirement: "Public URL; page HTTP 200; active thread or community explicitly allows useful incident-response resources",
+    firstMetric: "Checklist page views, copies, shares, or useful replies",
+    copyAsset: "Vercel checklist resource note",
+    status: "Ready after deploy; rule-check required",
+    notes: "Use only after the page is live. Share as an independent browser-local checklist with official source links; do not claim Vercel affiliation, private incident knowledge, or guaranteed remediation."
+  },
+  {
     day: "2",
     surface: "FreeStuff.dev",
     page: "Paid traffic break-even calculator",
@@ -522,6 +545,15 @@ const submissionFieldPacks = [
     categories: "Feedback Friday, startups, landing pages, CRO",
     assetNotes: "No screenshots unless the active thread asks for them.",
     fieldNotes: "Post only in an active feedback-permitted thread and follow its template."
+  },
+  {
+    surface: "Security/dev communities",
+    trackerSurface: "Security/dev communities",
+    title: "Vercel Incident Response Checklist",
+    tagline: "Browser-local checklist for Vercel security bulletin response, secret rotation, activity-log review, and deployment protection.",
+    categories: "Security, DevOps, Incident response, Vercel, SaaS operations",
+    assetNotes: "Use the checklist page URL only after it returns HTTP 200. Screenshot the checklist progress UI if the community asks for an image.",
+    fieldNotes: "Share only in rule-allowed threads or communities asking for incident-response resources. Do not imply Vercel affiliation or private incident details."
   }
 ];
 
@@ -708,6 +740,7 @@ function launchDrafts() {
   const paidTraffic = buildLink(priorityLinks[4]);
   const ecommerce = buildLink(priorityLinks[5]);
   const sec = buildLink(priorityLinks[7]);
+  const vercelChecklist = buildLink(priorityLinks[8]);
 
   return [
     {
@@ -791,6 +824,19 @@ function launchDrafts() {
         "",
         "Positioning: non-investment operational briefs for advisory, accounting, search, IR/comms, and public-company service teams. No investment advice, ratings, or outreach automation."
       ].join("\n")
+    },
+    {
+      channel: "Current incident resource",
+      title: "Vercel checklist resource note",
+      body: [
+        "I put together a free browser-local checklist for teams responding to Vercel's April 2026 security bulletin.",
+        "",
+        `Checklist: ${vercelChecklist}`,
+        "",
+        "It covers environment-variable inventory and rotation, activity-log review, 2FA/team-access checks, recent deployment review, and deployment-protection follow-up. It does not ask for credentials, does not upload secrets, and links to the official Vercel source material.",
+        "",
+        "Independent resource; not affiliated with Vercel. Sharing only if this kind of practical checklist is useful here."
+      ].join("\n")
     }
   ];
 }
@@ -817,7 +863,7 @@ function renderPacket() {
     "",
     renderTrackerMarkdown(),
     "",
-    "## Directory Submission Pack",
+    "## Submission Field Pack",
     "",
     renderFieldPackMarkdown(),
     "",
