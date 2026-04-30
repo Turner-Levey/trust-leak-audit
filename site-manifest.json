@@ -58,6 +58,11 @@
       "description": "Review anonymized trust leak audit examples."
     },
     {
+      "name": "Vercel Incident Checklist",
+      "url": "/vercel-incident-response-checklist.html",
+      "description": "Track Vercel security bulletin response steps."
+    },
+    {
       "name": "SEC Briefs Hub",
       "url": "/sec-trigger-briefs-hub.html",
       "description": "Review public Form 8-K trigger brief sample routes."

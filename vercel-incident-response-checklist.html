@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A free browser-only Vercel security incident checklist for rotating environment variables, checking activity logs, hardening deployment protection, and documenting owner follow-up.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="Vercel Security Incident Response Checklist">
+    <meta property="og:description" content="A source-backed, browser-only checklist for Vercel environment variable rotation, activity-log review, 2FA, and deployment protection.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://trust-leak-audit-static.vercel.app/vercel-incident-response-checklist.html">
+    <meta property="og:site_name" content="Trust Leak Audit">
+    <meta property="og:image" content="https://trust-leak-audit-static.vercel.app/og/vercel-incident-response-checklist.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Vercel incident response checklist social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://trust-leak-audit-static.vercel.app/og/vercel-incident-response-checklist.svg">
+    <meta name="twitter:image:alt" content="Vercel incident response checklist social preview.">
+    <title>Vercel Security Incident Response Checklist</title>
+    <link rel="canonical" href="https://trust-leak-audit-static.vercel.app/vercel-incident-response-checklist.html">
+    <link rel="alternate" href="https://trust-leak-audit-static.vercel.app/llms.txt" type="text/plain" title="LLMs.txt">
+    <link rel="manifest" href="site-manifest.json">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Vercel Security Incident Response Checklist",
+        "description": "A free browser-only checklist for Vercel environment variable rotation, activity-log review, multi-factor authentication, and deployment protection after the April 2026 Vercel security bulletin.",
+        "datePublished": "2026-04-30",
+        "dateModified": "2026-04-30",
+        "author": {
+          "@type": "Organization",
+          "name": "Trust Leak Audit"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Trust Leak Audit"
+        },
+        "mainEntityOfPage": "./vercel-incident-response-checklist.html"
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Was every Vercel customer impacted by the April 2026 security incident?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Vercel's bulletin describes a limited subset of affected customers and says affected customers were notified. This checklist is a general hardening and rotation workflow, not a determination that a specific account was affected."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I delete a Vercel project before rotating secrets?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vercel's bulletin warns that deleting projects or accounts is not sufficient to eliminate risk because compromised secrets may still provide access to production systems. Rotate credentials first, verify replacement deployments, then retire old credentials."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do Vercel environment variable changes affect older deployments?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vercel's environment-variable documentation says changes apply to new deployments, not previous deployments. Redeploy production and relevant previews after rotating credentials."
+            }
+          }
+        ]
+      }
+    </script>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="./">Back to toolkit</a>
+
+      <header class="page-hero">
+        <p class="eyebrow">Current security checklist</p>
+        <h1>Vercel Security Incident Response Checklist</h1>
+        <p class="lede">A free browser-only workflow for founders and small teams responding to the April 2026 Vercel security bulletin: scope projects, rotate environment variables safely, check activity, and harden deployment access.</p>
+        <div class="page-actions">
+          <button class="primary" id="copyVercelChecklist" type="button">Copy Checklist</button>
+          <a class="secondary-link" href="https://vercel.com/kb/bulletin/vercel-april-2026-security-incident">Official bulletin</a>
+          <a class="secondary-link" href="https://vercel.com/docs/environment-variables/rotating-secrets/">Rotation docs</a>
+        </div>
+        <p class="event-status" id="vercelChecklistStatus">Checklist progress: 0 of 18 complete</p>
+      </header>
+
+      <section class="notice-panel">
+        This page is not affiliated with Vercel and does not determine whether any specific account was affected. Use it to organize owner follow-up against the official Vercel bulletin and your own provider dashboards.
+      </section>
+
+      <section class="panel" aria-labelledby="checklist-heading">
+        <p class="eyebrow">No signup checklist</p>
+        <h2 id="checklist-heading">Track the response steps</h2>
+        <table class="benchmark-table checklist-table">
+          <thead>
+            <tr>
+              <th>Done</th>
+              <th>Step</th>
+              <th>Why it matters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" data-item="Save the official Vercel bulletin URL and last-updated date."></td>
+              <td>Save the official Vercel bulletin URL and last-updated date.</td>
+              <td>The bulletin moved to ad hoc updates after April 24, 2026, so decisions should be anchored to the latest official text.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-item="Confirm whether Vercel notified the account owner directly."></td>
+              <td>Confirm whether Vercel notified the account owner directly.</td>
+              <td>Vercel says affected customers were contacted; do not assume impact from third-party commentary alone.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-item="List production and preview projects that use Vercel environment variables."></td>
+              <td>List production and preview projects that use Vercel environment variables.</td>
+              <td>Rotation fails when team-level or preview credentials are forgotten.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-item="Identify environment variables that are not marked Sensitive."></td>
+              <td>Identify environment variables that are not marked Sensitive.</td>
+              <td>The bulletin prioritizes review and rotation of values that were not marked sensitive.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-item="Generate replacement credentials at the upstream provider before invalidating old ones."></td>
+              <td>Generate replacement credentials at the upstream provider before invalidating old ones.</td>
+              <td>Vercel's rotation guidance recommends updating Vercel first so production does not break.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-item="Update Vercel project-level and team-level variables with the new values."></td>
+              <td>Update Vercel project-level and team-level variables with the new values.</td>
+              <td>Team-level variables can affect multiple projects and need a broader redeploy checklist.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-item="Redeploy production after environment variables change."></td>
+              <td>Redeploy production after environment variables change.</td>
+              <td>Vercel docs say environment variable changes apply to new deployments, not previous deployments.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-item="Redeploy relevant preview deployments or retire old previews."></td>
+              <td>Redeploy relevant preview deployments or retire old previews.</td>
+              <td>Old previews can keep using old credentials if they are still reachable and making API calls.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-item="Verify the new deployment works before revoking old credentials."></td>
+              <td>Verify the new deployment works before revoking old credentials.</td>
+              <td>This keeps the rotation sequence from causing avoidable downtime.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-item="Revoke or delete the old credential at the upstream provider."></td>
+              <td>Revoke or delete the old credential at the upstream provider.</td>
+              <td>Rotation is incomplete until the old secret stops working.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-item="Re-add eligible production and preview secrets with the Sensitive option enabled."></td>
+              <td>Re-add eligible production and preview secrets with the Sensitive option enabled.</td>
+              <td>Vercel sensitive environment variables become non-readable after creation.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-item="Enable 2FA with an authenticator app or passkey for the account owner."></td>
+              <td>Enable 2FA with an authenticator app or passkey for the account owner.</td>
+              <td>The bulletin recommends multi-factor authentication as an account-hardening step.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-item="Review Vercel activity logs for suspicious account or environment activity."></td>
+              <td>Review Vercel activity logs for suspicious account or environment activity.</td>
+              <td>Vercel activity logs show chronological team events and can support owner review.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-item="Review recent deployments for unexpected deployment activity."></td>
+              <td>Review recent deployments for unexpected deployment activity.</td>
+              <td>The bulletin recommends investigating recent deployments for anything suspicious.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-item="Set Deployment Protection to Standard at minimum where appropriate."></td>
+              <td>Set Deployment Protection to Standard at minimum where appropriate.</td>
+              <td>Vercel says Standard Protection is available on all plans and protects non-production deployment URLs.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-item="Rotate Deployment Protection tokens if they are configured."></td>
+              <td>Rotate Deployment Protection tokens if they are configured.</td>
+              <td>The bulletin calls out protection-token rotation as a follow-up step.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-item="Document owner, timestamp, old credential status, and redeploy evidence."></td>
+              <td>Document owner, timestamp, old credential status, and redeploy evidence.</td>
+              <td>A response checklist is only useful if future operators can see what was completed.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-item="Schedule a second review for accounts, previews, and team-level variables."></td>
+              <td>Schedule a second review for accounts, previews, and team-level variables.</td>
+              <td>Second-pass review catches forgotten integrations, team-level variables, and previews.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="panel detail-section">
+        <p class="eyebrow">Owner notes</p>
+        <h2>Copyable response record</h2>
+        <textarea id="vercelChecklistOutput" class="snippet-box" spellcheck="false"></textarea>
+      </section>
+
+      <section class="panel detail-section">
+        <p class="eyebrow">Sources</p>
+        <h2>Official references used</h2>
+        <ul>
+          <li><a href="https://vercel.com/kb/bulletin/vercel-april-2026-security-incident">Vercel April 2026 security incident bulletin</a></li>
+          <li><a href="https://vercel.com/docs/environment-variables/rotating-secrets/">Vercel rotating environment variables</a></li>
+          <li><a href="https://vercel.com/docs/environment-variables/sensitive-environment-variables">Vercel sensitive environment variables</a></li>
+          <li><a href="https://vercel.com/docs/two-factor-authentication">Vercel two-factor authentication</a></li>
+          <li><a href="https://vercel.com/docs/activity-log">Vercel activity log</a></li>
+          <li><a href="https://vercel.com/docs/deployment-protection">Vercel deployment protection</a></li>
+        </ul>
+      </section>
+
+      <section class="faq-list detail-section" aria-label="Vercel checklist FAQ">
+        <details>
+          <summary>Is this an official Vercel incident page?</summary>
+          <p>No. This is an independent checklist that points back to Vercel's official bulletin and documentation.</p>
+        </details>
+        <details>
+          <summary>Can this page scan my Vercel account?</summary>
+          <p>No. It runs in the browser, stores only local checkbox progress, and does not ask for credentials or account access.</p>
+        </details>
+        <details>
+          <summary>What is the safest rotation order?</summary>
+          <p>Create the replacement credential, update Vercel, redeploy and verify, then revoke the old credential at the upstream provider.</p>
+        </details>
+      </section>
+
+      <section class="tool-links" aria-label="Tool pages">
+        <a href="./">Toolkit Home</a>
+        <a href="launch-notes.html">Launch Notes</a>
+        <a href="trust-score.html">Landing Page Trust Score</a>
+        <a href="roas-calculator.html">ROAS Calculator</a>
+        <a href="paid-traffic-break-even-calculator.html">Paid Traffic Break-Even</a>
+        <a href="ecommerce-conversion-trust-checklist.html">Ecommerce Trust Checklist</a>
+        <a href="sec-trigger-briefs-hub.html">SEC Briefs Hub</a>
+      </section>
+    </main>
+    <script src="event-log.js"></script>
+    <script src="share-tools.js"></script>
+    <script>
+      (() => {
+        const storageKey = "trustLeakVercelIncidentChecklist";
+        const boxes = [...document.querySelectorAll("[data-item]")];
+        const status = document.getElementById("vercelChecklistStatus");
+        const output = document.getElementById("vercelChecklistOutput");
+        const copyButton = document.getElementById("copyVercelChecklist");
+
+        const log = (name, data = {}) => {
+          if (window.trustLeakLogEvent) {
+            window.trustLeakLogEvent(name, data);
+          }
+        };
+
+        const load = () => {
+          try {
+            return JSON.parse(localStorage.getItem(storageKey) || "{}");
+          } catch {
+            return {};
+          }
+        };
+
+        const save = (state) => {
+          localStorage.setItem(storageKey, JSON.stringify(state));
+        };
+
+        const render = () => {
+          const checked = boxes.filter((box) => box.checked);
+          status.textContent = `Checklist progress: ${checked.length} of ${boxes.length} complete`;
+          const lines = [
+            "# Vercel security incident response checklist",
+            "",
+            `Progress: ${checked.length}/${boxes.length}`,
+            `Generated: ${new Date().toISOString()}`,
+            "",
+            "## Completed",
+            ...checked.map((box) => `- [x] ${box.dataset.item}`),
+            "",
+            "## Remaining",
+            ...boxes.filter((box) => !box.checked).map((box) => `- [ ] ${box.dataset.item}`),
+            "",
+            "Official bulletin: https://vercel.com/kb/bulletin/vercel-april-2026-security-incident"
+          ];
+          output.value = lines.join("\n");
+        };
+
+        const state = load();
+        boxes.forEach((box, index) => {
+          box.checked = Boolean(state[index]);
+          box.addEventListener("change", () => {
+            const nextState = load();
+            nextState[index] = box.checked;
+            save(nextState);
+            render();
+            log("vercel_incident_checklist_item_toggled", {
+              itemIndex: index,
+              completed: box.checked,
+              completedCount: boxes.filter((entry) => entry.checked).length
+            });
+          });
+        });
+
+        copyButton.addEventListener("click", async () => {
+          render();
+          await navigator.clipboard.writeText(output.value);
+          log("vercel_incident_checklist_copied", {
+            completedCount: boxes.filter((entry) => entry.checked).length
+          });
+          status.textContent = "Checklist copied to clipboard.";
+          window.setTimeout(render, 1800);
+        });
+
+        render();
+        log("vercel_incident_checklist_started", { itemCount: boxes.length });
+      })();
+    </script>
+  </body>
+</html>

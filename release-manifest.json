@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-30T04:22:00.653Z",
+  "generatedAt": "2026-04-30T05:24:02.083Z",
   "sourceDir": "/Users/turnerlevey/untitled folder/venture-lab/site",
   "releaseDir": "/Users/turnerlevey/untitled folder/venture-lab/releases/trust-leak-audit-static",
   "siteUrl": "https://trust-leak-audit-static.vercel.app",
@@ -20,7 +20,8 @@
     "sec-filing-trigger-briefs.html",
     "sec-leadership-change-briefs.html",
     "sec-trigger-briefs-hub.html",
-    "trust-score.html"
+    "trust-score.html",
+    "vercel-incident-response-checklist.html"
   ],
   "noindexPages": [
     "404.html",
@@ -48,7 +49,8 @@
     "sec-filing-trigger-briefs.html",
     "sec-leadership-change-briefs.html",
     "sec-trigger-briefs-hub.html",
-    "trust-score.html"
+    "trust-score.html",
+    "vercel-incident-response-checklist.html"
   ],
   "ogAssets": [
     "og/agency-margin-calculator.svg",
@@ -66,7 +68,8 @@
     "og/sec-leadership-change-briefs.svg",
     "og/sec-trigger-briefs-hub.svg",
     "og/trust-leak-toolkit.svg",
-    "og/trust-score.svg"
+    "og/trust-score.svg",
+    "og/vercel-incident-response-checklist.svg"
   ],
   "hostConfigFiles": [
     "_headers",
@@ -78,24 +81,24 @@
   ],
   "indexNow": {
     "keyFile": "4f2e8d9c6b7a4f3a9e1c0d8b6a2f4c1e.txt",
-    "indexableUrls": 16
+    "indexableUrls": 17
   },
   "trafficBeacon": {
     "endpoint": "/api/track",
     "handler": "api/track.js"
   },
   "eventLogCoverage": {
-    "covered": 16,
-    "indexable": 16
+    "covered": 17,
+    "indexable": 17
   },
   "localLinkIssues": [],
   "shareToolCoverage": {
-    "covered": 16,
-    "indexable": 16
+    "covered": 17,
+    "indexable": 17
   },
   "vercelAnalyticsCoverage": {
-    "covered": 16,
-    "indexable": 16,
+    "covered": 17,
+    "indexable": 17,
     "scriptSrc": "/_vercel/insights/script.js"
   },
   "nextCommand": "SITE_URL=https://your-domain.example node venture-lab/site/build-static-release.mjs"

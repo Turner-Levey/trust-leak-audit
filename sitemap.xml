@@ -64,4 +64,8 @@
     <loc>https://trust-leak-audit-static.vercel.app/trust-score.html</loc>
     <lastmod>2026-04-30</lastmod>
   </url>
+  <url>
+    <loc>https://trust-leak-audit-static.vercel.app/vercel-incident-response-checklist.html</loc>
+    <lastmod>2026-04-30</lastmod>
+  </url>
 </urlset>
