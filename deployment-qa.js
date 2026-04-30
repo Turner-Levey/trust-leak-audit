@@ -228,8 +228,10 @@ async function checkHtmlPage(baseUrl, page, options) {
     const scriptSources = [...doc.querySelectorAll("script[src]")].map(script => script.getAttribute("src"));
     const hasEventLog = scriptSources.includes("event-log.js");
     const hasShareTools = scriptSources.includes("share-tools.js");
+    const hasVercelAnalytics = response.text.includes("window.va") && scriptSources.includes("/_vercel/insights/script.js");
     addResult("Events", `${page.label} event logger`, hasEventLog ? "pass" : "fail", hasEventLog ? "event-log.js is present." : "Missing event-log.js.");
     addResult("Sharing", `${page.label} share hooks`, hasShareTools ? "pass" : "fail", hasShareTools ? "share-tools.js is present." : "Missing share-tools.js.");
+    addResult("Analytics", `${page.label} Vercel Web Analytics`, hasVercelAnalytics ? "pass" : "fail", hasVercelAnalytics ? "Vercel Web Analytics script is present." : "Missing Vercel Web Analytics script.");
   } else {
     const excluded = !options.sitemapUrls.includes(expectedUrl);
     addResult("Sitemap", `${page.label} excluded`, excluded ? "pass" : "fail", excluded ? "Not listed in sitemap." : `${expectedUrl} should not be in sitemap.`);
