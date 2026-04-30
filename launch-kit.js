@@ -177,17 +177,17 @@ const submissionTracker = [
   {
     day: "2",
     surface: "Tools Directory Online",
-    page: "Paid traffic break-even calculator",
-    path: "/paid-traffic-break-even-calculator.html",
+    page: "Toolkit hub",
+    path: "/",
     source: "toolsdirectoryonline",
     medium: "directory",
-    campaign: "calculator_listing",
+    campaign: "free_tool_launch",
     disableUtm: true,
     requirement: "Public URL; no account; free listing review",
-    firstMetric: "Directory referral visits and calculator starts",
+    firstMetric: "Directory referral visits and tool starts",
     copyAsset: "Free tool listing",
-    status: "Ready after deploy; clean URL preferred",
-    notes: "Current submit page says free listing, no hidden fees, no account required, and accepts SaaS, marketing, ecommerce, productivity, analytics, and developer software categories."
+    status: "Ready now; clean homepage URL only",
+    notes: "Current submit page says free listing, no hidden fees, no account required, and that it uses the URL to create the listing. Submit the canonical hub URL with Marketing and Free when fields are present."
   },
   {
     day: "3",
@@ -459,11 +459,11 @@ const submissionFieldPacks = [
   {
     surface: "Tools Directory Online",
     trackerSurface: "Tools Directory Online",
-    title: "Paid Traffic Break-Even Calculator by Trust Leak Audit",
-    tagline: "Free calculator for break-even ROAS, CPA, CPL, and conversion thresholds before scaling ads.",
-    categories: "Marketing, Ecommerce, Analytics, SaaS, Productivity",
-    assetNotes: "Lead with the paid-traffic calculator page and screenshot the calculator plus benchmark table.",
-    fieldNotes: "Clean URL preferred. Use the individual calculator page because it matches commercial-intent directory traffic."
+    title: "Trust Leak Audit",
+    tagline: "Free browser-only toolkit for landing-page trust scoring, paid traffic math, ecommerce trust checks, SaaS payback, local lead value, and sample audit reports.",
+    categories: "Marketing; Pricing: Free",
+    assetNotes: "No screenshot required in the current source check. Use the clean homepage URL.",
+    fieldNotes: "No-account path. Submit the canonical hub URL; if category and pricing fields appear, use Marketing and Free."
   },
   {
     surface: "Launching Next",
@@ -557,12 +557,42 @@ const submissionFieldPacks = [
   }
 ];
 
+const noAccountSubmissions = [
+  {
+    surface: "Tools Directory Online",
+    formUrl: "https://toolsdirectoryonline.com/submit",
+    toolPath: "/",
+    fields: [
+      "Website URL: canonical homepage",
+      "Short description: Free browser-only toolkit for landing-page trust scoring, paid traffic break-even math, ecommerce trust checks, SaaS payback, local lead value, and sample audit reports.",
+      "Category: Marketing",
+      "Pricing: Free"
+    ],
+    guardrail: "Use only the free/manual listing path. Do not buy promotion or claim approval before review.",
+    evidence: "Submitted/blocked status, review message, listing URL if approved, first referrer or beacon evidence."
+  },
+  {
+    surface: "Zearches",
+    formUrl: "https://zearches.com/",
+    toolPath: "/",
+    fields: [
+      "Website / Blog URL: canonical homepage",
+      "Title: Trust Leak Audit",
+      "Short description: Free browser-only toolkit for landing-page trust scoring, paid traffic math, ecommerce trust checks, SaaS payback, local lead value, and sample audit reports.",
+      "Directory: SEO, Marketing & Growth"
+    ],
+    guardrail: "Use a clean URL only. No UTM, referral, redirect, affiliate, or duplicate submission.",
+    evidence: "Submitted/blocked status, category URL, listing URL if accepted, first referrer or beacon evidence."
+  }
+];
+
 const siteUrlInput = document.querySelector("#siteUrlInput");
 const launchStatus = document.querySelector("#launchStatus");
 const launchLinkRows = document.querySelector("#launchLinkRows");
 const launchCopyGrid = document.querySelector("#launchCopyGrid");
 const launchTrackerRows = document.querySelector("#launchTrackerRows");
 const fieldPackRows = document.querySelector("#fieldPackRows");
+const noAccountRows = document.querySelector("#noAccountRows");
 const copyAllLinks = document.querySelector("#copyAllLinks");
 const downloadLaunchPacket = document.querySelector("#downloadLaunchPacket");
 const copyLaunchTracker = document.querySelector("#copyLaunchTracker");
@@ -630,6 +660,14 @@ fieldPackRows.addEventListener("click", async event => {
   const pack = submissionFieldPacks[Number(button.dataset.copyFieldPack)];
   await copyText(renderFieldPack(pack), button, "Copied");
   track("launch_kit_field_pack_copied", { surface: pack.surface });
+});
+
+noAccountRows.addEventListener("click", async event => {
+  const button = event.target.closest("button[data-copy-no-account]");
+  if (!button) return;
+  const item = noAccountSubmissions[Number(button.dataset.copyNoAccount)];
+  await copyText(renderNoAccountSubmission(item), button, "Copied");
+  track("launch_kit_no_account_pack_copied", { surface: item.surface });
 });
 
 launchTrackerRows.addEventListener("change", event => {
@@ -726,6 +764,20 @@ function render() {
         <td>${escapeHtml(pack.categories)}</td>
         <td>${escapeHtml(pack.assetNotes)}</td>
         <td><button class="secondary compact-button" type="button" data-copy-field-pack="${index}">Copy</button></td>
+      </tr>
+    `;
+  }).join("");
+
+  noAccountRows.innerHTML = noAccountSubmissions.map((item, index) => {
+    const toolUrl = buildCleanToolUrl(item.toolPath);
+    return `
+      <tr>
+        <td>${escapeHtml(item.surface)}</td>
+        <td><code>${escapeHtml(item.formUrl)}</code><small>${escapeHtml(item.guardrail)}</small></td>
+        <td><code>${escapeHtml(toolUrl)}</code></td>
+        <td>${escapeHtml(item.fields.join(" "))}</td>
+        <td>${escapeHtml(item.evidence)}</td>
+        <td><button class="secondary compact-button" type="button" data-copy-no-account="${index}">Copy</button></td>
       </tr>
     `;
   }).join("");
@@ -867,6 +919,10 @@ function renderPacket() {
     "",
     renderFieldPackMarkdown(),
     "",
+    "## No-account Direct Submissions",
+    "",
+    renderNoAccountMarkdown(),
+    "",
     "## Guardrails",
     "",
     "- Use only a real public URL and user-owned accounts.",
@@ -949,6 +1005,22 @@ function renderFieldPack(pack) {
   ].join("\n");
 }
 
+function renderNoAccountMarkdown() {
+  return noAccountSubmissions.map(item => renderNoAccountSubmission(item)).join("\n\n---\n\n");
+}
+
+function renderNoAccountSubmission(item) {
+  return [
+    `Surface: ${item.surface}`,
+    `Form URL: ${item.formUrl}`,
+    `Clean tool URL: ${buildCleanToolUrl(item.toolPath)}`,
+    "Fields:",
+    ...item.fields.map(field => `- ${field}`),
+    `Guardrail: ${item.guardrail}`,
+    `Evidence to record: ${item.evidence}`
+  ].join("\n");
+}
+
 function findSubmissionRow(surface) {
   return submissionTracker.find(item => item.surface === surface);
 }
@@ -993,6 +1065,14 @@ function buildLink(item) {
     url.searchParams.set("utm_medium", item.medium);
     url.searchParams.set("utm_campaign", item.campaign);
   }
+  return url.toString();
+}
+
+function buildCleanToolUrl(path) {
+  const baseUrl = normalizeBaseUrl(siteUrlInput.value) || "https://example.com";
+  const url = new URL(path === "/" ? "./" : path.replace(/^\//, ""), `${baseUrl}/`);
+  url.search = "";
+  url.hash = "";
   return url.toString();
 }
 

@@ -498,7 +498,8 @@ textarea {
 
 .launch-link-table code,
 .launch-tracker-table code,
-.launch-field-table code {
+.launch-field-table code,
+.launch-no-account-table code {
   display: block;
   max-width: 420px;
   white-space: normal;
@@ -513,7 +514,12 @@ textarea {
   min-width: 1560px;
 }
 
-.launch-field-table small {
+.launch-no-account-table {
+  min-width: 1440px;
+}
+
+.launch-field-table small,
+.launch-no-account-table small {
   display: block;
   margin-top: 8px;
   color: var(--muted);
