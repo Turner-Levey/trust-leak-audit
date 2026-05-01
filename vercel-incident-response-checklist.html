@@ -244,6 +244,85 @@
         <textarea id="vercelChecklistOutput" class="snippet-box" spellcheck="false"></textarea>
       </section>
 
+      <section class="panel detail-section" aria-labelledby="rotation-planner-heading">
+        <p class="eyebrow">Rotation planner</p>
+        <h2 id="rotation-planner-heading">Build a rotation queue</h2>
+        <p class="lede compact-lede">Track credential labels, owners, redeploy targets, and status. Do not paste credential values into this page.</p>
+        <table class="benchmark-table rotation-table">
+          <thead>
+            <tr>
+              <th>Credential label</th>
+              <th>Owner</th>
+              <th>Redeploy target</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" data-rotation-field="credential" placeholder="STRIPE_SECRET_KEY"></td>
+              <td><input type="text" data-rotation-field="owner" placeholder="Ops owner"></td>
+              <td><input type="text" data-rotation-field="target" placeholder="Production + previews"></td>
+              <td>
+                <select data-rotation-field="status">
+                  <option value="Needs owner">Needs owner</option>
+                  <option value="New credential created">New credential created</option>
+                  <option value="Vercel updated">Vercel updated</option>
+                  <option value="Redeployed">Redeployed</option>
+                  <option value="Old credential revoked">Old credential revoked</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="text" data-rotation-field="credential" placeholder="SUPABASE_SERVICE_ROLE"></td>
+              <td><input type="text" data-rotation-field="owner" placeholder="Data owner"></td>
+              <td><input type="text" data-rotation-field="target" placeholder="API + workers"></td>
+              <td>
+                <select data-rotation-field="status">
+                  <option value="Needs owner">Needs owner</option>
+                  <option value="New credential created">New credential created</option>
+                  <option value="Vercel updated">Vercel updated</option>
+                  <option value="Redeployed">Redeployed</option>
+                  <option value="Old credential revoked">Old credential revoked</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="text" data-rotation-field="credential" placeholder="RESEND_API_KEY"></td>
+              <td><input type="text" data-rotation-field="owner" placeholder="Email owner"></td>
+              <td><input type="text" data-rotation-field="target" placeholder="Transactional email"></td>
+              <td>
+                <select data-rotation-field="status">
+                  <option value="Needs owner">Needs owner</option>
+                  <option value="New credential created">New credential created</option>
+                  <option value="Vercel updated">Vercel updated</option>
+                  <option value="Redeployed">Redeployed</option>
+                  <option value="Old credential revoked">Old credential revoked</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td><input type="text" data-rotation-field="credential" placeholder="OPENAI_API_KEY"></td>
+              <td><input type="text" data-rotation-field="owner" placeholder="App owner"></td>
+              <td><input type="text" data-rotation-field="target" placeholder="Serverless functions"></td>
+              <td>
+                <select data-rotation-field="status">
+                  <option value="Needs owner">Needs owner</option>
+                  <option value="New credential created">New credential created</option>
+                  <option value="Vercel updated">Vercel updated</option>
+                  <option value="Redeployed">Redeployed</option>
+                  <option value="Old credential revoked">Old credential revoked</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="page-actions planner-actions">
+          <button class="primary" id="copyVercelRotationPlan" type="button">Copy Rotation Plan</button>
+          <button class="secondary" id="downloadVercelRotationCsv" type="button">Download CSV</button>
+        </div>
+        <textarea id="vercelRotationOutput" class="snippet-box" spellcheck="false"></textarea>
+      </section>
+
       <section class="panel detail-section">
         <p class="eyebrow">Sources</p>
         <h2>Official references used</h2>
@@ -287,10 +366,15 @@
     <script>
       (() => {
         const storageKey = "trustLeakVercelIncidentChecklist";
+        const rotationStorageKey = "trustLeakVercelRotationPlan";
         const boxes = [...document.querySelectorAll("[data-item]")];
         const status = document.getElementById("vercelChecklistStatus");
         const output = document.getElementById("vercelChecklistOutput");
         const copyButton = document.getElementById("copyVercelChecklist");
+        const rotationRows = [...document.querySelectorAll(".rotation-table tbody tr")];
+        const rotationOutput = document.getElementById("vercelRotationOutput");
+        const copyRotationButton = document.getElementById("copyVercelRotationPlan");
+        const downloadRotationButton = document.getElementById("downloadVercelRotationCsv");
 
         const log = (name, data = {}) => {
           if (window.trustLeakLogEvent) {
@@ -306,8 +390,89 @@
           }
         };
 
+        const loadRotation = () => {
+          try {
+            return JSON.parse(localStorage.getItem(rotationStorageKey) || "[]");
+          } catch {
+            return [];
+          }
+        };
+
         const save = (state) => {
           localStorage.setItem(storageKey, JSON.stringify(state));
+        };
+
+        const saveRotation = (rows) => {
+          localStorage.setItem(rotationStorageKey, JSON.stringify(rows));
+        };
+
+        const readRotationRows = () => rotationRows.map((row) => {
+          const get = (field) => row.querySelector(`[data-rotation-field="${field}"]`).value.trim();
+          return {
+            credential: get("credential"),
+            owner: get("owner"),
+            target: get("target"),
+            status: get("status")
+          };
+        });
+
+        const activeRotationRows = () => readRotationRows().filter((row) => (
+          row.credential || row.owner || row.target || row.status !== "Needs owner"
+        ));
+
+        const csvEscape = (value) => `"${String(value).replaceAll('"', '""')}"`;
+
+        const rotationCsv = () => [
+          ["Credential label", "Owner", "Redeploy target", "Status"].map(csvEscape).join(","),
+          ...activeRotationRows().map((row) => [
+            row.credential,
+            row.owner,
+            row.target,
+            row.status
+          ].map(csvEscape).join(","))
+        ].join("\n");
+
+        const renderRotation = () => {
+          const rows = activeRotationRows();
+          const lines = [
+            "# Vercel credential rotation queue",
+            "",
+            `Generated: ${new Date().toISOString()}`,
+            "",
+            "Track names and ownership only. Do not store credential values in this record.",
+            "",
+            "| Credential label | Owner | Redeploy target | Status |",
+            "| --- | --- | --- | --- |",
+            ...(rows.length ? rows : [{ credential: "", owner: "", target: "", status: "Needs owner" }]).map((row) => (
+              `| ${row.credential || "TBD"} | ${row.owner || "TBD"} | ${row.target || "TBD"} | ${row.status} |`
+            )),
+            "",
+            "Rotation order: create replacement credential, update Vercel, redeploy and verify, then revoke the old credential upstream."
+          ];
+          rotationOutput.value = lines.join("\n");
+        };
+
+        const hydrateRotation = () => {
+          const rows = loadRotation();
+          rotationRows.forEach((row, index) => {
+            const saved = rows[index] || {};
+            ["credential", "owner", "target", "status"].forEach((field) => {
+              const element = row.querySelector(`[data-rotation-field="${field}"]`);
+              if (saved[field]) {
+                element.value = saved[field];
+              }
+              element.addEventListener("input", () => {
+                saveRotation(readRotationRows());
+                renderRotation();
+                log("vercel_rotation_plan_updated", { rowCount: activeRotationRows().length });
+              });
+              element.addEventListener("change", () => {
+                saveRotation(readRotationRows());
+                renderRotation();
+                log("vercel_rotation_plan_updated", { rowCount: activeRotationRows().length });
+              });
+            });
+          });
         };
 
         const render = () => {
@@ -358,6 +523,29 @@
           window.setTimeout(render, 1800);
         });
 
+        copyRotationButton.addEventListener("click", async () => {
+          renderRotation();
+          await navigator.clipboard.writeText(rotationOutput.value);
+          log("vercel_rotation_plan_copied", { rowCount: activeRotationRows().length });
+          status.textContent = "Rotation plan copied to clipboard.";
+          window.setTimeout(render, 1800);
+        });
+
+        downloadRotationButton.addEventListener("click", () => {
+          const blob = new Blob([rotationCsv()], { type: "text/csv" });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = "vercel-credential-rotation-queue.csv";
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          URL.revokeObjectURL(url);
+          log("vercel_rotation_csv_downloaded", { rowCount: activeRotationRows().length });
+        });
+
+        hydrateRotation();
+        renderRotation();
         render();
         log("vercel_incident_checklist_started", { itemCount: boxes.length });
       })();

@@ -209,6 +209,16 @@ input[type="number"] {
   color: var(--ink);
 }
 
+input[type="text"] {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfdfb;
+  color: var(--ink);
+}
+
 input[type="url"] {
   width: 100%;
   min-width: 0;
@@ -781,6 +791,20 @@ textarea {
   min-height: 118px;
   margin-top: 8px;
   font-size: 0.88rem;
+}
+
+.compact-lede {
+  max-width: 760px;
+  margin-bottom: 14px;
+}
+
+.planner-actions {
+  margin-top: 14px;
+}
+
+.rotation-table input,
+.rotation-table select {
+  min-width: 180px;
 }
 
 .benchmark-table {
