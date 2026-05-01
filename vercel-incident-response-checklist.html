@@ -31,7 +31,7 @@
         "headline": "Vercel Security Incident Response Checklist",
         "description": "A free browser-only checklist for Vercel environment variable rotation, activity-log review, multi-factor authentication, and deployment protection after the April 2026 Vercel security bulletin.",
         "datePublished": "2026-04-30",
-        "dateModified": "2026-04-30",
+        "dateModified": "2026-05-01",
         "author": {
           "@type": "Organization",
           "name": "Trust Leak Audit"
@@ -98,6 +98,38 @@
 
       <section class="notice-panel">
         This page is not affiliated with Vercel and does not determine whether any specific account was affected. Use it to organize owner follow-up against the official Vercel bulletin and your own provider dashboards.
+      </section>
+
+      <section class="panel detail-section">
+        <p class="eyebrow">Official bulletin snapshot</p>
+        <h2>What changed in the latest Vercel update</h2>
+        <p>Last reviewed here on May 1, 2026. Vercel's official bulletin was last updated on April 24, 2026 and moved from scheduled updates to ad hoc security bulletin updates.</p>
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>Official point</th>
+              <th>Operator action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Vercel says affected customers were notified, and later review found a small number of additional affected accounts plus separate account compromises not attributed to the April incident.</td>
+              <td>Check owner inboxes and account notices first, but still review activity and deployments because separate account compromise can look similar in operations.</td>
+            </tr>
+            <tr>
+              <td>Vercel says the incident originated with a compromised third-party AI tool and a Google Workspace OAuth app path.</td>
+              <td>Ask Google Workspace administrators to check the published OAuth app IOC and review connected third-party apps for unexpected access.</td>
+            </tr>
+            <tr>
+              <td>Vercel says its security team confirmed with GitHub, Microsoft, npm, and Socket that Vercel-published npm packages were not compromised.</td>
+              <td>Prioritize credential rotation, activity review, and deployment review before spending time on broad package rollback work.</td>
+            </tr>
+            <tr>
+              <td>Vercel's current recommendations still emphasize MFA, rotating non-sensitive environment variables, using Sensitive Environment Variables, reviewing activity logs, checking recent deployments, and setting Deployment Protection.</td>
+              <td>Work the checklist below in that order, then document owner, timestamp, redeploy evidence, and old credential revocation status.</td>
+            </tr>
+          </tbody>
+        </table>
       </section>
 
       <section class="panel" aria-labelledby="checklist-heading">
@@ -292,6 +324,8 @@
             "",
             "## Remaining",
             ...boxes.filter((box) => !box.checked).map((box) => `- [ ] ${box.dataset.item}`),
+            "",
+            "Reviewed against the official bulletin on 2026-05-01. Official bulletin last updated: 2026-04-24.",
             "",
             "Official bulletin: https://vercel.com/kb/bulletin/vercel-april-2026-security-incident"
           ];
