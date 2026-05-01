@@ -1,6 +1,6 @@
 Trust Leak Audit Static Release
 
-Generated: 2026-04-30T19:38:39.817Z
+Generated: 2026-05-01T01:46:43.518Z
 Source: /Users/turnerlevey/untitled folder/venture-lab/site
 Release: /Users/turnerlevey/untitled folder/venture-lab/releases/trust-leak-audit-static
 Site URL: https://trust-leak-audit-static.vercel.app

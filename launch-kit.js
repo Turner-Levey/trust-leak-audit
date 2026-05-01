@@ -190,6 +190,36 @@ const submissionTracker = [
     notes: "Current submit page says free listing, no hidden fees, no account required, and that it uses the URL to create the listing. Submit the canonical hub URL with Marketing and Free when fields are present."
   },
   {
+    day: "2",
+    surface: "NoSignupTools",
+    page: "Toolkit hub",
+    path: "/",
+    source: "nosignuptools",
+    medium: "no_signup_directory",
+    campaign: "free_tool_launch",
+    disableUtm: true,
+    requirement: "Public URL; browser form; no signup required; optional screenshot/icon fields skipped unless available",
+    firstMetric: "Review acceptance, listing URL, referral visits, or no-signup directory clicks",
+    copyAsset: "No-signup CRO listing",
+    status: "Ready from stable browser; clean URL only",
+    notes: "Use the sharper no-signup CRO and acquisition-math preflight angle. Do not upload unverified assets or select tags that have not been checked on the live site."
+  },
+  {
+    day: "2",
+    surface: "FreeNoSignup",
+    page: "Toolkit hub",
+    path: "/",
+    source: "freenosignup",
+    medium: "no_signup_directory",
+    campaign: "free_tool_launch",
+    disableUtm: true,
+    requirement: "Public URL; embedded form; no account; no submitter identity invented",
+    firstMetric: "Review status, listing URL if approved, referral visits, or first beacon referrer",
+    copyAsset: "No-signup CRO listing",
+    status: "Ready from stable browser; clean URL only",
+    notes: "Use only the tool/product fields. If a contact identity is required, mark blocked rather than fabricating a name or email."
+  },
+  {
     day: "3",
     surface: "ToolDirs",
     page: "Toolkit hub",
@@ -466,6 +496,24 @@ const submissionFieldPacks = [
     fieldNotes: "No-account path. Submit the canonical hub URL; if category and pricing fields appear, use Marketing and Free."
   },
   {
+    surface: "NoSignupTools",
+    trackerSurface: "NoSignupTools",
+    title: "Trust Leak Audit",
+    tagline: "Free no-signup CRO toolkit for scoring landing-page trust gaps and running acquisition math before buying more traffic.",
+    categories: "Productivity, Business, Marketing, CRO, Startup tools, Ecommerce, or closest available no-signup category",
+    assetNotes: "Use no upload if optional. If SVG assets are accepted, use og/trust-leak-toolkit.svg; otherwise leave screenshots blank until a real browser capture exists.",
+    fieldNotes: "No-signup directory. Use clean canonical homepage URL and avoid unverified tags such as mobile-friendly unless checked in the same browser session."
+  },
+  {
+    surface: "FreeNoSignup",
+    trackerSurface: "FreeNoSignup",
+    title: "Trust Leak Audit",
+    tagline: "Free no-signup browser toolkit for scoring landing-page trust gaps and checking paid-traffic math.",
+    categories: "Productivity, Business, Marketing, Development, Web tools, or closest available no-signup category",
+    assetNotes: "Embedded form path; do not invent submitter identity. Use plain tool copy and canonical URL only.",
+    fieldNotes: "No account path. If the form requires contact details, stop at draft/blocked status rather than transmitting personal data."
+  },
+  {
     surface: "Launching Next",
     trackerSurface: "Launching Next",
     title: "Trust Leak Audit",
@@ -583,6 +631,33 @@ const noAccountSubmissions = [
     ],
     guardrail: "Use a clean URL only. No UTM, referral, redirect, affiliate, or duplicate submission.",
     evidence: "Submitted/blocked status, category URL, listing URL if accepted, first referrer or beacon evidence."
+  },
+  {
+    surface: "NoSignupTools",
+    formUrl: "https://nosignuptools.com/submit",
+    toolPath: "/",
+    fields: [
+      "Tool name: Trust Leak Audit",
+      "URL: canonical homepage",
+      "Category: Productivity, Business, Marketing, or closest no-signup tool category",
+      "Short description: Free no-signup CRO toolkit for scoring landing-page trust gaps and running acquisition math before buying more traffic.",
+      "Detailed description: Trust Leak Audit helps founders, agencies, ecommerce operators, SaaS teams, and local-service marketers check page-level trust gaps before buying more traffic. It includes a landing-page trust score, paid traffic break-even math, ROAS, SaaS payback, LTV:CAC, lead funnel, local lead value, agency margin, ecommerce trust checks, sample audit reports, launch notes, and public-data brief examples. It runs without signup, payment, uploads, or customer-data collection."
+    ],
+    guardrail: "Use only verified no-signup/free fields. Do not upload optional assets or select tags unless the live page supports them.",
+    evidence: "Submitted/blocked status, review message, listing URL if approved, first referrer or beacon evidence."
+  },
+  {
+    surface: "FreeNoSignup",
+    formUrl: "https://freenosignup.com/submit/",
+    toolPath: "/",
+    fields: [
+      "Tool name: Trust Leak Audit",
+      "URL: canonical homepage",
+      "Category: Productivity, Business, Marketing, or closest available category",
+      "Description: Free no-signup browser toolkit for scoring landing-page trust gaps and running acquisition math before buying more traffic. Includes trust score, ROAS, paid traffic break-even, SaaS payback, ecommerce trust checks, local-service lead value, and sample audit reports."
+    ],
+    guardrail: "Use the embedded form manually. If submitter contact details are required, mark blocked rather than inventing or transmitting personal data.",
+    evidence: "Submitted/blocked status, form response or review message, listing URL if approved, first referrer or beacon evidence."
   }
 ];
 
