@@ -220,6 +220,21 @@ const submissionTracker = [
     notes: "Use only the tool/product fields. If a contact identity is required, mark blocked rather than fabricating a name or email."
   },
   {
+    day: "2",
+    surface: "No-Login Tools",
+    page: "Toolkit hub",
+    path: "/",
+    source: "nologintools",
+    medium: "no_login_directory",
+    campaign: "free_tool_launch",
+    disableUtm: true,
+    requirement: "Public URL; submit path visible; exact fields verified in stable browser before sending",
+    firstMetric: "Manual review status, listing URL if approved, referral visits, or first beacon referrer",
+    copyAsset: "No-login CRO listing",
+    status: "Ready from stable browser; clean URL only",
+    notes: "No-Login Tools lists manually verified no-login tools and exposes a Submit path. Use Productivity first; do not claim no trackers because the live site uses sanitized same-origin beacons."
+  },
+  {
     day: "3",
     surface: "ToolDirs",
     page: "Toolkit hub",
@@ -514,6 +529,15 @@ const submissionFieldPacks = [
     fieldNotes: "No account path. If the form requires contact details, stop at draft/blocked status rather than transmitting personal data."
   },
   {
+    surface: "No-Login Tools",
+    trackerSurface: "No-Login Tools",
+    title: "Trust Leak Audit",
+    tagline: "Free no-login CRO toolkit for scoring landing-page trust gaps and acquisition math.",
+    categories: "Productivity first; Finance, Data, or Other only if the form lacks a marketing/business option",
+    assetNotes: "Use clean canonical homepage URL. If a no-login task field appears, use: score a landing page and calculate paid-traffic break-even without creating an account.",
+    fieldNotes: "Manual review path. Do not claim no trackers; use no signup, no payment, no uploads, browser-first operation, and no customer-data upload."
+  },
+  {
     surface: "Launching Next",
     trackerSurface: "Launching Next",
     title: "Trust Leak Audit",
@@ -658,6 +682,20 @@ const noAccountSubmissions = [
     ],
     guardrail: "Use the embedded form manually. If submitter contact details are required, mark blocked rather than inventing or transmitting personal data.",
     evidence: "Submitted/blocked status, form response or review message, listing URL if approved, first referrer or beacon evidence."
+  },
+  {
+    surface: "No-Login Tools",
+    formUrl: "https://nologin.tools/submit",
+    toolPath: "/",
+    fields: [
+      "Tool name: Trust Leak Audit",
+      "URL: canonical homepage",
+      "Category: Productivity first; Finance, Data, or Other only if required by the form",
+      "No-login task: Score a landing page and calculate paid-traffic break-even without creating an account",
+      "Description: Free no-login CRO and marketing economics toolkit for scoring landing-page trust gaps before buying more traffic. Includes trust score, ROAS, paid traffic break-even, SaaS payback, ecommerce trust checks, local-service lead value, agency margin math, and sample audit reports."
+    ],
+    guardrail: "Use a stable browser to verify fields. Do not claim no trackers or submit invented contact details; mark blocked if identity/email is mandatory.",
+    evidence: "Submitted/blocked status, manual review response, listing URL if approved, first referrer or beacon evidence."
   }
 ];
 
