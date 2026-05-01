@@ -198,11 +198,11 @@ const submissionTracker = [
     medium: "no_signup_directory",
     campaign: "free_tool_launch",
     disableUtm: true,
-    requirement: "Public URL; browser form; no signup required; optional screenshot/icon fields skipped unless available",
+    requirement: "Public URL; browser form; no signup required; icon plus screenshot uploads required",
     firstMetric: "Review acceptance, listing URL, referral visits, or no-signup directory clicks",
     copyAsset: "No-signup CRO listing",
     status: "Ready from stable browser; clean URL only",
-    notes: "Use the sharper no-signup CRO and acquisition-math preflight angle. Do not upload unverified assets or select tags that have not been checked on the live site."
+    notes: "Use the sharper no-signup CRO and acquisition-math preflight angle. Upload the validated directory icon PNG plus real homepage screenshot, and avoid unverified tags."
   },
   {
     day: "2",
@@ -516,8 +516,8 @@ const submissionFieldPacks = [
     title: "Trust Leak Audit",
     tagline: "Free no-signup CRO toolkit for scoring landing-page trust gaps and running acquisition math before buying more traffic.",
     categories: "Productivity, Business, Marketing, CRO, Startup tools, Ecommerce, or closest available no-signup category",
-    assetNotes: "Use no upload if optional. If SVG assets are accepted, use og/trust-leak-toolkit.svg; otherwise leave screenshots blank until a real browser capture exists.",
-    fieldNotes: "No-signup directory. Use clean canonical homepage URL and avoid unverified tags such as mobile-friendly unless checked in the same browser session."
+    assetNotes: "Current form requires an icon and at least one screenshot. Use assets/trust-leak-audit-directory-icon-512.png and assets/nosignuptools-homepage-screenshot-2026-05-01.png.",
+    fieldNotes: "No-signup directory. Use clean canonical homepage URL, category productivity, and only verified tags; No Ads is the current safest required tag."
   },
   {
     surface: "FreeNoSignup",
@@ -667,7 +667,7 @@ const noAccountSubmissions = [
       "Short description: Free no-signup CRO toolkit for scoring landing-page trust gaps and running acquisition math before buying more traffic.",
       "Detailed description: Trust Leak Audit helps founders, agencies, ecommerce operators, SaaS teams, and local-service marketers check page-level trust gaps before buying more traffic. It includes a landing-page trust score, paid traffic break-even math, ROAS, SaaS payback, LTV:CAC, lead funnel, local lead value, agency margin, ecommerce trust checks, sample audit reports, launch notes, and public-data brief examples. It runs without signup, payment, uploads, or customer-data collection."
     ],
-    guardrail: "Use only verified no-signup/free fields. Do not upload optional assets or select tags unless the live page supports them.",
+    guardrail: "Use only verified no-signup/free fields. Upload the validated PNG icon and real homepage screenshot; use only a verified tag such as No Ads.",
     evidence: "Submitted/blocked status, review message, listing URL if approved, first referrer or beacon evidence."
   },
   {
