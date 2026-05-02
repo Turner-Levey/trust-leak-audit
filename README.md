@@ -15,7 +15,11 @@ Live site: https://trust-leak-audit-static.vercel.app/
 
 ## Privacy And Use
 
-The public tools run without signup, checkout, uploads, or customer-data collection. Browser-local evidence pages such as `analytics.html`, `launch-kit.html`, and `deployment-qa.html` are operator utilities and are marked noindex.
+The public tools run without signup, checkout, uploads, or customer-data collection. Indexable pages send sanitized same-origin event beacons for aggregate traffic evidence, and operator pages remain browser-local/noindex. Browser-local evidence pages such as `analytics.html`, `launch-kit.html`, and `deployment-qa.html` are operator utilities and are marked noindex.
+
+## License
+
+The static toolkit code and original documentation in this repository are MIT licensed. Public SEC filings, company names, and third-party sites linked from the pages remain owned by their respective sources.
 
 ## Useful Links
 
