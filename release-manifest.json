@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-02T01:16:27.679Z",
+  "generatedAt": "2026-05-02T16:43:31.479Z",
   "sourceDir": "/Users/turnerlevey/untitled folder/venture-lab/site",
   "releaseDir": "/Users/turnerlevey/untitled folder/venture-lab/releases/trust-leak-audit-static",
   "siteUrl": "https://trust-leak-audit-static.vercel.app",
@@ -17,6 +17,7 @@
     "saas-payback-calculator.html",
     "sample-reports.html",
     "sec-auditor-change-briefs.html",
+    "sec-auditor-change-evidence-pack-builder.html",
     "sec-auditor-change-watchlist-template.html",
     "sec-filing-trigger-briefs.html",
     "sec-leadership-change-briefs.html",
@@ -47,6 +48,7 @@
     "saas-payback-calculator.html",
     "sample-reports.html",
     "sec-auditor-change-briefs.html",
+    "sec-auditor-change-evidence-pack-builder.html",
     "sec-auditor-change-watchlist-template.html",
     "sec-filing-trigger-briefs.html",
     "sec-leadership-change-briefs.html",
@@ -66,6 +68,7 @@
     "og/saas-payback-calculator.svg",
     "og/sample-reports.svg",
     "og/sec-auditor-change-briefs.svg",
+    "og/sec-auditor-change-evidence-pack-builder.svg",
     "og/sec-auditor-change-watchlist-template.svg",
     "og/sec-filing-trigger-briefs.svg",
     "og/sec-leadership-change-briefs.svg",
@@ -84,24 +87,24 @@
   ],
   "indexNow": {
     "keyFile": "4f2e8d9c6b7a4f3a9e1c0d8b6a2f4c1e.txt",
-    "indexableUrls": 18
+    "indexableUrls": 19
   },
   "trafficBeacon": {
     "endpoint": "/api/track",
     "handler": "api/track.js"
   },
   "eventLogCoverage": {
-    "covered": 18,
-    "indexable": 18
+    "covered": 19,
+    "indexable": 19
   },
   "localLinkIssues": [],
   "shareToolCoverage": {
-    "covered": 18,
-    "indexable": 18
+    "covered": 19,
+    "indexable": 19
   },
   "vercelAnalyticsCoverage": {
-    "covered": 18,
-    "indexable": 18,
+    "covered": 19,
+    "indexable": 19,
     "scriptSrc": "/_vercel/insights/script.js"
   },
   "nextCommand": "SITE_URL=https://your-domain.example node venture-lab/site/build-static-release.mjs"

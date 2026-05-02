@@ -71,6 +71,11 @@
       "name": "SEC Auditor Watchlist",
       "url": "/sec-auditor-change-watchlist-template.html",
       "description": "Copy a Form 8-K Item 4.01 auditor-change research template."
+    },
+    {
+      "name": "SEC Auditor Evidence Pack",
+      "url": "/sec-auditor-change-evidence-pack-builder.html",
+      "description": "Build a source-linked Item 4.01 auditor-change evidence pack."
     }
   ]
 }

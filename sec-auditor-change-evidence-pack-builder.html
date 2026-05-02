@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free browser-only SEC Form 8-K Item 4.01 auditor-change evidence pack builder for source-linked account research rows, Markdown notes, and CSV export.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="SEC Auditor Change Evidence Pack Builder">
+    <meta property="og:description" content="Build a source-linked Item 4.01 evidence pack from public SEC filing facts, with Markdown and CSV copy actions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trust-leak-audit-static.vercel.app/sec-auditor-change-evidence-pack-builder.html">
+    <meta property="og:site_name" content="SEC Filing Trigger Briefs">
+    <meta property="og:image" content="https://trust-leak-audit-static.vercel.app/og/sec-auditor-change-evidence-pack-builder.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="SEC auditor-change evidence pack builder social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://trust-leak-audit-static.vercel.app/og/sec-auditor-change-evidence-pack-builder.svg">
+    <meta name="twitter:image:alt" content="SEC auditor-change evidence pack builder social preview.">
+    <title>SEC Auditor Change Evidence Pack Builder</title>
+    <link rel="canonical" href="https://trust-leak-audit-static.vercel.app/sec-auditor-change-evidence-pack-builder.html">
+    <link rel="alternate" href="https://trust-leak-audit-static.vercel.app/llms.txt" type="text/plain" title="LLMs.txt">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "SEC Auditor Change Evidence Pack Builder",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "description": "A free browser-only tool for turning public SEC Form 8-K Item 4.01 auditor-change facts into a source-linked evidence pack, Markdown note, and CSV row.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does the SEC auditor-change evidence pack builder create?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It creates a source-linked Markdown evidence pack and CSV row from user-entered public SEC Form 8-K Item 4.01 filing facts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool fetch SEC filings automatically?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It is browser-only and uses facts the visitor enters manually from public SEC source pages or filings."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is the output investment advice?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The output is for operational account research and source tracking. It does not rate issuers, auditors, securities, prices, or future performance."
+            }
+          }
+        ]
+      }
+    </script>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="index.html">Trust Leak Toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Free SEC public-data tool</p>
+        <h1>SEC Auditor Change Evidence Pack Builder</h1>
+        <p class="lede">Turn manually verified Form 8-K Item 4.01 facts into a source-linked account-research evidence pack, CSV row, and follow-up checklist without login, scraping, or investment claims.</p>
+        <div class="page-actions">
+          <a class="primary-link" href="#builder">Build pack</a>
+          <a class="secondary-link" href="sec-auditor-change-watchlist-template.html">Watchlist template</a>
+          <a class="secondary-link" href="sec-auditor-change-briefs.html">Sample briefs</a>
+          <a class="secondary-link" href="#workflow">Workflow</a>
+        </div>
+      </header>
+
+      <section class="notice-panel" aria-label="SEC auditor-change evidence pack disclosure">
+        <strong>Disclosure:</strong> This browser-only tool is for informational business-development and account-research workflows using public SEC filing facts. It is not investment advice, an issuer screen, an auditor-quality score, a securities recommendation, or an official SEC service.
+      </section>
+
+      <section class="seo-grid" aria-label="Evidence pack use cases">
+        <article class="panel">
+          <h2>Input</h2>
+          <p>Paste or type the issuer, filing date, SEC source URL, auditor transition, disclosed disagreement language, reportable-event language, and internal-control context.</p>
+        </article>
+        <article class="panel">
+          <h2>Output</h2>
+          <p>Generate a Markdown evidence pack, CSV watchlist row, buyer-route note, and next research step that stay tied to public source links.</p>
+        </article>
+        <article class="panel">
+          <h2>Best Fit</h2>
+          <p>Accounting advisors, audit-transition teams, SOX-readiness consultants, governance advisors, public-company researchers, and B2B research operators.</p>
+        </article>
+      </section>
+
+      <section class="detail-section" id="builder" aria-labelledby="builder-heading">
+        <div class="panel report-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Browser-only builder</p>
+              <h2 id="builder-heading">Build An Item 4.01 Evidence Pack</h2>
+            </div>
+            <div class="button-row">
+              <button class="primary" id="generatePack" type="button">Generate Pack</button>
+              <button class="secondary" id="copyPack" type="button">Copy Markdown</button>
+              <button class="secondary" id="downloadPack" type="button">Download Markdown</button>
+              <button class="secondary" id="copyCsvRow" type="button">Copy CSV Row</button>
+            </div>
+          </div>
+
+          <form class="calc-form" id="evidenceForm">
+            <div class="field-row">
+              <label for="issuer">Issuer <small>Company name exactly as used in the filing.</small></label>
+              <input id="issuer" type="text" value="Example Public Company">
+              <span class="value-pill">1</span>
+            </div>
+            <div class="field-row">
+              <label for="ticker">Ticker / CIK <small>Optional identifier for matching future filings.</small></label>
+              <input id="ticker" type="text" value="EXPL / 0000000000">
+              <span class="value-pill">2</span>
+            </div>
+            <div class="field-row">
+              <label for="filingDate">Filing date <small>Use the accepted or filed date from the SEC page.</small></label>
+              <input id="filingDate" type="text" value="2026-05-02">
+              <span class="value-pill">3</span>
+            </div>
+            <div class="field-row">
+              <label for="sourceUrl">SEC source URL <small>Use an SEC filing, filing detail, archive, or exhibit URL.</small></label>
+              <input id="sourceUrl" type="url" value="https://www.sec.gov/Archives/example-form-8-k.htm">
+              <span class="value-pill">4</span>
+            </div>
+            <div class="field-row">
+              <label for="oldAuditor">Outgoing auditor <small>Dismissed, resigned, or prior independent accounting firm.</small></label>
+              <input id="oldAuditor" type="text" value="Prior Auditor LLP">
+              <span class="value-pill">5</span>
+            </div>
+            <div class="field-row">
+              <label for="newAuditor">Incoming auditor <small>Newly engaged or appointed independent accounting firm.</small></label>
+              <input id="newAuditor" type="text" value="New Auditor LLP">
+              <span class="value-pill">6</span>
+            </div>
+            <div class="field-row">
+              <label for="transitionType">Transition type <small>Keep this factual and tied to the filing language.</small></label>
+              <select id="transitionType">
+                <option>Dismissing prior auditor and engaging new auditor</option>
+                <option>Auditor resignation and replacement</option>
+                <option>New auditor engagement after prior dismissal</option>
+                <option>Audit committee approved auditor change</option>
+              </select>
+              <span class="value-pill">7</span>
+            </div>
+            <div class="field-row">
+              <label for="disagreementNote">Disagreement note <small>Quote or paraphrase only what the filing discloses.</small></label>
+              <input id="disagreementNote" type="text" value="No disagreements disclosed in the filing.">
+              <span class="value-pill">8</span>
+            </div>
+            <div class="field-row">
+              <label for="reportableEventNote">Reportable-event note <small>Capture material weakness or reportable-event language if disclosed.</small></label>
+              <input id="reportableEventNote" type="text" value="No reportable events disclosed in the filing.">
+              <span class="value-pill">9</span>
+            </div>
+            <div class="field-row">
+              <label for="controlContext">Control / audit context <small>Use only public context. Avoid inferring undisclosed problems.</small></label>
+              <input id="controlContext" type="text" value="Monitor the next 10-Q or 10-K for control-language updates.">
+              <span class="value-pill">10</span>
+            </div>
+            <div class="field-row">
+              <label for="buyerRoute">Buyer route <small>Select the operational audience most likely to use this row.</small></label>
+              <select id="buyerRoute">
+                <option>Audit-transition advisory</option>
+                <option>SOX and internal-control support</option>
+                <option>SEC reporting and technical accounting</option>
+                <option>Governance advisory</option>
+                <option>Public-company account research</option>
+              </select>
+              <span class="value-pill">11</span>
+            </div>
+            <div class="field-row">
+              <label for="nextStep">Next research step <small>Use a concrete source-backed follow-up action.</small></label>
+              <input id="nextStep" type="text" value="Check Exhibit 16.1 and compare the next quarterly filing control disclosure.">
+              <span class="value-pill">12</span>
+            </div>
+          </form>
+
+          <textarea id="evidenceOutput" spellcheck="false" aria-label="Generated SEC auditor-change evidence pack"></textarea>
+          <p class="event-status" id="evidenceStatus" role="status" aria-live="polite">Evidence pack actions: 0</p>
+        </div>
+      </section>
+
+      <section class="detail-section" id="workflow" aria-labelledby="workflow-heading">
+        <h2 id="workflow-heading">Evidence Workflow</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>1. Open The SEC Source</h3>
+            <p>Use a public SEC filing page, archive filing, or Exhibit 16.1 source. Copy the source URL into the builder before adding operational notes.</p>
+          </article>
+          <article class="panel">
+            <h3>2. Separate Facts From Inferences</h3>
+            <p>Record only disclosed auditor transitions, disagreement statements, reportable events, and control language. Put unknowns into the next-step field.</p>
+          </article>
+          <article class="panel">
+            <h3>3. Choose A Buyer Route</h3>
+            <p>Map the filing to an operational research route such as audit-transition advisory, SOX support, technical accounting, governance, or public-company research.</p>
+          </article>
+          <article class="panel">
+            <h3>4. Export The Pack</h3>
+            <p>Copy the Markdown note for review, or copy the CSV row into a watchlist. Keep every row tied to the SEC source link and filing date.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="related-heading">
+        <h2 id="related-heading">Related SEC Auditor-Change Assets</h2>
+        <div class="tool-links">
+          <a href="sec-auditor-change-watchlist-template.html">Watchlist template</a>
+          <a href="sec-auditor-change-briefs.html">Auditor-change sample briefs</a>
+          <a href="sec-trigger-briefs-hub.html">SEC trigger hub</a>
+          <a href="sec-leadership-change-briefs.html">Leadership-change briefs</a>
+        </div>
+      </section>
+    </main>
+    <script>
+      (function () {
+        const fields = [
+          "issuer",
+          "ticker",
+          "filingDate",
+          "sourceUrl",
+          "oldAuditor",
+          "newAuditor",
+          "transitionType",
+          "disagreementNote",
+          "reportableEventNote",
+          "controlContext",
+          "buyerRoute",
+          "nextStep"
+        ];
+
+        const output = document.getElementById("evidenceOutput");
+        const status = document.getElementById("evidenceStatus");
+        let actionCount = 0;
+
+        const getValue = (id) => document.getElementById(id).value.trim();
+        const track = (name, detail = {}) => {
+          if (window.TrustLeakEvents?.track) window.TrustLeakEvents.track(name, detail);
+        };
+        const setStatus = (message) => {
+          actionCount += 1;
+          status.textContent = `${message} Evidence pack actions: ${actionCount}`;
+        };
+        const csvEscape = (value) => `"${String(value).replaceAll('"', '""')}"`;
+
+        const buildMarkdown = () => {
+          const data = Object.fromEntries(fields.map((id) => [id, getValue(id)]));
+          return [
+            `# SEC Auditor-Change Evidence Pack: ${data.issuer}`,
+            "",
+            "## Filing Facts",
+            `- Issuer: ${data.issuer}`,
+            `- Ticker / CIK: ${data.ticker || "Not provided"}`,
+            `- Filing date: ${data.filingDate}`,
+            "- Form / item: Form 8-K / Item 4.01",
+            `- SEC source: ${data.sourceUrl}`,
+            "",
+            "## Auditor Transition",
+            `- Transition type: ${data.transitionType}`,
+            `- Outgoing auditor: ${data.oldAuditor}`,
+            `- Incoming auditor: ${data.newAuditor}`,
+            `- Disagreement note: ${data.disagreementNote}`,
+            `- Reportable-event note: ${data.reportableEventNote}`,
+            "",
+            "## Operational Account-Research Angle",
+            `- Buyer route: ${data.buyerRoute}`,
+            `- Control / audit context: ${data.controlContext}`,
+            `- Next research step: ${data.nextStep}`,
+            "",
+            "## Guardrails",
+            "- This pack is based on user-entered public filing facts.",
+            "- It is not investment advice, an auditor-quality score, a securities recommendation, or a price/stock-impact prediction.",
+            "- Verify the SEC source and any Exhibit 16.1 language before using this row in an account-research workflow."
+          ].join("\n");
+        };
+
+        const buildCsv = () => {
+          const headers = [
+            "issuer",
+            "ticker_or_cik",
+            "filing_date",
+            "form_item",
+            "auditor_transition",
+            "disagreement_note",
+            "reportable_event_note",
+            "buyer_route",
+            "next_research_step",
+            "sec_source_url"
+          ];
+          const data = {
+            issuer: getValue("issuer"),
+            ticker_or_cik: getValue("ticker"),
+            filing_date: getValue("filingDate"),
+            form_item: "Form 8-K / Item 4.01",
+            auditor_transition: `${getValue("oldAuditor")} to ${getValue("newAuditor")} - ${getValue("transitionType")}`,
+            disagreement_note: getValue("disagreementNote"),
+            reportable_event_note: getValue("reportableEventNote"),
+            buyer_route: getValue("buyerRoute"),
+            next_research_step: getValue("nextStep"),
+            sec_source_url: getValue("sourceUrl")
+          };
+          return `${headers.join(",")}\n${headers.map((header) => csvEscape(data[header])).join(",")}\n`;
+        };
+
+        const writeClipboard = async (text) => {
+          if (navigator.clipboard?.writeText) {
+            await navigator.clipboard.writeText(text);
+            return;
+          }
+          const field = document.createElement("textarea");
+          field.value = text;
+          field.setAttribute("readonly", "");
+          field.style.position = "fixed";
+          field.style.left = "-9999px";
+          document.body.appendChild(field);
+          field.select();
+          document.execCommand("copy");
+          field.remove();
+        };
+
+        const generatePack = (shouldTrack = true) => {
+          output.value = buildMarkdown();
+          if (shouldTrack) {
+            setStatus("Evidence pack generated.");
+            track("sec_auditor_evidence_pack_generated", {
+              buyerRoute: getValue("buyerRoute"),
+              hasSourceUrl: getValue("sourceUrl").startsWith("https://")
+            });
+          }
+        };
+
+        document.getElementById("generatePack").addEventListener("click", () => generatePack(true));
+        document.getElementById("copyPack").addEventListener("click", async () => {
+          if (!output.value.trim()) generatePack(false);
+          await writeClipboard(output.value);
+          setStatus("Markdown copied.");
+          track("sec_auditor_evidence_pack_markdown_copied", { buyerRoute: getValue("buyerRoute") });
+        });
+        document.getElementById("downloadPack").addEventListener("click", () => {
+          if (!output.value.trim()) generatePack(false);
+          const blob = new Blob([output.value], { type: "text/markdown" });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = "sec-auditor-change-evidence-pack.md";
+          document.body.appendChild(link);
+          link.click();
+          link.remove();
+          URL.revokeObjectURL(url);
+          setStatus("Markdown downloaded.");
+          track("sec_auditor_evidence_pack_markdown_downloaded", { buyerRoute: getValue("buyerRoute") });
+        });
+        document.getElementById("copyCsvRow").addEventListener("click", async () => {
+          await writeClipboard(buildCsv());
+          setStatus("CSV row copied.");
+          track("sec_auditor_evidence_pack_csv_copied", { buyerRoute: getValue("buyerRoute") });
+        });
+
+        generatePack(false);
+      })();
+    </script>
+    <script src="event-log.js"></script>
+    <script src="share-tools.js"></script>
+  </body>
+</html>
