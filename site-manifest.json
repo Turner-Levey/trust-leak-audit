@@ -66,6 +66,11 @@
       "name": "SEC Briefs Hub",
       "url": "/sec-trigger-briefs-hub.html",
       "description": "Review public Form 8-K trigger brief sample routes."
+    },
+    {
+      "name": "SEC Auditor Watchlist",
+      "url": "/sec-auditor-change-watchlist-template.html",
+      "description": "Copy a Form 8-K Item 4.01 auditor-change research template."
     }
   ]
 }

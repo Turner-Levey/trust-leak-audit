@@ -1,11 +1,11 @@
 Trust Leak Audit Static Release
 
-Generated: 2026-05-01T17:07:55.876Z
+Generated: 2026-05-02T01:16:27.679Z
 Source: /Users/turnerlevey/untitled folder/venture-lab/site
 Release: /Users/turnerlevey/untitled folder/venture-lab/releases/trust-leak-audit-static
 Site URL: https://trust-leak-audit-static.vercel.app
 Metadata: absolute public metadata written to release copy
-Share tools: 17/17 indexable pages
+Share tools: 18/18 indexable pages
 
 Use:
 1. If a public URL exists, rerun: SITE_URL=https://your-domain.example node venture-lab/site/build-static-release.mjs
@@ -14,12 +14,12 @@ Use:
 4. Open launch-kit.html after the final URL exists to generate UTM links and launch copy; it is noindex and does not submit anything.
 5. Open analytics.html only as an operator/tester local evidence export; it is noindex and not aggregate analytics.
 
-Indexable pages: 17
+Indexable pages: 18
 Noindex pages: 4
-Open Graph assets: 17
+Open Graph assets: 18
 Host config files: _headers, netlify.toml, vercel.json
 Discovery files: llms.txt
 IndexNow key file: 4f2e8d9c6b7a4f3a9e1c0d8b6a2f4c1e.txt
 Traffic beacon endpoint: /api/track
-Event logger coverage: 17/17
-Vercel Web Analytics coverage: 17/17
+Event logger coverage: 18/18
+Vercel Web Analytics coverage: 18/18
