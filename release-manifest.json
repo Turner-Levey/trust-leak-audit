@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-02T18:42:03.910Z",
+  "generatedAt": "2026-05-03T21:20:17.780Z",
   "sourceDir": "/Users/turnerlevey/untitled folder/venture-lab/site",
   "releaseDir": "/Users/turnerlevey/untitled folder/venture-lab/releases/trust-leak-audit-static",
   "siteUrl": "https://trust-leak-audit-static.vercel.app",
@@ -17,6 +17,7 @@
     "saas-payback-calculator.html",
     "sample-reports.html",
     "sec-auditor-change-briefs.html",
+    "sec-auditor-change-deadline-calculator.html",
     "sec-auditor-change-evidence-pack-builder.html",
     "sec-auditor-change-watchlist-template.html",
     "sec-filing-trigger-briefs.html",
@@ -48,6 +49,7 @@
     "saas-payback-calculator.html",
     "sample-reports.html",
     "sec-auditor-change-briefs.html",
+    "sec-auditor-change-deadline-calculator.html",
     "sec-auditor-change-evidence-pack-builder.html",
     "sec-auditor-change-watchlist-template.html",
     "sec-filing-trigger-briefs.html",
@@ -68,6 +70,7 @@
     "og/saas-payback-calculator.svg",
     "og/sample-reports.svg",
     "og/sec-auditor-change-briefs.svg",
+    "og/sec-auditor-change-deadline-calculator.svg",
     "og/sec-auditor-change-evidence-pack-builder.svg",
     "og/sec-auditor-change-watchlist-template.svg",
     "og/sec-filing-trigger-briefs.svg",
@@ -87,24 +90,24 @@
   ],
   "indexNow": {
     "keyFile": "4f2e8d9c6b7a4f3a9e1c0d8b6a2f4c1e.txt",
-    "indexableUrls": 19
+    "indexableUrls": 20
   },
   "trafficBeacon": {
     "endpoint": "/api/track",
     "handler": "api/track.js"
   },
   "eventLogCoverage": {
-    "covered": 19,
-    "indexable": 19
+    "covered": 20,
+    "indexable": 20
   },
   "localLinkIssues": [],
   "shareToolCoverage": {
-    "covered": 19,
-    "indexable": 19
+    "covered": 20,
+    "indexable": 20
   },
   "vercelAnalyticsCoverage": {
-    "covered": 19,
-    "indexable": 19,
+    "covered": 20,
+    "indexable": 20,
     "scriptSrc": "/_vercel/insights/script.js"
   },
   "nextCommand": "SITE_URL=https://your-domain.example node venture-lab/site/build-static-release.mjs"

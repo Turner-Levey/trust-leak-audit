@@ -73,6 +73,11 @@
       "description": "Copy a Form 8-K Item 4.01 auditor-change research template."
     },
     {
+      "name": "SEC Auditor Deadline Calculator",
+      "url": "/sec-auditor-change-deadline-calculator.html",
+      "description": "Estimate a Form 8-K Item 4.01 four-business-day research target date."
+    },
+    {
       "name": "SEC Auditor Evidence Pack",
       "url": "/sec-auditor-change-evidence-pack-builder.html",
       "description": "Build a source-linked Item 4.01 auditor-change evidence pack."

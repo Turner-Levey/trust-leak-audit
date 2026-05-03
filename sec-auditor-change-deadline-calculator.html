@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free browser-only Form 8-K Item 4.01 date tracker for auditor-change research teams, with four-business-day planning math, custom closure dates, and CSV export.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="SEC Auditor Change Deadline Calculator">
+    <meta property="og:description" content="Estimate the Form 8-K Item 4.01 four-business-day target date for auditor-change research rows.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trust-leak-audit-static.vercel.app/sec-auditor-change-deadline-calculator.html">
+    <meta property="og:site_name" content="SEC Filing Trigger Briefs">
+    <meta property="og:image" content="https://trust-leak-audit-static.vercel.app/og/sec-auditor-change-deadline-calculator.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="SEC auditor-change deadline calculator social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://trust-leak-audit-static.vercel.app/og/sec-auditor-change-deadline-calculator.svg">
+    <meta name="twitter:image:alt" content="SEC auditor-change deadline calculator social preview.">
+    <title>SEC Auditor Change Deadline Calculator</title>
+    <link rel="canonical" href="https://trust-leak-audit-static.vercel.app/sec-auditor-change-deadline-calculator.html">
+    <link rel="alternate" href="https://trust-leak-audit-static.vercel.app/llms.txt" type="text/plain" title="LLMs.txt">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "SEC Auditor Change Deadline Calculator",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "description": "A free browser-only planning tool that estimates the standard Form 8-K Item 4.01 four-business-day target date for auditor-change research workflows.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does this Item 4.01 date tracker calculate?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It estimates the standard Form 8-K four-business-day target date from a user-entered auditor-change event date, with optional custom closure dates for research planning."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this a legal filing deadline tool?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It is an informational research planner. Registrants and advisors should verify timing, SEC closure dates, and item-specific facts with counsel and official SEC materials."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool fetch SEC filings?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It runs in the browser and uses dates and notes entered by the visitor. It does not scrape EDGAR or upload filing data."
+            }
+          }
+        ]
+      }
+    </script>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="index.html">Trust Leak Toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Free SEC date tracker</p>
+        <h1>SEC Auditor Change Deadline Calculator</h1>
+        <p class="lede">Estimate the standard Form 8-K Item 4.01 four-business-day target date for auditor-change account-research rows, then copy a source-linked note or CSV row for follow-up tracking.</p>
+        <div class="page-actions">
+          <a class="primary-link" href="#calculator">Calculate date</a>
+          <a class="secondary-link" href="sec-auditor-change-watchlist-template.html">Watchlist template</a>
+          <a class="secondary-link" href="sec-auditor-change-evidence-pack-builder.html">Evidence pack builder</a>
+          <a class="secondary-link" href="#sources">Sources</a>
+        </div>
+      </header>
+
+      <section class="notice-panel" aria-label="SEC date tracker disclosure">
+        <strong>Disclosure:</strong> This browser-only planner is for informational public-filing research. It is not legal advice, an official SEC service, investment advice, or a substitute for issuer counsel. Verify SEC closure dates, filing facts, and item-specific timing before relying on any output.
+      </section>
+
+      <section class="seo-grid" aria-label="Deadline tracker use cases">
+        <article class="panel">
+          <h2>Use Case</h2>
+          <p>Turn an auditor resignation, dismissal, refusal to stand for reappointment, or new-auditor engagement date into a follow-up date for research queues.</p>
+        </article>
+        <article class="panel">
+          <h2>Source Basis</h2>
+          <p>Form 8-K General Instruction B.1 says most reportable events are filed or furnished within four business days unless a different item-specific rule applies.</p>
+        </article>
+        <article class="panel">
+          <h2>Output</h2>
+          <p>A date estimate, status note, Markdown research memo, and CSV row that can connect to the watchlist and evidence-pack workflow.</p>
+        </article>
+      </section>
+
+      <section class="detail-section" id="calculator" aria-labelledby="calculator-heading">
+        <div class="panel report-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Browser-only planner</p>
+              <h2 id="calculator-heading">Calculate The Research Target Date</h2>
+            </div>
+            <div class="button-row">
+              <button class="primary" id="calculateDeadline" type="button">Calculate</button>
+              <button class="secondary" id="copyDeadlineMemo" type="button">Copy Memo</button>
+              <button class="secondary" id="copyDeadlineCsv" type="button">Copy CSV Row</button>
+            </div>
+          </div>
+
+          <form class="calc-form" id="deadlineForm">
+            <div class="field-row">
+              <label for="issuer">Issuer <small>Company or registrant being researched.</small></label>
+              <input id="issuer" type="text" value="Example Public Company">
+              <span class="value-pill">1</span>
+            </div>
+            <div class="field-row">
+              <label for="ticker">Ticker / CIK <small>Optional identifier for watchlist matching.</small></label>
+              <input id="ticker" type="text" value="EXPL / 0000000000">
+              <span class="value-pill">2</span>
+            </div>
+            <div class="field-row">
+              <label for="eventDate">Event date <small>Date of resignation, dismissal, refusal, or engagement event.</small></label>
+              <input id="eventDate" type="date">
+              <span class="value-pill">3</span>
+            </div>
+            <div class="field-row">
+              <label for="filingDate">Actual filing date <small>Optional Form 8-K filing date for status comparison.</small></label>
+              <input id="filingDate" type="date">
+              <span class="value-pill">4</span>
+            </div>
+            <div class="field-row">
+              <label for="closureDates">Custom SEC closure dates <small>Optional YYYY-MM-DD values, comma-separated.</small></label>
+              <input id="closureDates" type="text" placeholder="2026-05-25, 2026-06-19">
+              <span class="value-pill">5</span>
+            </div>
+            <div class="field-row">
+              <label for="triggerType">Trigger type <small>Keep the label factual and tied to source text.</small></label>
+              <select id="triggerType">
+                <option>Auditor dismissal</option>
+                <option>Auditor resignation</option>
+                <option>Refusal to stand for reappointment</option>
+                <option>New auditor engagement</option>
+                <option>Combined outgoing and incoming auditor change</option>
+              </select>
+              <span class="value-pill">6</span>
+            </div>
+            <div class="field-row">
+              <label for="sourceUrl">SEC source URL <small>Optional EDGAR filing, company filing index, or exhibit URL.</small></label>
+              <input id="sourceUrl" type="url" value="https://www.sec.gov/Archives/example-form-8-k.htm">
+              <span class="value-pill">7</span>
+            </div>
+            <div class="field-row">
+              <label for="nextStep">Next research step <small>Source-backed follow-up action after date review.</small></label>
+              <input id="nextStep" type="text" value="Check the Form 8-K item text, Exhibit 16.1, and next periodic control disclosure.">
+              <span class="value-pill">8</span>
+            </div>
+          </form>
+
+          <div class="result-strip" id="deadlineResults"></div>
+          <textarea id="deadlineOutput" spellcheck="false" aria-label="Generated SEC auditor-change deadline memo"></textarea>
+          <p class="event-status" id="deadlineStatus" role="status" aria-live="polite">Deadline tracker actions: 0</p>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="interpret-heading">
+        <h2 id="interpret-heading">How To Use The Date Without Overclaiming</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>1. Separate Event Date From Filing Date</h3>
+            <p>Use the earliest event date reported in the filing for the estimate, then compare the actual Form 8-K filing date only as a research status check.</p>
+          </article>
+          <article class="panel">
+            <h3>2. Add Closure Dates When Known</h3>
+            <p>The calculator skips weekends by default. Add SEC closure or holiday dates manually when the event window crosses one.</p>
+          </article>
+          <article class="panel">
+            <h3>3. Treat The Output As A Queue Signal</h3>
+            <p>Use the result to prioritize source review, not to accuse a registrant of lateness or make trading, issuer-quality, or auditor-quality claims.</p>
+          </article>
+          <article class="panel">
+            <h3>4. Connect It To Evidence</h3>
+            <p>Copy the CSV row into the watchlist, then build a separate evidence pack once the filing text and source URL are verified.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" id="sources" aria-labelledby="sources-heading">
+        <h2 id="sources-heading">Source Notes</h2>
+        <div class="panel">
+          <p>The SEC Form 8-K PDF is the primary source for the four-business-day timing language and the accountant-change item. Investor.gov provides a plain-English summary of Form 8-K timing for investors. This tool links those sources but does not interpret company-specific obligations.</p>
+          <div class="tool-links">
+            <a href="https://www.sec.gov/about/forms/form8-k.pdf">SEC Form 8-K PDF</a>
+            <a href="https://www.investor.gov/introduction-investing/investing-basics/glossary/form-8-k">Investor.gov Form 8-K overview</a>
+            <a href="sec-auditor-change-watchlist-template.html">Auditor-change watchlist template</a>
+            <a href="sec-auditor-change-evidence-pack-builder.html">Auditor-change evidence pack builder</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      (function () {
+        const fields = ["issuer", "ticker", "eventDate", "filingDate", "closureDates", "triggerType", "sourceUrl", "nextStep"];
+        const results = document.getElementById("deadlineResults");
+        const output = document.getElementById("deadlineOutput");
+        const status = document.getElementById("deadlineStatus");
+        let actionCount = 0;
+
+        const getValue = (id) => document.getElementById(id).value.trim();
+        const toIsoDate = (date) => date.toISOString().slice(0, 10);
+        const today = new Date();
+        const todayIso = toIsoDate(today);
+        document.getElementById("eventDate").value = todayIso;
+        const parseIsoDate = (value) => {
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+          const date = new Date(`${value}T12:00:00Z`);
+          return Number.isNaN(date.getTime()) ? null : date;
+        };
+        const addDays = (date, days) => {
+          const next = new Date(date);
+          next.setUTCDate(next.getUTCDate() + days);
+          return next;
+        };
+        const businessClosures = () => new Set(
+          getValue("closureDates")
+            .split(",")
+            .map((item) => item.trim())
+            .filter((item) => /^\d{4}-\d{2}-\d{2}$/.test(item))
+        );
+        const isBusinessDay = (date, closures) => {
+          const day = date.getUTCDay();
+          return day !== 0 && day !== 6 && !closures.has(toIsoDate(date));
+        };
+        const nextBusinessDay = (date, closures, includeDate) => {
+          let cursor = includeDate ? new Date(date) : addDays(date, 1);
+          while (!isBusinessDay(cursor, closures)) cursor = addDays(cursor, 1);
+          return cursor;
+        };
+        const addBusinessDays = (startDate, count, closures) => {
+          let cursor = new Date(startDate);
+          let counted = 0;
+          while (counted < count) {
+            if (isBusinessDay(cursor, closures)) counted += 1;
+            if (counted < count) cursor = addDays(cursor, 1);
+          }
+          return cursor;
+        };
+        const formatDate = (date) => date.toLocaleDateString("en-US", { timeZone: "UTC", weekday: "short", year: "numeric", month: "short", day: "numeric" });
+        const compareDates = (actual, target) => Math.round((Date.UTC(actual.getUTCFullYear(), actual.getUTCMonth(), actual.getUTCDate()) - Date.UTC(target.getUTCFullYear(), target.getUTCMonth(), target.getUTCDate())) / 86400000);
+        const csvEscape = (value) => `"${String(value).replaceAll('"', '""')}"`;
+        const setStatus = (message) => {
+          actionCount += 1;
+          status.textContent = `${message} Deadline tracker actions: ${actionCount}`;
+        };
+        const track = (name, detail = {}) => {
+          if (window.TrustLeakEvents?.track) window.TrustLeakEvents.track(name, detail);
+        };
+        const writeClipboard = async (text) => {
+          if (navigator.clipboard?.writeText) {
+            await navigator.clipboard.writeText(text);
+            return;
+          }
+          const field = document.createElement("textarea");
+          field.value = text;
+          field.setAttribute("readonly", "");
+          field.style.position = "fixed";
+          field.style.left = "-9999px";
+          document.body.appendChild(field);
+          field.select();
+          document.execCommand("copy");
+          field.remove();
+        };
+
+        function calculate() {
+          const eventDate = parseIsoDate(getValue("eventDate"));
+          if (!eventDate) throw new Error("Enter a valid event date.");
+          const closures = businessClosures();
+          const start = nextBusinessDay(eventDate, closures, !isBusinessDay(eventDate, closures));
+          const target = addBusinessDays(start, 4, closures);
+          const filingDate = parseIsoDate(getValue("filingDate"));
+          const delta = filingDate ? compareDates(filingDate, target) : null;
+          const filingStatus = !filingDate
+            ? "Actual filing date not entered."
+            : delta <= 0
+              ? `Actual filing date is on or before the estimated target by ${Math.abs(delta)} calendar day(s).`
+              : `Actual filing date is after the estimated target by ${delta} calendar day(s); verify facts before drawing conclusions.`;
+          return { eventDate, closures, start, target, filingDate, delta, filingStatus };
+        }
+
+        function renderResult(data) {
+          const cards = [
+            ["Event date", formatDate(data.eventDate)],
+            ["Count begins", formatDate(data.start)],
+            ["Estimated target", formatDate(data.target)],
+            ["Status note", data.filingStatus]
+          ];
+          results.innerHTML = cards
+            .map(([label, value]) => `<div class="result-card"><span>${label}</span><strong>${value}</strong></div>`)
+            .join("");
+        }
+
+        function buildMemo(data) {
+          return [
+            `# SEC Auditor-Change Date Review: ${getValue("issuer")}`,
+            "",
+            "## Filing Research Facts",
+            `- Issuer: ${getValue("issuer")}`,
+            `- Ticker / CIK: ${getValue("ticker") || "Not provided"}`,
+            `- Trigger type: ${getValue("triggerType")}`,
+            `- Event date entered: ${toIsoDate(data.eventDate)} (${formatDate(data.eventDate)})`,
+            `- Business-day count begins: ${toIsoDate(data.start)} (${formatDate(data.start)})`,
+            `- Estimated standard Form 8-K target date: ${toIsoDate(data.target)} (${formatDate(data.target)})`,
+            `- Actual filing date: ${data.filingDate ? `${toIsoDate(data.filingDate)} (${formatDate(data.filingDate)})` : "Not entered"}`,
+            `- Status note: ${data.filingStatus}`,
+            `- Custom closure dates included: ${[...data.closures].join(", ") || "None entered"}`,
+            `- SEC source URL: ${getValue("sourceUrl") || "Not entered"}`,
+            "",
+            "## Next Research Step",
+            getValue("nextStep"),
+            "",
+            "## Guardrails",
+            "- This memo is a research-planning output, not legal advice or an official SEC deadline determination.",
+            "- Verify SEC holiday or closure dates, item-specific facts, the reported event date, and any Form 8-K amendment/exhibit requirements before relying on the result.",
+            "- Do not use this date estimate as investment advice, securities analysis, an issuer score, or an auditor-quality judgment."
+          ].join("\n");
+        }
+
+        function buildCsv(data) {
+          const headers = [
+            "issuer",
+            "ticker_or_cik",
+            "trigger_type",
+            "event_date",
+            "business_day_count_begins",
+            "estimated_target_date",
+            "actual_filing_date",
+            "status_note",
+            "source_url",
+            "next_research_step"
+          ];
+          const row = [
+            getValue("issuer"),
+            getValue("ticker"),
+            getValue("triggerType"),
+            toIsoDate(data.eventDate),
+            toIsoDate(data.start),
+            toIsoDate(data.target),
+            data.filingDate ? toIsoDate(data.filingDate) : "",
+            data.filingStatus,
+            getValue("sourceUrl"),
+            getValue("nextStep")
+          ];
+          return `${headers.join(",")}\n${row.map(csvEscape).join(",")}\n`;
+        }
+
+        function runCalculation(shouldTrack = true) {
+          try {
+            const data = calculate();
+            renderResult(data);
+            output.value = buildMemo(data);
+            if (shouldTrack) {
+              setStatus("Deadline estimate calculated.");
+              track("sec_auditor_deadline_calculated", {
+                triggerType: getValue("triggerType"),
+                hasFilingDate: Boolean(data.filingDate),
+                hasClosureDates: data.closures.size > 0
+              });
+            }
+            return data;
+          } catch (error) {
+            results.innerHTML = `<div class="result-card"><span>Input needed</span><strong>${error.message}</strong></div>`;
+            output.value = "";
+            throw error;
+          }
+        }
+
+        document.getElementById("calculateDeadline").addEventListener("click", () => runCalculation(true));
+        document.getElementById("copyDeadlineMemo").addEventListener("click", async () => {
+          const data = output.value.trim() ? calculate() : runCalculation(false);
+          await writeClipboard(output.value || buildMemo(data));
+          setStatus("Memo copied.");
+          track("sec_auditor_deadline_memo_copied", { triggerType: getValue("triggerType") });
+        });
+        document.getElementById("copyDeadlineCsv").addEventListener("click", async () => {
+          const data = output.value.trim() ? calculate() : runCalculation(false);
+          await writeClipboard(buildCsv(data));
+          setStatus("CSV row copied.");
+          track("sec_auditor_deadline_csv_copied", { triggerType: getValue("triggerType") });
+        });
+        fields.forEach((id) => document.getElementById(id).addEventListener("change", () => runCalculation(false)));
+        runCalculation(false);
+      })();
+    </script>
+    <script src="event-log.js"></script>
+    <script src="share-tools.js"></script>
+  </body>
+</html>
