@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free browser-only Form D deadline calculator for Regulation D first-sale dates, weekend adjustments, EDGAR access planning, annual amendments, memo copy, and CSV export.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="Form D Deadline Calculator">
+    <meta property="og:description" content="Calculate a Regulation D Form D notice target date from the first sale date, then copy a source-linked memo or CSV row.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trust-leak-audit-static.vercel.app/form-d-deadline-calculator.html">
+    <meta property="og:site_name" content="SEC Filing Trigger Briefs">
+    <meta property="og:image" content="https://trust-leak-audit-static.vercel.app/og/form-d-deadline-calculator.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Form D deadline calculator social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://trust-leak-audit-static.vercel.app/og/form-d-deadline-calculator.svg">
+    <meta name="twitter:image:alt" content="Form D deadline calculator social preview.">
+    <title>Form D Deadline Calculator</title>
+    <link rel="canonical" href="https://trust-leak-audit-static.vercel.app/form-d-deadline-calculator.html">
+    <link rel="alternate" href="https://trust-leak-audit-static.vercel.app/llms.txt" type="text/plain" title="LLMs.txt">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Form D Deadline Calculator",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "description": "A free browser-only planner that calculates a Regulation D Form D notice target date from the first sale date, with weekend and custom closure-date handling.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does this Form D deadline calculator do?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It turns a Regulation D first-sale date into a Form D notice target date, then creates a source-linked memo and CSV row for a filing checklist."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool file Form D or give legal advice?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It is an informational browser-only planner. It does not file anything on EDGAR, determine whether an exemption is available, handle state notice filings, or provide legal advice."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What date starts the Form D clock?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SEC guidance says the first-sale date is when the first investor is irrevocably contractually committed to invest. Verify the offering facts with counsel before relying on a date."
+            }
+          }
+        ]
+      }
+    </script>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="index.html">Trust Leak Toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Experiment 002 - SEC filing date tool</p>
+        <h1>Form D Deadline Calculator</h1>
+        <p class="lede">Calculate the Form D notice target date for a Regulation D first sale, then copy a source-linked filing memo or CSV row for a founder, fund, or securities-counsel checklist.</p>
+        <div class="page-actions">
+          <a class="primary-link" href="#calculator">Calculate deadline</a>
+          <a class="secondary-link" href="sec-trigger-briefs-hub.html">SEC tools hub</a>
+          <a class="secondary-link" href="#sources">Sources</a>
+        </div>
+      </header>
+
+      <section class="notice-panel" aria-label="Form D disclaimer">
+        <strong>Disclosure:</strong> This is an informational planning worksheet, not legal advice, securities advice, an EDGAR filing service, or an official SEC tool. Verify the exemption, first-sale date, EDGAR access, federal holiday/closure handling, state notice filings, and amendment requirements with qualified counsel and official SEC materials.
+      </section>
+
+      <section class="seo-grid" aria-label="Form D deadline use cases">
+        <article class="panel">
+          <h2>Use Case</h2>
+          <p>Convert a first SAFE, note, equity, LP interest, or other private-offering commitment date into a Form D notice planning row.</p>
+        </article>
+        <article class="panel">
+          <h2>Source Basis</h2>
+          <p>SEC guidance says companies must file Form D within 15 days after the first sale, and weekend or holiday due dates move to the next business day.</p>
+        </article>
+        <article class="panel">
+          <h2>Output</h2>
+          <p>Copy a deadline memo, EDGAR access action note, amendment reminder, and CSV row for a compliance tracker.</p>
+        </article>
+      </section>
+
+      <section class="detail-section" id="calculator" aria-labelledby="calculator-heading">
+        <div class="panel report-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Browser-only planner</p>
+              <h2 id="calculator-heading">Calculate The Form D Target Date</h2>
+            </div>
+            <div class="button-row">
+              <button class="primary" id="calculateFormD" type="button">Calculate</button>
+              <button class="secondary" id="copyFormDMemo" type="button">Copy Memo</button>
+              <button class="secondary" id="copyFormDCsv" type="button">Copy CSV Row</button>
+            </div>
+          </div>
+
+          <form class="calc-form" id="formDForm">
+            <div class="field-row">
+              <label for="issuer">Issuer or fund <small>Company, fund, SPV, or operating entity.</small></label>
+              <input id="issuer" type="text" value="Example Seed Issuer">
+              <span class="value-pill">1</span>
+            </div>
+            <div class="field-row">
+              <label for="offeringLabel">Offering label <small>Round, fund, SPV, or internal matter name.</small></label>
+              <input id="offeringLabel" type="text" value="Seed SAFE financing">
+              <span class="value-pill">2</span>
+            </div>
+            <div class="field-row">
+              <label for="firstSaleDate">Date of first sale <small>When the first investor became irrevocably contractually committed.</small></label>
+              <input id="firstSaleDate" type="date">
+              <span class="value-pill">3</span>
+            </div>
+            <div class="field-row">
+              <label for="actualFilingDate">Actual Form D filing date <small>Optional, for status comparison after filing.</small></label>
+              <input id="actualFilingDate" type="date">
+              <span class="value-pill">4</span>
+            </div>
+            <div class="field-row">
+              <label for="priorNoticeDate">Prior Form D or amendment date <small>Optional, for annual amendment planning if the offering is ongoing.</small></label>
+              <input id="priorNoticeDate" type="date">
+              <span class="value-pill">5</span>
+            </div>
+            <div class="field-row">
+              <label for="ongoingOffering">Offering status <small>Annual amendment reminder only applies if the offering is still ongoing.</small></label>
+              <select id="ongoingOffering">
+                <option>Unknown / verify</option>
+                <option>Ongoing</option>
+                <option>Closed</option>
+              </select>
+              <span class="value-pill">6</span>
+            </div>
+            <div class="field-row">
+              <label for="edgarStatus">EDGAR access status <small>CIK, Login.gov, role, and account access can become the practical blocker.</small></label>
+              <select id="edgarStatus">
+                <option>No CIK or access yet</option>
+                <option>CIK exists, access not confirmed</option>
+                <option>CIK and EDGAR access confirmed</option>
+                <option>Unknown / ask counsel</option>
+              </select>
+              <span class="value-pill">7</span>
+            </div>
+            <div class="field-row">
+              <label for="exemptionPath">Exemption path <small>Planning label only; this tool does not determine eligibility.</small></label>
+              <select id="exemptionPath">
+                <option>Rule 506(b)</option>
+                <option>Rule 506(c)</option>
+                <option>Rule 504</option>
+                <option>Section 4(a)(5)</option>
+                <option>Unknown / verify</option>
+              </select>
+              <span class="value-pill">8</span>
+            </div>
+            <div class="field-row">
+              <label for="closureDates">Custom closure dates <small>Optional YYYY-MM-DD values, comma-separated, for holidays or SEC closures.</small></label>
+              <input id="closureDates" type="text" placeholder="2026-05-25, 2026-06-19">
+              <span class="value-pill">9</span>
+            </div>
+            <div class="field-row">
+              <label for="stateNotes">State notice notes <small>State Blue Sky filings may have separate deadlines, fees, and portals.</small></label>
+              <input id="stateNotes" type="text" value="Verify each state notice filing and fee separately.">
+              <span class="value-pill">10</span>
+            </div>
+            <div class="field-row">
+              <label for="nextStep">Next verification step <small>Source-backed action before relying on the calculated date.</small></label>
+              <input id="nextStep" type="text" value="Confirm first-sale date, exemption path, EDGAR access, state notice filings, and whether the offering remains ongoing.">
+              <span class="value-pill">11</span>
+            </div>
+          </form>
+
+          <div class="result-strip" id="formDResults"></div>
+          <textarea id="formDOutput" spellcheck="false" aria-label="Generated Form D deadline memo"></textarea>
+          <p class="event-status" id="formDStatus" role="status" aria-live="polite">Form D actions: 0</p>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="interpret-heading">
+        <h2 id="interpret-heading">How To Use The Result Safely</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>1. Confirm The First Sale</h3>
+            <p>Use the date the first investor became irrevocably contractually committed to invest, not a casual verbal interest date or general fundraising start date.</p>
+          </article>
+          <article class="panel">
+            <h3>2. Check EDGAR Access Early</h3>
+            <p>If the issuer lacks an EDGAR account, CIK, Login.gov credential, or filing role, the access process can be the practical bottleneck before the Form D can be filed.</p>
+          </article>
+          <article class="panel">
+            <h3>3. Separate Federal And State Work</h3>
+            <p>This page is a federal Form D date planner. State securities notice filings can have different portals, fees, deadlines, renewals, and late-filing consequences.</p>
+          </article>
+          <article class="panel">
+            <h3>4. Treat Amendments As A Review Queue</h3>
+            <p>Use the annual reminder for an ongoing offering, then separately verify material changes, corrections, and any state renewal requirements.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" id="sources" aria-labelledby="sources-heading">
+        <h2 id="sources-heading">Official Source Links</h2>
+        <div class="table-wrap">
+          <table class="benchmark-table">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Why It Matters</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://www.sec.gov/resources-small-businesses/capital-raising-building-blocks/what-form-d">SEC: What is Form D?</a></td>
+                <td>Plain-language SEC guidance on Form D, EDGAR access, the 15-day first-sale clock, and annual amendments for ongoing offerings.</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.sec.gov/resources-small-businesses/exempt-offerings/filing-form-d-notice">SEC: Filing a Form D Notice</a></td>
+                <td>SEC filing-process guidance with the first-sale definition, weekend/holiday due-date movement, EDGAR filing requirement, and no-fee note.</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.sec.gov/submit-filings/forms-index/form-d">SEC Form D page</a></td>
+                <td>Official form-index entry with links to EDGAR login paths and the paper Form D worksheet for organizing information before filing.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (() => {
+        const fields = [
+          "issuer",
+          "offeringLabel",
+          "firstSaleDate",
+          "actualFilingDate",
+          "priorNoticeDate",
+          "ongoingOffering",
+          "edgarStatus",
+          "exemptionPath",
+          "closureDates",
+          "stateNotes",
+          "nextStep"
+        ];
+        const results = document.getElementById("formDResults");
+        const output = document.getElementById("formDOutput");
+        const status = document.getElementById("formDStatus");
+        let actionCount = 0;
+
+        const today = new Date();
+        const toIsoDate = (date) => date.toISOString().slice(0, 10);
+        document.getElementById("firstSaleDate").value = toIsoDate(today);
+
+        function getValue(id) {
+          return document.getElementById(id).value.trim();
+        }
+
+        function parseIsoDate(value) {
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+          const date = new Date(`${value}T12:00:00Z`);
+          return Number.isNaN(date.getTime()) ? null : date;
+        }
+
+        function addCalendarDays(date, days) {
+          const next = new Date(date);
+          next.setUTCDate(next.getUTCDate() + days);
+          return next;
+        }
+
+        function addYears(date, years) {
+          const next = new Date(date);
+          next.setUTCFullYear(next.getUTCFullYear() + years);
+          return next;
+        }
+
+        function closureSet() {
+          return new Set(
+            getValue("closureDates")
+              .split(",")
+              .map((item) => item.trim())
+              .filter((item) => /^\d{4}-\d{2}-\d{2}$/.test(item))
+          );
+        }
+
+        function isBusinessDay(date, closures) {
+          const day = date.getUTCDay();
+          return day !== 0 && day !== 6 && !closures.has(toIsoDate(date));
+        }
+
+        function nextBusinessDay(date, closures) {
+          let next = new Date(date);
+          while (!isBusinessDay(next, closures)) {
+            next = addCalendarDays(next, 1);
+          }
+          return next;
+        }
+
+        function priorBusinessDay(date, closures) {
+          let next = new Date(date);
+          while (!isBusinessDay(next, closures)) {
+            next = addCalendarDays(next, -1);
+          }
+          return next;
+        }
+
+        function daysBetween(from, to) {
+          const start = Date.UTC(from.getUTCFullYear(), from.getUTCMonth(), from.getUTCDate());
+          const end = Date.UTC(to.getUTCFullYear(), to.getUTCMonth(), to.getUTCDate());
+          return Math.round((end - start) / 86400000);
+        }
+
+        function formatDate(date) {
+          return date ? toIsoDate(date) : "not entered";
+        }
+
+        function csvEscape(value) {
+          const text = String(value ?? "");
+          return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
+        }
+
+        function edgarAction(statusValue, dueDate) {
+          if (statusValue === "CIK and EDGAR access confirmed") {
+            return "EDGAR access is marked confirmed; gather Form D inputs before opening the online form.";
+          }
+          if (statusValue === "CIK exists, access not confirmed") {
+            return "Confirm EDGAR account access, Login.gov credentials, role authorization, and CCC before the Form D due date.";
+          }
+          if (statusValue === "No CIK or access yet") {
+            return `Start Form ID / EDGAR access immediately; target completion before ${formatDate(dueDate)}.`;
+          }
+          return "Confirm EDGAR access status with the issuer, account administrator, filing agent, or counsel.";
+        }
+
+        function calculate() {
+          const firstSaleDate = parseIsoDate(getValue("firstSaleDate"));
+          if (!firstSaleDate) {
+            throw new Error("Enter a valid first-sale date.");
+          }
+          const closures = closureSet();
+          const rawDueDate = addCalendarDays(firstSaleDate, 15);
+          const adjustedDueDate = nextBusinessDay(rawDueDate, closures);
+          const actualFilingDate = parseIsoDate(getValue("actualFilingDate"));
+          const priorNoticeDate = parseIsoDate(getValue("priorNoticeDate"));
+          const todayDate = parseIsoDate(toIsoDate(today));
+          const daysUntilDue = daysBetween(todayDate, adjustedDueDate);
+
+          let statusLabel = "Open";
+          if (actualFilingDate) {
+            statusLabel = actualFilingDate <= adjustedDueDate ? "Filed by calculated target" : "Filed after calculated target";
+          } else if (daysUntilDue < 0) {
+            statusLabel = "Past calculated target";
+          } else if (daysUntilDue <= 3) {
+            statusLabel = "Urgent";
+          } else if (daysUntilDue <= 7) {
+            statusLabel = "Soon";
+          }
+
+          const annualBaseDate = priorNoticeDate || actualFilingDate;
+          let annualDueDate = null;
+          let annualPlanningDate = null;
+          if (annualBaseDate && getValue("ongoingOffering") !== "Closed") {
+            annualDueDate = addYears(annualBaseDate, 1);
+            annualPlanningDate = priorBusinessDay(annualDueDate, closures);
+          }
+
+          const weekendOrClosureMoved = formatDate(rawDueDate) !== formatDate(adjustedDueDate);
+          const warnings = [];
+          if (weekendOrClosureMoved) warnings.push("Initial target moved to the next business day based on weekend/custom closure handling.");
+          if (getValue("edgarStatus") !== "CIK and EDGAR access confirmed") warnings.push("EDGAR access is not marked fully confirmed.");
+          if (getValue("stateNotes")) warnings.push("State notice filing requirements must be verified separately.");
+          if (statusLabel.includes("Past") || statusLabel.includes("after")) warnings.push("Review late-filing consequences and cure steps with counsel.");
+          if (getValue("ongoingOffering") === "Unknown / verify") warnings.push("Offering status is unknown; annual amendment needs verification.");
+
+          return {
+            issuer: getValue("issuer") || "Unnamed issuer",
+            offeringLabel: getValue("offeringLabel") || "Unnamed offering",
+            firstSaleDate,
+            rawDueDate,
+            adjustedDueDate,
+            actualFilingDate,
+            priorNoticeDate,
+            annualDueDate,
+            annualPlanningDate,
+            statusLabel,
+            daysUntilDue,
+            weekendOrClosureMoved,
+            edgarNote: edgarAction(getValue("edgarStatus"), adjustedDueDate),
+            exemptionPath: getValue("exemptionPath"),
+            offeringStatus: getValue("ongoingOffering"),
+            stateNotes: getValue("stateNotes"),
+            nextStep: getValue("nextStep"),
+            warnings
+          };
+        }
+
+        function renderResult(data) {
+          const daysText = data.actualFilingDate
+            ? `filed ${daysBetween(data.adjustedDueDate, data.actualFilingDate)} day(s) from target`
+            : `${data.daysUntilDue} day(s) from today`;
+          const annualText = data.annualDueDate
+            ? `Annual review: ${formatDate(data.annualPlanningDate)} target, ${formatDate(data.annualDueDate)} anniversary`
+            : "Annual review: add prior notice date if offering is ongoing";
+
+          results.innerHTML = [
+            `<div class="result-card"><span>Status</span><strong>${data.statusLabel}</strong></div>`,
+            `<div class="result-card"><span>Form D target</span><strong>${formatDate(data.adjustedDueDate)}</strong><small>${daysText}</small></div>`,
+            `<div class="result-card"><span>Raw 15-day date</span><strong>${formatDate(data.rawDueDate)}</strong><small>${data.weekendOrClosureMoved ? "moved forward" : "no move"}</small></div>`,
+            `<div class="result-card"><span>Annual amendment</span><strong>${data.annualDueDate ? formatDate(data.annualDueDate) : "verify"}</strong><small>${annualText}</small></div>`
+          ].join("");
+        }
+
+        function buildMemo(data) {
+          return [
+            `# Form D Deadline Planning Memo`,
+            ``,
+            `Issuer: ${data.issuer}`,
+            `Offering: ${data.offeringLabel}`,
+            `Exemption label: ${data.exemptionPath}`,
+            `First-sale date entered: ${formatDate(data.firstSaleDate)}`,
+            `Calculated 15-calendar-day date: ${formatDate(data.rawDueDate)}`,
+            `Calculated Form D target date: ${formatDate(data.adjustedDueDate)}`,
+            `Current status: ${data.statusLabel}`,
+            `Actual filing date: ${formatDate(data.actualFilingDate)}`,
+            `EDGAR access note: ${data.edgarNote}`,
+            `Offering status: ${data.offeringStatus}`,
+            `Annual amendment anniversary: ${data.annualDueDate ? formatDate(data.annualDueDate) : "not calculated"}`,
+            `Annual amendment planning target: ${data.annualPlanningDate ? formatDate(data.annualPlanningDate) : "not calculated"}`,
+            `State notice note: ${data.stateNotes || "Verify separately."}`,
+            `Next verification step: ${data.nextStep || "Verify source facts with counsel."}`,
+            ``,
+            `Warnings:`,
+            ...(data.warnings.length ? data.warnings.map((warning) => `- ${warning}`) : ["- No additional warnings generated by this worksheet."]),
+            ``,
+            `Source notes: SEC guidance says a Form D notice is filed for Regulation D offerings, companies must file within 15 days after the first sale, the first-sale date is when the first investor is irrevocably contractually committed to invest, and weekend/holiday due dates move to the next business day. SEC guidance also notes Form D and amendments are filed online through EDGAR and that annual amendments may be required if an offering continues beyond 12 months or certain information changes.`,
+            ``,
+            `Official sources:`,
+            `- https://www.sec.gov/resources-small-businesses/capital-raising-building-blocks/what-form-d`,
+            `- https://www.sec.gov/resources-small-businesses/exempt-offerings/filing-form-d-notice`,
+            `- https://www.sec.gov/submit-filings/forms-index/form-d`,
+            ``,
+            `Disclosure: informational planning worksheet only; not legal advice, securities advice, an EDGAR filing service, or an official SEC tool.`
+          ].join("\n");
+        }
+
+        function buildCsv(data) {
+          const headers = [
+            "issuer",
+            "offering",
+            "exemption_label",
+            "first_sale_date",
+            "raw_15_day_date",
+            "calculated_form_d_target",
+            "actual_filing_date",
+            "status",
+            "edgar_note",
+            "offering_status",
+            "annual_amendment_anniversary",
+            "annual_planning_target",
+            "state_notice_note",
+            "next_step"
+          ];
+          const row = [
+            data.issuer,
+            data.offeringLabel,
+            data.exemptionPath,
+            formatDate(data.firstSaleDate),
+            formatDate(data.rawDueDate),
+            formatDate(data.adjustedDueDate),
+            formatDate(data.actualFilingDate),
+            data.statusLabel,
+            data.edgarNote,
+            data.offeringStatus,
+            formatDate(data.annualDueDate),
+            formatDate(data.annualPlanningDate),
+            data.stateNotes,
+            data.nextStep
+          ];
+          return `${headers.join(",")}\n${row.map(csvEscape).join(",")}\n`;
+        }
+
+        function setStatus(message) {
+          actionCount += 1;
+          status.textContent = `${message} Actions: ${actionCount}`;
+        }
+
+        function track(name, detail = {}) {
+          if (window.TrustLeakEvents?.track) {
+            window.TrustLeakEvents.track(name, detail);
+          }
+        }
+
+        async function copyText(text) {
+          if (navigator.clipboard?.writeText) {
+            await navigator.clipboard.writeText(text);
+            return;
+          }
+          output.focus();
+          output.select();
+          document.execCommand("copy");
+        }
+
+        function runCalculation(shouldTrack = true) {
+          try {
+            const data = calculate();
+            renderResult(data);
+            output.value = buildMemo(data);
+            if (shouldTrack) {
+              setStatus("Form D deadline calculated.");
+              track("form_d_deadline_calculated", {
+                status: data.statusLabel,
+                daysUntilDue: data.daysUntilDue,
+                annual: Boolean(data.annualDueDate)
+              });
+            }
+            return data;
+          } catch (error) {
+            results.innerHTML = `<div class="result-card"><span>Input needed</span><strong>${error.message}</strong></div>`;
+            output.value = "";
+            throw error;
+          }
+        }
+
+        document.getElementById("calculateFormD").addEventListener("click", () => runCalculation(true));
+        document.getElementById("copyFormDMemo").addEventListener("click", async () => {
+          const data = output.value.trim() ? calculate() : runCalculation(false);
+          await copyText(output.value || buildMemo(data));
+          setStatus("Form D memo copied.");
+          track("form_d_deadline_memo_copied", { status: data.statusLabel });
+        });
+        document.getElementById("copyFormDCsv").addEventListener("click", async () => {
+          const data = output.value.trim() ? calculate() : runCalculation(false);
+          await copyText(buildCsv(data));
+          setStatus("Form D CSV copied.");
+          track("form_d_deadline_csv_copied", { status: data.statusLabel });
+        });
+        fields.forEach((id) => document.getElementById(id).addEventListener("change", () => runCalculation(false)));
+        runCalculation(false);
+      })();
+    </script>
+    <script src="event-log.js"></script>
+    <script src="share-tools.js"></script>
+  </body>
+</html>

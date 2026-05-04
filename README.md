@@ -14,6 +14,7 @@ Live site: https://trust-leak-audit-static.vercel.app/
 - LLMS.txt cache freshness checker for comparing origin and directory copies.
 - Public bid no-bid calculator for RFP, RFQ, and public opportunity triage.
 - Public bid deadline planner for Q&A, registration, site-visit, draft, review, and final upload milestones.
+- Form D deadline calculator for Regulation D first-sale date planning, EDGAR access notes, annual amendment reminders, and CSV export.
 - Launch notes, share links, `llms.txt`, sitemap, and IndexNow support.
 
 ## Privacy And Use
@@ -34,6 +35,7 @@ The static toolkit code and original documentation in this repository are MIT li
 - LLMS.txt cache checker: https://trust-leak-audit-static.vercel.app/llms-txt-cache-freshness-checker.html
 - Public bid no-bid calculator: https://trust-leak-audit-static.vercel.app/public-bid-no-bid-calculator.html
 - Public bid deadline planner: https://trust-leak-audit-static.vercel.app/public-bid-deadline-planner.html
+- Form D deadline calculator: https://trust-leak-audit-static.vercel.app/form-d-deadline-calculator.html
 - SEC trigger briefs hub: https://trust-leak-audit-static.vercel.app/sec-trigger-briefs-hub.html
 
 This repository can contain prepared release files before the production alias finishes updating, so the live site and current sitemap are the source of truth for public launch copy.

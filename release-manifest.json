@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-04T12:34:23.682Z",
+  "generatedAt": "2026-05-04T14:38:54.496Z",
   "sourceDir": "/Users/turnerlevey/untitled folder/venture-lab/site",
   "releaseDir": "/Users/turnerlevey/untitled folder/venture-lab/releases/trust-leak-audit-static",
   "siteUrl": "https://trust-leak-audit-static.vercel.app",
@@ -7,6 +7,7 @@
   "indexablePages": [
     "agency-margin-calculator.html",
     "ecommerce-conversion-trust-checklist.html",
+    "form-d-deadline-calculator.html",
     "index.html",
     "launch-notes.html",
     "lead-funnel-calculator.html",
@@ -43,6 +44,7 @@
     "analytics.html",
     "deployment-qa.html",
     "ecommerce-conversion-trust-checklist.html",
+    "form-d-deadline-calculator.html",
     "index.html",
     "launch-kit.html",
     "launch-notes.html",
@@ -71,6 +73,7 @@
   "ogAssets": [
     "og/agency-margin-calculator.svg",
     "og/ecommerce-conversion-trust-checklist.svg",
+    "og/form-d-deadline-calculator.svg",
     "og/launch-notes.svg",
     "og/lead-funnel-calculator.svg",
     "og/llms-txt-cache-freshness-checker.svg",
@@ -105,24 +108,24 @@
   ],
   "indexNow": {
     "keyFile": "4f2e8d9c6b7a4f3a9e1c0d8b6a2f4c1e.txt",
-    "indexableUrls": 25
+    "indexableUrls": 26
   },
   "trafficBeacon": {
     "endpoint": "/api/track",
     "handler": "api/track.js"
   },
   "eventLogCoverage": {
-    "covered": 25,
-    "indexable": 25
+    "covered": 26,
+    "indexable": 26
   },
   "localLinkIssues": [],
   "shareToolCoverage": {
-    "covered": 25,
-    "indexable": 25
+    "covered": 26,
+    "indexable": 26
   },
   "vercelAnalyticsCoverage": {
-    "covered": 25,
-    "indexable": 25,
+    "covered": 26,
+    "indexable": 26,
     "scriptSrc": "/_vercel/insights/script.js"
   },
   "nextCommand": "SITE_URL=https://your-domain.example node venture-lab/site/build-static-release.mjs"
