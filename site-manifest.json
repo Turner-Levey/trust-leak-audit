@@ -88,6 +88,11 @@
       "description": "Calculate common beneficial ownership reporting target dates, cutoff notes, and tracker rows."
     },
     {
+      "name": "SEC Filing Fee Calculator",
+      "url": "/sec-filing-fee-calculator.html",
+      "description": "Calculate current SEC filing fees and copy an EX-FILING-FEES review row."
+    },
+    {
       "name": "SEC Briefs Hub",
       "url": "/sec-trigger-briefs-hub.html",
       "description": "Review public Form 8-K trigger brief sample routes."

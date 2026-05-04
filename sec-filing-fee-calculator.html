@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free browser-only SEC filing fee calculator using the FY2026 $138.10 per $1,000,000 rate, with EDGAR fee notes, copyable memo, and EX-FILING-FEES review row.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="SEC Filing Fee Calculator">
+    <meta property="og:description" content="Calculate SEC filing fees from aggregate offering or transaction amounts and copy an EX-FILING-FEES review row.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trust-leak-audit-static.vercel.app/sec-filing-fee-calculator.html">
+    <meta property="og:site_name" content="SEC Filing Trigger Briefs">
+    <meta property="og:image" content="https://trust-leak-audit-static.vercel.app/og/sec-filing-fee-calculator.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="SEC filing fee calculator social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://trust-leak-audit-static.vercel.app/og/sec-filing-fee-calculator.svg">
+    <meta name="twitter:image:alt" content="SEC filing fee calculator social preview.">
+    <title>SEC Filing Fee Calculator</title>
+    <link rel="canonical" href="https://trust-leak-audit-static.vercel.app/sec-filing-fee-calculator.html">
+    <link rel="alternate" href="https://trust-leak-audit-static.vercel.app/llms.txt" type="text/plain" title="LLMs.txt">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "SEC Filing Fee Calculator",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "description": "A free browser-only SEC filing fee worksheet that uses the current FY2026 fee rate and produces copyable review rows for EDGAR filing-fee preparation.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What SEC filing fee rate does this calculator use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It uses the SEC's FY2026 rate of $138.10 per $1,000,000 for the period from October 1, 2025 through September 30, 2026, calculated as aggregate amount multiplied by 0.00013810."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is the copied row an EDGAR-ready EX-FILING-FEES exhibit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The copied row is a plain-text review aid for internal checking before using EDGAR, FEPT, filing software, or counsel-approved workflows. It is not Inline XBRL and is not a substitute for EDGAR validation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can fee calculation errors affect acceptance?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The SEC's EDGAR filing fee page notes that acceptance may be delayed when funds are unavailable, insufficient because of calculation error, or wired with missing or incorrectly formatted information."
+            }
+          }
+        ]
+      }
+    </script>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="index.html">Trust Leak Toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Experiment 002 - SEC filing fee tool</p>
+        <h1>SEC Filing Fee Calculator</h1>
+        <p class="lede">Calculate the current SEC filing fee from an aggregate offering or transaction amount, then copy a review memo or fee-table row for EDGAR preparation.</p>
+        <div class="page-actions">
+          <a class="primary-link" href="#calculator">Calculate fee</a>
+          <a class="secondary-link" href="form-d-deadline-calculator.html">Form D calculator</a>
+          <a class="secondary-link" href="schedule-13d-13g-deadline-calculator.html">13D / 13G calculator</a>
+          <a class="secondary-link" href="#sources">Sources</a>
+        </div>
+      </header>
+
+      <section class="notice-panel" aria-label="SEC filing fee disclaimer">
+        <strong>Disclosure:</strong> This is an informational filing-fee worksheet, not legal advice, securities advice, accounting advice, an EDGAR filing service, payment instruction, or an official SEC tool. Confirm the current fee rate, form instructions, fee table, offsets, account balance, payment timing, and EDGAR validation status before filing.
+      </section>
+
+      <section class="seo-grid" aria-label="SEC filing fee calculator use cases">
+        <article class="panel">
+          <h2>Current Rate</h2>
+          <p>The SEC's current filing fee rate is $138.10 per $1,000,000 for 10/1/2025 through 9/30/2026, or aggregate amount multiplied by 0.00013810.</p>
+        </article>
+        <article class="panel">
+          <h2>Workflow Fit</h2>
+          <p>Useful before S-1, S-3, S-4, tender-offer, repurchase, proxy, Rule 24f-2, or other fee-bearing EDGAR preparation.</p>
+        </article>
+        <article class="panel">
+          <h2>Output</h2>
+          <p>Copy a memo, fee-account warning, source links, and a plain-text EX-FILING-FEES review row for internal checking.</p>
+        </article>
+      </section>
+
+      <section class="detail-section" id="calculator" aria-labelledby="calculator-heading">
+        <div class="panel report-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Browser-only worksheet</p>
+              <h2 id="calculator-heading">Calculate A Filing Fee</h2>
+            </div>
+            <div class="button-row">
+              <button class="primary" id="calculateFee" type="button">Calculate</button>
+              <button class="secondary" id="copyFeeMemo" type="button">Copy Memo</button>
+              <button class="secondary" id="copyFeeRow" type="button">Copy Fee Row</button>
+            </div>
+          </div>
+
+          <form class="calc-form" id="filingFeeForm">
+            <div class="field-row">
+              <label for="matterName">Matter or issuer <small>Internal matter label, issuer, fund, registrant, or transaction name.</small></label>
+              <input id="matterName" type="text" value="Example Registration Statement">
+              <span class="value-pill">1</span>
+            </div>
+            <div class="field-row">
+              <label for="filingType">Filing type <small>Planning label only; verify the exact form and fee table instructions.</small></label>
+              <select id="filingType">
+                <option value="Securities Act registration - Section 6(b)">Securities Act registration - Section 6(b)</option>
+                <option value="Exchange Act repurchase - Section 13(e)">Exchange Act repurchase - Section 13(e)</option>
+                <option value="Proxy solicitation or tender offer - Section 14(g)">Proxy solicitation or tender offer - Section 14(g)</option>
+                <option value="Rule 24f-2 annual notice">Rule 24f-2 annual notice</option>
+                <option value="Other fee-bearing EDGAR filing - verify instructions">Other fee-bearing EDGAR filing - verify instructions</option>
+              </select>
+              <span class="value-pill">2</span>
+            </div>
+            <div class="field-row">
+              <label for="securityTitle">Security or transaction description <small>Plain-English row label for internal review.</small></label>
+              <input id="securityTitle" type="text" value="Common stock, par value $0.0001 per share">
+              <span class="value-pill">3</span>
+            </div>
+            <div class="field-row">
+              <label for="calculationBasis">Calculation basis <small>Use aggregate amount directly or calculate shares times price.</small></label>
+              <select id="calculationBasis">
+                <option value="aggregate">Aggregate offering or transaction amount</option>
+                <option value="shares">Shares or units times price per security</option>
+              </select>
+              <span class="value-pill">4</span>
+            </div>
+            <div class="field-row">
+              <label for="aggregateAmount">Aggregate amount <small>Dollar amount subject to the SEC rate, before offsets.</small></label>
+              <input id="aggregateAmount" inputmode="decimal" type="text" value="25000000">
+              <span class="value-pill">5</span>
+            </div>
+            <div class="field-row">
+              <label for="securityCount">Shares or units <small>Used only when basis is shares times price.</small></label>
+              <input id="securityCount" inputmode="decimal" type="text" value="1000000">
+              <span class="value-pill">6</span>
+            </div>
+            <div class="field-row">
+              <label for="pricePerSecurity">Proposed maximum price per security <small>Used only when basis is shares times price.</small></label>
+              <input id="pricePerSecurity" inputmode="decimal" type="text" value="25.00">
+              <span class="value-pill">7</span>
+            </div>
+            <div class="field-row">
+              <label for="priorFeeOffset">Prior fee offset <small>Optional amount already paid or claimed as offset; verify under the applicable rule.</small></label>
+              <input id="priorFeeOffset" inputmode="decimal" type="text" value="0">
+              <span class="value-pill">8</span>
+            </div>
+            <div class="field-row">
+              <label for="feeAccountStatus">Fee account status <small>Payment readiness can affect acceptance timing.</small></label>
+              <select id="feeAccountStatus">
+                <option>Unknown / verify EDGAR fee account balance</option>
+                <option>Funds confirmed in EDGAR filing fee account</option>
+                <option>Wire sent, confirmation pending</option>
+                <option>Insufficient or no funds confirmed</option>
+              </select>
+              <span class="value-pill">9</span>
+            </div>
+            <div class="field-row">
+              <label for="plannedSubmissionTime">Planned submission window <small>Used for acceptance-date warning notes.</small></label>
+              <select id="plannedSubmissionTime">
+                <option>Before 5:30 p.m. ET</option>
+                <option>After 5:30 p.m. ET and before 10 p.m. ET</option>
+                <option>Near or after 10 p.m. ET</option>
+                <option>Unknown / not scheduled</option>
+              </select>
+              <span class="value-pill">10</span>
+            </div>
+            <div class="field-row">
+              <label for="sourceUrl">Source or draft URL <small>Optional source, filing draft, deal sheet, board approval, or internal tracker URL.</small></label>
+              <input id="sourceUrl" type="url" value="https://www.sec.gov/about/filing-fee-rate">
+              <span class="value-pill">11</span>
+            </div>
+            <div class="field-row">
+              <label for="nextStep">Next verification step <small>Source-backed action before relying on the fee number.</small></label>
+              <input id="nextStep" type="text" value="Confirm form instructions, fee table tags, offsets, EDGAR fee account balance, and FEPT validation with counsel or filing agent.">
+              <span class="value-pill">12</span>
+            </div>
+          </form>
+
+          <div class="result-strip" id="feeResults"></div>
+          <textarea id="feeOutput" spellcheck="false" aria-label="Generated SEC filing fee memo"></textarea>
+          <p class="event-status" id="feeStatus" role="status" aria-live="polite">SEC filing fee actions: 0</p>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="interpret-heading">
+        <h2 id="interpret-heading">How To Use The Fee Number Safely</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>1. Confirm The Rate Window</h3>
+            <p>This page was last checked on May 4, 2026. Recheck the SEC rate page before October 1, 2026 and before any filing deadline.</p>
+          </article>
+          <article class="panel">
+            <h3>2. Verify The Fee Table</h3>
+            <p>Use the copied row as a review aid only. Build and validate the actual EX-FILING-FEES exhibit inside EDGAR, FEPT, filing software, or counsel-approved tooling.</p>
+          </article>
+          <article class="panel">
+            <h3>3. Check The Account</h3>
+            <p>The SEC notes acceptance may be delayed when fee funds are missing, insufficient because of a calculation error, or wired with incorrect information.</p>
+          </article>
+          <article class="panel">
+            <h3>4. Track Late-Day Filing Effects</h3>
+            <p>SEC EDGAR fee guidance describes special treatment for some fee-related filings received after 5:30 p.m. ET and before 10 p.m. ET.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" id="sources" aria-labelledby="sources-heading">
+        <h2 id="sources-heading">Official Source Links</h2>
+        <div class="table-wrap">
+          <table class="benchmark-table">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Why It Matters</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a class="source-link" href="https://www.sec.gov/about/filing-fee-rate">SEC filing fee rate</a></td>
+                <td>Current public SEC rate page for the FY2026 fee rate, multiplier, statutory sections, effective date, and review date.</td>
+              </tr>
+              <tr>
+                <td><a class="source-link" href="https://www.sec.gov/rules-regulations/fee-rate-advisories/2026-1">SEC FY2026 fee rate advisory</a></td>
+                <td>SEC advisory announcing the FY2026 rate decrease and applicability to Sections 6(b), 13(e), 14(g), and related fee rates.</td>
+              </tr>
+              <tr>
+                <td><a class="source-link" href="https://www.sec.gov/submit-filings/edgar-filing-fees">SEC EDGAR filing fees</a></td>
+                <td>Fee-account, payment, insufficient-funds, calculation-error, wire-format, timing, and EX-FILING-FEES resource notes.</td>
+              </tr>
+              <tr>
+                <td><a class="source-link" href="https://www.sec.gov/files/edgar/filing-fee-interface-guide.pdf">SEC EDGAR Filing Fee Interface Courtesy Guide</a></td>
+                <td>March 2026 FEPT and EX-FILING-FEES guide for structured fee exhibit preparation, attachment, and validation context.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (() => {
+        const RATE = 0.00013810;
+        const RATE_PER_MILLION = 138.10;
+        const RATE_PERIOD = "10/1/2025 to 9/30/2026";
+        const RATE_LAST_CHECKED = "2026-05-04";
+        const fields = [
+          "matterName",
+          "filingType",
+          "securityTitle",
+          "calculationBasis",
+          "aggregateAmount",
+          "securityCount",
+          "pricePerSecurity",
+          "priorFeeOffset",
+          "feeAccountStatus",
+          "plannedSubmissionTime",
+          "sourceUrl",
+          "nextStep"
+        ];
+        const results = document.getElementById("feeResults");
+        const output = document.getElementById("feeOutput");
+        const status = document.getElementById("feeStatus");
+        let actionCount = 0;
+
+        function getValue(id) {
+          return document.getElementById(id).value.trim();
+        }
+
+        function parseAmount(value) {
+          const cleaned = String(value || "").replace(/[$,\s]/g, "");
+          if (!cleaned) return 0;
+          const number = Number(cleaned);
+          return Number.isFinite(number) && number >= 0 ? number : NaN;
+        }
+
+        function currency(value) {
+          return new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }).format(value);
+        }
+
+        function numberText(value) {
+          return new Intl.NumberFormat("en-US", {
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 6
+          }).format(value);
+        }
+
+        function csvEscape(value) {
+          const text = String(value ?? "");
+          return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
+        }
+
+        function feeAccountWarning(accountStatus) {
+          if (accountStatus === "Funds confirmed in EDGAR filing fee account") {
+            return "Fee account funds are marked confirmed; still verify balance, account activity, and wire details in EDGAR before filing.";
+          }
+          if (accountStatus === "Wire sent, confirmation pending") {
+            return "Wire confirmation is pending; SEC guidance notes filing acceptance may be delayed if funds are not in the account when a fee-bearing filing is submitted.";
+          }
+          if (accountStatus === "Insufficient or no funds confirmed") {
+            return "No sufficient funds are marked confirmed; resolve fee-account funding before submitting a fee-bearing filing.";
+          }
+          return "Verify EDGAR fee account balance and payment details before filing.";
+        }
+
+        function timingWarning(windowValue) {
+          if (windowValue === "After 5:30 p.m. ET and before 10 p.m. ET") {
+            return "SEC EDGAR fee guidance says some fee-related filings received after 5:30 p.m. ET but before 10 p.m. ET may receive notifications and same-day acceptance if validation passes, while the filing date may correspond to the next business day except for listed MEF submission types.";
+          }
+          if (windowValue === "Near or after 10 p.m. ET") {
+            return "Near- or after-10 p.m. ET filing timing requires extra review of EDGAR cutoff and filing-date treatment.";
+          }
+          if (windowValue === "Unknown / not scheduled") {
+            return "Submission timing is not scheduled; verify EDGAR cutoff, filing date, and payment readiness before launch.";
+          }
+          return "Planned submission is before 5:30 p.m. ET; still verify current EDGAR cutoff and validation behavior.";
+        }
+
+        function calculate() {
+          const basis = getValue("calculationBasis");
+          const aggregateDirect = parseAmount(getValue("aggregateAmount"));
+          const securityCount = parseAmount(getValue("securityCount"));
+          const pricePerSecurity = parseAmount(getValue("pricePerSecurity"));
+          const priorFeeOffset = parseAmount(getValue("priorFeeOffset"));
+          if ([aggregateDirect, securityCount, pricePerSecurity, priorFeeOffset].some(Number.isNaN)) {
+            throw new Error("Enter non-negative numeric values for amount, shares, price, and offset.");
+          }
+
+          const aggregateAmount = basis === "shares" ? securityCount * pricePerSecurity : aggregateDirect;
+          if (aggregateAmount <= 0) {
+            throw new Error("Enter an aggregate amount greater than zero.");
+          }
+
+          const calculatedFee = aggregateAmount * RATE;
+          const netFeeDue = Math.max(0, calculatedFee - priorFeeOffset);
+          const offsetStatus = priorFeeOffset > 0
+            ? `${currency(priorFeeOffset)} offset entered; verify availability, source filing, and applicable offset rule.`
+            : "No fee offset entered.";
+          const warnings = [
+            "This worksheet is not an official SEC calculator and is not an EDGAR validation result.",
+            `Rate last checked ${RATE_LAST_CHECKED}; refresh against the SEC filing fee rate page before October 1, 2026 or any live filing.`,
+            "Confirm the exact form, fee table, rule, security title, unsold securities, carry-forward, and offset treatment before filing.",
+            feeAccountWarning(getValue("feeAccountStatus")),
+            timingWarning(getValue("plannedSubmissionTime"))
+          ];
+          if (netFeeDue === 0 && calculatedFee > 0 && priorFeeOffset > 0) {
+            warnings.push("Entered offset equals or exceeds the calculated fee; verify that no net fee remains due before relying on this result.");
+          }
+
+          return {
+            matterName: getValue("matterName") || "Unnamed matter",
+            filingType: getValue("filingType"),
+            securityTitle: getValue("securityTitle") || "Unspecified security or transaction",
+            basis,
+            aggregateAmount,
+            securityCount,
+            pricePerSecurity,
+            calculatedFee,
+            priorFeeOffset,
+            netFeeDue,
+            offsetStatus,
+            accountStatus: getValue("feeAccountStatus"),
+            timingWindow: getValue("plannedSubmissionTime"),
+            sourceUrl: getValue("sourceUrl") || "not entered",
+            nextStep: getValue("nextStep") || "Verify in EDGAR, FEPT, and source documents.",
+            warnings
+          };
+        }
+
+        function renderResult(data) {
+          const basisLabel = data.basis === "shares"
+            ? `${numberText(data.securityCount)} x ${currency(data.pricePerSecurity)}`
+            : "Aggregate amount entered";
+          results.innerHTML = [
+            `<div class="result-card"><span>Aggregate amount</span><strong>${currency(data.aggregateAmount)}</strong><small>${basisLabel}</small></div>`,
+            `<div class="result-card"><span>Calculated fee</span><strong>${currency(data.calculatedFee)}</strong><small>$${RATE_PER_MILLION.toFixed(2)} per $1,000,000</small></div>`,
+            `<div class="result-card"><span>Net after offset</span><strong>${currency(data.netFeeDue)}</strong><small>${data.offsetStatus}</small></div>`,
+            `<div class="result-card"><span>Rate period</span><strong>${RATE_PERIOD}</strong><small>last checked ${RATE_LAST_CHECKED}</small></div>`
+          ].join("");
+        }
+
+        function buildMemo(data) {
+          return [
+            `# SEC Filing Fee Planning Memo`,
+            ``,
+            `Matter or issuer: ${data.matterName}`,
+            `Filing type: ${data.filingType}`,
+            `Security / transaction description: ${data.securityTitle}`,
+            `Calculation basis: ${data.basis === "shares" ? "shares or units times price" : "aggregate amount"}`,
+            `Shares or units: ${numberText(data.securityCount)}`,
+            `Proposed maximum price per security: ${currency(data.pricePerSecurity)}`,
+            `Aggregate amount subject to fee: ${currency(data.aggregateAmount)}`,
+            `SEC fee rate used: $${RATE_PER_MILLION.toFixed(2)} per $1,000,000 (${RATE})`,
+            `Rate period: ${RATE_PERIOD}`,
+            `Calculated filing fee before offsets: ${currency(data.calculatedFee)}`,
+            `Prior fee offset entered: ${currency(data.priorFeeOffset)}`,
+            `Net fee due after entered offset: ${currency(data.netFeeDue)}`,
+            `Offset note: ${data.offsetStatus}`,
+            `Fee account status: ${data.accountStatus}`,
+            `Submission timing note: ${data.timingWindow}`,
+            `Source or draft URL: ${data.sourceUrl}`,
+            `Next verification step: ${data.nextStep}`,
+            ``,
+            `Warnings:`,
+            ...data.warnings.map((warning) => `- ${warning}`),
+            ``,
+            `Official sources:`,
+            `- https://www.sec.gov/about/filing-fee-rate`,
+            `- https://www.sec.gov/rules-regulations/fee-rate-advisories/2026-1`,
+            `- https://www.sec.gov/submit-filings/edgar-filing-fees`,
+            `- https://www.sec.gov/files/edgar/filing-fee-interface-guide.pdf`,
+            ``,
+            `Disclosure: informational filing-fee worksheet only; not legal advice, securities advice, accounting advice, payment instruction, an EDGAR filing service, or an official SEC tool.`
+          ].join("\n");
+        }
+
+        function buildRow(data) {
+          const headers = [
+            "matter_or_issuer",
+            "filing_type",
+            "security_or_transaction_description",
+            "calculation_basis",
+            "shares_or_units",
+            "proposed_maximum_price_per_security",
+            "maximum_aggregate_offering_or_transaction_amount",
+            "fee_rate",
+            "calculated_fee_before_offsets",
+            "prior_fee_offset_entered",
+            "net_fee_due_after_entered_offset",
+            "rate_period",
+            "rate_last_checked",
+            "fee_account_status",
+            "submission_timing_note",
+            "source_url",
+            "next_step"
+          ];
+          const row = [
+            data.matterName,
+            data.filingType,
+            data.securityTitle,
+            data.basis === "shares" ? "shares_or_units_times_price" : "aggregate_amount",
+            data.basis === "shares" ? data.securityCount : "",
+            data.basis === "shares" ? data.pricePerSecurity : "",
+            data.aggregateAmount.toFixed(2),
+            RATE.toFixed(8),
+            data.calculatedFee.toFixed(2),
+            data.priorFeeOffset.toFixed(2),
+            data.netFeeDue.toFixed(2),
+            RATE_PERIOD,
+            RATE_LAST_CHECKED,
+            data.accountStatus,
+            data.timingWindow,
+            data.sourceUrl,
+            data.nextStep
+          ];
+          return `${headers.join(",")}\n${row.map(csvEscape).join(",")}\n`;
+        }
+
+        function setStatus(message) {
+          actionCount += 1;
+          status.textContent = `${message} Actions: ${actionCount}`;
+        }
+
+        function track(name, detail = {}) {
+          if (window.TrustLeakEvents?.track) {
+            window.TrustLeakEvents.track(name, detail);
+          }
+        }
+
+        async function copyText(text) {
+          if (navigator.clipboard?.writeText) {
+            await navigator.clipboard.writeText(text);
+            return;
+          }
+          output.focus();
+          output.select();
+          document.execCommand("copy");
+        }
+
+        function runCalculation(shouldTrack = true) {
+          try {
+            const data = calculate();
+            renderResult(data);
+            output.value = buildMemo(data);
+            if (shouldTrack) {
+              setStatus("SEC filing fee calculated.");
+              track("sec_filing_fee_calculated", {
+                filingType: data.filingType,
+                aggregateAmount: Math.round(data.aggregateAmount),
+                feeRounded: Number(data.calculatedFee.toFixed(2)),
+                netFeeRounded: Number(data.netFeeDue.toFixed(2))
+              });
+            }
+            return data;
+          } catch (error) {
+            results.innerHTML = `<div class="result-card"><span>Input needed</span><strong>${error.message}</strong></div>`;
+            output.value = "";
+            throw error;
+          }
+        }
+
+        document.getElementById("calculateFee").addEventListener("click", () => runCalculation(true));
+        document.getElementById("copyFeeMemo").addEventListener("click", async () => {
+          const data = output.value.trim() ? calculate() : runCalculation(false);
+          await copyText(output.value || buildMemo(data));
+          setStatus("SEC filing fee memo copied.");
+          track("sec_filing_fee_memo_copied", { filingType: data.filingType, netFeeRounded: Number(data.netFeeDue.toFixed(2)) });
+        });
+        document.getElementById("copyFeeRow").addEventListener("click", async () => {
+          const data = output.value.trim() ? calculate() : runCalculation(false);
+          await copyText(buildRow(data));
+          setStatus("SEC filing fee row copied.");
+          track("sec_filing_fee_row_copied", { filingType: data.filingType, netFeeRounded: Number(data.netFeeDue.toFixed(2)) });
+        });
+        document.querySelectorAll(".source-link").forEach((link) => {
+          link.addEventListener("click", () => {
+            track("sec_filing_fee_source_opened", { href: link.href, label: link.textContent.trim() });
+          });
+        });
+        fields.forEach((id) => document.getElementById(id).addEventListener("change", () => runCalculation(false)));
+        runCalculation(false);
+      })();
+    </script>
+    <script src="event-log.js"></script>
+    <script src="share-tools.js"></script>
+  </body>
+</html>

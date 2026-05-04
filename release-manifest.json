@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-04T20:48:00.839Z",
+  "generatedAt": "2026-05-04T23:44:49.205Z",
   "sourceDir": "/Users/turnerlevey/untitled folder/venture-lab/site",
   "releaseDir": "/Users/turnerlevey/untitled folder/venture-lab/releases/trust-leak-audit-static",
   "siteUrl": "https://trust-leak-audit-static.vercel.app",
@@ -27,6 +27,7 @@
     "sec-auditor-change-evidence-pack-builder.html",
     "sec-auditor-change-watchlist-template.html",
     "sec-auditor-former-accountant-letter-tracker.html",
+    "sec-filing-fee-calculator.html",
     "sec-filing-trigger-briefs.html",
     "sec-leadership-change-briefs.html",
     "sec-trigger-briefs-hub.html",
@@ -66,6 +67,7 @@
     "sec-auditor-change-evidence-pack-builder.html",
     "sec-auditor-change-watchlist-template.html",
     "sec-auditor-former-accountant-letter-tracker.html",
+    "sec-filing-fee-calculator.html",
     "sec-filing-trigger-briefs.html",
     "sec-leadership-change-briefs.html",
     "sec-trigger-briefs-hub.html",
@@ -94,6 +96,7 @@
     "og/sec-auditor-change-evidence-pack-builder.svg",
     "og/sec-auditor-change-watchlist-template.svg",
     "og/sec-auditor-former-accountant-letter-tracker.svg",
+    "og/sec-filing-fee-calculator.svg",
     "og/sec-filing-trigger-briefs.svg",
     "og/sec-leadership-change-briefs.svg",
     "og/sec-trigger-briefs-hub.svg",
@@ -111,24 +114,24 @@
   ],
   "indexNow": {
     "keyFile": "4f2e8d9c6b7a4f3a9e1c0d8b6a2f4c1e.txt",
-    "indexableUrls": 27
+    "indexableUrls": 28
   },
   "trafficBeacon": {
     "endpoint": "/api/track",
     "handler": "api/track.js"
   },
   "eventLogCoverage": {
-    "covered": 27,
-    "indexable": 27
+    "covered": 28,
+    "indexable": 28
   },
   "localLinkIssues": [],
   "shareToolCoverage": {
-    "covered": 27,
-    "indexable": 27
+    "covered": 28,
+    "indexable": 28
   },
   "vercelAnalyticsCoverage": {
-    "covered": 27,
-    "indexable": 27,
+    "covered": 28,
+    "indexable": 28,
     "scriptSrc": "/_vercel/insights/script.js"
   },
   "nextCommand": "SITE_URL=https://your-domain.example node venture-lab/site/build-static-release.mjs"
