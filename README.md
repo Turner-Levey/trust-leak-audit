@@ -15,6 +15,7 @@ Live site: https://trust-leak-audit-static.vercel.app/
 - Public bid no-bid calculator for RFP, RFQ, and public opportunity triage.
 - Public bid deadline planner for Q&A, registration, site-visit, draft, review, and final upload milestones.
 - Form D deadline calculator for Regulation D first-sale date planning, EDGAR access notes, annual amendment reminders, and CSV export.
+- Schedule 13D / 13G deadline calculator for beneficial ownership reporting date planning, cutoff notes, memo copy, and CSV export.
 - Launch notes, share links, `llms.txt`, sitemap, and IndexNow support.
 
 ## Privacy And Use
@@ -36,6 +37,7 @@ The static toolkit code and original documentation in this repository are MIT li
 - Public bid no-bid calculator: https://trust-leak-audit-static.vercel.app/public-bid-no-bid-calculator.html
 - Public bid deadline planner: https://trust-leak-audit-static.vercel.app/public-bid-deadline-planner.html
 - Form D deadline calculator: https://trust-leak-audit-static.vercel.app/form-d-deadline-calculator.html
+- Schedule 13D / 13G deadline calculator: https://trust-leak-audit-static.vercel.app/schedule-13d-13g-deadline-calculator.html
 - SEC trigger briefs hub: https://trust-leak-audit-static.vercel.app/sec-trigger-briefs-hub.html
 
 This repository can contain prepared release files before the production alias finishes updating, so the live site and current sitemap are the source of truth for public launch copy.

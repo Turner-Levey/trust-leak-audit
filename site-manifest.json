@@ -83,6 +83,11 @@
       "description": "Calculate Regulation D Form D notice target dates, EDGAR access notes, and amendment reminders."
     },
     {
+      "name": "Schedule 13D / 13G Calculator",
+      "url": "/schedule-13d-13g-deadline-calculator.html",
+      "description": "Calculate common beneficial ownership reporting target dates, cutoff notes, and tracker rows."
+    },
+    {
       "name": "SEC Briefs Hub",
       "url": "/sec-trigger-briefs-hub.html",
       "description": "Review public Form 8-K trigger brief sample routes."

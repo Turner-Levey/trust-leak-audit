@@ -17,6 +17,7 @@ const indexablePages = [
   { label: "Public bid no-bid calculator", path: "/public-bid-no-bid-calculator.html" },
   { label: "Public bid deadline planner", path: "/public-bid-deadline-planner.html" },
   { label: "Form D deadline calculator", path: "/form-d-deadline-calculator.html" },
+  { label: "Schedule 13D / 13G deadline calculator", path: "/schedule-13d-13g-deadline-calculator.html" },
   { label: "Vercel incident response checklist", path: "/vercel-incident-response-checklist.html" },
   { label: "SEC trigger briefs hub", path: "/sec-trigger-briefs-hub.html" },
   { label: "SEC filing trigger briefs", path: "/sec-filing-trigger-briefs.html" },

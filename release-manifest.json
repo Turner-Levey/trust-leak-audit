@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-04T19:40:42.531Z",
+  "generatedAt": "2026-05-04T20:48:00.839Z",
   "sourceDir": "/Users/turnerlevey/untitled folder/venture-lab/site",
   "releaseDir": "/Users/turnerlevey/untitled folder/venture-lab/releases/trust-leak-audit-static",
   "siteUrl": "https://trust-leak-audit-static.vercel.app",
@@ -20,6 +20,7 @@
     "roas-calculator.html",
     "saas-payback-calculator.html",
     "sample-reports.html",
+    "schedule-13d-13g-deadline-calculator.html",
     "sec-auditor-change-briefs.html",
     "sec-auditor-change-deadline-calculator.html",
     "sec-auditor-change-disclosure-checklist.html",
@@ -58,6 +59,7 @@
     "roas-calculator.html",
     "saas-payback-calculator.html",
     "sample-reports.html",
+    "schedule-13d-13g-deadline-calculator.html",
     "sec-auditor-change-briefs.html",
     "sec-auditor-change-deadline-calculator.html",
     "sec-auditor-change-disclosure-checklist.html",
@@ -85,6 +87,7 @@
     "og/roas-calculator.svg",
     "og/saas-payback-calculator.svg",
     "og/sample-reports.svg",
+    "og/schedule-13d-13g-deadline-calculator.svg",
     "og/sec-auditor-change-briefs.svg",
     "og/sec-auditor-change-deadline-calculator.svg",
     "og/sec-auditor-change-disclosure-checklist.svg",
@@ -108,24 +111,24 @@
   ],
   "indexNow": {
     "keyFile": "4f2e8d9c6b7a4f3a9e1c0d8b6a2f4c1e.txt",
-    "indexableUrls": 26
+    "indexableUrls": 27
   },
   "trafficBeacon": {
     "endpoint": "/api/track",
     "handler": "api/track.js"
   },
   "eventLogCoverage": {
-    "covered": 26,
-    "indexable": 26
+    "covered": 27,
+    "indexable": 27
   },
   "localLinkIssues": [],
   "shareToolCoverage": {
-    "covered": 26,
-    "indexable": 26
+    "covered": 27,
+    "indexable": 27
   },
   "vercelAnalyticsCoverage": {
-    "covered": 26,
-    "indexable": 26,
+    "covered": 27,
+    "indexable": 27,
     "scriptSrc": "/_vercel/insights/script.js"
   },
   "nextCommand": "SITE_URL=https://your-domain.example node venture-lab/site/build-static-release.mjs"

@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free browser-only Schedule 13D and 13G deadline calculator for beneficial ownership reporting scenarios, business-day timing, 10 p.m. ET filing cutoff notes, memo copy, and CSV export.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="Schedule 13D / 13G Deadline Calculator">
+    <meta property="og:description" content="Calculate source-linked planning dates for common Schedule 13D and 13G beneficial ownership reporting scenarios.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trust-leak-audit-static.vercel.app/schedule-13d-13g-deadline-calculator.html">
+    <meta property="og:site_name" content="SEC Filing Trigger Briefs">
+    <meta property="og:image" content="https://trust-leak-audit-static.vercel.app/og/schedule-13d-13g-deadline-calculator.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Schedule 13D and 13G deadline calculator social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://trust-leak-audit-static.vercel.app/og/schedule-13d-13g-deadline-calculator.svg">
+    <meta name="twitter:image:alt" content="Schedule 13D and 13G deadline calculator social preview.">
+    <title>Schedule 13D / 13G Deadline Calculator</title>
+    <link rel="canonical" href="https://trust-leak-audit-static.vercel.app/schedule-13d-13g-deadline-calculator.html">
+    <link rel="alternate" href="https://trust-leak-audit-static.vercel.app/llms.txt" type="text/plain" title="LLMs.txt">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Schedule 13D / 13G Deadline Calculator",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "description": "A free browser-only planner that calculates common Schedule 13D and Schedule 13G beneficial ownership reporting target dates from trigger dates, month ends, or quarter ends.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does this Schedule 13D and 13G calculator do?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It estimates planning target dates for common beneficial ownership reporting scenarios, including initial Schedule 13D, Schedule 13D amendments, passive investor Schedule 13G filings, QII or exempt investor quarter-end scenarios, and accelerated Schedule 13G amendment scenarios."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool decide whether a person must file Schedule 13D or 13G?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It is an informational date worksheet only. It does not determine beneficial ownership, group status, control intent, filer category, exemptions, EDGAR readiness, or filing obligations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What filing cutoff does the tool use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The memo reminds users that the SEC amendments extended the daily filing cutoff for Schedules 13D and 13G to 10 p.m. Eastern time, but users should verify the current EDGAR and Regulation S-T requirements before relying on the output."
+            }
+          }
+        ]
+      }
+    </script>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="index.html">Trust Leak Toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Experiment 002 - SEC ownership date tool</p>
+        <h1>Schedule 13D / 13G Deadline Calculator</h1>
+        <p class="lede">Estimate common beneficial ownership reporting target dates, then copy a source-linked memo or CSV row for a securities, compliance, or investor-relations checklist.</p>
+        <div class="page-actions">
+          <a class="primary-link" href="#calculator">Calculate deadline</a>
+          <a class="secondary-link" href="form-d-deadline-calculator.html">Form D calculator</a>
+          <a class="secondary-link" href="sec-trigger-briefs-hub.html">SEC tools hub</a>
+          <a class="secondary-link" href="#sources">Sources</a>
+        </div>
+      </header>
+
+      <section class="notice-panel" aria-label="Beneficial ownership reporting disclaimer">
+        <strong>Disclosure:</strong> This is an informational planning worksheet, not legal advice, securities advice, investment advice, an EDGAR filing service, or an official SEC tool. It does not decide beneficial ownership, group status, control intent, filer category, exemption availability, or whether Schedule 13D or 13G is required. Verify all facts and current rules with qualified counsel and official SEC materials.
+      </section>
+
+      <section class="seo-grid" aria-label="Schedule 13D and 13G deadline use cases">
+        <article class="panel">
+          <h2>Use Case</h2>
+          <p>Convert a crossing, acquisition, material change, month-end threshold, or quarter-end reporting scenario into a dated checklist row.</p>
+        </article>
+        <article class="panel">
+          <h2>Source Basis</h2>
+          <p>SEC modernization rules shortened Schedule 13D and 13G deadlines and extended the daily filing cutoff for those schedules to 10 p.m. Eastern time.</p>
+        </article>
+        <article class="panel">
+          <h2>Output</h2>
+          <p>Copy a memo, warning list, source links, 10 p.m. ET cutoff note, EDGAR readiness note, and CSV row for tracking.</p>
+        </article>
+      </section>
+
+      <section class="detail-section" id="calculator" aria-labelledby="calculator-heading">
+        <div class="panel report-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Browser-only planner</p>
+              <h2 id="calculator-heading">Calculate A 13D / 13G Target Date</h2>
+            </div>
+            <div class="button-row">
+              <button class="primary" id="calculateOwnership" type="button">Calculate</button>
+              <button class="secondary" id="copyOwnershipMemo" type="button">Copy Memo</button>
+              <button class="secondary" id="copyOwnershipCsv" type="button">Copy CSV Row</button>
+            </div>
+          </div>
+
+          <form class="calc-form" id="ownershipForm">
+            <div class="field-row">
+              <label for="filer">Filer or investor <small>Person, fund, adviser, group, or internal matter label.</small></label>
+              <input id="filer" type="text" value="Example Reporting Person">
+              <span class="value-pill">1</span>
+            </div>
+            <div class="field-row">
+              <label for="issuer">Issuer <small>Covered public company or equity issuer being reviewed.</small></label>
+              <input id="issuer" type="text" value="Example Public Company">
+              <span class="value-pill">2</span>
+            </div>
+            <div class="field-row">
+              <label for="ticker">Ticker / CIK <small>Optional identifier for counsel, EDGAR, or watchlist matching.</small></label>
+              <input id="ticker" type="text" value="EXPL / 0000000000">
+              <span class="value-pill">3</span>
+            </div>
+            <div class="field-row">
+              <label for="scenario">Reporting scenario <small>Planning label only; verify filer category and facts separately.</small></label>
+              <select id="scenario">
+                <option value="13d-initial">Schedule 13D initial - more than 5%</option>
+                <option value="13d-amendment">Schedule 13D material amendment</option>
+                <option value="13g-qii-exempt-quarter">Schedule 13G QII / exempt investor initial - quarter end</option>
+                <option value="13g-qii-initial-10">Schedule 13G QII initial - more than 10% month end</option>
+                <option value="13g-passive-initial">Schedule 13G passive investor initial - more than 5%</option>
+                <option value="13g-quarter-amendment">Schedule 13G material-change amendment - quarter end</option>
+                <option value="13g-qii-10-amendment">Schedule 13G QII amendment - more than 10% or 5% change</option>
+                <option value="13g-passive-10-amendment">Schedule 13G passive amendment - more than 10% or 5% change</option>
+              </select>
+              <span class="value-pill">4</span>
+            </div>
+            <div class="field-row">
+              <label for="triggerDate">Trigger date <small>For month or quarter scenarios, enter any date in the relevant period.</small></label>
+              <input id="triggerDate" type="date">
+              <span class="value-pill">5</span>
+            </div>
+            <div class="field-row">
+              <label for="actualFilingDate">Actual filing date <small>Optional, for status comparison after filing.</small></label>
+              <input id="actualFilingDate" type="date">
+              <span class="value-pill">6</span>
+            </div>
+            <div class="field-row">
+              <label for="ownershipContext">Ownership context <small>Keep factual: percent, threshold, acquisition, disposition, or material change.</small></label>
+              <input id="ownershipContext" type="text" value="Crossed more than 5% beneficial ownership threshold; verify category and control intent.">
+              <span class="value-pill">7</span>
+            </div>
+            <div class="field-row">
+              <label for="edgarStatus">EDGAR readiness <small>Filing-agent access, codes, roles, signatures, and exhibits can become practical blockers.</small></label>
+              <select id="edgarStatus">
+                <option>Unknown / verify</option>
+                <option>EDGAR access and filing agent confirmed</option>
+                <option>EDGAR access exists, filing role not confirmed</option>
+                <option>No EDGAR access confirmed yet</option>
+              </select>
+              <span class="value-pill">8</span>
+            </div>
+            <div class="field-row">
+              <label for="closureDates">Extra SEC closure dates <small>Optional YYYY-MM-DD values, comma-separated, for emergency closures or custom non-filing dates.</small></label>
+              <input id="closureDates" type="text" placeholder="2026-05-25, 2026-06-19">
+              <span class="value-pill">9</span>
+            </div>
+            <div class="field-row">
+              <label for="sourceUrl">Source URL <small>Optional SEC release, EDGAR filing, ownership tracker, or internal source link.</small></label>
+              <input id="sourceUrl" type="url" value="https://www.sec.gov/newsroom/press-releases/2023-219">
+              <span class="value-pill">10</span>
+            </div>
+            <div class="field-row">
+              <label for="nextStep">Next verification step <small>Source-backed action before relying on the calculated date.</small></label>
+              <input id="nextStep" type="text" value="Confirm beneficial ownership, group status, control intent, filer category, trigger date, EDGAR readiness, and current SEC calendar with counsel.">
+              <span class="value-pill">11</span>
+            </div>
+          </form>
+
+          <div class="result-strip" id="ownershipResults"></div>
+          <textarea id="ownershipOutput" spellcheck="false" aria-label="Generated Schedule 13D and 13G deadline memo"></textarea>
+          <p class="event-status" id="ownershipStatus" role="status" aria-live="polite">13D / 13G actions: 0</p>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="interpret-heading">
+        <h2 id="interpret-heading">How To Use The Date Without Overclaiming</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>1. Start With Filer Category</h3>
+            <p>Confirm whether the person is a Schedule 13D filer, QII, exempt investor, passive investor, or no filer before treating any date as operative.</p>
+          </article>
+          <article class="panel">
+            <h3>2. Separate Date Types</h3>
+            <p>Some scenarios run from an acquisition or material-change date; others run from month end or quarter end. The calculator labels the base date used.</p>
+          </article>
+          <article class="panel">
+            <h3>3. Check The SEC Calendar</h3>
+            <p>The worksheet includes standard U.S. federal holidays and skips weekends. Add emergency SEC closure dates or special non-filing dates manually.</p>
+          </article>
+          <article class="panel">
+            <h3>4. Treat Output As A Checklist</h3>
+            <p>Use the memo and CSV row to queue source review, EDGAR preparation, signatures, exhibit checks, and counsel review before any filing decision.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" id="sources" aria-labelledby="sources-heading">
+        <h2 id="sources-heading">Official Source Links</h2>
+        <div class="table-wrap">
+          <table class="benchmark-table">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Why It Matters</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://www.sec.gov/newsroom/press-releases/2023-219">SEC press release: beneficial ownership reporting amendments</a></td>
+                <td>Plain-language overview of the Schedule 13D and 13G modernization amendments, effective/compliance dates, and filing cutoff change.</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.sec.gov/files/33-11253-fact-sheet.pdf">SEC fact sheet: Modernization of Beneficial Ownership Reporting</a></td>
+                <td>Short summary of the revised initial and amended filing deadlines for Schedule 13D and Schedule 13G scenarios.</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.sec.gov/files/rules/final/2023/33-11253.pdf">SEC final rule: Release No. 33-11253</a></td>
+                <td>Full source text for Regulation 13D-G amendments, business-day definition, Schedule 13D amendments, Schedule 13G amendments, and Regulation S-T cutoff updates.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (() => {
+        const scenarios = {
+          "13d-initial": {
+            label: "Schedule 13D initial - more than 5%",
+            schedule: "Schedule 13D",
+            base: "trigger date",
+            method: "business-after-date",
+            count: 5,
+            sourceNote: "Initial Schedule 13D deadline: within five business days after acquiring beneficial ownership of more than five percent of a covered class."
+          },
+          "13d-amendment": {
+            label: "Schedule 13D material amendment",
+            schedule: "Schedule 13D/A",
+            base: "trigger date",
+            method: "business-after-date",
+            count: 2,
+            sourceNote: "Schedule 13D amendment deadline: within two business days after the date of a material change."
+          },
+          "13g-qii-exempt-quarter": {
+            label: "Schedule 13G QII / exempt investor initial - quarter end",
+            schedule: "Schedule 13G",
+            base: "calendar quarter end",
+            method: "calendar-after-period",
+            count: 45,
+            sourceNote: "QII and exempt-investor initial Schedule 13G scenario: within 45 calendar days after the end of the calendar quarter in which beneficial ownership first exceeds five percent, subject to category-specific rules."
+          },
+          "13g-qii-initial-10": {
+            label: "Schedule 13G QII initial - more than 10% month end",
+            schedule: "Schedule 13G",
+            base: "calendar month end",
+            method: "business-after-period",
+            count: 5,
+            sourceNote: "QII accelerated initial Schedule 13G scenario: within five business days after the end of the first month in which beneficial ownership exceeds 10 percent, computed as of the last day of the month."
+          },
+          "13g-passive-initial": {
+            label: "Schedule 13G passive investor initial - more than 5%",
+            schedule: "Schedule 13G",
+            base: "trigger date",
+            method: "business-after-date",
+            count: 5,
+            sourceNote: "Passive-investor initial Schedule 13G scenario: within five business days after acquiring beneficial ownership of more than five percent of a covered class."
+          },
+          "13g-quarter-amendment": {
+            label: "Schedule 13G material-change amendment - quarter end",
+            schedule: "Schedule 13G/A",
+            base: "calendar quarter end",
+            method: "calendar-after-period",
+            count: 45,
+            sourceNote: "General Schedule 13G amendment scenario: within 45 calendar days after the end of the calendar quarter in which a material change occurred, subject to category-specific accelerated amendment rules."
+          },
+          "13g-qii-10-amendment": {
+            label: "Schedule 13G QII amendment - more than 10% or 5% change",
+            schedule: "Schedule 13G/A",
+            base: "calendar month end",
+            method: "business-after-period",
+            count: 5,
+            sourceNote: "QII accelerated Schedule 13G amendment scenario: within five business days after the end of the first month in which ownership exceeds 10 percent or later changes by more than five percent."
+          },
+          "13g-passive-10-amendment": {
+            label: "Schedule 13G passive amendment - more than 10% or 5% change",
+            schedule: "Schedule 13G/A",
+            base: "trigger date",
+            method: "business-after-date",
+            count: 2,
+            sourceNote: "Passive-investor accelerated Schedule 13G amendment scenario: within two business days after acquiring greater than 10 percent, and thereafter within two business days after a more-than-five-percent change."
+          }
+        };
+
+        const fields = [
+          "filer",
+          "issuer",
+          "ticker",
+          "scenario",
+          "triggerDate",
+          "actualFilingDate",
+          "ownershipContext",
+          "edgarStatus",
+          "closureDates",
+          "sourceUrl",
+          "nextStep"
+        ];
+        const results = document.getElementById("ownershipResults");
+        const output = document.getElementById("ownershipOutput");
+        const status = document.getElementById("ownershipStatus");
+        let actionCount = 0;
+
+        const today = new Date();
+        const toIsoDate = (date) => date.toISOString().slice(0, 10);
+        document.getElementById("triggerDate").value = toIsoDate(today);
+
+        function getValue(id) {
+          return document.getElementById(id).value.trim();
+        }
+
+        function parseIsoDate(value) {
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+          const date = new Date(`${value}T12:00:00Z`);
+          return Number.isNaN(date.getTime()) ? null : date;
+        }
+
+        function addCalendarDays(date, days) {
+          const next = new Date(date);
+          next.setUTCDate(next.getUTCDate() + days);
+          return next;
+        }
+
+        function endOfMonth(date) {
+          return new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 0, 12));
+        }
+
+        function endOfQuarter(date) {
+          const quarterEndMonth = Math.floor(date.getUTCMonth() / 3) * 3 + 2;
+          return new Date(Date.UTC(date.getUTCFullYear(), quarterEndMonth + 1, 0, 12));
+        }
+
+        function observedDate(year, monthIndex, day) {
+          const date = new Date(Date.UTC(year, monthIndex, day, 12));
+          const weekday = date.getUTCDay();
+          if (weekday === 0) return addCalendarDays(date, 1);
+          if (weekday === 6) return addCalendarDays(date, -1);
+          return date;
+        }
+
+        function nthWeekday(year, monthIndex, weekday, occurrence) {
+          const first = new Date(Date.UTC(year, monthIndex, 1, 12));
+          const offset = (weekday - first.getUTCDay() + 7) % 7;
+          return new Date(Date.UTC(year, monthIndex, 1 + offset + (occurrence - 1) * 7, 12));
+        }
+
+        function lastWeekday(year, monthIndex, weekday) {
+          const last = new Date(Date.UTC(year, monthIndex + 1, 0, 12));
+          const offset = (last.getUTCDay() - weekday + 7) % 7;
+          return addCalendarDays(last, -offset);
+        }
+
+        function standardFederalHolidaySet(year) {
+          return new Set([
+            observedDate(year, 0, 1),
+            nthWeekday(year, 0, 1, 3),
+            nthWeekday(year, 1, 1, 3),
+            lastWeekday(year, 4, 1),
+            observedDate(year, 5, 19),
+            observedDate(year, 6, 4),
+            nthWeekday(year, 8, 1, 1),
+            nthWeekday(year, 9, 1, 2),
+            observedDate(year, 10, 11),
+            nthWeekday(year, 10, 4, 4),
+            observedDate(year, 11, 25)
+          ].map(toIsoDate));
+        }
+
+        function closureSetFor(anchorDate) {
+          const years = [anchorDate.getUTCFullYear() - 1, anchorDate.getUTCFullYear(), anchorDate.getUTCFullYear() + 1];
+          const closures = new Set();
+          years.forEach((year) => {
+            standardFederalHolidaySet(year).forEach((date) => closures.add(date));
+          });
+          getValue("closureDates")
+            .split(",")
+            .map((item) => item.trim())
+            .filter((item) => /^\d{4}-\d{2}-\d{2}$/.test(item))
+            .forEach((date) => closures.add(date));
+          return closures;
+        }
+
+        function isBusinessDay(date, closures) {
+          const day = date.getUTCDay();
+          return day !== 0 && day !== 6 && !closures.has(toIsoDate(date));
+        }
+
+        function nextBusinessDay(date, closures) {
+          let next = new Date(date);
+          while (!isBusinessDay(next, closures)) {
+            next = addCalendarDays(next, 1);
+          }
+          return next;
+        }
+
+        function addBusinessDaysAfter(date, count, closures) {
+          let cursor = addCalendarDays(date, 1);
+          let counted = 0;
+          while (counted < count) {
+            if (isBusinessDay(cursor, closures)) {
+              counted += 1;
+            }
+            if (counted < count) {
+              cursor = addCalendarDays(cursor, 1);
+            }
+          }
+          return cursor;
+        }
+
+        function baseDateFor(triggerDate, scenario) {
+          if (scenario.base === "calendar month end") return endOfMonth(triggerDate);
+          if (scenario.base === "calendar quarter end") return endOfQuarter(triggerDate);
+          return triggerDate;
+        }
+
+        function dueDateFor(baseDate, scenario, closures) {
+          if (scenario.method === "calendar-after-period") {
+            return addCalendarDays(baseDate, scenario.count);
+          }
+          return addBusinessDaysAfter(baseDate, scenario.count, closures);
+        }
+
+        function daysBetween(from, to) {
+          const start = Date.UTC(from.getUTCFullYear(), from.getUTCMonth(), from.getUTCDate());
+          const end = Date.UTC(to.getUTCFullYear(), to.getUTCMonth(), to.getUTCDate());
+          return Math.round((end - start) / 86400000);
+        }
+
+        function formatDate(date) {
+          return date ? toIsoDate(date) : "not entered";
+        }
+
+        function csvEscape(value) {
+          const text = String(value ?? "");
+          return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
+        }
+
+        function edgarAction(statusValue, dueDate) {
+          if (statusValue === "EDGAR access and filing agent confirmed") {
+            return "EDGAR access and filing-agent readiness are marked confirmed; still verify signatures, exhibits, and final source facts before filing.";
+          }
+          if (statusValue === "EDGAR access exists, filing role not confirmed") {
+            return `Confirm filing-agent role, access codes, signatures, and exhibit readiness before ${formatDate(dueDate)}.`;
+          }
+          if (statusValue === "No EDGAR access confirmed yet") {
+            return `Start EDGAR and filing-agent readiness checks immediately; target completion before ${formatDate(dueDate)}.`;
+          }
+          return "Confirm EDGAR access, filing-agent role, access codes, signatures, and exhibit readiness before relying on the calculated target.";
+        }
+
+        function calculate() {
+          const scenario = scenarios[getValue("scenario")];
+          const triggerDate = parseIsoDate(getValue("triggerDate"));
+          if (!scenario || !triggerDate) {
+            throw new Error("Choose a scenario and enter a valid trigger date.");
+          }
+          const baseDate = baseDateFor(triggerDate, scenario);
+          const closures = closureSetFor(baseDate);
+          const rawDueDate = dueDateFor(baseDate, scenario, closures);
+          const adjustedDueDate = nextBusinessDay(rawDueDate, closures);
+          const actualFilingDate = parseIsoDate(getValue("actualFilingDate"));
+          const todayDate = parseIsoDate(toIsoDate(today));
+          const daysUntilDue = daysBetween(todayDate, adjustedDueDate);
+
+          let statusLabel = "Open";
+          if (actualFilingDate) {
+            statusLabel = actualFilingDate <= adjustedDueDate ? "Filed by calculated target" : "Filed after calculated target";
+          } else if (daysUntilDue < 0) {
+            statusLabel = "Past calculated target";
+          } else if (daysUntilDue <= 2) {
+            statusLabel = "Urgent";
+          } else if (daysUntilDue <= 7) {
+            statusLabel = "Soon";
+          }
+
+          const warnings = [
+            "This worksheet does not determine filer category, beneficial ownership, group status, control intent, exemptions, or filing obligation.",
+            "Verify whether an accelerated Schedule 13G amendment rule overrides a general quarter-end amendment scenario.",
+            "Daily filing cutoff reminder: verify current EDGAR and Regulation S-T requirements before relying on the 10 p.m. Eastern note."
+          ];
+          if (formatDate(rawDueDate) !== formatDate(adjustedDueDate)) {
+            warnings.push("The raw due date moved to the next business day because of weekend or closure handling.");
+          }
+          if (!getValue("closureDates")) {
+            warnings.push("Standard U.S. federal holidays are included; add emergency SEC closure dates manually when applicable.");
+          }
+          if (getValue("edgarStatus") !== "EDGAR access and filing agent confirmed") {
+            warnings.push("EDGAR and filing-agent readiness are not marked fully confirmed.");
+          }
+          if (statusLabel.includes("Past") || statusLabel.includes("after")) {
+            warnings.push("Review late-filing consequences, amendment obligations, and cure steps with counsel.");
+          }
+
+          return {
+            filer: getValue("filer") || "Unnamed filer",
+            issuer: getValue("issuer") || "Unnamed issuer",
+            ticker: getValue("ticker") || "not entered",
+            scenario,
+            triggerDate,
+            baseDate,
+            rawDueDate,
+            adjustedDueDate,
+            actualFilingDate,
+            statusLabel,
+            daysUntilDue,
+            ownershipContext: getValue("ownershipContext") || "No ownership context entered.",
+            edgarNote: edgarAction(getValue("edgarStatus"), adjustedDueDate),
+            sourceUrl: getValue("sourceUrl") || "not entered",
+            nextStep: getValue("nextStep") || "Verify source facts with counsel.",
+            warnings
+          };
+        }
+
+        function renderResult(data) {
+          const daysText = data.actualFilingDate
+            ? `filed ${daysBetween(data.adjustedDueDate, data.actualFilingDate)} day(s) from target`
+            : `${data.daysUntilDue} day(s) from today`;
+          results.innerHTML = [
+            `<div class="result-card"><span>Status</span><strong>${data.statusLabel}</strong></div>`,
+            `<div class="result-card"><span>Target filing date</span><strong>${formatDate(data.adjustedDueDate)}</strong><small>${daysText}</small></div>`,
+            `<div class="result-card"><span>Base date used</span><strong>${formatDate(data.baseDate)}</strong><small>${data.scenario.base}</small></div>`,
+            `<div class="result-card"><span>Filing cutoff note</span><strong>10 p.m. ET</strong><small>verify current EDGAR rules</small></div>`
+          ].join("");
+        }
+
+        function buildMemo(data) {
+          return [
+            `# Schedule 13D / 13G Deadline Planning Memo`,
+            ``,
+            `Filer or investor: ${data.filer}`,
+            `Issuer: ${data.issuer}`,
+            `Ticker / CIK: ${data.ticker}`,
+            `Scenario: ${data.scenario.label}`,
+            `Schedule label: ${data.scenario.schedule}`,
+            `Ownership context: ${data.ownershipContext}`,
+            `Trigger date entered: ${formatDate(data.triggerDate)}`,
+            `Base date used: ${formatDate(data.baseDate)} (${data.scenario.base})`,
+            `Raw calculated date: ${formatDate(data.rawDueDate)}`,
+            `Adjusted target filing date: ${formatDate(data.adjustedDueDate)}`,
+            `Daily filing cutoff note: SEC modernization materials discuss a 10 p.m. Eastern filing cutoff for Schedules 13D and 13G; verify current EDGAR and Regulation S-T requirements before relying on the output.`,
+            `Actual filing date: ${formatDate(data.actualFilingDate)}`,
+            `Current status: ${data.statusLabel}`,
+            `EDGAR readiness note: ${data.edgarNote}`,
+            `Source URL: ${data.sourceUrl}`,
+            `Next verification step: ${data.nextStep}`,
+            ``,
+            `Source basis: ${data.scenario.sourceNote}`,
+            ``,
+            `Warnings:`,
+            ...data.warnings.map((warning) => `- ${warning}`),
+            ``,
+            `Official sources:`,
+            `- https://www.sec.gov/newsroom/press-releases/2023-219`,
+            `- https://www.sec.gov/files/33-11253-fact-sheet.pdf`,
+            `- https://www.sec.gov/files/rules/final/2023/33-11253.pdf`,
+            ``,
+            `Disclosure: informational planning worksheet only; not legal advice, securities advice, investment advice, an EDGAR filing service, or an official SEC tool.`
+          ].join("\n");
+        }
+
+        function buildCsv(data) {
+          const headers = [
+            "filer",
+            "issuer",
+            "ticker_cik",
+            "scenario",
+            "schedule_label",
+            "ownership_context",
+            "trigger_date_entered",
+            "base_date_used",
+            "raw_calculated_date",
+            "adjusted_target_filing_date",
+            "actual_filing_date",
+            "status",
+            "filing_cutoff_note",
+            "edgar_readiness_note",
+            "source_url",
+            "next_step"
+          ];
+          const row = [
+            data.filer,
+            data.issuer,
+            data.ticker,
+            data.scenario.label,
+            data.scenario.schedule,
+            data.ownershipContext,
+            formatDate(data.triggerDate),
+            formatDate(data.baseDate),
+            formatDate(data.rawDueDate),
+            formatDate(data.adjustedDueDate),
+            formatDate(data.actualFilingDate),
+            data.statusLabel,
+            "Verify current 10 p.m. Eastern filing cutoff treatment for Schedules 13D and 13G.",
+            data.edgarNote,
+            data.sourceUrl,
+            data.nextStep
+          ];
+          return `${headers.join(",")}\n${row.map(csvEscape).join(",")}\n`;
+        }
+
+        function setStatus(message) {
+          actionCount += 1;
+          status.textContent = `${message} Actions: ${actionCount}`;
+        }
+
+        function track(name, detail = {}) {
+          if (window.TrustLeakEvents?.track) {
+            window.TrustLeakEvents.track(name, detail);
+          }
+        }
+
+        async function copyText(text) {
+          if (navigator.clipboard?.writeText) {
+            await navigator.clipboard.writeText(text);
+            return;
+          }
+          output.focus();
+          output.select();
+          document.execCommand("copy");
+        }
+
+        function runCalculation(shouldTrack = true) {
+          try {
+            const data = calculate();
+            renderResult(data);
+            output.value = buildMemo(data);
+            if (shouldTrack) {
+              setStatus("13D / 13G deadline calculated.");
+              track("beneficial_ownership_deadline_calculated", {
+                scenario: data.scenario.label,
+                status: data.statusLabel,
+                daysUntilDue: data.daysUntilDue
+              });
+            }
+            return data;
+          } catch (error) {
+            results.innerHTML = `<div class="result-card"><span>Input needed</span><strong>${error.message}</strong></div>`;
+            output.value = "";
+            throw error;
+          }
+        }
+
+        document.getElementById("calculateOwnership").addEventListener("click", () => runCalculation(true));
+        document.getElementById("copyOwnershipMemo").addEventListener("click", async () => {
+          const data = output.value.trim() ? calculate() : runCalculation(false);
+          await copyText(output.value || buildMemo(data));
+          setStatus("13D / 13G memo copied.");
+          track("beneficial_ownership_memo_copied", { scenario: data.scenario.label, status: data.statusLabel });
+        });
+        document.getElementById("copyOwnershipCsv").addEventListener("click", async () => {
+          const data = output.value.trim() ? calculate() : runCalculation(false);
+          await copyText(buildCsv(data));
+          setStatus("13D / 13G CSV copied.");
+          track("beneficial_ownership_csv_copied", { scenario: data.scenario.label, status: data.statusLabel });
+        });
+        fields.forEach((id) => document.getElementById(id).addEventListener("change", () => runCalculation(false)));
+        runCalculation(false);
+      })();
+    </script>
+    <script src="event-log.js"></script>
+    <script src="share-tools.js"></script>
+  </body>
+</html>
