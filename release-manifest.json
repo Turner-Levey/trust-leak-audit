@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-04T05:24:29.838Z",
+  "generatedAt": "2026-05-04T06:26:48.437Z",
   "sourceDir": "/Users/turnerlevey/untitled folder/venture-lab/site",
   "releaseDir": "/Users/turnerlevey/untitled folder/venture-lab/releases/trust-leak-audit-static",
   "siteUrl": "https://trust-leak-audit-static.vercel.app",
@@ -21,6 +21,7 @@
     "sec-auditor-change-disclosure-checklist.html",
     "sec-auditor-change-evidence-pack-builder.html",
     "sec-auditor-change-watchlist-template.html",
+    "sec-auditor-former-accountant-letter-tracker.html",
     "sec-filing-trigger-briefs.html",
     "sec-leadership-change-briefs.html",
     "sec-trigger-briefs-hub.html",
@@ -54,6 +55,7 @@
     "sec-auditor-change-disclosure-checklist.html",
     "sec-auditor-change-evidence-pack-builder.html",
     "sec-auditor-change-watchlist-template.html",
+    "sec-auditor-former-accountant-letter-tracker.html",
     "sec-filing-trigger-briefs.html",
     "sec-leadership-change-briefs.html",
     "sec-trigger-briefs-hub.html",
@@ -76,6 +78,7 @@
     "og/sec-auditor-change-disclosure-checklist.svg",
     "og/sec-auditor-change-evidence-pack-builder.svg",
     "og/sec-auditor-change-watchlist-template.svg",
+    "og/sec-auditor-former-accountant-letter-tracker.svg",
     "og/sec-filing-trigger-briefs.svg",
     "og/sec-leadership-change-briefs.svg",
     "og/sec-trigger-briefs-hub.svg",
@@ -93,24 +96,24 @@
   ],
   "indexNow": {
     "keyFile": "4f2e8d9c6b7a4f3a9e1c0d8b6a2f4c1e.txt",
-    "indexableUrls": 21
+    "indexableUrls": 22
   },
   "trafficBeacon": {
     "endpoint": "/api/track",
     "handler": "api/track.js"
   },
   "eventLogCoverage": {
-    "covered": 21,
-    "indexable": 21
+    "covered": 22,
+    "indexable": 22
   },
   "localLinkIssues": [],
   "shareToolCoverage": {
-    "covered": 21,
-    "indexable": 21
+    "covered": 22,
+    "indexable": 22
   },
   "vercelAnalyticsCoverage": {
-    "covered": 21,
-    "indexable": 21,
+    "covered": 22,
+    "indexable": 22,
     "scriptSrc": "/_vercel/insights/script.js"
   },
   "nextCommand": "SITE_URL=https://your-domain.example node venture-lab/site/build-static-release.mjs"

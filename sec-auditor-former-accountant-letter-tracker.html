@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free browser-only SEC auditor-change former accountant letter tracker for Item 304(a)(3), Exhibit 16.1 follow-up, Markdown notes, and CSV export.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="SEC Former Accountant Letter Tracker">
+    <meta property="og:description" content="Track Item 304(a)(3) former-accountant letter status, Exhibit 16.1 follow-up, and source-linked amendment notes without signup.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trust-leak-audit-static.vercel.app/sec-auditor-former-accountant-letter-tracker.html">
+    <meta property="og:site_name" content="SEC Filing Trigger Briefs">
+    <meta property="og:image" content="https://trust-leak-audit-static.vercel.app/og/sec-auditor-former-accountant-letter-tracker.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="SEC former accountant letter tracker social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://trust-leak-audit-static.vercel.app/og/sec-auditor-former-accountant-letter-tracker.svg">
+    <meta name="twitter:image:alt" content="SEC former accountant letter tracker social preview.">
+    <title>SEC Former Accountant Letter Tracker</title>
+    <link rel="canonical" href="https://trust-leak-audit-static.vercel.app/sec-auditor-former-accountant-letter-tracker.html">
+    <link rel="alternate" href="https://trust-leak-audit-static.vercel.app/llms.txt" type="text/plain" title="LLMs.txt">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "SEC Former Accountant Letter Tracker",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "description": "A free browser-only planning tool for tracking former-accountant letter and Exhibit 16.1 follow-up status for SEC auditor-change research workflows.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does this former accountant letter tracker do?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It helps public-filing research teams track Item 304(a)(3) former-accountant letter status, Exhibit 16.1 follow-up, and source-linked amendment notes from manually entered filing facts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this decide whether a registrant met SEC requirements?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It is an informational research planner and queue aid. It is not legal advice, an official SEC determination, investment advice, or an auditor-quality judgment."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the tracker fetch EDGAR filings automatically?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It runs in the browser and uses issuer, date, status, source URL, and exhibit facts entered by the visitor."
+            }
+          }
+        ]
+      }
+    </script>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="index.html">Trust Leak Toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Free SEC letter-status planner</p>
+        <h1>SEC Former Accountant Letter Tracker</h1>
+        <p class="lede">Track former-accountant letter status, Exhibit 16.1 follow-up, and source-linked amendment planning for Form 8-K Item 4.01 auditor-change research rows.</p>
+        <div class="page-actions">
+          <a class="primary-link" href="#tracker">Track letter status</a>
+          <a class="secondary-link" href="sec-auditor-change-disclosure-checklist.html">Disclosure checklist</a>
+          <a class="secondary-link" href="sec-auditor-change-evidence-pack-builder.html">Evidence pack builder</a>
+          <a class="secondary-link" href="sec-auditor-change-deadline-calculator.html">Deadline calculator</a>
+          <a class="secondary-link" href="#sources">Sources</a>
+        </div>
+      </header>
+
+      <section class="notice-panel" aria-label="Former accountant letter tracker disclosure">
+        <strong>Disclosure:</strong> This browser-only planner is for informational public-filing research. It is not legal advice, an official SEC service, investment advice, a securities recommendation, or an auditor-quality score. Verify item-specific obligations with counsel and official SEC materials.
+      </section>
+
+      <section class="seo-grid" aria-label="Former accountant letter tracker use cases">
+        <article class="panel">
+          <h2>Search Intent</h2>
+          <p>For teams looking up Item 304(a)(3), former accountant letter status, Exhibit 16.1 follow-up, and auditor-change amendment planning after an Item 4.01 filing.</p>
+        </article>
+        <article class="panel">
+          <h2>Source Basis</h2>
+          <p>SEC Form 8-K points Item 4.01 to Regulation S-K Item 304, and eCFR Section 229.304 describes the former-accountant letter request and filing workflow.</p>
+        </article>
+        <article class="panel">
+          <h2>Output</h2>
+          <p>A source-linked Markdown note, CSV row, letter-status plan, and follow-up target that can connect to the watchlist and evidence-pack workflow.</p>
+        </article>
+      </section>
+
+      <section class="detail-section" id="tracker" aria-labelledby="tracker-heading">
+        <div class="panel report-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Browser-only tracker</p>
+              <h2 id="tracker-heading">Track Former Accountant Letter Follow-Up</h2>
+            </div>
+            <div class="button-row">
+              <button class="primary" id="calculateLetter" type="button">Calculate Plan</button>
+              <button class="secondary" id="copyLetterMemo" type="button">Copy Memo</button>
+              <button class="secondary" id="copyLetterCsv" type="button">Copy CSV Row</button>
+            </div>
+          </div>
+
+          <form class="calc-form" id="letterForm">
+            <div class="field-row">
+              <label for="issuer">Issuer <small>Registrant name from the filing.</small></label>
+              <input id="issuer" type="text" value="Example Public Company">
+              <span class="value-pill">1</span>
+            </div>
+            <div class="field-row">
+              <label for="ticker">Ticker / CIK <small>Optional watchlist identifier.</small></label>
+              <input id="ticker" type="text" value="EXPL / 0000000000">
+              <span class="value-pill">2</span>
+            </div>
+            <div class="field-row">
+              <label for="filingDate">Item 4.01 filing date <small>Form 8-K filed or accepted date.</small></label>
+              <input id="filingDate" type="date">
+              <span class="value-pill">3</span>
+            </div>
+            <div class="field-row">
+              <label for="letterStatus">Former-accountant letter status <small>Use the filing package and exhibit index.</small></label>
+              <select id="letterStatus">
+                <option>Letter filed with initial Form 8-K</option>
+                <option>Letter unavailable at initial filing</option>
+                <option>Interim letter received</option>
+                <option>Final letter received after filing</option>
+                <option>Letter status needs exhibit review</option>
+              </select>
+              <span class="value-pill">4</span>
+            </div>
+            <div class="field-row">
+              <label for="receiptDate">Letter receipt date <small>Optional date the former accountant letter was received.</small></label>
+              <input id="receiptDate" type="date">
+              <span class="value-pill">5</span>
+            </div>
+            <div class="field-row">
+              <label for="closureDates">Custom SEC closure dates <small>Optional YYYY-MM-DD values, comma-separated.</small></label>
+              <input id="closureDates" type="text" placeholder="2026-05-25, 2026-06-19">
+              <span class="value-pill">6</span>
+            </div>
+            <div class="field-row">
+              <label for="sourceUrl">SEC source URL <small>Filing index, 8-K, amendment, or exhibit page.</small></label>
+              <input id="sourceUrl" type="url" value="https://www.sec.gov/Archives/example-form-8-k.htm">
+              <span class="value-pill">7</span>
+            </div>
+            <div class="field-row">
+              <label for="exhibitReference">Exhibit reference <small>Usually Exhibit 16.1 when present.</small></label>
+              <input id="exhibitReference" type="text" value="Exhibit 16.1">
+              <span class="value-pill">8</span>
+            </div>
+            <div class="field-row">
+              <label for="agreementStatus">Former-accountant response <small>Keep this tied to the actual letter language.</small></label>
+              <select id="agreementStatus">
+                <option>Agreement stated for firm-related disclosure</option>
+                <option>Disagreement stated in letter</option>
+                <option>Interim concern noted</option>
+                <option>No letter text reviewed yet</option>
+              </select>
+              <span class="value-pill">9</span>
+            </div>
+            <div class="field-row">
+              <label for="concernAreas">Concern or mismatch areas <small>Use exact source-backed notes, or write none.</small></label>
+              <input id="concernAreas" type="text" value="No disagreement in the letter reviewed yet.">
+              <span class="value-pill">10</span>
+            </div>
+            <div class="field-row">
+              <label for="nextStep">Next research step <small>Source-backed follow-up after letter review.</small></label>
+              <input id="nextStep" type="text" value="Check the exhibit index, any Form 8-K/A, and the next periodic filing control disclosure.">
+              <span class="value-pill">11</span>
+            </div>
+          </form>
+
+          <div class="result-strip" id="letterResults"></div>
+          <textarea id="letterOutput" spellcheck="false" aria-label="Generated former accountant letter memo"></textarea>
+          <p class="event-status" id="letterStatusLine" role="status" aria-live="polite">Letter tracker actions: 0</p>
+        </div>
+      </section>
+
+      <section class="detail-section" aria-labelledby="workflow-heading">
+        <h2 id="workflow-heading">Use The Letter Tracker Without Overclaiming</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>1. Start With The Filing Package</h3>
+            <p>Open the Form 8-K, exhibit index, and any Form 8-K/A before marking a letter present or missing.</p>
+          </article>
+          <article class="panel">
+            <h3>2. Separate Filed, Received, And Unknown</h3>
+            <p>A letter can be filed with the initial report, unavailable at filing, received later, or still unreviewed. Keep those statuses separate.</p>
+          </article>
+          <article class="panel">
+            <h3>3. Treat Dates As Planning Signals</h3>
+            <p>The generated targets help prioritize source review. Do not use them as an accusation of lateness or a legal conclusion.</p>
+          </article>
+          <article class="panel">
+            <h3>4. Export A Source Row</h3>
+            <p>Copy the CSV row into the watchlist, then use the evidence-pack builder after the letter text and source URL are verified.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" id="sources" aria-labelledby="sources-heading">
+        <h2 id="sources-heading">Source Notes</h2>
+        <div class="panel">
+          <p>SEC Form 8-K identifies Item 4.01 as the accountant-change item and points to Regulation S-K Item 304. eCFR Section 229.304 describes the former accountant letter request and exhibit workflow. This tracker is a source-review aid, not a legal interpretation.</p>
+          <div class="tool-links">
+            <a href="https://www.sec.gov/files/form8-k.pdf">SEC Form 8-K PDF</a>
+            <a href="https://www.ecfr.gov/current/title-17/chapter-II/part-229/subpart-229.300/section-229.304">17 CFR 229.304 at eCFR</a>
+            <a href="sec-auditor-change-watchlist-template.html">Auditor-change watchlist template</a>
+            <a href="sec-auditor-change-disclosure-checklist.html">Auditor-change disclosure checklist</a>
+            <a href="sec-auditor-change-evidence-pack-builder.html">Auditor-change evidence pack builder</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      (function () {
+        const fields = [
+          "issuer",
+          "ticker",
+          "filingDate",
+          "letterStatus",
+          "receiptDate",
+          "closureDates",
+          "sourceUrl",
+          "exhibitReference",
+          "agreementStatus",
+          "concernAreas",
+          "nextStep"
+        ];
+        const results = document.getElementById("letterResults");
+        const output = document.getElementById("letterOutput");
+        const statusLine = document.getElementById("letterStatusLine");
+        let actionCount = 0;
+
+        const getValue = (id) => document.getElementById(id).value.trim();
+        const toIsoDate = (date) => date.toISOString().slice(0, 10);
+        const today = new Date();
+        document.getElementById("filingDate").value = toIsoDate(today);
+        const parseIsoDate = (value) => {
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+          const date = new Date(`${value}T12:00:00Z`);
+          return Number.isNaN(date.getTime()) ? null : date;
+        };
+        const addDays = (date, days) => {
+          const next = new Date(date);
+          next.setUTCDate(next.getUTCDate() + days);
+          return next;
+        };
+        const businessClosures = () => new Set(
+          getValue("closureDates")
+            .split(",")
+            .map((item) => item.trim())
+            .filter((item) => /^\d{4}-\d{2}-\d{2}$/.test(item))
+        );
+        const isBusinessDay = (date, closures) => {
+          const day = date.getUTCDay();
+          return day !== 0 && day !== 6 && !closures.has(toIsoDate(date));
+        };
+        const nextBusinessDay = (date, closures, includeDate) => {
+          let cursor = includeDate ? new Date(date) : addDays(date, 1);
+          while (!isBusinessDay(cursor, closures)) cursor = addDays(cursor, 1);
+          return cursor;
+        };
+        const addBusinessDays = (startDate, count, closures) => {
+          let cursor = new Date(startDate);
+          let counted = 0;
+          while (counted < count) {
+            if (isBusinessDay(cursor, closures)) counted += 1;
+            if (counted < count) cursor = addDays(cursor, 1);
+          }
+          return cursor;
+        };
+        const formatDate = (date) => date.toLocaleDateString("en-US", { timeZone: "UTC", weekday: "short", year: "numeric", month: "short", day: "numeric" });
+        const csvEscape = (value) => `"${String(value).replaceAll('"', '""')}"`;
+        const setStatus = (message) => {
+          actionCount += 1;
+          statusLine.textContent = `${message} Letter tracker actions: ${actionCount}`;
+        };
+        const track = (name, detail = {}) => {
+          if (window.TrustLeakEvents?.track) window.TrustLeakEvents.track(name, detail);
+        };
+        const writeClipboard = async (text) => {
+          if (navigator.clipboard?.writeText) {
+            await navigator.clipboard.writeText(text);
+            return;
+          }
+          const field = document.createElement("textarea");
+          field.value = text;
+          field.setAttribute("readonly", "");
+          field.style.position = "fixed";
+          field.style.left = "-9999px";
+          document.body.appendChild(field);
+          field.select();
+          document.execCommand("copy");
+          field.remove();
+        };
+
+        function calculate() {
+          const filingDate = parseIsoDate(getValue("filingDate"));
+          if (!filingDate) throw new Error("Enter a valid Item 4.01 filing date.");
+          const receiptDate = parseIsoDate(getValue("receiptDate"));
+          const closures = businessClosures();
+          const letterStatus = getValue("letterStatus");
+          const tenDayStart = nextBusinessDay(filingDate, closures, false);
+          const tenDayTarget = addBusinessDays(tenDayStart, 10, closures);
+          const receiptStart = receiptDate ? nextBusinessDay(receiptDate, closures, true) : null;
+          const twoDayTarget = receiptStart ? addBusinessDays(receiptStart, 2, closures) : null;
+          const plan = letterStatus === "Letter filed with initial Form 8-K"
+            ? "Letter appears filed with the initial report; verify exhibit reference and agreement language."
+            : receiptDate
+              ? "Letter receipt date entered; verify whether an amendment or exhibit filing is needed and use the two-business-day planning target."
+              : "Letter is not confirmed in the initial package; use the ten-business-day follow-up target as a research queue signal.";
+          return { filingDate, receiptDate, closures, tenDayStart, tenDayTarget, receiptStart, twoDayTarget, letterStatus, plan };
+        }
+
+        function renderResult(data) {
+          const cards = [
+            ["Filing date", formatDate(data.filingDate)],
+            ["Letter status", data.letterStatus],
+            ["10-business-day follow-up", `${toIsoDate(data.tenDayTarget)} (${formatDate(data.tenDayTarget)})`],
+            ["Receipt amendment target", data.twoDayTarget ? `${toIsoDate(data.twoDayTarget)} (${formatDate(data.twoDayTarget)})` : "Receipt date not entered"],
+            ["Planning note", data.plan]
+          ];
+          results.innerHTML = cards
+            .map(([label, value]) => `<div class="result-card"><span>${label}</span><strong>${value}</strong></div>`)
+            .join("");
+        }
+
+        function buildMemo(data) {
+          return [
+            `# SEC Former Accountant Letter Review: ${getValue("issuer")}`,
+            "",
+            "## Source Facts",
+            `- Issuer: ${getValue("issuer")}`,
+            `- Ticker / CIK: ${getValue("ticker") || "Not provided"}`,
+            `- Item 4.01 filing date: ${toIsoDate(data.filingDate)} (${formatDate(data.filingDate)})`,
+            `- Former-accountant letter status: ${data.letterStatus}`,
+            `- Letter receipt date: ${data.receiptDate ? `${toIsoDate(data.receiptDate)} (${formatDate(data.receiptDate)})` : "Not entered"}`,
+            `- Exhibit reference: ${getValue("exhibitReference") || "Not entered"}`,
+            `- Former-accountant response: ${getValue("agreementStatus")}`,
+            `- Concern or mismatch areas: ${getValue("concernAreas") || "None entered"}`,
+            `- SEC source URL: ${getValue("sourceUrl") || "Not entered"}`,
+            "",
+            "## Planning Targets",
+            `- 10-business-day follow-up target after filing: ${toIsoDate(data.tenDayTarget)} (${formatDate(data.tenDayTarget)})`,
+            `- Two-business-day amendment target from receipt or next SEC business day: ${data.twoDayTarget ? `${toIsoDate(data.twoDayTarget)} (${formatDate(data.twoDayTarget)})` : "Receipt date not entered"}`,
+            `- Custom closure dates included: ${[...data.closures].join(", ") || "None entered"}`,
+            `- Planning note: ${data.plan}`,
+            "",
+            "## Next Research Step",
+            getValue("nextStep"),
+            "",
+            "## Guardrails",
+            "- This memo is a research-planning output, not legal advice or an official SEC deadline determination.",
+            "- Verify the Form 8-K, exhibit index, any Form 8-K/A, letter receipt date, SEC closure dates, and Item 304 facts before relying on the result.",
+            "- Do not use this tracker as investment advice, issuer analysis, an auditor-quality judgment, or a conclusion that a registrant is late."
+          ].join("\n");
+        }
+
+        function buildCsv(data) {
+          const headers = [
+            "issuer",
+            "ticker_or_cik",
+            "filing_date",
+            "letter_status",
+            "receipt_date",
+            "ten_business_day_followup_target",
+            "two_business_day_amendment_target",
+            "exhibit_reference",
+            "former_accountant_response",
+            "concern_areas",
+            "source_url",
+            "next_research_step"
+          ];
+          const row = [
+            getValue("issuer"),
+            getValue("ticker"),
+            toIsoDate(data.filingDate),
+            data.letterStatus,
+            data.receiptDate ? toIsoDate(data.receiptDate) : "",
+            toIsoDate(data.tenDayTarget),
+            data.twoDayTarget ? toIsoDate(data.twoDayTarget) : "",
+            getValue("exhibitReference"),
+            getValue("agreementStatus"),
+            getValue("concernAreas"),
+            getValue("sourceUrl"),
+            getValue("nextStep")
+          ];
+          return `${headers.join(",")}\n${row.map(csvEscape).join(",")}\n`;
+        }
+
+        function runCalculation(shouldTrack = true) {
+          try {
+            const data = calculate();
+            renderResult(data);
+            output.value = buildMemo(data);
+            if (shouldTrack) {
+              setStatus("Letter plan calculated.");
+              track("sec_auditor_letter_tracker_calculated", {
+                letterStatus: data.letterStatus,
+                hasReceiptDate: Boolean(data.receiptDate),
+                hasClosureDates: data.closures.size > 0
+              });
+            }
+            return data;
+          } catch (error) {
+            results.innerHTML = `<div class="result-card"><span>Input needed</span><strong>${error.message}</strong></div>`;
+            output.value = "";
+            throw error;
+          }
+        }
+
+        document.getElementById("calculateLetter").addEventListener("click", () => runCalculation(true));
+        document.getElementById("copyLetterMemo").addEventListener("click", async () => {
+          const data = output.value.trim() ? calculate() : runCalculation(false);
+          await writeClipboard(output.value || buildMemo(data));
+          setStatus("Memo copied.");
+          track("sec_auditor_letter_tracker_memo_copied", { letterStatus: getValue("letterStatus") });
+        });
+        document.getElementById("copyLetterCsv").addEventListener("click", async () => {
+          const data = output.value.trim() ? calculate() : runCalculation(false);
+          await writeClipboard(buildCsv(data));
+          setStatus("CSV row copied.");
+          track("sec_auditor_letter_tracker_csv_copied", { letterStatus: getValue("letterStatus") });
+        });
+        fields.forEach((id) => document.getElementById(id).addEventListener("change", () => runCalculation(false)));
+        runCalculation(false);
+      })();
+    </script>
+    <script src="event-log.js"></script>
+    <script src="share-tools.js"></script>
+  </body>
+</html>
