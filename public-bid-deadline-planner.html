@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free browser-only public bid deadline planner for RFP, RFQ, Q&A, registration, site-visit, draft, review, and final submission milestones.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="Public Bid Deadline Planner">
+    <meta property="og:description" content="Turn public RFP and RFQ dates into a source-backed proposal timeline before assigning proposal hours.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trust-leak-audit-static.vercel.app/public-bid-deadline-planner.html">
+    <meta property="og:site_name" content="Trust Leak Audit">
+    <meta property="og:image" content="https://trust-leak-audit-static.vercel.app/og/public-bid-deadline-planner.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Public bid deadline planner social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://trust-leak-audit-static.vercel.app/og/public-bid-deadline-planner.svg">
+    <meta name="twitter:image:alt" content="Public bid deadline planner social preview.">
+    <title>Public Bid Deadline Planner</title>
+    <link rel="canonical" href="https://trust-leak-audit-static.vercel.app/public-bid-deadline-planner.html">
+    <link rel="alternate" href="https://trust-leak-audit-static.vercel.app/llms.txt" type="text/plain" title="LLMs.txt">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Public Bid Deadline Planner",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "description": "A free browser-only planner that helps vendors convert public bid, RFP, RFQ, Q&A, registration, and site-visit dates into proposal timeline milestones.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a public bid deadline planner?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It is a vendor planning worksheet for turning official RFP, RFQ, bid, Q&A, registration, site-visit, draft, review, and final submission dates into a proposal workback plan."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this planner submit bids or connect to procurement portals?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It runs in the browser from user-entered dates and does not submit bids, fetch solicitation files, scrape portals, or upload opportunity data."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I rely on the generated dates as official deadlines?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The official solicitation, addenda, portal timezone, registration rules, site-visit instructions, and buyer communications control the actual deadlines."
+            }
+          }
+        ]
+      }
+    </script>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="index.html">Trust Leak Toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Free public-bid timeline tool</p>
+        <h1>Public Bid Deadline Planner</h1>
+        <p class="lede">Convert an RFP, RFQ, public bid, or solicitation notice into a working proposal timeline. Plan Q&amp;A, registration, site visits, compliance matrix, first draft, review, and final upload before the team commits proposal hours.</p>
+        <div class="page-actions">
+          <a class="primary-link" href="#planner">Plan deadlines</a>
+          <a class="secondary-link" href="public-bid-no-bid-calculator.html">Score bid fit</a>
+          <a class="secondary-link" href="#sources">Sources</a>
+        </div>
+      </header>
+
+      <section class="notice-panel" aria-label="Public bid deadline disclosure">
+        <strong>Disclosure:</strong> This is an informational planning worksheet, not procurement advice, legal advice, a buyer portal, or a bid submission service. Verify the official solicitation, addenda, timezone, submission format, registration, site-visit rules, and buyer communications before acting.
+      </section>
+
+      <section class="seo-grid" aria-label="Public bid timeline use cases">
+        <article class="panel">
+          <h2>Use Case</h2>
+          <p>Turn public opportunity dates from SAM.gov, state portals, county procurement pages, school districts, utilities, or buyer sites into a proposal workback plan.</p>
+        </article>
+        <article class="panel">
+          <h2>Risk Signal</h2>
+          <p>Spot compressed timelines, missed Q&amp;A windows, registration pressure, mandatory site-visit risk, and too few working days for draft and review.</p>
+        </article>
+        <article class="panel">
+          <h2>Output</h2>
+          <p>Copy a Markdown timeline memo or CSV row for a bid pipeline sheet so deadline pressure is visible before the pursuit starts.</p>
+        </article>
+      </section>
+
+      <section class="detail-section" id="planner" aria-labelledby="planner-heading">
+        <div class="panel report-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Browser-only planner</p>
+              <h2 id="planner-heading">Build The Workback Plan</h2>
+            </div>
+            <div class="button-row">
+              <button class="primary" id="planBidDeadline" type="button">Plan</button>
+              <button class="secondary" id="copyDeadlineMemo" type="button">Copy Memo</button>
+              <button class="secondary" id="copyDeadlineCsv" type="button">Copy CSV Row</button>
+            </div>
+          </div>
+
+          <form class="calc-form" id="bidDeadlineForm">
+            <div class="field-row">
+              <label for="opportunityName">Opportunity <small>Buyer name, solicitation title, or pipeline label.</small></label>
+              <input id="opportunityName" type="text" value="County fleet maintenance RFQ">
+              <span class="value-pill">1</span>
+            </div>
+            <div class="field-row">
+              <label for="sourceUrl">Source URL <small>Official solicitation, portal, or notice page.</small></label>
+              <input id="sourceUrl" type="url" value="https://sam.gov/opportunities">
+              <span class="value-pill">2</span>
+            </div>
+            <div class="field-row">
+              <label for="releaseDate">Notice date <small>When the opportunity or latest addendum was found.</small></label>
+              <input id="releaseDate" type="date">
+              <span class="value-pill">3</span>
+            </div>
+            <div class="field-row">
+              <label for="qaDeadline">Q&amp;A deadline <small>Last date to submit questions or clarification requests.</small></label>
+              <input id="qaDeadline" type="date">
+              <span class="value-pill">4</span>
+            </div>
+            <div class="field-row">
+              <label for="registrationDeadline">Registration deadline <small>Portal, entity, pre-bid, bond, certification, or vendor setup cutoff.</small></label>
+              <input id="registrationDeadline" type="date">
+              <span class="value-pill">5</span>
+            </div>
+            <div class="field-row">
+              <label for="siteVisitDate">Site visit date <small>Optional mandatory or recommended visit date.</small></label>
+              <input id="siteVisitDate" type="date">
+              <span class="value-pill">6</span>
+            </div>
+            <div class="field-row">
+              <label for="dueDate">Submission due date <small>Official bid, quote, or proposal deadline.</small></label>
+              <input id="dueDate" type="date">
+              <span class="value-pill">7</span>
+            </div>
+            <div class="field-row">
+              <label for="proposalHours">Estimated proposal hours <small>Internal hours needed for compliance, pricing, writing, review, and upload.</small></label>
+              <input id="proposalHours" type="number" min="0" step="1" value="32">
+              <span class="value-pill">hrs</span>
+            </div>
+            <div class="field-row">
+              <label for="teamSize">Available contributors <small>People who can work on the response before the deadline.</small></label>
+              <input id="teamSize" type="number" min="1" step="1" value="2">
+              <span class="value-pill">team</span>
+            </div>
+            <div class="field-row">
+              <label for="complexity">Complexity <small>1 simple quote, 5 multi-volume response with pricing and compliance risk.</small></label>
+              <input id="complexity" type="number" min="1" max="5" step="1" value="3">
+              <span class="value-pill">1-5</span>
+            </div>
+            <div class="field-row">
+              <label for="mandatoryItems">Mandatory items <small>Count site visit, bond, samples, references, insurance, portal setup, forms, certifications, or special attachments.</small></label>
+              <input id="mandatoryItems" type="number" min="0" max="10" step="1" value="4">
+              <span class="value-pill">0-10</span>
+            </div>
+            <div class="field-row">
+              <label for="reviewBufferDays">Final upload buffer <small>Calendar days to reserve before the official deadline.</small></label>
+              <input id="reviewBufferDays" type="number" min="0" max="10" step="1" value="2">
+              <span class="value-pill">days</span>
+            </div>
+            <div class="field-row">
+              <label for="nextStep">Next verification step <small>Source-backed action before assigning proposal work.</small></label>
+              <input id="nextStep" type="text" value="Confirm timezone, addenda, portal setup, mandatory attachments, and whether the Q&A window is still open.">
+              <span class="value-pill">13</span>
+            </div>
+          </form>
+
+          <div class="result-strip" id="deadlineResults"></div>
+          <textarea id="deadlineOutput" spellcheck="false" aria-label="Generated public bid deadline memo"></textarea>
+          <p class="event-status" id="deadlineStatus" role="status" aria-live="polite">Deadline planner actions: 0</p>
+        </div>
+      </section>
+
+      <section class="detail-section" id="timeline" aria-labelledby="timeline-heading">
+        <h2 id="timeline-heading">Timeline Signals</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>Green</h3>
+            <p>At least two working weeks remain, Q&amp;A is open or recently closed, mandatory steps are known, and final upload has a clear buffer.</p>
+          </article>
+          <article class="panel">
+            <h3>Amber</h3>
+            <p>The opportunity may be workable, but registration, addenda, attachments, pricing, or review windows need verification before proposal hours are assigned.</p>
+          </article>
+          <article class="panel">
+            <h3>Red</h3>
+            <p>Q&amp;A is missed, required setup or site visits are at risk, or too few working days remain for compliance, pricing, review, and upload.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" id="sources" aria-labelledby="sources-heading">
+        <h2 id="sources-heading">Public Bid Source Links</h2>
+        <div class="table-wrap">
+          <table class="benchmark-table">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Why It Matters</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://sam.gov/opportunities">SAM.gov Contract Opportunities</a></td>
+                <td>Federal opportunity notices, solicitation links, dates, and updates for vendors researching public contract work.</td>
+              </tr>
+              <tr>
+                <td><a href="https://sam.gov/entity-registration">SAM.gov Entity Registration</a></td>
+                <td>Entity and vendor setup can become a deadline risk if registration is not already handled.</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.sba.gov/federal-contracting/contracting-guide/basic-requirements">SBA Contracting Basic Requirements</a></td>
+                <td>Plain-language reminder that eligibility, registration, and capability requirements matter before federal pursuit work begins.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (() => {
+        const ids = [
+          "opportunityName",
+          "sourceUrl",
+          "releaseDate",
+          "qaDeadline",
+          "registrationDeadline",
+          "siteVisitDate",
+          "dueDate",
+          "proposalHours",
+          "teamSize",
+          "complexity",
+          "mandatoryItems",
+          "reviewBufferDays",
+          "nextStep"
+        ];
+        const output = document.getElementById("deadlineOutput");
+        const results = document.getElementById("deadlineResults");
+        const status = document.getElementById("deadlineStatus");
+        let actionCount = 0;
+
+        const today = atNoon(new Date());
+        const defaults = {
+          releaseDate: 0,
+          qaDeadline: 7,
+          registrationDeadline: 9,
+          siteVisitDate: 6,
+          dueDate: 21
+        };
+        Object.entries(defaults).forEach(([id, offset]) => {
+          document.getElementById(id).value = toIsoDate(addDays(today, offset));
+        });
+
+        function getValue(id) {
+          return document.getElementById(id).value.trim();
+        }
+
+        function numberValue(id) {
+          return Number(getValue(id)) || 0;
+        }
+
+        function atNoon(date) {
+          return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 12);
+        }
+
+        function parseDate(id) {
+          const value = getValue(id);
+          if (!value) return null;
+          const date = new Date(`${value}T12:00:00`);
+          return Number.isNaN(date.getTime()) ? null : date;
+        }
+
+        function addDays(date, days) {
+          const copy = new Date(date);
+          copy.setDate(copy.getDate() + days);
+          return copy;
+        }
+
+        function subtractDays(date, days) {
+          return addDays(date, -days);
+        }
+
+        function daysBetween(start, end) {
+          return Math.ceil((atNoon(end) - atNoon(start)) / 86400000);
+        }
+
+        function workingDaysBetween(start, end) {
+          let count = 0;
+          const cursor = addDays(atNoon(start), 1);
+          const last = atNoon(end);
+          while (cursor <= last) {
+            const day = cursor.getDay();
+            if (day !== 0 && day !== 6) count += 1;
+            cursor.setDate(cursor.getDate() + 1);
+          }
+          return count;
+        }
+
+        function toIsoDate(date) {
+          return date.toISOString().slice(0, 10);
+        }
+
+        function formatDate(date) {
+          return date ? toIsoDate(date) : "Not entered";
+        }
+
+        function csvEscape(value) {
+          const text = String(value ?? "");
+          return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+        }
+
+        function clampDateBeforeDue(date, dueDate) {
+          return date > dueDate ? dueDate : date;
+        }
+
+        function calculate() {
+          const dueDate = parseDate("dueDate");
+          if (!dueDate) throw new Error("Enter a valid submission due date.");
+
+          const releaseDate = parseDate("releaseDate") || today;
+          const qaDeadline = parseDate("qaDeadline");
+          const registrationDeadline = parseDate("registrationDeadline");
+          const siteVisitDate = parseDate("siteVisitDate");
+          const proposalHours = numberValue("proposalHours");
+          const teamSize = Math.max(1, numberValue("teamSize"));
+          const complexity = Math.min(5, Math.max(1, numberValue("complexity")));
+          const mandatoryItems = Math.min(10, Math.max(0, numberValue("mandatoryItems")));
+          const reviewBufferDays = Math.min(10, Math.max(0, numberValue("reviewBufferDays")));
+          const calendarDays = daysBetween(today, dueDate);
+          const workingDays = workingDaysBetween(today, dueDate);
+          const hoursPerContributor = proposalHours / teamSize;
+          const hoursPerWorkingDay = workingDays > 0 ? proposalHours / workingDays : proposalHours;
+
+          const decisionOffset = Math.max(10, complexity * 2 + reviewBufferDays + 2);
+          const complianceOffset = Math.max(8, complexity * 2 + reviewBufferDays);
+          const draftOffset = Math.max(5, complexity + reviewBufferDays + 1);
+          const reviewOffset = Math.max(3, reviewBufferDays + 1);
+          const finalOffset = Math.max(1, reviewBufferDays);
+
+          const noBidDecision = clampDateBeforeDue(
+            qaDeadline ? new Date(Math.min(subtractDays(qaDeadline, 1), subtractDays(dueDate, decisionOffset))) : subtractDays(dueDate, decisionOffset),
+            dueDate
+          );
+          const complianceMatrix = clampDateBeforeDue(subtractDays(dueDate, complianceOffset), dueDate);
+          const firstDraft = clampDateBeforeDue(subtractDays(dueDate, draftOffset), dueDate);
+          const redTeamReview = clampDateBeforeDue(subtractDays(dueDate, reviewOffset), dueDate);
+          const finalUpload = clampDateBeforeDue(subtractDays(dueDate, finalOffset), dueDate);
+
+          const warnings = [];
+          if (calendarDays < 0) warnings.push("Official due date appears to be in the past.");
+          if (workingDays < 5) warnings.push("Fewer than five working days remain.");
+          if (qaDeadline && daysBetween(today, qaDeadline) < 0) warnings.push("Q&A deadline appears to have passed.");
+          if (registrationDeadline && daysBetween(today, registrationDeadline) < 2) warnings.push("Registration or portal setup is urgent.");
+          if (siteVisitDate && daysBetween(today, siteVisitDate) < 0) warnings.push("Site visit date appears to have passed.");
+          if (mandatoryItems >= 6) warnings.push("Mandatory item count is high.");
+          if (hoursPerWorkingDay > teamSize * 5) warnings.push("Proposal workload is heavy for the remaining working days.");
+          if (reviewBufferDays < 2) warnings.push("Final upload buffer is thin.");
+
+          let riskPoints = 0;
+          if (workingDays < 5) riskPoints += 35;
+          else if (workingDays < 10) riskPoints += 20;
+          else if (workingDays < 15) riskPoints += 8;
+          if (qaDeadline && daysBetween(today, qaDeadline) < 0) riskPoints += 18;
+          if (registrationDeadline && daysBetween(today, registrationDeadline) < 2) riskPoints += 12;
+          if (siteVisitDate && daysBetween(today, siteVisitDate) < 0) riskPoints += 15;
+          riskPoints += mandatoryItems * 4;
+          riskPoints += complexity * 5;
+          if (hoursPerWorkingDay > teamSize * 5) riskPoints += 14;
+          if (reviewBufferDays < 2) riskPoints += 10;
+
+          const timelineRisk = riskPoints >= 65 ? "High" : riskPoints >= 38 ? "Medium" : "Low";
+          const statusLabel = timelineRisk === "High" ? "Red" : timelineRisk === "Medium" ? "Amber" : "Green";
+
+          return {
+            releaseDate,
+            qaDeadline,
+            registrationDeadline,
+            siteVisitDate,
+            dueDate,
+            proposalHours,
+            teamSize,
+            complexity,
+            mandatoryItems,
+            reviewBufferDays,
+            calendarDays,
+            workingDays,
+            hoursPerContributor,
+            hoursPerWorkingDay,
+            noBidDecision,
+            complianceMatrix,
+            firstDraft,
+            redTeamReview,
+            finalUpload,
+            warnings,
+            timelineRisk,
+            statusLabel
+          };
+        }
+
+        function renderResult(data) {
+          const rows = [
+            ["Timeline status", data.statusLabel],
+            ["Risk", data.timelineRisk],
+            ["Calendar days left", data.calendarDays],
+            ["Working days left", data.workingDays],
+            ["Hours / contributor", data.hoursPerContributor.toFixed(1)],
+            ["Hours / working day", data.hoursPerWorkingDay.toFixed(1)],
+            ["Final upload", formatDate(data.finalUpload)],
+            ["Warnings", data.warnings.length]
+          ];
+          results.innerHTML = rows
+            .map(([label, value]) => `<div class="result-card"><span>${label}</span><strong>${value}</strong></div>`)
+            .join("");
+        }
+
+        function buildMemo(data) {
+          return [
+            `# Public Bid Deadline Plan: ${getValue("opportunityName")}`,
+            "",
+            "## Timeline Status",
+            `- Status: ${data.statusLabel}`,
+            `- Timeline risk: ${data.timelineRisk}`,
+            `- Source URL: ${getValue("sourceUrl") || "Not entered"}`,
+            `- Notice/addendum date: ${formatDate(data.releaseDate)}`,
+            `- Official submission due date: ${formatDate(data.dueDate)}`,
+            `- Calendar days left: ${data.calendarDays}`,
+            `- Working days left: ${data.workingDays}`,
+            "",
+            "## Official Dates To Verify",
+            `- Q&A deadline: ${formatDate(data.qaDeadline)}`,
+            `- Registration/setup deadline: ${formatDate(data.registrationDeadline)}`,
+            `- Site visit date: ${formatDate(data.siteVisitDate)}`,
+            "",
+            "## Workback Milestones",
+            `- Go/no-go decision: ${formatDate(data.noBidDecision)}`,
+            `- Compliance matrix complete: ${formatDate(data.complianceMatrix)}`,
+            `- First response draft: ${formatDate(data.firstDraft)}`,
+            `- Internal review/red-team: ${formatDate(data.redTeamReview)}`,
+            `- Final upload target: ${formatDate(data.finalUpload)}`,
+            "",
+            "## Workload",
+            `- Estimated proposal hours: ${data.proposalHours}`,
+            `- Contributors available: ${data.teamSize}`,
+            `- Hours per contributor: ${data.hoursPerContributor.toFixed(1)}`,
+            `- Hours per remaining working day: ${data.hoursPerWorkingDay.toFixed(1)}`,
+            `- Complexity: ${data.complexity}/5`,
+            `- Mandatory item count: ${data.mandatoryItems}`,
+            "",
+            "## Warnings",
+            data.warnings.length ? data.warnings.map((warning) => `- ${warning}`).join("\n") : "- No major timeline warnings from these inputs.",
+            "",
+            "## Next Step",
+            getValue("nextStep"),
+            "",
+            "## Guardrails",
+            "- Verify official solicitation files, addenda, portal timezone, submission method, required attachments, site-visit rules, registration status, and buyer messages.",
+            "- Treat this as a planning worksheet, not procurement advice, legal advice, a bid submission, or a guarantee that the opportunity is pursuable."
+          ].join("\n");
+        }
+
+        function buildCsv(data) {
+          const headers = [
+            "opportunity",
+            "source_url",
+            "timeline_status",
+            "timeline_risk",
+            "due_date",
+            "calendar_days_left",
+            "working_days_left",
+            "qa_deadline",
+            "registration_deadline",
+            "site_visit_date",
+            "go_no_go_decision_date",
+            "compliance_matrix_date",
+            "first_draft_date",
+            "internal_review_date",
+            "final_upload_target",
+            "proposal_hours",
+            "contributors",
+            "complexity",
+            "mandatory_item_count",
+            "warning_count",
+            "next_step"
+          ];
+          const row = [
+            getValue("opportunityName"),
+            getValue("sourceUrl"),
+            data.statusLabel,
+            data.timelineRisk,
+            formatDate(data.dueDate),
+            data.calendarDays,
+            data.workingDays,
+            formatDate(data.qaDeadline),
+            formatDate(data.registrationDeadline),
+            formatDate(data.siteVisitDate),
+            formatDate(data.noBidDecision),
+            formatDate(data.complianceMatrix),
+            formatDate(data.firstDraft),
+            formatDate(data.redTeamReview),
+            formatDate(data.finalUpload),
+            data.proposalHours,
+            data.teamSize,
+            data.complexity,
+            data.mandatoryItems,
+            data.warnings.length,
+            getValue("nextStep")
+          ];
+          return `${headers.join(",")}\n${row.map(csvEscape).join(",")}\n`;
+        }
+
+        function setStatus(message) {
+          actionCount += 1;
+          status.textContent = `${message} Actions: ${actionCount}`;
+        }
+
+        function track(name, detail = {}) {
+          if (window.TrustLeakEvents?.track) {
+            window.TrustLeakEvents.track(name, detail);
+          }
+        }
+
+        async function copyText(text) {
+          if (navigator.clipboard?.writeText) {
+            await navigator.clipboard.writeText(text);
+            return;
+          }
+          output.focus();
+          output.select();
+          document.execCommand("copy");
+        }
+
+        function runCalculation(shouldTrack = true) {
+          try {
+            const data = calculate();
+            renderResult(data);
+            output.value = buildMemo(data);
+            if (shouldTrack) {
+              setStatus("Deadline plan generated.");
+              track("public_bid_deadline_planned", {
+                status: data.statusLabel,
+                risk: data.timelineRisk,
+                workingDays: data.workingDays
+              });
+            }
+            return data;
+          } catch (error) {
+            results.innerHTML = `<div class="result-card"><span>Input needed</span><strong>${error.message}</strong></div>`;
+            output.value = "";
+            throw error;
+          }
+        }
+
+        document.getElementById("planBidDeadline").addEventListener("click", () => runCalculation(true));
+        document.getElementById("copyDeadlineMemo").addEventListener("click", async () => {
+          const data = output.value.trim() ? calculate() : runCalculation(false);
+          await copyText(output.value || buildMemo(data));
+          setStatus("Deadline memo copied.");
+          track("public_bid_deadline_memo_copied", { status: data.statusLabel, risk: data.timelineRisk });
+        });
+        document.getElementById("copyDeadlineCsv").addEventListener("click", async () => {
+          const data = output.value.trim() ? calculate() : runCalculation(false);
+          await copyText(buildCsv(data));
+          setStatus("Deadline CSV copied.");
+          track("public_bid_deadline_csv_copied", { status: data.statusLabel, risk: data.timelineRisk });
+        });
+        ids.forEach((id) => document.getElementById(id).addEventListener("change", () => runCalculation(false)));
+        runCalculation(false);
+      })();
+    </script>
+    <script src="event-log.js"></script>
+    <script src="share-tools.js"></script>
+  </body>
+</html>

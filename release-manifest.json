@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-04T09:32:11.234Z",
+  "generatedAt": "2026-05-04T12:34:23.682Z",
   "sourceDir": "/Users/turnerlevey/untitled folder/venture-lab/site",
   "releaseDir": "/Users/turnerlevey/untitled folder/venture-lab/releases/trust-leak-audit-static",
   "siteUrl": "https://trust-leak-audit-static.vercel.app",
@@ -14,6 +14,7 @@
     "local-service-lead-value-calculator.html",
     "ltv-cac-calculator.html",
     "paid-traffic-break-even-calculator.html",
+    "public-bid-deadline-planner.html",
     "public-bid-no-bid-calculator.html",
     "roas-calculator.html",
     "saas-payback-calculator.html",
@@ -50,6 +51,7 @@
     "local-service-lead-value-calculator.html",
     "ltv-cac-calculator.html",
     "paid-traffic-break-even-calculator.html",
+    "public-bid-deadline-planner.html",
     "public-bid-no-bid-calculator.html",
     "roas-calculator.html",
     "saas-payback-calculator.html",
@@ -75,6 +77,7 @@
     "og/local-service-lead-value-calculator.svg",
     "og/ltv-cac-calculator.svg",
     "og/paid-traffic-break-even-calculator.svg",
+    "og/public-bid-deadline-planner.svg",
     "og/public-bid-no-bid-calculator.svg",
     "og/roas-calculator.svg",
     "og/saas-payback-calculator.svg",
@@ -102,24 +105,24 @@
   ],
   "indexNow": {
     "keyFile": "4f2e8d9c6b7a4f3a9e1c0d8b6a2f4c1e.txt",
-    "indexableUrls": 24
+    "indexableUrls": 25
   },
   "trafficBeacon": {
     "endpoint": "/api/track",
     "handler": "api/track.js"
   },
   "eventLogCoverage": {
-    "covered": 24,
-    "indexable": 24
+    "covered": 25,
+    "indexable": 25
   },
   "localLinkIssues": [],
   "shareToolCoverage": {
-    "covered": 24,
-    "indexable": 24
+    "covered": 25,
+    "indexable": 25
   },
   "vercelAnalyticsCoverage": {
-    "covered": 24,
-    "indexable": 24,
+    "covered": 25,
+    "indexable": 25,
     "scriptSrc": "/_vercel/insights/script.js"
   },
   "nextCommand": "SITE_URL=https://your-domain.example node venture-lab/site/build-static-release.mjs"

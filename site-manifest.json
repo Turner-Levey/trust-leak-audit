@@ -73,6 +73,11 @@
       "description": "Triage public bid opportunities by fit, deadline risk, pursuit cost, and expected value."
     },
     {
+      "name": "Public Bid Deadline Planner",
+      "url": "/public-bid-deadline-planner.html",
+      "description": "Plan Q&A, registration, site-visit, draft, review, and final upload milestones."
+    },
+    {
       "name": "SEC Briefs Hub",
       "url": "/sec-trigger-briefs-hub.html",
       "description": "Review public Form 8-K trigger brief sample routes."
