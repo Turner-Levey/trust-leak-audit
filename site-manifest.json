@@ -73,6 +73,11 @@
       "description": "Copy a Form 8-K Item 4.01 auditor-change research template."
     },
     {
+      "name": "SEC Auditor Disclosure Checklist",
+      "url": "/sec-auditor-change-disclosure-checklist.html",
+      "description": "Review Form 8-K Item 4.01 auditor-change disclosure fields."
+    },
+    {
       "name": "SEC Auditor Deadline Calculator",
       "url": "/sec-auditor-change-deadline-calculator.html",
       "description": "Estimate a Form 8-K Item 4.01 four-business-day research target date."
