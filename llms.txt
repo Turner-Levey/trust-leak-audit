@@ -33,7 +33,7 @@ IndexNow key file: https://trust-leak-audit-static.vercel.app/4f2e8d9c6b7a4f3a9e
 - [SEC Leadership Change Briefs](https://trust-leak-audit-static.vercel.app/sec-leadership-change-briefs.html): Five public SEC Form 8-K Item 5.02 leadership-change briefs for executive search, interim finance, governance, IR, and public-company advisory teams.
 - [SEC Filing Trigger Briefs Hub](https://trust-leak-audit-static.vercel.app/sec-trigger-briefs-hub.html): A deployable hub for SEC Filing Trigger Briefs: public Form 8-K business-development signals for recruiters, accounting teams, governance advisors, IR teams, and public-company vendors.
 - [Free Landing Page Trust Score Checklist](https://trust-leak-audit-static.vercel.app/trust-score.html): Free landing page trust score checklist for founders and agencies. Find clarity, proof, risk reversal, pricing, and CTA gaps before spending more on traffic.
-- [Vercel Security Incident Response Checklist](https://trust-leak-audit-static.vercel.app/vercel-incident-response-checklist.html): A free browser-only Vercel security incident checklist for rotating environment variables, checking activity logs, hardening deployment protection, and documenting owner follow-up.
+- [Vercel Security Incident Response Checklist](https://trust-leak-audit-static.vercel.app/vercel-incident-response-checklist.html): A free browser-only Vercel April 2026 incident checklist for OAuth IOC review, environment-variable rotation, activity logs, deployment protection, and owner notes.
 
 ## Notes For Crawlers And Launch Reviewers
 

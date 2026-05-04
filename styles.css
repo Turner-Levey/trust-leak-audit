@@ -833,6 +833,12 @@ textarea {
   font-weight: 800;
 }
 
+.benchmark-table code,
+.faq-list code {
+  white-space: normal;
+  word-break: break-all;
+}
+
 .benchmark-table tr:last-child td {
   border-bottom: 0;
 }

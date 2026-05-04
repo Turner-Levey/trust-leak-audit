@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A free browser-only Vercel security incident checklist for rotating environment variables, checking activity logs, hardening deployment protection, and documenting owner follow-up.">
+    <meta name="description" content="A free browser-only Vercel April 2026 incident checklist for OAuth IOC review, environment-variable rotation, activity logs, deployment protection, and owner notes.">
     <meta name="robots" content="index,follow">
     <meta name="theme-color" content="#f3f7f4">
     <meta property="og:title" content="Vercel Security Incident Response Checklist">
-    <meta property="og:description" content="A source-backed, browser-only checklist for Vercel environment variable rotation, activity-log review, 2FA, and deployment protection.">
+    <meta property="og:description" content="A source-backed, browser-only checklist for Vercel OAuth IOC review, environment variable rotation, activity-log review, MFA, and deployment protection.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://trust-leak-audit-static.vercel.app/vercel-incident-response-checklist.html">
     <meta property="og:site_name" content="Trust Leak Audit">
@@ -29,9 +29,9 @@
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": "Vercel Security Incident Response Checklist",
-        "description": "A free browser-only checklist for Vercel environment variable rotation, activity-log review, multi-factor authentication, and deployment protection after the April 2026 Vercel security bulletin.",
+        "description": "A free browser-only checklist for Vercel OAuth IOC review, environment variable rotation, activity-log review, multi-factor authentication, and deployment protection after the April 2026 Vercel security bulletin.",
         "datePublished": "2026-04-30",
-        "dateModified": "2026-05-01",
+        "dateModified": "2026-05-04",
         "author": {
           "@type": "Organization",
           "name": "Trust Leak Audit"
@@ -71,6 +71,14 @@
               "@type": "Answer",
               "text": "Vercel's environment-variable documentation says changes apply to new deployments, not previous deployments. Redeploy production and relevant previews after rotating credentials."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "What OAuth app IOC did Vercel publish?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vercel published the Google Workspace OAuth app client ID 110671459871-30f1spbu0hptbs60cb4vsmv79i7bbvqj.apps.googleusercontent.com as an indicator of compromise. Workspace administrators should compare it against the official bulletin and their own connected-app or audit logs."
+            }
           }
         ]
       }
@@ -87,13 +95,13 @@
       <header class="page-hero">
         <p class="eyebrow">Current security checklist</p>
         <h1>Vercel Security Incident Response Checklist</h1>
-        <p class="lede">A free browser-only workflow for founders and small teams responding to the April 2026 Vercel security bulletin: scope projects, rotate environment variables safely, check activity, and harden deployment access.</p>
+        <p class="lede">A free browser-only workflow for founders and small teams responding to the April 2026 Vercel security bulletin: scope projects, check the published OAuth IOC, rotate environment variables safely, review activity, and harden deployment access.</p>
         <div class="page-actions">
           <button class="primary" id="copyVercelChecklist" type="button">Copy Checklist</button>
           <a class="secondary-link" href="https://vercel.com/kb/bulletin/vercel-april-2026-security-incident">Official bulletin</a>
           <a class="secondary-link" href="https://vercel.com/docs/environment-variables/rotating-secrets/">Rotation docs</a>
         </div>
-        <p class="event-status" id="vercelChecklistStatus">Checklist progress: 0 of 18 complete</p>
+        <p class="event-status" id="vercelChecklistStatus">Checklist progress: 0 of 19 complete</p>
       </header>
 
       <section class="notice-panel">
@@ -103,7 +111,7 @@
       <section class="panel detail-section">
         <p class="eyebrow">Official bulletin snapshot</p>
         <h2>What changed in the latest Vercel update</h2>
-        <p>Last reviewed here on May 1, 2026. Vercel's official bulletin was last updated on April 24, 2026 and moved from scheduled updates to ad hoc security bulletin updates.</p>
+        <p>Last reviewed here on May 4, 2026. Vercel's official bulletin was last updated on April 24, 2026 and moved from scheduled updates to ad hoc security bulletin updates.</p>
         <table class="benchmark-table">
           <thead>
             <tr>
@@ -118,7 +126,7 @@
             </tr>
             <tr>
               <td>Vercel says the incident originated with a compromised third-party AI tool and a Google Workspace OAuth app path.</td>
-              <td>Ask Google Workspace administrators to check the published OAuth app IOC and review connected third-party apps for unexpected access.</td>
+              <td>Ask Google Workspace administrators to check the published OAuth app IOC <code>110671459871-30f1spbu0hptbs60cb4vsmv79i7bbvqj.apps.googleusercontent.com</code> and review connected third-party apps for unexpected access.</td>
             </tr>
             <tr>
               <td>Vercel says its security team confirmed with GitHub, Microsoft, npm, and Socket that Vercel-published npm packages were not compromised.</td>
@@ -127,6 +135,10 @@
             <tr>
               <td>Vercel's current recommendations still emphasize MFA, rotating non-sensitive environment variables, using Sensitive Environment Variables, reviewing activity logs, checking recent deployments, and setting Deployment Protection.</td>
               <td>Work the checklist below in that order, then document owner, timestamp, redeploy evidence, and old credential revocation status.</td>
+            </tr>
+            <tr>
+              <td>Vercel says it is adding stronger environment-variable management, a team-wide security overview, and activity-log improvements after the incident.</td>
+              <td>Use new Vercel security controls as they become available, but do not delay credential rotation, activity review, or deployment protection work.</td>
             </tr>
           </tbody>
         </table>
@@ -153,6 +165,11 @@
               <td><input type="checkbox" data-item="Confirm whether Vercel notified the account owner directly."></td>
               <td>Confirm whether Vercel notified the account owner directly.</td>
               <td>Vercel says affected customers were contacted; do not assume impact from third-party commentary alone.</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" data-item="Search Google Workspace app access or audit logs for Vercel's published OAuth app IOC."></td>
+              <td>Search Google Workspace app access or audit logs for Vercel's published OAuth app IOC.</td>
+              <td>The official bulletin lists the client ID <code>110671459871-30f1spbu0hptbs60cb4vsmv79i7bbvqj.apps.googleusercontent.com</code> as an indicator of compromise.</td>
             </tr>
             <tr>
               <td><input type="checkbox" data-item="List production and preview projects that use Vercel environment variables."></td>
@@ -349,6 +366,10 @@
           <summary>What is the safest rotation order?</summary>
           <p>Create the replacement credential, update Vercel, redeploy and verify, then revoke the old credential at the upstream provider.</p>
         </details>
+        <details>
+          <summary>What OAuth app IOC should Workspace owners check?</summary>
+          <p>Vercel's bulletin lists the client ID <code>110671459871-30f1spbu0hptbs60cb4vsmv79i7bbvqj.apps.googleusercontent.com</code>. Compare it against the official bulletin before acting on any local Workspace findings.</p>
+        </details>
       </section>
 
       <section class="tool-links" aria-label="Tool pages">
@@ -490,7 +511,7 @@
             "## Remaining",
             ...boxes.filter((box) => !box.checked).map((box) => `- [ ] ${box.dataset.item}`),
             "",
-            "Reviewed against the official bulletin on 2026-05-01. Official bulletin last updated: 2026-04-24.",
+            "Reviewed against the official bulletin on 2026-05-04. Official bulletin last updated: 2026-04-24.",
             "",
             "Official bulletin: https://vercel.com/kb/bulletin/vercel-april-2026-security-incident"
           ];
