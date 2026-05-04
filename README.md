@@ -11,6 +11,7 @@ Live site: https://trust-leak-audit-static.vercel.app/
 - LTV:CAC, SaaS payback, lead funnel, local-service lead value, and agency margin calculators.
 - Ecommerce conversion trust checklist.
 - Anonymized sample audit reports and public SEC trigger brief examples.
+- LLMS.txt cache freshness checker for comparing origin and directory copies.
 - Launch notes, share links, `llms.txt`, sitemap, and IndexNow support.
 
 ## Privacy And Use
@@ -28,6 +29,7 @@ The static toolkit code and original documentation in this repository are MIT li
 - Paid traffic break-even: https://trust-leak-audit-static.vercel.app/paid-traffic-break-even-calculator.html
 - Ecommerce trust checklist: https://trust-leak-audit-static.vercel.app/ecommerce-conversion-trust-checklist.html
 - Sample reports: https://trust-leak-audit-static.vercel.app/sample-reports.html
+- LLMS.txt cache checker: https://trust-leak-audit-static.vercel.app/llms-txt-cache-freshness-checker.html
 - SEC trigger briefs hub: https://trust-leak-audit-static.vercel.app/sec-trigger-briefs-hub.html
 
 This repository can contain prepared release files before the production alias finishes updating, so the live site and current sitemap are the source of truth for public launch copy.

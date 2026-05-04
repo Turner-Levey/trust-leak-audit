@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free browser-only llms.txt cache freshness checker for comparing an origin llms.txt file with a directory or cached copy and finding missing URLs.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="LLMS.txt Cache Freshness Checker">
+    <meta property="og:description" content="Compare origin and cached llms.txt content, find stale directory copies, and copy a freshness report without signup.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trust-leak-audit-static.vercel.app/llms-txt-cache-freshness-checker.html">
+    <meta property="og:site_name" content="Trust Leak Audit">
+    <meta property="og:image" content="https://trust-leak-audit-static.vercel.app/og/llms-txt-cache-freshness-checker.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="LLMS.txt cache freshness checker social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://trust-leak-audit-static.vercel.app/og/llms-txt-cache-freshness-checker.svg">
+    <meta name="twitter:image:alt" content="LLMS.txt cache freshness checker social preview.">
+    <title>LLMS.txt Cache Freshness Checker</title>
+    <link rel="canonical" href="https://trust-leak-audit-static.vercel.app/llms-txt-cache-freshness-checker.html">
+    <link rel="alternate" href="https://trust-leak-audit-static.vercel.app/llms.txt" type="text/plain" title="LLMs.txt">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "LLMS.txt Cache Freshness Checker",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "description": "A free browser-only tool for comparing an origin llms.txt file with a cached directory copy and finding missing priority URLs.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does the llms.txt cache freshness checker compare?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It compares pasted origin llms.txt content against a pasted cached or directory copy, extracts URLs, and reports which required URLs are missing from the cached copy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does llms.txt guarantee search or AI referral traffic?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The checker treats llms.txt as an emerging machine-readable discovery file. It helps verify freshness, but it does not guarantee ranking, crawling, citations, or referral traffic."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool fetch or store my llms.txt file?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The comparison runs in the browser from text pasted by the visitor. The page sends only sanitized same-origin aggregate traffic beacons like other indexable pages on this site."
+            }
+          }
+        ]
+      }
+    </script>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="index.html">Trust Leak Toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Free AI discovery QA tool</p>
+        <h1>LLMS.txt Cache Freshness Checker</h1>
+        <p class="lede">Compare your live origin `llms.txt` with a cached directory copy, find missing priority URLs, and copy a compact freshness report for launch or crawl-review notes.</p>
+        <div class="page-actions">
+          <a class="primary-link" href="#checker">Compare files</a>
+          <a class="secondary-link" href="#sources">Sources</a>
+          <a class="secondary-link" href="deployment-qa.html">Deployment QA</a>
+          <a class="secondary-link" href="launch-notes.html">Launch notes</a>
+        </div>
+      </header>
+
+      <section class="notice-panel" aria-label="LLMS text freshness checker disclosure">
+        <strong>Disclosure:</strong> `llms.txt` is an emerging discovery convention, not a guaranteed ranking, citation, or traffic signal. This browser-only checker compares pasted text and does not upload origin or cached files.
+      </section>
+
+      <section class="seo-grid" aria-label="LLMS text cache checker use cases">
+        <article class="panel">
+          <h2>Use Case</h2>
+          <p>Check whether a directory, repository, or cached copy has picked up new priority URLs after a sitemap, `llms.txt`, or content release.</p>
+        </article>
+        <article class="panel">
+          <h2>Freshness Signal</h2>
+          <p>Missing required URLs, mismatched sitemap references, changed titles, and origin-only URLs are stronger signals than a simple HTTP 200.</p>
+        </article>
+        <article class="panel">
+          <h2>Output</h2>
+          <p>A Markdown report and CSV row you can paste into launch notes, crawler-lag reviews, or directory approval tracking.</p>
+        </article>
+        <article class="panel">
+          <h2>Privacy</h2>
+          <p>The comparison uses text already pasted into the page. No remote fetch is required, which avoids CORS, rate-limit, and private-site surprises.</p>
+        </article>
+      </section>
+
+      <section class="detail-section" id="checker" aria-labelledby="checker-heading">
+        <div class="panel report-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Browser-only comparison</p>
+              <h2 id="checker-heading">Compare Origin And Cached LLMS.txt</h2>
+            </div>
+            <div class="button-row">
+              <button class="primary" id="compareFreshness" type="button">Compare Files</button>
+              <button class="secondary" id="copyFreshnessReport" type="button">Copy Report</button>
+              <button class="secondary" id="copyFreshnessCsv" type="button">Copy CSV Row</button>
+            </div>
+          </div>
+
+          <form class="calc-form" id="freshnessForm">
+            <div class="field-row">
+              <label for="domain">Domain <small>Use the hostname whose root serves `llms.txt`.</small></label>
+              <input id="domain" type="text" value="trust-leak-audit-static.vercel.app">
+              <span class="value-pill">1</span>
+            </div>
+            <div class="field-row">
+              <label for="originUrl">Origin URL <small>The live source file on your domain.</small></label>
+              <input id="originUrl" type="url" value="https://trust-leak-audit-static.vercel.app/llms.txt">
+              <span class="value-pill">2</span>
+            </div>
+            <div class="field-row">
+              <label for="cacheUrl">Cached copy URL <small>Directory, repository, or mirrored copy being checked.</small></label>
+              <input id="cacheUrl" type="url" value="https://llmscentral.com/trust-leak-audit-static.vercel.app/llms.txt">
+              <span class="value-pill">3</span>
+            </div>
+          </form>
+
+          <div class="report-columns">
+            <div>
+              <label class="eyebrow" for="originText">Origin `llms.txt`</label>
+              <textarea id="originText" spellcheck="false" placeholder="Paste the current origin llms.txt content here."></textarea>
+            </div>
+            <div>
+              <label class="eyebrow" for="cacheText">Cached or directory copy</label>
+              <textarea id="cacheText" spellcheck="false" placeholder="Paste the cached, mirrored, or directory-served llms.txt content here."></textarea>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <label for="requiredUrls">Required URLs <small>One URL per line; these should exist in the cached copy.</small></label>
+            <textarea id="requiredUrls" spellcheck="false">https://trust-leak-audit-static.vercel.app/sitemap.xml
+https://trust-leak-audit-static.vercel.app/sec-auditor-change-disclosure-checklist.html
+https://trust-leak-audit-static.vercel.app/sec-auditor-former-accountant-letter-tracker.html
+https://trust-leak-audit-static.vercel.app/llms-txt-cache-freshness-checker.html</textarea>
+            <span class="value-pill">4</span>
+          </div>
+
+          <div class="result-strip" id="freshnessSummary" aria-live="polite"></div>
+          <textarea id="freshnessReport" spellcheck="false"></textarea>
+        </div>
+      </section>
+
+      <section class="detail-section" id="sources" aria-labelledby="sources-heading">
+        <h2 id="sources-heading">Sources And Guardrails</h2>
+        <div class="report-gallery">
+          <article class="panel report-card">
+            <h2>Reference Files</h2>
+            <p>The original `llms.txt` proposal describes a Markdown file at the site root that points language models toward useful content. Treat it as a readable map, not a crawler-control guarantee.</p>
+            <a href="https://llmstxt.org/index.html">Open llmstxt.org</a>
+          </article>
+          <article class="panel report-card">
+            <h2>Directory Cache Checks</h2>
+            <p>LLMS Central documents public read endpoints for search, domain `llms.txt` retrieval, and direct `/{domain}/llms.txt` access. This checker gives you a no-account way to compare those copies manually.</p>
+            <a href="https://llmscentral.com/api-docs">Open LLMS Central API docs</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="tool-links" aria-label="Related tools">
+        <a href="./">Toolkit Home</a>
+        <a href="deployment-qa.html">Deployment QA</a>
+        <a href="launch-notes.html">Launch Notes</a>
+        <a href="sec-auditor-change-evidence-pack-builder.html">SEC Evidence Pack Builder</a>
+        <a href="sec-auditor-change-disclosure-checklist.html">SEC Disclosure Checklist</a>
+        <a href="sec-auditor-former-accountant-letter-tracker.html">SEC Former Accountant Letter Tracker</a>
+      </section>
+    </main>
+
+    <script>
+      const fields = {
+        domain: document.querySelector("#domain"),
+        originUrl: document.querySelector("#originUrl"),
+        cacheUrl: document.querySelector("#cacheUrl"),
+        originText: document.querySelector("#originText"),
+        cacheText: document.querySelector("#cacheText"),
+        requiredUrls: document.querySelector("#requiredUrls"),
+        summary: document.querySelector("#freshnessSummary"),
+        report: document.querySelector("#freshnessReport")
+      };
+
+      const compareButton = document.querySelector("#compareFreshness");
+      const copyReportButton = document.querySelector("#copyFreshnessReport");
+      const copyCsvButton = document.querySelector("#copyFreshnessCsv");
+      let currentResult = null;
+
+      compareButton.addEventListener("click", () => {
+        currentResult = compareFreshness();
+        renderResult(currentResult);
+        window.TrustLeakEvents?.track("llms_cache_freshness_checked", {
+          domain: currentResult.domain,
+          requiredUrls: currentResult.required.length,
+          missingRequired: currentResult.missingRequired.length,
+          originOnlyUrls: currentResult.originOnly.length,
+          cacheOnlyUrls: currentResult.cacheOnly.length
+        });
+      });
+
+      copyReportButton.addEventListener("click", async () => {
+        if (!currentResult) {
+          currentResult = compareFreshness();
+          renderResult(currentResult);
+        }
+        await copyText(renderReport(currentResult), copyReportButton, "Copied");
+        window.TrustLeakEvents?.track("llms_cache_report_copied", {
+          domain: currentResult.domain,
+          missingRequired: currentResult.missingRequired.length
+        });
+      });
+
+      copyCsvButton.addEventListener("click", async () => {
+        if (!currentResult) {
+          currentResult = compareFreshness();
+          renderResult(currentResult);
+        }
+        await copyText(renderCsv(currentResult), copyCsvButton, "Copied");
+        window.TrustLeakEvents?.track("llms_cache_csv_copied", {
+          domain: currentResult.domain,
+          missingRequired: currentResult.missingRequired.length
+        });
+      });
+
+      currentResult = compareFreshness();
+      renderResult(currentResult);
+
+      function compareFreshness() {
+        const origin = fields.originText.value.trim();
+        const cache = fields.cacheText.value.trim();
+        const required = readLines(fields.requiredUrls.value);
+        const originUrls = extractUrls(origin);
+        const cacheUrls = extractUrls(cache);
+        const originUrlSet = new Set(originUrls);
+        const cacheUrlSet = new Set(cacheUrls);
+        const missingRequired = required.filter(url => !cache.includes(url));
+        const requiredInOrigin = required.filter(url => origin.includes(url));
+        const originOnly = originUrls.filter(url => !cacheUrlSet.has(url));
+        const cacheOnly = cacheUrls.filter(url => !originUrlSet.has(url));
+        const originTitle = extractTitle(origin);
+        const cacheTitle = extractTitle(cache);
+        const originSitemap = originUrls.find(url => url.endsWith("/sitemap.xml")) || "";
+        const cacheSitemap = cacheUrls.find(url => url.endsWith("/sitemap.xml")) || "";
+
+        let status = "Paste both files";
+        if (origin && cache) {
+          if (missingRequired.length) status = "Stale cached copy";
+          else if (originOnly.length || cacheOnly.length || originTitle !== cacheTitle || originSitemap !== cacheSitemap) status = "Review differences";
+          else status = "Fresh enough";
+        }
+
+        return {
+          domain: fields.domain.value.trim(),
+          originUrl: fields.originUrl.value.trim(),
+          cacheUrl: fields.cacheUrl.value.trim(),
+          status,
+          originPresent: Boolean(origin),
+          cachePresent: Boolean(cache),
+          required,
+          requiredInOrigin,
+          missingRequired,
+          originUrls,
+          cacheUrls,
+          originOnly,
+          cacheOnly,
+          originTitle,
+          cacheTitle,
+          originSitemap,
+          cacheSitemap
+        };
+      }
+
+      function renderResult(result) {
+        fields.summary.innerHTML = [
+          ["Status", result.status],
+          ["Required URLs", result.required.length],
+          ["Missing required", result.missingRequired.length],
+          ["Origin-only URLs", result.originOnly.length],
+          ["Cache-only URLs", result.cacheOnly.length]
+        ].map(([label, value]) => `<div><span>${escapeHtml(label)}</span><strong>${escapeHtml(String(value))}</strong></div>`).join("");
+        fields.report.value = renderReport(result);
+      }
+
+      function renderReport(result) {
+        return [
+          "# LLMS.txt Cache Freshness Report",
+          "",
+          `Generated: ${new Date().toISOString()}`,
+          `Domain: ${result.domain || "not set"}`,
+          `Origin: ${result.originUrl || "not set"}`,
+          `Cached copy: ${result.cacheUrl || "not set"}`,
+          `Status: ${result.status}`,
+          "",
+          "## Summary",
+          "",
+          `- Origin pasted: ${result.originPresent ? "yes" : "no"}`,
+          `- Cached copy pasted: ${result.cachePresent ? "yes" : "no"}`,
+          `- Required URLs checked: ${result.required.length}`,
+          `- Required URLs present in origin: ${result.requiredInOrigin.length}`,
+          `- Required URLs missing from cached copy: ${result.missingRequired.length}`,
+          `- Origin-only URLs: ${result.originOnly.length}`,
+          `- Cache-only URLs: ${result.cacheOnly.length}`,
+          `- Origin title: ${result.originTitle || "not found"}`,
+          `- Cached title: ${result.cacheTitle || "not found"}`,
+          `- Origin sitemap: ${result.originSitemap || "not found"}`,
+          `- Cached sitemap: ${result.cacheSitemap || "not found"}`,
+          "",
+          "## Missing Required URLs",
+          "",
+          ...(result.missingRequired.length ? result.missingRequired.map(url => `- ${url}`) : ["- None"]),
+          "",
+          "## Origin-Only URLs",
+          "",
+          ...(result.originOnly.length ? result.originOnly.map(url => `- ${url}`) : ["- None"]),
+          "",
+          "## Cache-Only URLs",
+          "",
+          ...(result.cacheOnly.length ? result.cacheOnly.map(url => `- ${url}`) : ["- None"]),
+          "",
+          "## Guardrail",
+          "",
+          "This report checks text freshness only. It does not prove search indexing, AI citations, crawler behavior, ranking, or referral traffic."
+        ].join("\n");
+      }
+
+      function renderCsv(result) {
+        const row = [
+          new Date().toISOString(),
+          result.domain,
+          result.originUrl,
+          result.cacheUrl,
+          result.status,
+          result.required.length,
+          result.requiredInOrigin.length,
+          result.missingRequired.length,
+          result.originOnly.length,
+          result.cacheOnly.length,
+          result.missingRequired.join(" | ")
+        ];
+        return [
+          "checked_at,domain,origin_url,cache_url,status,required_urls,required_in_origin,missing_required,origin_only_urls,cache_only_urls,missing_required_urls",
+          row.map(csvEscape).join(",")
+        ].join("\n");
+      }
+
+      function readLines(value) {
+        return [...new Set(value.split(/\r?\n/).map(line => line.trim()).filter(Boolean))];
+      }
+
+      function extractUrls(value) {
+        const urls = [...value.matchAll(/https?:\/\/[^\s)\]<>"']+/g)].map(match => match[0].replace(/[.,;:]+$/, ""));
+        return [...new Set(urls)];
+      }
+
+      function extractTitle(value) {
+        const match = value.match(/^#\s+(.+)$/m);
+        return match ? match[1].trim() : "";
+      }
+
+      async function copyText(text, button, feedback) {
+        try {
+          await navigator.clipboard.writeText(text);
+          setButtonFeedback(button, feedback);
+        } catch {
+          fields.report.value = text;
+          fields.report.focus();
+          fields.report.select();
+          setButtonFeedback(button, "Select text");
+        }
+      }
+
+      function setButtonFeedback(button, label) {
+        const original = button.textContent;
+        button.textContent = label;
+        window.setTimeout(() => {
+          button.textContent = original;
+        }, 1200);
+      }
+
+      function csvEscape(value) {
+        return `"${String(value ?? "").replaceAll('"', '""')}"`;
+      }
+
+      function escapeHtml(value) {
+        return value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+      }
+    </script>
+    <script src="event-log.js"></script>
+    <script src="share-tools.js"></script>
+  </body>
+</html>

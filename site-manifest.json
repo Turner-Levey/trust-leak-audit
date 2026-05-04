@@ -63,6 +63,11 @@
       "description": "Track Vercel security bulletin response steps."
     },
     {
+      "name": "LLMS.txt Cache Checker",
+      "url": "/llms-txt-cache-freshness-checker.html",
+      "description": "Compare origin and cached llms.txt copies for missing priority URLs."
+    },
+    {
       "name": "SEC Briefs Hub",
       "url": "/sec-trigger-briefs-hub.html",
       "description": "Review public Form 8-K trigger brief sample routes."

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-04T06:26:48.437Z",
+  "generatedAt": "2026-05-04T08:30:11.006Z",
   "sourceDir": "/Users/turnerlevey/untitled folder/venture-lab/site",
   "releaseDir": "/Users/turnerlevey/untitled folder/venture-lab/releases/trust-leak-audit-static",
   "siteUrl": "https://trust-leak-audit-static.vercel.app",
@@ -10,6 +10,7 @@
     "index.html",
     "launch-notes.html",
     "lead-funnel-calculator.html",
+    "llms-txt-cache-freshness-checker.html",
     "local-service-lead-value-calculator.html",
     "ltv-cac-calculator.html",
     "paid-traffic-break-even-calculator.html",
@@ -44,6 +45,7 @@
     "launch-kit.html",
     "launch-notes.html",
     "lead-funnel-calculator.html",
+    "llms-txt-cache-freshness-checker.html",
     "local-service-lead-value-calculator.html",
     "ltv-cac-calculator.html",
     "paid-traffic-break-even-calculator.html",
@@ -67,6 +69,7 @@
     "og/ecommerce-conversion-trust-checklist.svg",
     "og/launch-notes.svg",
     "og/lead-funnel-calculator.svg",
+    "og/llms-txt-cache-freshness-checker.svg",
     "og/local-service-lead-value-calculator.svg",
     "og/ltv-cac-calculator.svg",
     "og/paid-traffic-break-even-calculator.svg",
@@ -96,24 +99,24 @@
   ],
   "indexNow": {
     "keyFile": "4f2e8d9c6b7a4f3a9e1c0d8b6a2f4c1e.txt",
-    "indexableUrls": 22
+    "indexableUrls": 23
   },
   "trafficBeacon": {
     "endpoint": "/api/track",
     "handler": "api/track.js"
   },
   "eventLogCoverage": {
-    "covered": 22,
-    "indexable": 22
+    "covered": 23,
+    "indexable": 23
   },
   "localLinkIssues": [],
   "shareToolCoverage": {
-    "covered": 22,
-    "indexable": 22
+    "covered": 23,
+    "indexable": 23
   },
   "vercelAnalyticsCoverage": {
-    "covered": 22,
-    "indexable": 22,
+    "covered": 23,
+    "indexable": 23,
     "scriptSrc": "/_vercel/insights/script.js"
   },
   "nextCommand": "SITE_URL=https://your-domain.example node venture-lab/site/build-static-release.mjs"

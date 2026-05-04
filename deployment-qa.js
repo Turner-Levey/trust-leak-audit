@@ -13,10 +13,17 @@ const indexablePages = [
   { label: "Ecommerce conversion trust checklist", path: "/ecommerce-conversion-trust-checklist.html" },
   { label: "Sample reports", path: "/sample-reports.html" },
   { label: "Launch notes", path: "/launch-notes.html" },
+  { label: "LLMS.txt cache checker", path: "/llms-txt-cache-freshness-checker.html" },
+  { label: "Vercel incident response checklist", path: "/vercel-incident-response-checklist.html" },
   { label: "SEC trigger briefs hub", path: "/sec-trigger-briefs-hub.html" },
   { label: "SEC filing trigger briefs", path: "/sec-filing-trigger-briefs.html" },
   { label: "SEC auditor-change briefs", path: "/sec-auditor-change-briefs.html" },
-  { label: "SEC leadership-change briefs", path: "/sec-leadership-change-briefs.html" }
+  { label: "SEC leadership-change briefs", path: "/sec-leadership-change-briefs.html" },
+  { label: "SEC auditor-change watchlist template", path: "/sec-auditor-change-watchlist-template.html" },
+  { label: "SEC auditor-change disclosure checklist", path: "/sec-auditor-change-disclosure-checklist.html" },
+  { label: "SEC former-accountant letter tracker", path: "/sec-auditor-former-accountant-letter-tracker.html" },
+  { label: "SEC auditor-change deadline calculator", path: "/sec-auditor-change-deadline-calculator.html" },
+  { label: "SEC auditor-change evidence pack builder", path: "/sec-auditor-change-evidence-pack-builder.html" }
 ];
 
 const operatorPages = [

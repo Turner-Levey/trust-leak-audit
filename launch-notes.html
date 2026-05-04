@@ -31,7 +31,7 @@
         "headline": "Trust Leak Audit Launch Notes",
         "description": "Launch notes for the free browser-only Trust Leak Audit toolkit, calculators, Vercel incident checklist, sample reports, and SEC filing trigger brief pages.",
         "datePublished": "2026-04-29",
-        "dateModified": "2026-04-30",
+        "dateModified": "2026-05-04",
         "author": {
           "@type": "Organization",
           "name": "Trust Leak Audit"
@@ -79,6 +79,10 @@
             <h3>Public filing trigger briefs</h3>
             <p>The SEC Filing Trigger Briefs hub packages fifteen source-linked Form 8-K examples across transaction, auditor-change, and leadership-change buyer routes. The pages are operational signal examples, not investment advice.</p>
           </article>
+          <article>
+            <h3>LLMS.txt cache checker</h3>
+            <p>The cache freshness checker compares a live origin `llms.txt` file with a directory or cached copy, then reports missing priority URLs for crawl-review and launch evidence.</p>
+          </article>
         </div>
       </section>
 
@@ -114,6 +118,11 @@
               <td>Updated URLs can be submitted quickly after each production deploy.</td>
               <td>Submission status is tracked separately from real indexing, clicks, and visitor behavior.</td>
             </tr>
+            <tr>
+              <td>LLMS.txt cache freshness checker</td>
+              <td>Site owners can compare origin and cached `llms.txt` copies without signup or cross-origin fetching.</td>
+              <td>Freshness reports make crawler lag, missing URL, and directory-cache issues easier to log.</td>
+            </tr>
           </tbody>
         </table>
       </section>
@@ -125,6 +134,7 @@
         <div class="button-row">
           <a class="primary-link" href="trust-score.html">Start with trust score</a>
           <a class="secondary-link" href="vercel-incident-response-checklist.html">Open Vercel checklist</a>
+          <a class="secondary-link" href="llms-txt-cache-freshness-checker.html">Check llms.txt cache</a>
           <a class="secondary-link" href="sample-reports.html">View samples</a>
           <a class="secondary-link" href="sec-trigger-briefs-hub.html">Review SEC briefs</a>
         </div>
@@ -132,6 +142,7 @@
 
       <section class="tool-links" aria-label="Tool pages">
         <a href="./">Toolkit Home</a>
+        <a href="llms-txt-cache-freshness-checker.html">LLMS.txt Cache Checker</a>
         <a href="vercel-incident-response-checklist.html">Vercel Incident Checklist</a>
         <a href="trust-score.html">Landing Page Trust Score</a>
         <a href="roas-calculator.html">ROAS Calculator</a>
