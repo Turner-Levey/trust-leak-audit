@@ -12,6 +12,7 @@ Live site: https://trust-leak-audit-static.vercel.app/
 - Ecommerce conversion trust checklist.
 - Anonymized sample audit reports and public SEC trigger brief examples.
 - LLMS.txt cache freshness checker for comparing origin and directory copies.
+- Public bid no-bid calculator for RFP, RFQ, and public opportunity triage.
 - Launch notes, share links, `llms.txt`, sitemap, and IndexNow support.
 
 ## Privacy And Use
@@ -30,6 +31,7 @@ The static toolkit code and original documentation in this repository are MIT li
 - Ecommerce trust checklist: https://trust-leak-audit-static.vercel.app/ecommerce-conversion-trust-checklist.html
 - Sample reports: https://trust-leak-audit-static.vercel.app/sample-reports.html
 - LLMS.txt cache checker: https://trust-leak-audit-static.vercel.app/llms-txt-cache-freshness-checker.html
+- Public bid no-bid calculator: https://trust-leak-audit-static.vercel.app/public-bid-no-bid-calculator.html
 - SEC trigger briefs hub: https://trust-leak-audit-static.vercel.app/sec-trigger-briefs-hub.html
 
 This repository can contain prepared release files before the production alias finishes updating, so the live site and current sitemap are the source of truth for public launch copy.

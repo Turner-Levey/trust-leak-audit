@@ -14,6 +14,7 @@ const indexablePages = [
   { label: "Sample reports", path: "/sample-reports.html" },
   { label: "Launch notes", path: "/launch-notes.html" },
   { label: "LLMS.txt cache checker", path: "/llms-txt-cache-freshness-checker.html" },
+  { label: "Public bid no-bid calculator", path: "/public-bid-no-bid-calculator.html" },
   { label: "Vercel incident response checklist", path: "/vercel-incident-response-checklist.html" },
   { label: "SEC trigger briefs hub", path: "/sec-trigger-briefs-hub.html" },
   { label: "SEC filing trigger briefs", path: "/sec-filing-trigger-briefs.html" },

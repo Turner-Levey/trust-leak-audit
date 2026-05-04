@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Free browser-only public bid go/no-go calculator for vendors weighing pursuit cost, deadline risk, fit, gross margin, and win probability.">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#f3f7f4">
+    <meta property="og:title" content="Public Bid No-Bid Calculator">
+    <meta property="og:description" content="Triage public RFP, RFQ, and bid opportunities before spending proposal hours.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trust-leak-audit-static.vercel.app/public-bid-no-bid-calculator.html">
+    <meta property="og:site_name" content="Trust Leak Audit">
+    <meta property="og:image" content="https://trust-leak-audit-static.vercel.app/og/public-bid-no-bid-calculator.svg">
+    <meta property="og:image:type" content="image/svg+xml">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Public bid no-bid calculator social preview.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://trust-leak-audit-static.vercel.app/og/public-bid-no-bid-calculator.svg">
+    <meta name="twitter:image:alt" content="Public bid no-bid calculator social preview.">
+    <title>Public Bid No-Bid Calculator</title>
+    <link rel="canonical" href="https://trust-leak-audit-static.vercel.app/public-bid-no-bid-calculator.html">
+    <link rel="alternate" href="https://trust-leak-audit-static.vercel.app/llms.txt" type="text/plain" title="LLMs.txt">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Public Bid No-Bid Calculator",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "description": "A free browser-only calculator that helps vendors triage public bid opportunities by pursuit cost, expected gross profit, fit, deadline risk, and win probability.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a public bid go/no-go calculator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It is a vendor triage worksheet for deciding whether a public RFP, RFQ, or bid opportunity is worth proposal time after considering fit, pursuit cost, deadline risk, and likely gross profit."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool submit bids or fetch solicitations?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It runs in the browser from user-entered values and does not submit bids, scrape portals, fetch solicitation files, or upload opportunity data."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this procurement or legal advice?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It is an informational planning tool. Vendors should verify solicitation requirements, registration rules, addenda, deadlines, and legal obligations with the official buyer portal and their advisors."
+            }
+          }
+        ]
+      }
+    </script>
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+  </head>
+  <body>
+    <main class="app-shell static-page">
+      <a class="back-link" href="index.html">Trust Leak Toolkit</a>
+      <header class="page-hero">
+        <p class="eyebrow">Free public-bid triage</p>
+        <h1>Public Bid No-Bid Calculator</h1>
+        <p class="lede">Estimate whether an RFP, RFQ, grant-adjacent contract, or public bid is worth pursuing before spending proposal hours. Score fit, deadline pressure, margin, win probability, mandatory steps, and pursuit cost in one browser-only memo.</p>
+        <div class="page-actions">
+          <a class="primary-link" href="#calculator">Score an opportunity</a>
+          <a class="secondary-link" href="#framework">Review the framework</a>
+          <a class="secondary-link" href="#sources">Sources</a>
+        </div>
+      </header>
+
+      <section class="notice-panel" aria-label="Public bid calculator disclosure">
+        <strong>Disclosure:</strong> This tool is an informational planning worksheet for vendors. It is not procurement advice, legal advice, a buyer portal, or a bid submission service. Verify official solicitation documents, addenda, portal registration, site-visit rules, bonding, and deadlines before acting.
+      </section>
+
+      <section class="seo-grid" aria-label="Bid triage use cases">
+        <article class="panel">
+          <h2>Use Case</h2>
+          <p>Quickly triage public bid links from SAM.gov, state portals, county procurement pages, school districts, utilities, or local agency sites.</p>
+        </article>
+        <article class="panel">
+          <h2>Decision Basis</h2>
+          <p>Compare expected gross profit against proposal cost, then penalize for short deadlines, mandatory site visits, bonding, registration friction, and weak fit.</p>
+        </article>
+        <article class="panel">
+          <h2>Output</h2>
+          <p>Copy a go/no-go memo or CSV row for a pipeline sheet so public opportunities do not get pursued only because they look large.</p>
+        </article>
+      </section>
+
+      <section class="detail-section" id="calculator" aria-labelledby="calculator-heading">
+        <div class="panel report-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Browser-only calculator</p>
+              <h2 id="calculator-heading">Score The Bid Fit</h2>
+            </div>
+            <div class="button-row">
+              <button class="primary" id="calculateBidFit" type="button">Calculate</button>
+              <button class="secondary" id="copyBidMemo" type="button">Copy Memo</button>
+              <button class="secondary" id="copyBidCsv" type="button">Copy CSV Row</button>
+            </div>
+          </div>
+
+          <form class="calc-form" id="bidFitForm">
+            <div class="field-row">
+              <label for="opportunityName">Opportunity <small>Buyer name, solicitation title, or tracking label.</small></label>
+              <input id="opportunityName" type="text" value="City facilities maintenance RFP">
+              <span class="value-pill">1</span>
+            </div>
+            <div class="field-row">
+              <label for="opportunityUrl">Source URL <small>Official solicitation, portal, or notice page.</small></label>
+              <input id="opportunityUrl" type="url" value="https://sam.gov/content/opportunities">
+              <span class="value-pill">2</span>
+            </div>
+            <div class="field-row">
+              <label for="dueDate">Due date <small>Proposal or bid submission deadline.</small></label>
+              <input id="dueDate" type="date">
+              <span class="value-pill">3</span>
+            </div>
+            <div class="field-row">
+              <label for="qaDate">Q&amp;A deadline <small>Optional last date for questions or clarifications.</small></label>
+              <input id="qaDate" type="date">
+              <span class="value-pill">4</span>
+            </div>
+            <div class="field-row">
+              <label for="contractValue">Estimated contract value <small>Total expected revenue if awarded.</small></label>
+              <input id="contractValue" type="number" min="0" step="500" value="85000">
+              <span class="value-pill">$</span>
+            </div>
+            <div class="field-row">
+              <label for="grossMargin">Gross margin <small>Expected gross margin after delivery costs.</small></label>
+              <input id="grossMargin" type="number" min="0" max="100" step="1" value="38">
+              <span class="value-pill">%</span>
+            </div>
+            <div class="field-row">
+              <label for="winProbability">Win probability <small>Conservative probability after fit and competition.</small></label>
+              <input id="winProbability" type="number" min="0" max="100" step="1" value="22">
+              <span class="value-pill">%</span>
+            </div>
+            <div class="field-row">
+              <label for="fitScore">Fit score <small>1 weak, 5 strong match to capabilities and proof.</small></label>
+              <input id="fitScore" type="number" min="1" max="5" step="1" value="4">
+              <span class="value-pill">1-5</span>
+            </div>
+            <div class="field-row">
+              <label for="pursuitHours">Proposal hours <small>Staff hours needed before submission.</small></label>
+              <input id="pursuitHours" type="number" min="0" step="1" value="18">
+              <span class="value-pill">hrs</span>
+            </div>
+            <div class="field-row">
+              <label for="hourlyCost">Internal hourly cost <small>Loaded cost for people preparing the response.</small></label>
+              <input id="hourlyCost" type="number" min="0" step="5" value="85">
+              <span class="value-pill">$/hr</span>
+            </div>
+            <div class="field-row">
+              <label for="outsideCost">Outside costs <small>Printing, travel, consultants, bonds, samples, or required fees.</small></label>
+              <input id="outsideCost" type="number" min="0" step="50" value="500">
+              <span class="value-pill">$</span>
+            </div>
+            <div class="field-row">
+              <label for="mandatoryFlags">Mandatory friction <small>Count required site visit, portal registration, bonding, special certification, samples, or incumbent-heavy proof.</small></label>
+              <input id="mandatoryFlags" type="number" min="0" max="6" step="1" value="2">
+              <span class="value-pill">0-6</span>
+            </div>
+            <div class="field-row">
+              <label for="nextStep">Next step <small>Source-backed action before a final decision.</small></label>
+              <input id="nextStep" type="text" value="Verify addenda, Q&A deadline, mandatory site visit, and required attachments before assigning proposal work.">
+              <span class="value-pill">13</span>
+            </div>
+          </form>
+
+          <div class="result-strip" id="bidFitResults"></div>
+          <textarea id="bidFitOutput" spellcheck="false" aria-label="Generated bid go/no-go memo"></textarea>
+          <p class="event-status" id="bidFitStatus" role="status" aria-live="polite">Bid fit actions: 0</p>
+        </div>
+      </section>
+
+      <section class="detail-section" id="framework" aria-labelledby="framework-heading">
+        <h2 id="framework-heading">How To Interpret The Score</h2>
+        <div class="example-grid">
+          <article class="panel">
+            <h3>Go</h3>
+            <p>Positive expected value, strong fit, enough time to ask questions, and no overlooked mandatory requirement. Assign an owner and confirm the official portal deadline.</p>
+          </article>
+          <article class="panel">
+            <h3>Watch</h3>
+            <p>Potentially worth pursuing, but only after clarifying scope, addenda, buyer questions, registration, bonding, site visit, or the real proposal workload.</p>
+          </article>
+          <article class="panel">
+            <h3>No-Go</h3>
+            <p>Short deadline, weak capability match, low win probability, high pursuit cost, or mandatory friction makes the bid unlikely to justify proposal time.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="detail-section" id="sources" aria-labelledby="sources-heading">
+        <h2 id="sources-heading">Public Bid Source Links</h2>
+        <div class="table-wrap">
+          <table class="benchmark-table">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Why It Matters</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://sam.gov/content/opportunities">SAM.gov Contract Opportunities</a></td>
+                <td>Federal opportunity notices and solicitation links for vendors researching public contract work.</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.sba.gov/federal-contracting/contracting-guide/basic-requirements">SBA Contracting Basic Requirements</a></td>
+                <td>Plain-language reminder that registration, eligibility, and capability requirements matter before pursuing federal contracts.</td>
+              </tr>
+              <tr>
+                <td>State, county, city, utility, school, and special-district procurement portals</td>
+                <td>Most non-federal opportunities have their own deadlines, addenda, site-visit rules, and submission formats.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (() => {
+        const ids = [
+          "opportunityName",
+          "opportunityUrl",
+          "dueDate",
+          "qaDate",
+          "contractValue",
+          "grossMargin",
+          "winProbability",
+          "fitScore",
+          "pursuitHours",
+          "hourlyCost",
+          "outsideCost",
+          "mandatoryFlags",
+          "nextStep"
+        ];
+        const output = document.getElementById("bidFitOutput");
+        const results = document.getElementById("bidFitResults");
+        const status = document.getElementById("bidFitStatus");
+        let actionCount = 0;
+
+        const today = new Date();
+        const due = new Date(today);
+        due.setDate(today.getDate() + 14);
+        const qa = new Date(today);
+        qa.setDate(today.getDate() + 6);
+        document.getElementById("dueDate").value = toIsoDate(due);
+        document.getElementById("qaDate").value = toIsoDate(qa);
+
+        function getValue(id) {
+          return document.getElementById(id).value.trim();
+        }
+
+        function numberValue(id) {
+          return Number(getValue(id)) || 0;
+        }
+
+        function parseDate(id) {
+          const value = getValue(id);
+          if (!value) return null;
+          const date = new Date(`${value}T12:00:00`);
+          return Number.isNaN(date.getTime()) ? null : date;
+        }
+
+        function daysBetween(start, end) {
+          return Math.ceil((end - start) / 86400000);
+        }
+
+        function currency(value) {
+          return new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
+            maximumFractionDigits: 0
+          }).format(value);
+        }
+
+        function percent(value) {
+          return `${Math.round(value)}%`;
+        }
+
+        function toIsoDate(date) {
+          return date.toISOString().slice(0, 10);
+        }
+
+        function csvEscape(value) {
+          const text = String(value ?? "");
+          return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+        }
+
+        function calculate() {
+          const dueDate = parseDate("dueDate");
+          if (!dueDate) throw new Error("Enter a valid due date.");
+
+          const qaDate = parseDate("qaDate");
+          const contractValue = numberValue("contractValue");
+          const margin = Math.min(100, Math.max(0, numberValue("grossMargin")));
+          const winProbability = Math.min(100, Math.max(0, numberValue("winProbability")));
+          const fit = Math.min(5, Math.max(1, numberValue("fitScore")));
+          const pursuitCost = numberValue("pursuitHours") * numberValue("hourlyCost") + numberValue("outsideCost");
+          const grossProfitIfWon = contractValue * (margin / 100);
+          const expectedGrossProfit = grossProfitIfWon * (winProbability / 100);
+          const netExpectedValue = expectedGrossProfit - pursuitCost;
+          const daysUntilDue = daysBetween(new Date(), dueDate);
+          const daysUntilQa = qaDate ? daysBetween(new Date(), qaDate) : null;
+          const friction = Math.min(6, Math.max(0, numberValue("mandatoryFlags")));
+
+          let deadlinePenalty = 0;
+          if (daysUntilDue < 3) deadlinePenalty += 30;
+          else if (daysUntilDue < 7) deadlinePenalty += 18;
+          else if (daysUntilDue < 14) deadlinePenalty += 8;
+
+          if (daysUntilQa !== null && daysUntilQa < 0) deadlinePenalty += 12;
+          else if (daysUntilQa !== null && daysUntilQa < 3) deadlinePenalty += 6;
+
+          const frictionPenalty = friction * 6;
+          const valueScore = Math.min(15, Math.max(0, netExpectedValue / Math.max(1, pursuitCost) * 10));
+          const score = Math.round(Math.max(0, Math.min(100, fit * 13 + winProbability * 0.35 + margin * 0.12 + valueScore - deadlinePenalty - frictionPenalty)));
+          const deadlineRisk = deadlinePenalty >= 24 ? "High" : deadlinePenalty >= 10 ? "Medium" : "Low";
+          const evRatio = pursuitCost > 0 ? expectedGrossProfit / pursuitCost : expectedGrossProfit;
+
+          let decision = "Watch";
+          if (score >= 70 && netExpectedValue > 0 && deadlineRisk !== "High") decision = "Go";
+          if (score < 45 || netExpectedValue < 0 || deadlineRisk === "High") decision = "No-Go";
+
+          return {
+            dueDate,
+            qaDate,
+            contractValue,
+            margin,
+            winProbability,
+            fit,
+            pursuitCost,
+            grossProfitIfWon,
+            expectedGrossProfit,
+            netExpectedValue,
+            daysUntilDue,
+            daysUntilQa,
+            friction,
+            score,
+            deadlineRisk,
+            evRatio,
+            decision
+          };
+        }
+
+        function renderResult(data) {
+          const rows = [
+            ["Decision", data.decision],
+            ["Fit score", `${data.score}/100`],
+            ["Expected gross profit", currency(data.expectedGrossProfit)],
+            ["Pursuit cost", currency(data.pursuitCost)],
+            ["Net expected value", currency(data.netExpectedValue)],
+            ["Deadline risk", data.deadlineRisk],
+            ["Days until due", `${data.daysUntilDue}`],
+            ["Expected value / cost", `${data.evRatio.toFixed(1)}x`]
+          ];
+          results.innerHTML = rows
+            .map(([label, value]) => `<div class="result-card"><span>${label}</span><strong>${value}</strong></div>`)
+            .join("");
+        }
+
+        function buildMemo(data) {
+          const blockers = [];
+          if (data.deadlineRisk === "High") blockers.push("Deadline risk is high.");
+          if (data.netExpectedValue < 0) blockers.push("Expected gross profit does not cover pursuit cost.");
+          if (data.friction >= 3) blockers.push("Mandatory-friction count is elevated.");
+          if (data.fit <= 2) blockers.push("Capability fit is weak.");
+          if (data.daysUntilQa !== null && data.daysUntilQa < 0) blockers.push("Q&A deadline appears to have passed.");
+
+          return [
+            `# Public Bid Go/No-Go Memo: ${getValue("opportunityName")}`,
+            "",
+            "## Decision",
+            `- Recommendation: ${data.decision}`,
+            `- Fit score: ${data.score}/100`,
+            `- Deadline risk: ${data.deadlineRisk}`,
+            `- Source URL: ${getValue("opportunityUrl") || "Not entered"}`,
+            "",
+            "## Economics",
+            `- Estimated contract value: ${currency(data.contractValue)}`,
+            `- Gross margin: ${percent(data.margin)}`,
+            `- Win probability: ${percent(data.winProbability)}`,
+            `- Gross profit if won: ${currency(data.grossProfitIfWon)}`,
+            `- Expected gross profit: ${currency(data.expectedGrossProfit)}`,
+            `- Pursuit cost: ${currency(data.pursuitCost)}`,
+            `- Net expected value: ${currency(data.netExpectedValue)}`,
+            "",
+            "## Deadline And Friction",
+            `- Due date: ${toIsoDate(data.dueDate)} (${data.daysUntilDue} days from today)`,
+            `- Q&A date: ${data.qaDate ? `${toIsoDate(data.qaDate)} (${data.daysUntilQa} days from today)` : "Not entered"}`,
+            `- Mandatory-friction count: ${data.friction}`,
+            `- Blockers to verify: ${blockers.length ? blockers.join(" ") : "None flagged by this calculator."}`,
+            "",
+            "## Next Step",
+            getValue("nextStep"),
+            "",
+            "## Guardrails",
+            "- Verify official solicitation files, addenda, registration requirements, attachments, bid bonds, site visits, buyer questions, and deadlines in the buyer portal.",
+            "- Treat this as a planning worksheet, not procurement advice, legal advice, a bid submission, or a guarantee of award probability."
+          ].join("\n");
+        }
+
+        function buildCsv(data) {
+          const headers = [
+            "opportunity",
+            "source_url",
+            "decision",
+            "score",
+            "deadline_risk",
+            "due_date",
+            "days_until_due",
+            "estimated_contract_value",
+            "gross_margin",
+            "win_probability",
+            "pursuit_cost",
+            "expected_gross_profit",
+            "net_expected_value",
+            "mandatory_friction_count",
+            "next_step"
+          ];
+          const row = [
+            getValue("opportunityName"),
+            getValue("opportunityUrl"),
+            data.decision,
+            data.score,
+            data.deadlineRisk,
+            toIsoDate(data.dueDate),
+            data.daysUntilDue,
+            data.contractValue,
+            data.margin,
+            data.winProbability,
+            data.pursuitCost,
+            Math.round(data.expectedGrossProfit),
+            Math.round(data.netExpectedValue),
+            data.friction,
+            getValue("nextStep")
+          ];
+          return `${headers.join(",")}\n${row.map(csvEscape).join(",")}\n`;
+        }
+
+        function setStatus(message) {
+          actionCount += 1;
+          status.textContent = `${message} Actions: ${actionCount}`;
+        }
+
+        function track(name, detail = {}) {
+          if (window.TrustLeakEvents?.track) {
+            window.TrustLeakEvents.track(name, detail);
+          }
+        }
+
+        async function copyText(text) {
+          if (navigator.clipboard?.writeText) {
+            await navigator.clipboard.writeText(text);
+            return;
+          }
+          output.focus();
+          output.select();
+          document.execCommand("copy");
+        }
+
+        function runCalculation(shouldTrack = true) {
+          try {
+            const data = calculate();
+            renderResult(data);
+            output.value = buildMemo(data);
+            if (shouldTrack) {
+              setStatus("Bid fit calculated.");
+              track("public_bid_fit_calculated", {
+                decision: data.decision,
+                deadlineRisk: data.deadlineRisk,
+                score: data.score
+              });
+            }
+            return data;
+          } catch (error) {
+            results.innerHTML = `<div class="result-card"><span>Input needed</span><strong>${error.message}</strong></div>`;
+            output.value = "";
+            throw error;
+          }
+        }
+
+        document.getElementById("calculateBidFit").addEventListener("click", () => runCalculation(true));
+        document.getElementById("copyBidMemo").addEventListener("click", async () => {
+          const data = output.value.trim() ? calculate() : runCalculation(false);
+          await copyText(output.value || buildMemo(data));
+          setStatus("Memo copied.");
+          track("public_bid_fit_memo_copied", { decision: data.decision });
+        });
+        document.getElementById("copyBidCsv").addEventListener("click", async () => {
+          const data = output.value.trim() ? calculate() : runCalculation(false);
+          await copyText(buildCsv(data));
+          setStatus("CSV row copied.");
+          track("public_bid_fit_csv_copied", { decision: data.decision });
+        });
+        ids.forEach((id) => document.getElementById(id).addEventListener("change", () => runCalculation(false)));
+        runCalculation(false);
+      })();
+    </script>
+    <script src="event-log.js"></script>
+    <script src="share-tools.js"></script>
+  </body>
+</html>

@@ -68,6 +68,11 @@
       "description": "Compare origin and cached llms.txt copies for missing priority URLs."
     },
     {
+      "name": "Public Bid No-Bid Calculator",
+      "url": "/public-bid-no-bid-calculator.html",
+      "description": "Triage public bid opportunities by fit, deadline risk, pursuit cost, and expected value."
+    },
+    {
       "name": "SEC Briefs Hub",
       "url": "/sec-trigger-briefs-hub.html",
       "description": "Review public Form 8-K trigger brief sample routes."
